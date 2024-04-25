@@ -49,7 +49,12 @@ namespace SupportHub
 
         private void btnCerrarLogin_Click(object sender, EventArgs e)
         {
-           Application.Exit();
+            Application.Exit();
+        }
+
+        private void btnAcceder_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

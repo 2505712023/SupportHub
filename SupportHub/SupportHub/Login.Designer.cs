@@ -44,7 +44,7 @@
             // 
             // pImagen
             // 
-            pImagen.BackColor = Color.FromArgb(3, 29, 52);
+            pImagen.BackColor = Color.FromArgb(5, 23, 59);
             pImagen.Controls.Add(imgLogoLogin);
             pImagen.Dock = DockStyle.Left;
             pImagen.Location = new Point(0, 0);
@@ -132,6 +132,7 @@
             btnAcceder.TabIndex = 3;
             btnAcceder.Text = "ACCERDER";
             btnAcceder.UseVisualStyleBackColor = false;
+            btnAcceder.Click += btnAcceder_Click;
             // 
             // btnCerrarLogin
             // 
