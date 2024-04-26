@@ -1,3 +1,5 @@
+using Dominio;
+
 namespace SupportHub
 {
     public partial class frmLogin : Form
@@ -6,7 +8,20 @@ namespace SupportHub
         {
             InitializeComponent();
         }
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
 
+            if (txtUsuario.Text == "USUARIO" || txtContraseña.Text == "CONTRASEÑA" || txtUsuario.Text == "" || txtContraseña.Text == "")
+            {
+                // Si contienen alguno de estos valores, deshabilitar el botón
+                btnAcceder.Enabled = false;
+            }
+            else
+            {
+                // Si no contienen ninguno de estos valores, habilitar el botón
+                btnAcceder.Enabled = true;
+            }
+        }
         private void txtUsuario_Enter(object sender, EventArgs e)
         {
             if (txtUsuario.Text == "USUARIO")
@@ -52,9 +67,29 @@ namespace SupportHub
             Application.Exit();
         }
 
+
+       
+
         private void btnAcceder_Click(object sender, EventArgs e)
         {
+        //    if (txtUsuario.Text != "USUARIO")
+        //    {
+        //        if (txtContraseña.Text != "CONTRASEÑA") { }
+        //        else { MessageError("Ingrese Contraseña"); }
 
+        //    }
+        //    else
+        //    {
+        //        MessageError("Ingrese usuario");
+        //    }
+
+        //}
+        //public void MessageError(string mensaje)
+        //{
+        //    lblMensajeError.Text = mensaje;
+        //    lblMensajeError.Visible = true;
         }
+
+        
     }
 }

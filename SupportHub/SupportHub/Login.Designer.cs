@@ -38,6 +38,7 @@
             txtContraseña = new TextBox();
             btnAcceder = new Button();
             btnCerrarLogin = new FontAwesome.Sharp.IconButton();
+            lblMensajeError = new Label();
             pImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).BeginInit();
             SuspendLayout();
@@ -150,12 +151,25 @@
             btnCerrarLogin.UseVisualStyleBackColor = false;
             btnCerrarLogin.Click += btnCerrarLogin_Click;
             // 
+            // lblMensajeError
+            // 
+            lblMensajeError.AutoSize = true;
+            lblMensajeError.ForeColor = Color.FromArgb(31, 35, 40);
+            lblMensajeError.ImageAlign = ContentAlignment.MiddleLeft;
+            lblMensajeError.Location = new Point(288, 211);
+            lblMensajeError.Name = "lblMensajeError";
+            lblMensajeError.Size = new Size(79, 15);
+            lblMensajeError.TabIndex = 5;
+            lblMensajeError.Text = "Mensaje Error";
+            lblMensajeError.Visible = false;
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
             ClientSize = new Size(780, 330);
+            Controls.Add(lblMensajeError);
             Controls.Add(btnCerrarLogin);
             Controls.Add(btnAcceder);
             Controls.Add(txtContraseña);
@@ -168,6 +182,7 @@
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += frmLogin_Load;
             pImagen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).EndInit();
             ResumeLayout(false);
@@ -185,5 +200,6 @@
         private TextBox txtContraseña;
         private Button btnAcceder;
         private FontAwesome.Sharp.IconButton btnCerrarLogin;
+        private Label lblMensajeError;
     }
 }
