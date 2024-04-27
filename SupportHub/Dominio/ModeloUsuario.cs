@@ -7,7 +7,7 @@ using DataAccess;
 
 namespace Dominio
 {
-    internal class ModeloUsuario
+    public class ModeloUsuario
     {
         UsuarioDato userData = new UsuarioDato();
         public bool LoginUsuario(string user, string pass) {

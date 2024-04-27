@@ -10,17 +10,10 @@ namespace SupportHub
         }
         private void frmLogin_Load(object sender, EventArgs e)
         {
+            btnAcceder.Enabled = false;
 
-            if (txtUsuario.Text == "USUARIO" || txtContraseña.Text == "CONTRASEÑA" || txtUsuario.Text == "" || txtContraseña.Text == "")
-            {
-                // Si contienen alguno de estos valores, deshabilitar el botón
-                btnAcceder.Enabled = false;
-            }
-            else
-            {
-                // Si no contienen ninguno de estos valores, habilitar el botón
-                btnAcceder.Enabled = true;
-            }
+
+
         }
         private void txtUsuario_Enter(object sender, EventArgs e)
         {
@@ -68,28 +61,73 @@ namespace SupportHub
         }
 
 
-       
+
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-        //    if (txtUsuario.Text != "USUARIO")
-        //    {
-        //        if (txtContraseña.Text != "CONTRASEÑA") { }
-        //        else { MessageError("Ingrese Contraseña"); }
 
-        //    }
-        //    else
-        //    {
-        //        MessageError("Ingrese usuario");
-        //    }
 
-        //}
-        //public void MessageError(string mensaje)
-        //{
-        //    lblMensajeError.Text = mensaje;
-        //    lblMensajeError.Visible = true;
+
+            if (txtUsuario.Text != "USUARIO" && txtContraseña.Text != "CONTRASEÑA" && txtUsuario.Text != "" && txtContraseña.Text != "")
+            {
+                ModeloUsuario usuario = new ModeloUsuario();
+                var LoginValido = usuario.LoginUsuario(txtUsuario.Text,txtContraseña.Text);
+            }
+            else
+            {
+                // Mostrar un mensaje de error utilizando ErrorProvider
+                errorProvider1.SetError(btnAcceder, "Ingrese un usuario y contraseña válidos.");
+            }
+
+            //    if (txtUsuario.Text != "USUARIO")
+            //    {
+            //        if (txtContraseña.Text != "CONTRASEÑA") { }
+            //        else { MessageError("Ingrese Contraseña"); }
+
+            //    }
+            //    else
+            //    {
+            //        MessageError("Ingrese usuario");
+            //    }
+
+            //}
+            //public void MessageError(string mensaje)
+            //{
+            //    lblMensajeError.Text = mensaje;
+            //    lblMensajeError.Visible = true;
         }
 
-        
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+            if (txtUsuario.Text == "USUARIO" || txtContraseña.Text == "CONTRASEÑA" || txtUsuario.Text == "" || txtContraseña.Text == "")
+            {
+         
+                btnAcceder.Enabled = false;
+            }
+            else
+            {
+             
+                btnAcceder.Enabled = true;
+
+                
+                errorProvider1.SetError(btnAcceder, "hola");
+            }
+        }
+
+        private void txtContraseña_TextChanged(object sender, EventArgs e)
+        {
+            if (txtUsuario.Text == "USUARIO" || txtContraseña.Text == "CONTRASEÑA" || txtUsuario.Text == "" || txtContraseña.Text == "")
+            {
+              
+                btnAcceder.Enabled = false;
+            }
+            else
+            {
+                
+                btnAcceder.Enabled = true;
+
+              
+            }
+        }
     }
 }

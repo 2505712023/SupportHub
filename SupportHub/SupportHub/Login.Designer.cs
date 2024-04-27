@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             pImagen = new Panel();
             imgLogoLogin = new PictureBox();
@@ -39,8 +40,10 @@
             btnAcceder = new Button();
             btnCerrarLogin = new FontAwesome.Sharp.IconButton();
             lblMensajeError = new Label();
+            errorProvider1 = new ErrorProvider(components);
             pImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // pImagen
@@ -101,6 +104,7 @@
             txtUsuario.Size = new Size(400, 20);
             txtUsuario.TabIndex = 1;
             txtUsuario.Text = "USUARIO";
+            txtUsuario.TextChanged += txtUsuario_TextChanged;
             txtUsuario.Enter += txtUsuario_Enter;
             txtUsuario.Leave += txtUsuario_Leave;
             // 
@@ -115,6 +119,7 @@
             txtContraseña.Size = new Size(400, 20);
             txtContraseña.TabIndex = 2;
             txtContraseña.Text = "CONTRASEÑA";
+            txtContraseña.TextChanged += txtContraseña_TextChanged;
             txtContraseña.Enter += txtContraseña_Enter;
             txtContraseña.Leave += txtContraseña_Leave;
             // 
@@ -131,7 +136,7 @@
             btnAcceder.Name = "btnAcceder";
             btnAcceder.Size = new Size(404, 43);
             btnAcceder.TabIndex = 3;
-            btnAcceder.Text = "ACCERDER";
+            btnAcceder.Text = "ACCEDER";
             btnAcceder.UseVisualStyleBackColor = false;
             btnAcceder.Click += btnAcceder_Click;
             // 
@@ -163,6 +168,10 @@
             lblMensajeError.Text = "Mensaje Error";
             lblMensajeError.Visible = false;
             // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -185,6 +194,7 @@
             Load += frmLogin_Load;
             pImagen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -201,5 +211,6 @@
         private Button btnAcceder;
         private FontAwesome.Sharp.IconButton btnCerrarLogin;
         private Label lblMensajeError;
+        private ErrorProvider errorProvider1;
     }
 }
