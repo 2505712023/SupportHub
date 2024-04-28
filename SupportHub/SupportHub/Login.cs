@@ -1,4 +1,5 @@
 using Dominio;
+using Presentacion;
 
 namespace SupportHub
 {
@@ -70,8 +71,31 @@ namespace SupportHub
 
             if (txtUsuario.Text != "USUARIO" && txtContraseña.Text != "CONTRASEÑA" && txtUsuario.Text != "" && txtContraseña.Text != "")
             {
-                ModeloUsuario usuario = new ModeloUsuario();
-                var LoginValido = usuario.LoginUsuario(txtUsuario.Text,txtContraseña.Text);
+                //ModeloUsuario usuario = new ModeloUsuario();
+                //var LoginValido = usuario.LoginUsuario(txtUsuario.Text,txtContraseña.Text);
+
+
+                //esto solo es para carga el form sin credendenciales
+                foreach (Form FormSp in this.MdiChildren)
+                {
+                    FormSp.Close();
+                }
+
+
+                frmCarga formLogin = new frmCarga();
+
+
+                this.Hide();
+                formLogin.ShowDialog();
+
+
+                this.Show();
+                frmIndex inicio = new frmIndex();
+
+
+                this.Hide();
+                inicio.ShowDialog();
+                // aqui finaliza
             }
             else
             {
@@ -79,22 +103,6 @@ namespace SupportHub
                 errorProvider1.SetError(btnAcceder, "Ingrese un usuario y contraseña válidos.");
             }
 
-            //    if (txtUsuario.Text != "USUARIO")
-            //    {
-            //        if (txtContraseña.Text != "CONTRASEÑA") { }
-            //        else { MessageError("Ingrese Contraseña"); }
-
-            //    }
-            //    else
-            //    {
-            //        MessageError("Ingrese usuario");
-            //    }
-
-            //}
-            //public void MessageError(string mensaje)
-            //{
-            //    lblMensajeError.Text = mensaje;
-            //    lblMensajeError.Visible = true;
         }
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)
