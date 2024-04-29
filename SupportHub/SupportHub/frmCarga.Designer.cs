@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCarga));
             pCargaLateral = new Panel();
+            imgFondoCarga = new PictureBox();
             imgCarga = new PictureBox();
             pCargaSuperior = new Panel();
             lblBienve = new Label();
@@ -38,12 +39,14 @@
             TimerCarga1 = new System.Windows.Forms.Timer(components);
             TimerCarga2 = new System.Windows.Forms.Timer(components);
             pCargaLateral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgFondoCarga).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgCarga).BeginInit();
             SuspendLayout();
             // 
             // pCargaLateral
             // 
             pCargaLateral.BackColor = Color.FromArgb(5, 23, 59);
+            pCargaLateral.Controls.Add(imgFondoCarga);
             pCargaLateral.Controls.Add(imgCarga);
             pCargaLateral.Dock = DockStyle.Left;
             pCargaLateral.Location = new Point(0, 0);
@@ -51,12 +54,22 @@
             pCargaLateral.Size = new Size(245, 334);
             pCargaLateral.TabIndex = 0;
             // 
+            // imgFondoCarga
+            // 
+            imgFondoCarga.Image = (Image)resources.GetObject("imgFondoCarga.Image");
+            imgFondoCarga.Location = new Point(0, 83);
+            imgFondoCarga.Name = "imgFondoCarga";
+            imgFondoCarga.Size = new Size(256, 251);
+            imgFondoCarga.SizeMode = PictureBoxSizeMode.StretchImage;
+            imgFondoCarga.TabIndex = 2;
+            imgFondoCarga.TabStop = false;
+            // 
             // imgCarga
             // 
             imgCarga.Image = (Image)resources.GetObject("imgCarga.Image");
             imgCarga.Location = new Point(3, 3);
             imgCarga.Name = "imgCarga";
-            imgCarga.Size = new Size(242, 79);
+            imgCarga.Size = new Size(242, 81);
             imgCarga.SizeMode = PictureBoxSizeMode.CenterImage;
             imgCarga.TabIndex = 0;
             imgCarga.TabStop = false;
@@ -67,7 +80,7 @@
             pCargaSuperior.Dock = DockStyle.Top;
             pCargaSuperior.Location = new Point(245, 0);
             pCargaSuperior.Name = "pCargaSuperior";
-            pCargaSuperior.Size = new Size(617, 100);
+            pCargaSuperior.Size = new Size(617, 84);
             pCargaSuperior.TabIndex = 1;
             // 
             // lblBienve
@@ -140,6 +153,7 @@
             Text = "frmCarga";
             Load += frmCarga_Load;
             pCargaLateral.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)imgFondoCarga).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgCarga).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -154,5 +168,6 @@
         private CircularProgressBar_NET5.CircularProgressBar cpbCarga;
         private System.Windows.Forms.Timer TimerCarga1;
         private System.Windows.Forms.Timer TimerCarga2;
+        private PictureBox imgFondoCarga;
     }
 }

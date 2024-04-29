@@ -100,7 +100,7 @@ namespace SupportHub
             else
             {
                 // Mostrar un mensaje de error utilizando ErrorProvider
-                errorProvider1.SetError(btnAcceder, "Ingrese un usuario y contraseña válidos.");
+                errorAcceso.SetError(btnAcceder, "Ingrese un usuario y contraseña válidos.");
             }
 
         }
@@ -118,7 +118,7 @@ namespace SupportHub
                 btnAcceder.Enabled = true;
 
                 
-                errorProvider1.SetError(btnAcceder, "hola");
+                errorAcceso.SetError(btnAcceder, "hola");
             }
         }
 

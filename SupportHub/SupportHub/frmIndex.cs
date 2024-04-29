@@ -53,7 +53,7 @@ namespace Presentacion
 
         private void hideSubMenu()
         {
-            pSubmenu.Visible = false;
+            pSubMenu.Visible = false;
 
         }
         private void showSubMenu(Panel subMenu)
@@ -220,7 +220,7 @@ namespace Presentacion
 
         private void subMenu_Click(object sender, EventArgs e)
         {
-            showSubMenu(pSubmenu);
+            showSubMenu(pSubMenu);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -231,14 +231,14 @@ namespace Presentacion
 
         private void btnAcerca_Click(object sender, EventArgs e)
         {
-            pSubmenu.Visible = false;
+            pSubMenu.Visible = false;
             OpenChildForm(new frmAcerca());
             lblIconoFrmActual.Text = "ACERCA DE";
         }
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
-            pSubmenu.Visible = false;
+            pSubMenu.Visible = false;
             OpenChildForm(new frmInformacion());
             lblIconoFrmActual.Text = "INFORMACIÓN";
         }

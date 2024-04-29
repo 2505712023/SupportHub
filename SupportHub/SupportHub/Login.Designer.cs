@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             pImagen = new Panel();
+            imgFondoLogin = new PictureBox();
             imgLogoLogin = new PictureBox();
             lblLogin = new Label();
             pUser = new Panel();
@@ -40,21 +41,33 @@
             btnAcceder = new Button();
             btnCerrarLogin = new FontAwesome.Sharp.IconButton();
             lblMensajeError = new Label();
-            errorProvider1 = new ErrorProvider(components);
+            errorAcceso = new ErrorProvider(components);
             pImagen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgFondoLogin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)errorAcceso).BeginInit();
             SuspendLayout();
             // 
             // pImagen
             // 
             pImagen.BackColor = Color.FromArgb(5, 23, 59);
+            pImagen.Controls.Add(imgFondoLogin);
             pImagen.Controls.Add(imgLogoLogin);
             pImagen.Dock = DockStyle.Left;
             pImagen.Location = new Point(0, 0);
             pImagen.Name = "pImagen";
             pImagen.Size = new Size(228, 330);
             pImagen.TabIndex = 0;
+            // 
+            // imgFondoLogin
+            // 
+            imgFondoLogin.Image = (Image)resources.GetObject("imgFondoLogin.Image");
+            imgFondoLogin.Location = new Point(0, 86);
+            imgFondoLogin.Name = "imgFondoLogin";
+            imgFondoLogin.Size = new Size(230, 244);
+            imgFondoLogin.SizeMode = PictureBoxSizeMode.StretchImage;
+            imgFondoLogin.TabIndex = 1;
+            imgFondoLogin.TabStop = false;
             // 
             // imgLogoLogin
             // 
@@ -168,9 +181,9 @@
             lblMensajeError.Text = "Mensaje Error";
             lblMensajeError.Visible = false;
             // 
-            // errorProvider1
+            // errorAcceso
             // 
-            errorProvider1.ContainerControl = this;
+            errorAcceso.ContainerControl = this;
             // 
             // frmLogin
             // 
@@ -193,8 +206,9 @@
             Text = "Form1";
             Load += frmLogin_Load;
             pImagen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)imgFondoLogin).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).EndInit();
-            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)errorAcceso).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -211,6 +225,7 @@
         private Button btnAcceder;
         private FontAwesome.Sharp.IconButton btnCerrarLogin;
         private Label lblMensajeError;
-        private ErrorProvider errorProvider1;
+        private ErrorProvider errorAcceso;
+        private PictureBox imgFondoLogin;
     }
 }

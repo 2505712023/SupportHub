@@ -48,13 +48,13 @@
             btnIconoFrmActual = new FontAwesome.Sharp.IconPictureBox();
             pSombra = new Panel();
             pDesktop = new Panel();
-            lblFecha = new Label();
-            lblHora = new Label();
             pDerechoIndex = new Panel();
-            pSubmenu = new Panel();
+            pSubMenu = new Panel();
+            btnInfo = new FontAwesome.Sharp.IconButton();
             btnSalir = new FontAwesome.Sharp.IconButton();
             btnAcerca = new FontAwesome.Sharp.IconButton();
-            btnInfo = new FontAwesome.Sharp.IconButton();
+            lblFecha = new Label();
+            lblHora = new Label();
             timerIndex = new System.Windows.Forms.Timer(components);
             pIzquierdoIndex.SuspendLayout();
             pLogoIndex.SuspendLayout();
@@ -63,7 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)btnIconoFrmActual).BeginInit();
             pDesktop.SuspendLayout();
             pDerechoIndex.SuspendLayout();
-            pSubmenu.SuspendLayout();
+            pSubMenu.SuspendLayout();
             SuspendLayout();
             // 
             // pIzquierdoIndex
@@ -355,14 +355,98 @@
             // pDesktop
             // 
             pDesktop.BackColor = Color.FromArgb(148, 184, 216);
+            pDesktop.Controls.Add(pDerechoIndex);
             pDesktop.Controls.Add(lblFecha);
             pDesktop.Controls.Add(lblHora);
-            pDesktop.Controls.Add(pDerechoIndex);
             pDesktop.Dock = DockStyle.Fill;
             pDesktop.Location = new Point(233, 85);
             pDesktop.Name = "pDesktop";
             pDesktop.Size = new Size(956, 600);
             pDesktop.TabIndex = 3;
+            // 
+            // pDerechoIndex
+            // 
+            pDerechoIndex.Controls.Add(pSubMenu);
+            pDerechoIndex.Dock = DockStyle.Right;
+            pDerechoIndex.Location = new Point(817, 0);
+            pDerechoIndex.Name = "pDerechoIndex";
+            pDerechoIndex.Size = new Size(139, 600);
+            pDerechoIndex.TabIndex = 5;
+            // 
+            // pSubMenu
+            // 
+            pSubMenu.BackColor = Color.FromArgb(148, 184, 216);
+            pSubMenu.Controls.Add(btnInfo);
+            pSubMenu.Controls.Add(btnSalir);
+            pSubMenu.Controls.Add(btnAcerca);
+            pSubMenu.Dock = DockStyle.Top;
+            pSubMenu.Location = new Point(0, 0);
+            pSubMenu.Name = "pSubMenu";
+            pSubMenu.Size = new Size(139, 175);
+            pSubMenu.TabIndex = 0;
+            // 
+            // btnInfo
+            // 
+            btnInfo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnInfo.FlatAppearance.BorderSize = 0;
+            btnInfo.FlatStyle = FlatStyle.Flat;
+            btnInfo.ForeColor = Color.FromArgb(31, 35, 40);
+            btnInfo.IconChar = FontAwesome.Sharp.IconChar.Info;
+            btnInfo.IconColor = Color.FromArgb(31, 35, 40);
+            btnInfo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnInfo.IconSize = 20;
+            btnInfo.ImageAlign = ContentAlignment.MiddleLeft;
+            btnInfo.Location = new Point(3, 6);
+            btnInfo.Name = "btnInfo";
+            btnInfo.Size = new Size(128, 49);
+            btnInfo.TabIndex = 2;
+            btnInfo.Text = "INFORMACIÓN";
+            btnInfo.TextAlign = ContentAlignment.MiddleLeft;
+            btnInfo.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnInfo.UseVisualStyleBackColor = true;
+            btnInfo.Click += btnInfo_Click;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSalir.FlatAppearance.BorderSize = 0;
+            btnSalir.FlatStyle = FlatStyle.Flat;
+            btnSalir.ForeColor = Color.FromArgb(31, 35, 40);
+            btnSalir.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnSalir.IconColor = Color.FromArgb(31, 35, 40);
+            btnSalir.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnSalir.IconSize = 20;
+            btnSalir.ImageAlign = ContentAlignment.MiddleLeft;
+            btnSalir.Location = new Point(3, 110);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(128, 49);
+            btnSalir.TabIndex = 4;
+            btnSalir.Text = "SALIR";
+            btnSalir.TextAlign = ContentAlignment.MiddleLeft;
+            btnSalir.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += btnSalir_Click;
+            // 
+            // btnAcerca
+            // 
+            btnAcerca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAcerca.FlatAppearance.BorderSize = 0;
+            btnAcerca.FlatStyle = FlatStyle.Flat;
+            btnAcerca.ForeColor = Color.FromArgb(31, 35, 40);
+            btnAcerca.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
+            btnAcerca.IconColor = Color.FromArgb(31, 35, 40);
+            btnAcerca.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAcerca.IconSize = 20;
+            btnAcerca.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAcerca.Location = new Point(8, 55);
+            btnAcerca.Name = "btnAcerca";
+            btnAcerca.Size = new Size(128, 49);
+            btnAcerca.TabIndex = 3;
+            btnAcerca.Text = "ACERCA DE";
+            btnAcerca.TextAlign = ContentAlignment.MiddleLeft;
+            btnAcerca.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAcerca.UseVisualStyleBackColor = true;
+            btnAcerca.Click += btnAcerca_Click;
             // 
             // lblFecha
             // 
@@ -387,86 +471,6 @@
             lblHora.Size = new Size(457, 161);
             lblHora.TabIndex = 1;
             lblHora.Text = "HORA";
-            // 
-            // pDerechoIndex
-            // 
-            pDerechoIndex.Controls.Add(pSubmenu);
-            pDerechoIndex.Dock = DockStyle.Right;
-            pDerechoIndex.Location = new Point(813, 0);
-            pDerechoIndex.Name = "pDerechoIndex";
-            pDerechoIndex.Size = new Size(143, 600);
-            pDerechoIndex.TabIndex = 0;
-            // 
-            // pSubmenu
-            // 
-            pSubmenu.Controls.Add(btnSalir);
-            pSubmenu.Controls.Add(btnAcerca);
-            pSubmenu.Controls.Add(btnInfo);
-            pSubmenu.Dock = DockStyle.Top;
-            pSubmenu.Location = new Point(0, 0);
-            pSubmenu.Name = "pSubmenu";
-            pSubmenu.Size = new Size(143, 175);
-            pSubmenu.TabIndex = 0;
-            // 
-            // btnSalir
-            // 
-            btnSalir.FlatAppearance.BorderSize = 0;
-            btnSalir.FlatStyle = FlatStyle.Flat;
-            btnSalir.ForeColor = Color.FromArgb(31, 35, 40);
-            btnSalir.IconChar = FontAwesome.Sharp.IconChar.X;
-            btnSalir.IconColor = Color.FromArgb(31, 35, 40);
-            btnSalir.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnSalir.IconSize = 20;
-            btnSalir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSalir.Location = new Point(12, 90);
-            btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(128, 49);
-            btnSalir.TabIndex = 4;
-            btnSalir.Text = "SALIR";
-            btnSalir.TextAlign = ContentAlignment.MiddleLeft;
-            btnSalir.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnSalir.UseVisualStyleBackColor = true;
-            btnSalir.Click += btnSalir_Click;
-            // 
-            // btnAcerca
-            // 
-            btnAcerca.FlatAppearance.BorderSize = 0;
-            btnAcerca.FlatStyle = FlatStyle.Flat;
-            btnAcerca.ForeColor = Color.FromArgb(31, 35, 40);
-            btnAcerca.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
-            btnAcerca.IconColor = Color.FromArgb(31, 35, 40);
-            btnAcerca.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAcerca.IconSize = 20;
-            btnAcerca.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAcerca.Location = new Point(12, 46);
-            btnAcerca.Name = "btnAcerca";
-            btnAcerca.Size = new Size(128, 49);
-            btnAcerca.TabIndex = 3;
-            btnAcerca.Text = "ACERCA DE";
-            btnAcerca.TextAlign = ContentAlignment.MiddleLeft;
-            btnAcerca.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnAcerca.UseVisualStyleBackColor = true;
-            btnAcerca.Click += btnAcerca_Click;
-            // 
-            // btnInfo
-            // 
-            btnInfo.FlatAppearance.BorderSize = 0;
-            btnInfo.FlatStyle = FlatStyle.Flat;
-            btnInfo.ForeColor = Color.FromArgb(31, 35, 40);
-            btnInfo.IconChar = FontAwesome.Sharp.IconChar.Info;
-            btnInfo.IconColor = Color.FromArgb(31, 35, 40);
-            btnInfo.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnInfo.IconSize = 20;
-            btnInfo.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInfo.Location = new Point(12, 6);
-            btnInfo.Name = "btnInfo";
-            btnInfo.Size = new Size(128, 49);
-            btnInfo.TabIndex = 2;
-            btnInfo.Text = "INFORMACIÓN";
-            btnInfo.TextAlign = ContentAlignment.MiddleLeft;
-            btnInfo.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnInfo.UseVisualStyleBackColor = true;
-            btnInfo.Click += btnInfo_Click;
             // 
             // timerIndex
             // 
@@ -495,7 +499,7 @@
             pDesktop.ResumeLayout(false);
             pDesktop.PerformLayout();
             pDerechoIndex.ResumeLayout(false);
-            pSubmenu.ResumeLayout(false);
+            pSubMenu.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -518,8 +522,6 @@
         private FontAwesome.Sharp.IconButton btnMiximizar;
         private FontAwesome.Sharp.IconButton btnMaximizar;
         private FontAwesome.Sharp.IconButton btnCerrar;
-        private Panel pDerechoIndex;
-        private Panel pSubmenu;
         private FontAwesome.Sharp.IconButton subMenu;
         private FontAwesome.Sharp.IconButton btnSalir;
         private FontAwesome.Sharp.IconButton btnAcerca;
@@ -527,5 +529,7 @@
         private Label lblFecha;
         private Label lblHora;
         private System.Windows.Forms.Timer timerIndex;
+        private Panel pDerechoIndex;
+        private Panel pSubMenu;
     }
 }
