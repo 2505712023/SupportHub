@@ -40,7 +40,6 @@
             btnCerrarLogin = new FontAwesome.Sharp.IconButton();
             lblMensajeError = new Label();
             pImagen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)imgFondoLogin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).BeginInit();
             SuspendLayout();
             // 
@@ -54,16 +53,6 @@
             pImagen.Name = "pImagen";
             pImagen.Size = new Size(228, 330);
             pImagen.TabIndex = 0;
-            //
-            // imgFondoLogin
-            // 
-            imgFondoLogin.Image = (Image)resources.GetObject("imgFondoLogin.Image");
-            imgFondoLogin.Location = new Point(0, 86);
-            imgFondoLogin.Name = "imgFondoLogin";
-            imgFondoLogin.Size = new Size(230, 244);
-            imgFondoLogin.SizeMode = PictureBoxSizeMode.StretchImage;
-            imgFondoLogin.TabIndex = 1;
-            imgFondoLogin.TabStop = false;
             // 
             // imgLogoLogin
             // 
@@ -200,7 +189,6 @@
             Text = "Form1";
             Load += frmLogin_Load;
             pImagen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)imgFondoLogin).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).EndInit();
             ResumeLayout(false);
             PerformLayout();
