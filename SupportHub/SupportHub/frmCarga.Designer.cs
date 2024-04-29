@@ -54,7 +54,7 @@
             pCargaLateral.Name = "pCargaLateral";
             pCargaLateral.Size = new Size(245, 334);
             pCargaLateral.TabIndex = 0;
-            // 
+            //
             // imgFondoCarga
             // 
             imgFondoCarga.Image = (Image)resources.GetObject("imgFondoCarga.Image");

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             pImagen = new Panel();
-            imgFondoLogin = new PictureBox();
             imgLogoLogin = new PictureBox();
             lblLogin = new Label();
             pUser = new Panel();
@@ -55,7 +54,7 @@
             pImagen.Name = "pImagen";
             pImagen.Size = new Size(228, 330);
             pImagen.TabIndex = 0;
-            // 
+            //
             // imgFondoLogin
             // 
             imgFondoLogin.Image = (Image)resources.GetObject("imgFondoLogin.Image");

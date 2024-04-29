@@ -5,7 +5,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
@@ -13,5 +12,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Comun\Comun.csproj" />
   </ItemGroup>
-
 </Project>

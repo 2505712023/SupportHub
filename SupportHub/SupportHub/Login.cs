@@ -1,6 +1,5 @@
 using Dominio;
 using Presentacion;
-
 namespace SupportHub
 {
     public partial class frmLogin : Form
@@ -8,17 +7,15 @@ namespace SupportHub
         public frmLogin()
         {
             InitializeComponent();
-            txtContraseña.KeyPress += new KeyPressEventHandler(txtContraseña_KeyPress);
-          
-           
+            txtContraseÃ±a.KeyPress += new KeyPressEventHandler(txtContraseÃ±a_KeyPress);
         }
 
-        private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtContraseÃ±a_KeyPress(object sender, KeyPressEventArgs e)
         {
            
             if (e.KeyChar == (char)Keys.Enter)
             {
-                // Simula un clic en el botón Acceder cuando se presiona Enter en el campo de contraseña
+                // Simula un clic en el botÃ³n Acceder cuando se presiona Enter en el campo de contraseÃ±a
                 btnAcceder_Click(sender, e);
             }
         }
@@ -27,8 +24,6 @@ namespace SupportHub
         {
             btnAcceder.Enabled = false;
             btnAcceder.Focus();
-
-
         }
 
         private void txtUsuario_Enter(object sender, EventArgs e)
@@ -37,7 +32,6 @@ namespace SupportHub
             {
                 txtUsuario.Text = "";
                 txtUsuario.ForeColor = Color.FromArgb(31, 35, 40);
-
             }
         }
 
@@ -50,24 +44,23 @@ namespace SupportHub
             }
         }
 
-        private void txtContraseña_Enter(object sender, EventArgs e)
+        private void txtContraseÃ±a_Enter(object sender, EventArgs e)
         {
-            if (txtContraseña.Text == "CONTRASEÑA")
+            if (txtContraseÃ±a.Text == "CONTRASEÃ‘A")
             {
-                txtContraseña.Text = "";
-                txtContraseña.ForeColor = Color.FromArgb(31, 35, 40);
-                txtContraseña.UseSystemPasswordChar = true;
-
+                txtContraseÃ±a.Text = "";
+                txtContraseÃ±a.ForeColor = Color.FromArgb(31, 35, 40);
+                txtContraseÃ±a.UseSystemPasswordChar = true;
             }
         }
 
-        private void txtContraseña_Leave(object sender, EventArgs e)
+        private void txtContraseÃ±a_Leave(object sender, EventArgs e)
         {
-            if (txtContraseña.Text == "")
+            if (txtContraseÃ±a.Text == "")
             {
-                txtContraseña.Text = "CONTRASEÑA";
-                txtContraseña.ForeColor = Color.FromArgb(31, 35, 40);
-                txtContraseña.UseSystemPasswordChar = false;
+                txtContraseÃ±a.Text = "CONTRASEÃ‘A";
+                txtContraseÃ±a.ForeColor = Color.FromArgb(31, 35, 40);
+                txtContraseÃ±a.UseSystemPasswordChar = false;
             }
         }
 
@@ -78,10 +71,10 @@ namespace SupportHub
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text != "USUARIO" && txtContraseña.Text != "CONTRASEÑA" && txtUsuario.Text != "" && txtContraseña.Text != "")
+            if (txtUsuario.Text != "USUARIO" && txtContraseÃ±a.Text != "CONTRASEÃ‘A" && txtUsuario.Text != "" && txtContraseÃ±a.Text != "")
             { 
                 ModeloUsuario usuario = new ModeloUsuario();
-                var LoginValido = usuario.LoginUsuario(txtUsuario.Text, txtContraseña.Text);
+                var LoginValido = usuario.LoginUsuario(txtUsuario.Text, txtContraseÃ±a.Text);
                 if (LoginValido == true) {
                     this.Hide();
                     frmCarga formLogin = new frmCarga();
@@ -92,7 +85,7 @@ namespace SupportHub
                 }
                 else
                 {
-                    lblMensajeError.Text = "             " +"USUARIO O CONTRASEÑA INCORECTO";
+                    lblMensajeError.Text = "             " +"USUARIO O CONTRASEÃ‘A INCORECTO";
                     lblMensajeError.Visible = true;
                     txtUsuario.Focus();
                 }
@@ -101,7 +94,7 @@ namespace SupportHub
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "USUARIO" || txtContraseña.Text == "CONTRASEÑA" || txtUsuario.Text == "" || txtContraseña.Text == "")
+            if (txtUsuario.Text == "USUARIO" || txtContraseÃ±a.Text == "CONTRASEÃ‘A" || txtUsuario.Text == "" || txtContraseÃ±a.Text == "")
             {
                 lblMensajeError.Visible = false;
                 btnAcceder.Enabled = false;
@@ -112,9 +105,9 @@ namespace SupportHub
             }
         }
 
-        private void txtContraseña_TextChanged(object sender, EventArgs e)
+        private void txtContraseÃ±a_TextChanged(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "USUARIO" || txtContraseña.Text == "CONTRASEÑA" || txtUsuario.Text == "" || txtContraseña.Text == "")
+            if (txtUsuario.Text == "USUARIO" || txtContraseÃ±a.Text == "CONTRASEÃ‘A" || txtUsuario.Text == "" || txtContraseÃ±a.Text == "")
             {
                 lblMensajeError.Visible = false;
                 btnAcceder.Enabled = false;
@@ -125,9 +118,10 @@ namespace SupportHub
             }
         }
 
-        private void CerrarSeccion(object sender, FormClosedEventArgs e) { 
-            txtContraseña.Text = "CONTRASEÑA";
-            txtContraseña.UseSystemPasswordChar = false;
+        private void CerrarSeccion(object sender, FormClosedEventArgs e) 
+        { 
+            txtContraseÃ±a.Text = "CONTRASEÃ‘A";
+            txtContraseÃ±a.UseSystemPasswordChar = false;
             txtUsuario.Text = "USUARIO";
             lblMensajeError.Visible=false;   
             this.Show();
