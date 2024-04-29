@@ -1,3 +1,7 @@
+
+﻿using Comun.Cache;
+using DataAccess;
+using System.Data.SqlClient;
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,11 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Presentacion
 {
     public partial class frmCarga : Form
-    {
+    {        
         public frmCarga()
         {
             InitializeComponent();
@@ -41,9 +44,8 @@ namespace Presentacion
 
         private void frmCarga_Load(object sender, EventArgs e)
         {
-          //  USUARIO.Text = "ISAI ALVAREZ ";
+            lblNombreApellido.Text = CacheInicioUsuario.nombreUser + "  " + CacheInicioUsuario.apellidoUser;
             this.Opacity = 0.0;
-            
             cpbCarga.Value = 0;
             cpbCarga.Minimum = 0;
             cpbCarga.Maximum = 100;

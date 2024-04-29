@@ -38,19 +38,32 @@
             txtContraseña = new TextBox();
             btnAcceder = new Button();
             btnCerrarLogin = new FontAwesome.Sharp.IconButton();
+            lblMensajeError = new Label();
             pImagen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgFondoLogin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).BeginInit();
             SuspendLayout();
             // 
             // pImagen
             // 
             pImagen.BackColor = Color.FromArgb(5, 23, 59);
+            pImagen.Controls.Add(imgFondoLogin);
             pImagen.Controls.Add(imgLogoLogin);
             pImagen.Dock = DockStyle.Left;
             pImagen.Location = new Point(0, 0);
             pImagen.Name = "pImagen";
             pImagen.Size = new Size(228, 330);
             pImagen.TabIndex = 0;
+            //
+            // imgFondoLogin
+            // 
+            imgFondoLogin.Image = (Image)resources.GetObject("imgFondoLogin.Image");
+            imgFondoLogin.Location = new Point(0, 86);
+            imgFondoLogin.Name = "imgFondoLogin";
+            imgFondoLogin.Size = new Size(230, 244);
+            imgFondoLogin.SizeMode = PictureBoxSizeMode.StretchImage;
+            imgFondoLogin.TabIndex = 1;
+            imgFondoLogin.TabStop = false;
             // 
             // imgLogoLogin
             // 
@@ -100,6 +113,7 @@
             txtUsuario.Size = new Size(400, 20);
             txtUsuario.TabIndex = 1;
             txtUsuario.Text = "USUARIO";
+            txtUsuario.TextChanged += txtUsuario_TextChanged;
             txtUsuario.Enter += txtUsuario_Enter;
             txtUsuario.Leave += txtUsuario_Leave;
             // 
@@ -114,6 +128,7 @@
             txtContraseña.Size = new Size(400, 20);
             txtContraseña.TabIndex = 2;
             txtContraseña.Text = "CONTRASEÑA";
+            txtContraseña.TextChanged += txtContraseña_TextChanged;
             txtContraseña.Enter += txtContraseña_Enter;
             txtContraseña.Leave += txtContraseña_Leave;
             // 
@@ -130,7 +145,7 @@
             btnAcceder.Name = "btnAcceder";
             btnAcceder.Size = new Size(404, 43);
             btnAcceder.TabIndex = 3;
-            btnAcceder.Text = "ACCERDER";
+            btnAcceder.Text = "ACCEDER";
             btnAcceder.UseVisualStyleBackColor = false;
             btnAcceder.Click += btnAcceder_Click;
             // 
@@ -150,12 +165,26 @@
             btnCerrarLogin.UseVisualStyleBackColor = false;
             btnCerrarLogin.Click += btnCerrarLogin_Click;
             // 
+            // lblMensajeError
+            // 
+            lblMensajeError.AutoSize = true;
+            lblMensajeError.ForeColor = Color.FromArgb(31, 35, 40);
+            lblMensajeError.Image = (Image)resources.GetObject("lblMensajeError.Image");
+            lblMensajeError.ImageAlign = ContentAlignment.MiddleLeft;
+            lblMensajeError.Location = new Point(288, 216);
+            lblMensajeError.Name = "lblMensajeError";
+            lblMensajeError.Size = new Size(79, 15);
+            lblMensajeError.TabIndex = 5;
+            lblMensajeError.Text = "Mensaje Error";
+            lblMensajeError.Visible = false;
+            // 
             // frmLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
             ClientSize = new Size(780, 330);
+            Controls.Add(lblMensajeError);
             Controls.Add(btnCerrarLogin);
             Controls.Add(btnAcceder);
             Controls.Add(txtContraseña);
@@ -165,10 +194,13 @@
             Controls.Add(lblLogin);
             Controls.Add(pImagen);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += frmLogin_Load;
             pImagen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)imgFondoLogin).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -185,5 +217,7 @@
         private TextBox txtContraseña;
         private Button btnAcceder;
         private FontAwesome.Sharp.IconButton btnCerrarLogin;
+        private Label lblMensajeError;
+        private PictureBox imgFondoLogin;
     }
 }
