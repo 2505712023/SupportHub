@@ -17,11 +17,6 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
             frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado();

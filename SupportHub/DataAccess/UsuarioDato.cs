@@ -41,16 +41,13 @@ namespace DataAccess
                                 string nombreRol = reader.GetString(reader.GetOrdinal("nombreRol"));
                                 CacheInicioUsuario.nombreUser = reader.GetString(3);
                                 CacheInicioUsuario.apellidoUser = reader.GetString(4);
-
                             }
                             return true; 
                         }
                         else
                         {
-
                             return false;
                         }
-
                     }
                 }
             }

@@ -18,9 +18,9 @@ namespace Presentacion
 {
     public partial class frmIndex : Form
     {
-        private IconButton currentBtn;
+        private IconButton? currentBtn;
         private Panel leftBorderBtn;
-        private Form currentChildForm;
+        private Form? currentChildForm;
 
         public frmIndex()
         {
@@ -55,7 +55,6 @@ namespace Presentacion
         private void hideSubMenu()
         {
             pSubMenu.Visible = false;
-
         }
         private void showSubMenu(Panel subMenu)
         {
@@ -133,12 +132,6 @@ namespace Presentacion
             lblIconoFrmActual.Text = childForm.Text;
 
         }
-
-
-
-
-
-
 
         private void btnEmpleado_Click(object sender, EventArgs e)
         {
@@ -267,7 +260,6 @@ namespace Presentacion
             }
         }
 
-
         private DialogResult MostrarDialogoPersonalizado(string mensaje, string titulo)
         {
             DialogResult result = DialogResult.No;
@@ -318,6 +310,5 @@ namespace Presentacion
             dialogo.Dispose();
             return result;
         }
-
     }
 }
