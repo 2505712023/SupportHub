@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIndex));
             pIzquierdoIndex = new Panel();
+            btnCerrarSeccion = new FontAwesome.Sharp.IconButton();
             btnUsuarios = new FontAwesome.Sharp.IconButton();
             btnDetalleEntrega = new FontAwesome.Sharp.IconButton();
             btnEquipo = new FontAwesome.Sharp.IconButton();
@@ -69,6 +70,7 @@
             // pIzquierdoIndex
             // 
             pIzquierdoIndex.BackColor = Color.FromArgb(5, 23, 59);
+            pIzquierdoIndex.Controls.Add(btnCerrarSeccion);
             pIzquierdoIndex.Controls.Add(btnUsuarios);
             pIzquierdoIndex.Controls.Add(btnDetalleEntrega);
             pIzquierdoIndex.Controls.Add(btnEquipo);
@@ -81,6 +83,25 @@
             pIzquierdoIndex.Name = "pIzquierdoIndex";
             pIzquierdoIndex.Size = new Size(233, 685);
             pIzquierdoIndex.TabIndex = 0;
+            // 
+            // btnCerrarSeccion
+            // 
+            btnCerrarSeccion.Dock = DockStyle.Bottom;
+            btnCerrarSeccion.FlatAppearance.BorderSize = 0;
+            btnCerrarSeccion.FlatStyle = FlatStyle.Flat;
+            btnCerrarSeccion.ForeColor = SystemColors.ControlLightLight;
+            btnCerrarSeccion.IconChar = FontAwesome.Sharp.IconChar.ArrowUpFromBracket;
+            btnCerrarSeccion.IconColor = SystemColors.Window;
+            btnCerrarSeccion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCerrarSeccion.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCerrarSeccion.Location = new Point(0, 625);
+            btnCerrarSeccion.Name = "btnCerrarSeccion";
+            btnCerrarSeccion.Size = new Size(233, 60);
+            btnCerrarSeccion.TabIndex = 7;
+            btnCerrarSeccion.Text = "CERRAR SESIÓN ";
+            btnCerrarSeccion.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCerrarSeccion.UseVisualStyleBackColor = true;
+            btnCerrarSeccion.Click += btnCerrarSeccion_Click;
             // 
             // btnUsuarios
             // 
@@ -531,5 +552,6 @@
         private System.Windows.Forms.Timer timerIndex;
         private Panel pDerechoIndex;
         private Panel pSubMenu;
+        private FontAwesome.Sharp.IconButton btnCerrarSeccion;
     }
 }

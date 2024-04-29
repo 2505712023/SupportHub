@@ -38,6 +38,7 @@
             cpbCarga = new CircularProgressBar_NET5.CircularProgressBar();
             TimerCarga1 = new System.Windows.Forms.Timer(components);
             TimerCarga2 = new System.Windows.Forms.Timer(components);
+            lblNombreApellido = new Label();
             pCargaLateral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgFondoCarga).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgCarga).BeginInit();
@@ -137,17 +138,29 @@
             TimerCarga2.Interval = 30;
             TimerCarga2.Tick += TimerCarga2_Tick;
             // 
+            // lblNombreApellido
+            // 
+            lblNombreApellido.AutoSize = true;
+            lblNombreApellido.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNombreApellido.Location = new Point(610, 182);
+            lblNombreApellido.Name = "lblNombreApellido";
+            lblNombreApellido.Size = new Size(81, 21);
+            lblNombreApellido.TabIndex = 4;
+            lblNombreApellido.Text = "USUARIO";
+            // 
             // frmCarga
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
             ClientSize = new Size(862, 334);
+            Controls.Add(lblNombreApellido);
             Controls.Add(cpbCarga);
             Controls.Add(lblBienve);
             Controls.Add(pCargaSuperior);
             Controls.Add(pCargaLateral);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmCarga";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmCarga";
@@ -169,5 +182,6 @@
         private System.Windows.Forms.Timer TimerCarga1;
         private System.Windows.Forms.Timer TimerCarga2;
         private PictureBox imgFondoCarga;
+        private Label lblNombreApellido;
     }
 }

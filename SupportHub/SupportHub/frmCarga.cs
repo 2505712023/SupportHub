@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿using Comun.Cache;
+using DataAccess;
+using System.Data.SqlClient;
 namespace Presentacion
 {
     public partial class frmCarga : Form
     {
+        
         public frmCarga()
         {
             InitializeComponent();
+           
         }
 
         private void TimerCarga1_Tick(object sender, EventArgs e)
@@ -41,14 +36,20 @@ namespace Presentacion
 
         private void frmCarga_Load(object sender, EventArgs e)
         {
-          //  USUARIO.Text = "ISAI ALVAREZ ";
+            lblNombreApellido.Text = CacheInicioUsuario.nombreUser + "  " + CacheInicioUsuario.apellidoUser;
             this.Opacity = 0.0;
-            
+
             cpbCarga.Value = 0;
             cpbCarga.Minimum = 0;
             cpbCarga.Maximum = 100;
             //Iniciamos el temporizador 1.
             TimerCarga1.Start();
         }
+
+         
+       
+
+        }
     }
-}
+
+

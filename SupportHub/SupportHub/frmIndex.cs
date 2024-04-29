@@ -12,6 +12,7 @@ using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
 using Color = System.Drawing.Color;
 using Microsoft.VisualBasic;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Presentacion
 {
@@ -253,5 +254,70 @@ namespace Presentacion
         {
             timerIndex.Enabled = true;
         }
+
+        private void btnCerrarSeccion_Click(object sender, EventArgs e)
+        {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es");
+      
+
+
+            if (MostrarDialogoPersonalizado("¿Está seguro que desea cerrar la aplicación?", "Advertencia") == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+
+        private DialogResult MostrarDialogoPersonalizado(string mensaje, string titulo)
+        {
+            DialogResult result = DialogResult.No;
+            Form dialogo = new Form();
+            dialogo.FormBorderStyle = FormBorderStyle.FixedDialog;
+            dialogo.StartPosition = FormStartPosition.CenterScreen;
+            dialogo.Size = new Size(300, 150);
+            dialogo.Text = titulo;
+
+            PictureBox pictureBox = new PictureBox();
+            pictureBox.Image = SystemIcons.Warning.ToBitmap(); // Icono de advertencia
+            pictureBox.SizeMode = PictureBoxSizeMode.AutoSize;
+
+            Label lblMensaje = new Label();
+            lblMensaje.Text = mensaje;
+            lblMensaje.TextAlign = ContentAlignment.MiddleCenter;
+            lblMensaje.AutoSize = true;
+
+            Button btnSi = new Button();
+            btnSi.Text = "Sí";
+            btnSi.DialogResult = DialogResult.Yes;
+
+            Button btnNo = new Button();
+            btnNo.Text = "No";
+            btnNo.DialogResult = DialogResult.No;
+
+            FlowLayoutPanel panelBotones = new FlowLayoutPanel();
+            panelBotones.FlowDirection = FlowDirection.LeftToRight;
+            panelBotones.Dock = DockStyle.Bottom;
+            panelBotones.AutoSize = true;
+            panelBotones.Controls.Add(btnSi);
+            panelBotones.Controls.Add(btnNo);
+
+            FlowLayoutPanel panelContenido = new FlowLayoutPanel();
+            panelContenido.FlowDirection = FlowDirection.TopDown;
+            panelContenido.Dock = DockStyle.Fill;
+            panelContenido.Width = 280; // Ancho fijo para el panel de contenido
+            panelContenido.Controls.Add(pictureBox);
+            panelContenido.Controls.Add(lblMensaje);
+
+            dialogo.Controls.Add(panelContenido);
+            dialogo.Controls.Add(panelBotones);
+
+            dialogo.AcceptButton = btnSi;
+            dialogo.CancelButton = btnNo;
+
+            result = dialogo.ShowDialog();
+            dialogo.Dispose();
+            return result;
+        }
+
     }
 }

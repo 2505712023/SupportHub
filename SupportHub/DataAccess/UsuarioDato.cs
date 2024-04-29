@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using Comun.Cache;
 namespace DataAccess
 {
     public class UsuarioDato : ConexionSql
@@ -35,23 +36,19 @@ namespace DataAccess
                                 string nombreUsuario = reader.GetString(reader.GetOrdinal("nombreUsuario"));
                                 string apellidoUsuario = reader.GetString(reader.GetOrdinal("apellidoUsuario"));
 
-                                // Leer los datos del rol
+                 
                                 int idRol = reader.GetInt32(reader.GetOrdinal("idRol"));
                                 string nombreRol = reader.GetString(reader.GetOrdinal("nombreRol"));
+                                CacheInicioUsuario.nombreUser = reader.GetString(3);
+                                CacheInicioUsuario.apellidoUser = reader.GetString(4);
 
-                                // Aquí podrías manejar los datos del usuario y del rol como desees
-                                // Por ejemplo, podrías asignarlos a una clase de usuario personalizada y manejar los roles asociados al usuario
-
-
-
-                                // Podrías hacer algo más con los datos, como asignar roles, permisos, etc.
                             }
-                            return true; // Autenticación exitosa
+                            return true; 
                         }
                         else
                         {
 
-                            return false; // Usuario y/o contraseña incorrectos
+                            return false;
                         }
 
                     }

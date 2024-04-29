@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             pImagen = new Panel();
             imgFondoLogin = new PictureBox();
@@ -41,11 +40,9 @@
             btnAcceder = new Button();
             btnCerrarLogin = new FontAwesome.Sharp.IconButton();
             lblMensajeError = new Label();
-            errorAcceso = new ErrorProvider(components);
             pImagen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imgFondoLogin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)errorAcceso).BeginInit();
             SuspendLayout();
             // 
             // pImagen
@@ -173,17 +170,14 @@
             // 
             lblMensajeError.AutoSize = true;
             lblMensajeError.ForeColor = Color.FromArgb(31, 35, 40);
+            lblMensajeError.Image = (Image)resources.GetObject("lblMensajeError.Image");
             lblMensajeError.ImageAlign = ContentAlignment.MiddleLeft;
-            lblMensajeError.Location = new Point(288, 211);
+            lblMensajeError.Location = new Point(288, 216);
             lblMensajeError.Name = "lblMensajeError";
             lblMensajeError.Size = new Size(79, 15);
             lblMensajeError.TabIndex = 5;
             lblMensajeError.Text = "Mensaje Error";
             lblMensajeError.Visible = false;
-            // 
-            // errorAcceso
-            // 
-            errorAcceso.ContainerControl = this;
             // 
             // frmLogin
             // 
@@ -201,6 +195,7 @@
             Controls.Add(lblLogin);
             Controls.Add(pImagen);
             FormBorderStyle = FormBorderStyle.None;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
@@ -208,7 +203,6 @@
             pImagen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)imgFondoLogin).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).EndInit();
-            ((System.ComponentModel.ISupportInitialize)errorAcceso).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -225,7 +219,6 @@
         private Button btnAcceder;
         private FontAwesome.Sharp.IconButton btnCerrarLogin;
         private Label lblMensajeError;
-        private ErrorProvider errorAcceso;
         private PictureBox imgFondoLogin;
     }
 }

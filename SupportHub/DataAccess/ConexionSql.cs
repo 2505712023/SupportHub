@@ -11,7 +11,7 @@ namespace DataAccess
     {
         private readonly string cadenaconexion;
         public ConexionSql() {
-            cadenaconexion = "Server=SOPORT-IT;DataBase= SupportHub;User Id=SupportHub;Password=SupportHub2024";        
+            cadenaconexion = "Server=100.101.219.129;DataBase= SupportHub;User Id=SupportHub;Password=SupportHub2024";        
        }
         protected SqlConnection GetConnection() {
             return new SqlConnection (cadenaconexion);
