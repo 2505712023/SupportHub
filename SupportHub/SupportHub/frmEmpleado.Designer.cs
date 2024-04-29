@@ -77,7 +77,6 @@
             btnBuscarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnBuscarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnBuscarEmpleado.UseVisualStyleBackColor = false;
-            btnBuscarEmpleado.Click += btnMaximizar_Click;
             // 
             // dataGridView1
             // 
