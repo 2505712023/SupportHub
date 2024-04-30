@@ -117,4 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="rtbAcerca.Text" xml:space="preserve">
+    <value>SUPPORTHUB
+OBJETIVOS DE PROYECTO  
+Objetivo General:
+Desarrollar e implementar un sistema de gestión de activos informáticos para la empresa con el fin de mejorar la eficiencia en el seguimiento y control de los equipos asignados a los empleados.
+Objetivos específicos:
+•Crear una base de datos centralizada donde se registren todos los equipos informáticos y los empleados que los utilizan
+•Permitir un seguimiento eficiente de todos los equipos informáticos, incluyendo computadoras, impresoras, celulares, cables de red, etc. Para saber quién los tiene asignados en un momento dado.
+•Mantener un inventario actualizado de todos los equipos informáticos disponibles, incluyendo detalles como marca, modelo, número de serie, fecha de adquisición, y estado de disponibilidad.
+•Contribuir a una mejor gestión de activos informáticos, promoviendo la transparencia en el uso de los equipos y facilitando la toma de decisiones relacionadas con la adquisición y asignación de recursos.
+•Controlar los Proveedores de Equipos: Mantener una lista actualizada de los proveedores de equipos informáticos y sus detalles de contacto, para facilitar la gestión de compras.
+DEFINICIÓN DE PROYECTO 
+SupportHub una herramienta que será para que el departamento de informática pueda tener un control de los equipos en general que son de la empresa (computadoras, impresores, monitores, cables, proyectores, celulares, etc.) y tener el registro de a que proveedor se adquirió el equipo informático.
+El encargado de informática podrá asignar que es el uso indefinido que le dará al equipo al igual de cuando se presta que es cuando lo tendrá por un tiempo corto y se sabe a quién de la empresa lo tiene, así mantenemos el proveedor del equipo, la información del equipo, empleado que ocuparan los bienes informáticos de la empresa y las entregas de estos equipos
+JUSTIFICACIÓN DEL PROYECTO 
+Inventario de equipos tecnológicos en un departamento empresarial proporciona beneficios como la organización y seguimiento eficiente de los activos, la optimización de recursos al identificar equipos subutilizados, la prevención de pérdidas y robos mediante un control detallado, el cumplimiento de normativas legales y regulatorias, la toma de decisiones informadas basadas en datos precisos, y la mejora de la eficiencia operativa al reducir el tiempo dedicado a tareas manuales, todo estos activos se tendrá el control detallado de las entregas o préstamos.
+
+ELABORADO POR:
+
+ALFONSO ISAÍ ÁLVAREZ FRANCO 2512242023
+CARLOS ENRIQUE SURA RENDEROS 2505712023
+GUILLERMO GABRIEL CASTRO LÓPEZ 2501602023
+CARLOS FRANCISCO MELENDEZ GUEVARA  2512532023
+VANESSA ARELY GUEVARA LAZO 2511732023</value>
+  </data>
 </root>

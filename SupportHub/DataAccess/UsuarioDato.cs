@@ -12,6 +12,8 @@ namespace DataAccess
 {
     public class UsuarioDato : ConexionSql
     {
+
+        
         public bool Login(string user, string pass)
         {
             using (var coneccion = GetConnection())

@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAcerca));
             pDerechoAcerca = new Panel();
+            rtbAcerca = new RichTextBox();
             SuspendLayout();
             // 
             // pDerechoAcerca
@@ -39,12 +41,22 @@
             pDerechoAcerca.Size = new Size(99, 515);
             pDerechoAcerca.TabIndex = 7;
             // 
+            // rtbAcerca
+            // 
+            rtbAcerca.Anchor = AnchorStyles.None;
+            rtbAcerca.Location = new Point(3, 0);
+            rtbAcerca.Name = "rtbAcerca";
+            rtbAcerca.Size = new Size(1053, 515);
+            rtbAcerca.TabIndex = 8;
+            rtbAcerca.Text = resources.GetString("rtbAcerca.Text");
+            // 
             // frmAcerca
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
             ClientSize = new Size(1161, 515);
+            Controls.Add(rtbAcerca);
             Controls.Add(pDerechoAcerca);
             Name = "frmAcerca";
             Text = "frmAcerca";
@@ -54,5 +66,6 @@
         #endregion
 
         private Panel pDerechoAcerca;
+        private RichTextBox rtbAcerca;
     }
 }
