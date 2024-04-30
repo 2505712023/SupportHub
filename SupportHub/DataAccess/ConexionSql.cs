@@ -10,14 +10,14 @@ namespace DataAccess
     public abstract class ConexionSql
     {
         private readonly string cadenaconexion;
-        public ConexionSql() {
+        public ConexionSql()
+        {
             cadenaconexion = "Server=100.101.219.129;DataBase= SupportHub;User Id=SupportHub;Password=SupportHub2024";        
-       }
-        protected SqlConnection GetConnection() {
-            return new SqlConnection (cadenaconexion);
         }
 
-
-
+        protected SqlConnection GetConnection() 
+        {
+            return new SqlConnection(cadenaconexion);
+        }
     }
 }

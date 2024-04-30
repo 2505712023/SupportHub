@@ -70,10 +70,8 @@ namespace DataAccess
                         }
                         else
                         {
-
                             return false;
                         }
-
                     }
                 }
             }

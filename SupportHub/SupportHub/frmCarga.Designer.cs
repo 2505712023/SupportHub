@@ -54,7 +54,7 @@
             pCargaLateral.Name = "pCargaLateral";
             pCargaLateral.Size = new Size(245, 334);
             pCargaLateral.TabIndex = 0;
-            //
+            // 
             // imgFondoCarga
             // 
             imgFondoCarga.Image = (Image)resources.GetObject("imgFondoCarga.Image");
@@ -91,9 +91,9 @@
             lblBienve.ForeColor = Color.FromArgb(31, 35, 40);
             lblBienve.Location = new Point(271, 111);
             lblBienve.Name = "lblBienve";
-            lblBienve.Size = new Size(376, 86);
+            lblBienve.Size = new Size(427, 86);
             lblBienve.TabIndex = 2;
-            lblBienve.Text = "BIEVENIDO";
+            lblBienve.Text = "BIENVENIDO";
             // 
             // cpbCarga
             // 
