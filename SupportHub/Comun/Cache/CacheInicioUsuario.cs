@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,9 @@ namespace Comun.Cache
     {
         public static int IdUser { get; set; }
         public static int user { get; set;}   
-        public static string nombreUser { get; set; }
-        public static string apellidoUser { get; set; }
-     
-    
+        public static string? nombreUser { get; set; }
+        public static string? apellidoUser { get; set; }
+        public static string? rolUser { get; set; }
+        public static ArrayList? permisosUser { get; set; }
     }
 }

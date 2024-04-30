@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Comun.Cache;
+using System.Reflection.Metadata;
+using System.Collections;
 namespace DataAccess
 {
     public class UsuarioDato : ConexionSql
@@ -41,7 +43,28 @@ namespace DataAccess
                                 string nombreRol = reader.GetString(reader.GetOrdinal("nombreRol"));
                                 CacheInicioUsuario.nombreUser = reader.GetString(3);
                                 CacheInicioUsuario.apellidoUser = reader.GetString(4);
+                                CacheInicioUsuario.rolUser = reader.GetString(reader.GetOrdinal("nombreRol"));
+                            }
+                            reader.Close();
 
+                            using (var comandoPermisos = new SqlCommand())
+                            {
+                                comandoPermisos.Connection = coneccion;
+                                comandoPermisos.CommandText = "select p.nombrePermiso " +
+                                                                "from PermisosXRoles pr " +
+                                                                "inner join Permisos p on p.idPermiso = pr.idPermiso " +
+                                                                "inner join Roles r on r.idRol = pr.idRol " +
+                                                                "where r.nombreRol = '" + CacheInicioUsuario.rolUser + "'";
+                                comandoPermisos.CommandType = CommandType.Text;
+                                
+                                using (SqlDataReader readerPermisos = comandoPermisos.ExecuteReader())
+                                {
+                                    CacheInicioUsuario.permisosUser = new ArrayList();
+                                    while (readerPermisos.Read())
+                                    {
+                                        CacheInicioUsuario.permisosUser.Add(readerPermisos.GetString(readerPermisos.GetOrdinal("nombrePermiso")));
+                                    }
+                                }
                             }
                             return true; 
                         }

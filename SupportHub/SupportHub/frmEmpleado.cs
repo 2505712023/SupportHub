@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Comun.Cache;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +29,16 @@ namespace Presentacion
 
             // Mostrar el formulario OtroFormulario
             formEmpleado.Show();
+        }
+
+        private void frmEmpleado_Load(object sender, EventArgs e)
+        {
+            if (!CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
+            {
+                btnAgregarEmpleado.Visible = false;
+                btnEliminarEmpleado.Visible = false;
+                btnModificaEmpleado.Visible = false;
+            }
         }
     }
 }

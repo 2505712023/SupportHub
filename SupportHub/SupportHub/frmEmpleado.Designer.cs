@@ -175,6 +175,7 @@
             Controls.Add(gbBusarEmpleado);
             Name = "frmEmpleado";
             Text = "EMPLEADO";
+            Load += frmEmpleado_Load;
             gbBusarEmpleado.ResumeLayout(false);
             gbBusarEmpleado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
