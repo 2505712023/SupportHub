@@ -7,17 +7,25 @@ using System.Data.SqlClient;
 
 namespace DataAccess
 {
-    public abstract class ConexionSql
+    public  class ConexionSql
     {
         private readonly string cadenaconexion;
         public ConexionSql()
-        {
-            cadenaconexion = "Server=100.101.219.129;DataBase= SupportHub;User Id=SupportHub;Password=SupportHub2024";        
+        {   // cadena de conexión principal
+            // cadenaconexion = "Server=100.101.219.129;DataBase= SupportHub;User Id=SupportHub;Password=SupportHub2024";
+           
+
+            // cadana conexión local Isai
+            cadenaconexion = "Server=SOPORT-IT;DataBase= SupportHub;User Id=sa;Password=Isai091995";
+
+
+
         }
 
-        protected SqlConnection GetConnection() 
+        public SqlConnection GetConnection() 
         {
             return new SqlConnection(cadenaconexion);
         }
+
     }
 }

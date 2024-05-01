@@ -233,6 +233,7 @@
             Name = "frmAgregarEmpleado";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EMPLEADO ";
+            Load += frmAgregarEmpleado_Load;
             gbAddEmpleado.ResumeLayout(false);
             gbAddEmpleado.PerformLayout();
             ResumeLayout(false);
