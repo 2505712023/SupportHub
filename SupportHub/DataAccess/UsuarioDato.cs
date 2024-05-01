@@ -20,7 +20,7 @@ namespace DataAccess
                 using (var comando = new SqlCommand())
                 {
                     comando.Connection = coneccion;
-                    comando.CommandText = "sp_AutenticarUsuario";
+                    comando.CommandText = "sp_autenticar_usuario";
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.Parameters.AddWithValue("@LoginName", user);
                     comando.Parameters.AddWithValue("@Password", pass);

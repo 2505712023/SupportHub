@@ -44,7 +44,7 @@ namespace Presentacion
 
         private void frmCarga_Load(object sender, EventArgs e)
         {
-            lblNombreApellido.Text = CacheInicioUsuario.nombreUser + "  " + CacheInicioUsuario.apellidoUser;
+            lblNombreApellido.Text = CacheInicioUsuario.nombreUser + " " + CacheInicioUsuario.apellidoUser;
             this.Opacity = 0.0;
             cpbCarga.Value = 0;
             cpbCarga.Minimum = 0;

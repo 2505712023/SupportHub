@@ -85,7 +85,7 @@ namespace SupportHub
                 }
                 else
                 {
-                    lblMensajeError.Text = "             " +"USUARIO O CONTRASEÑA INCORECTO";
+                    lblMensajeError.Text = "             " +"USUARIO O CONTRASEÑA INCORRECTO";
                     lblMensajeError.Visible = true;
                     txtUsuario.Focus();
                 }
