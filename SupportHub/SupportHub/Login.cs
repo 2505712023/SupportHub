@@ -125,6 +125,7 @@ namespace SupportHub
             txtUsuario.Text = "USUARIO";
             lblMensajeError.Visible=false;   
             this.Show();
+            txtUsuario.Focus();
         }
     }
 }

@@ -31,13 +31,13 @@
             gbBusarEmpleado = new GroupBox();
             txtBuscarEmpleado = new TextBox();
             btnBuscarEmpleado = new FontAwesome.Sharp.IconButton();
-            dataGridView1 = new DataGridView();
+            dgvEmpleado = new DataGridView();
             pDerechoEmpleado = new Panel();
             btnAgregarEmpleado = new FontAwesome.Sharp.IconButton();
             btnModificaEmpleado = new FontAwesome.Sharp.IconButton();
             btnEliminarEmpleado = new FontAwesome.Sharp.IconButton();
             gbBusarEmpleado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmpleado).BeginInit();
             SuspendLayout();
             // 
             // gbBusarEmpleado
@@ -78,15 +78,19 @@
             btnBuscarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnBuscarEmpleado.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dgvEmpleado
             // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.BackgroundColor = Color.FromArgb(148, 184, 216);
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 130);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(932, 373);
-            dataGridView1.TabIndex = 1;
+            dgvEmpleado.AllowUserToAddRows = false;
+            dgvEmpleado.AllowUserToDeleteRows = false;
+            dgvEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvEmpleado.BackgroundColor = Color.FromArgb(148, 184, 216);
+            dgvEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEmpleado.Location = new Point(12, 119);
+            dgvEmpleado.Name = "dgvEmpleado";
+            dgvEmpleado.ReadOnly = true;
+            dgvEmpleado.Size = new Size(932, 373);
+            dgvEmpleado.TabIndex = 1;
+            dgvEmpleado.CellContentClick += dgvEmpleado_CellContentClick;
             // 
             // pDerechoEmpleado
             // 
@@ -170,14 +174,14 @@
             Controls.Add(btnModificaEmpleado);
             Controls.Add(btnAgregarEmpleado);
             Controls.Add(pDerechoEmpleado);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvEmpleado);
             Controls.Add(gbBusarEmpleado);
             Name = "frmEmpleado";
             Text = "EMPLEADO";
             Load += frmEmpleado_Load;
             gbBusarEmpleado.ResumeLayout(false);
             gbBusarEmpleado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEmpleado).EndInit();
             ResumeLayout(false);
         }
 
@@ -186,7 +190,7 @@
         private GroupBox gbBusarEmpleado;
         private FontAwesome.Sharp.IconButton btnBuscarEmpleado;
         private TextBox txtBuscarEmpleado;
-        private DataGridView dataGridView1;
+        private DataGridView dgvEmpleado;
         private Panel pDerechoEmpleado;
         private FontAwesome.Sharp.IconButton btnAgregarEmpleado;
         private FontAwesome.Sharp.IconButton btnModificaEmpleado;
