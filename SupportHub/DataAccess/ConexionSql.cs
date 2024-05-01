@@ -11,9 +11,12 @@ namespace DataAccess
     {
         private readonly string cadenaconexion;
         public ConexionSql()
-        {
-            cadenaconexion = "Server=100.101.219.129;DataBase= SupportHub;User Id=SupportHub;Password=SupportHub2024";        
+        {   // cadena de conexión principal
+            // cadenaconexion = "Server=100.101.219.129;DataBase= SupportHub;User Id=SupportHub;Password=SupportHub2024";
+           
 
+            // cadana conexión local Isai
+            cadenaconexion = "Server=SOPORT-IT;DataBase= SupportHub;User Id=sa;Password=Isai091995";
 
 
 
