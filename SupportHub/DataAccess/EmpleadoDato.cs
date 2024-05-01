@@ -15,27 +15,21 @@ namespace DataAccess
         SqlCommand cmd = new SqlCommand();
 
         public DataTable obtenerEmpleado() {
-            string nombreProcedimiento = "sp_obterner_empleado_general";
+            string nombreProcedimiento = "sp_obtener_empleados_general";
 
             using (SqlConnection conn = conexion.GetConnection())
             {
-               
                 cmd.CommandText = nombreProcedimiento;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection = conn;
 
-               
                 conn.Open();
 
-            
                 SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
                 adaptador.Fill(tabla);
 
-                
                 return tabla;
             }
-
-
         }
         public DataTable ObtenerAreas()
         {
@@ -53,8 +47,6 @@ namespace DataAccess
             }
         }
 
-
-
         public DataTable ObtenerCargo()
         {
             string querySelect = "select nombreCargo from Cargos";
@@ -70,6 +62,5 @@ namespace DataAccess
                 return tablaAreas;
             }
         }
-
     }
 }
