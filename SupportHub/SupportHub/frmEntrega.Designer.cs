@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             btnEliminarEntrega = new FontAwesome.Sharp.IconButton();
             btnModificarEntrega = new FontAwesome.Sharp.IconButton();
             btnAgregarEntrega = new FontAwesome.Sharp.IconButton();
             dgvEntregas = new DataGridView();
             gbBusarEmpleado = new GroupBox();
+            cBoxTipoBusqueda = new ComboBox();
             txtBuscarEntrega = new TextBox();
-            btnBuscarEntrega = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvEntregas).BeginInit();
             gbBusarEmpleado.SuspendLayout();
             SuspendLayout();
@@ -46,6 +47,7 @@
             btnEliminarEntrega.BackColor = Color.FromArgb(184, 82, 82);
             btnEliminarEntrega.FlatAppearance.BorderSize = 0;
             btnEliminarEntrega.FlatStyle = FlatStyle.Flat;
+            btnEliminarEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnEliminarEntrega.ForeColor = Color.FromArgb(31, 35, 40);
             btnEliminarEntrega.IconChar = FontAwesome.Sharp.IconChar.Trash;
             btnEliminarEntrega.IconColor = Color.FromArgb(31, 35, 40);
@@ -59,6 +61,7 @@
             btnEliminarEntrega.TextAlign = ContentAlignment.MiddleLeft;
             btnEliminarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEliminarEntrega.UseVisualStyleBackColor = false;
+            btnEliminarEntrega.Click += btnEliminarEntrega_Click;
             // 
             // btnModificarEntrega
             // 
@@ -67,6 +70,7 @@
             btnModificarEntrega.BackColor = Color.FromArgb(55, 166, 104);
             btnModificarEntrega.FlatAppearance.BorderSize = 0;
             btnModificarEntrega.FlatStyle = FlatStyle.Flat;
+            btnModificarEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnModificarEntrega.ForeColor = Color.FromArgb(31, 35, 40);
             btnModificarEntrega.IconChar = FontAwesome.Sharp.IconChar.PenNib;
             btnModificarEntrega.IconColor = Color.FromArgb(31, 35, 40);
@@ -88,6 +92,7 @@
             btnAgregarEntrega.BackColor = Color.FromArgb(89, 134, 213);
             btnAgregarEntrega.FlatAppearance.BorderSize = 0;
             btnAgregarEntrega.FlatStyle = FlatStyle.Flat;
+            btnAgregarEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnAgregarEntrega.ForeColor = Color.FromArgb(31, 35, 40);
             btnAgregarEntrega.IconChar = FontAwesome.Sharp.IconChar.Plus;
             btnAgregarEntrega.IconColor = Color.FromArgb(31, 35, 40);
@@ -108,6 +113,14 @@
             dgvEntregas.AllowUserToDeleteRows = false;
             dgvEntregas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvEntregas.BackgroundColor = Color.FromArgb(148, 184, 216);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvEntregas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvEntregas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEntregas.Location = new Point(12, 86);
             dgvEntregas.Name = "dgvEntregas";
@@ -118,41 +131,35 @@
             // gbBusarEmpleado
             // 
             gbBusarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbBusarEmpleado.Controls.Add(cBoxTipoBusqueda);
             gbBusarEmpleado.Controls.Add(txtBuscarEntrega);
-            gbBusarEmpleado.Controls.Add(btnBuscarEntrega);
+            gbBusarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             gbBusarEmpleado.Location = new Point(12, 12);
             gbBusarEmpleado.Name = "gbBusarEmpleado";
             gbBusarEmpleado.Size = new Size(945, 68);
             gbBusarEmpleado.TabIndex = 10;
             gbBusarEmpleado.TabStop = false;
-            gbBusarEmpleado.Text = "ENTREGA::...";
+            gbBusarEmpleado.Text = "BUSCAR ENTREGA::...";
+            // 
+            // cBoxTipoBusqueda
+            // 
+            cBoxTipoBusqueda.Font = new Font("Segoe UI", 9F);
+            cBoxTipoBusqueda.FormattingEnabled = true;
+            cBoxTipoBusqueda.Location = new Point(6, 26);
+            cBoxTipoBusqueda.Name = "cBoxTipoBusqueda";
+            cBoxTipoBusqueda.Size = new Size(122, 23);
+            cBoxTipoBusqueda.TabIndex = 6;
+            cBoxTipoBusqueda.TextChanged += cBoxTipoBusqueda_TextChanged;
             // 
             // txtBuscarEntrega
             // 
             txtBuscarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtBuscarEntrega.Location = new Point(64, 26);
+            txtBuscarEntrega.Font = new Font("Segoe UI", 9F);
+            txtBuscarEntrega.Location = new Point(134, 26);
             txtBuscarEntrega.Name = "txtBuscarEntrega";
-            txtBuscarEntrega.Size = new Size(875, 23);
+            txtBuscarEntrega.Size = new Size(805, 23);
             txtBuscarEntrega.TabIndex = 5;
             txtBuscarEntrega.TextChanged += txtBuscarEntrega_TextChanged;
-            // 
-            // btnBuscarEntrega
-            // 
-            btnBuscarEntrega.BackColor = Color.FromArgb(219, 231, 242);
-            btnBuscarEntrega.FlatAppearance.BorderSize = 0;
-            btnBuscarEntrega.FlatStyle = FlatStyle.Flat;
-            btnBuscarEntrega.ForeColor = SystemColors.ControlLightLight;
-            btnBuscarEntrega.IconChar = FontAwesome.Sharp.IconChar.Search;
-            btnBuscarEntrega.IconColor = Color.FromArgb(31, 35, 40);
-            btnBuscarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnBuscarEntrega.IconSize = 30;
-            btnBuscarEntrega.Location = new Point(6, 22);
-            btnBuscarEntrega.Name = "btnBuscarEntrega";
-            btnBuscarEntrega.Size = new Size(52, 28);
-            btnBuscarEntrega.TabIndex = 4;
-            btnBuscarEntrega.TextAlign = ContentAlignment.MiddleLeft;
-            btnBuscarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnBuscarEntrega.UseVisualStyleBackColor = false;
             // 
             // frmEntrega
             // 
@@ -183,6 +190,6 @@
         private DataGridView dgvEntregas;
         private GroupBox gbBusarEmpleado;
         private TextBox txtBuscarEntrega;
-        private FontAwesome.Sharp.IconButton btnBuscarEntrega;
+        private ComboBox cBoxTipoBusqueda;
     }
 }

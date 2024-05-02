@@ -33,7 +33,7 @@ namespace DataAccess
             }
         }
 
-        public static DataTable filtrarTablaEntregasPorCodigo(string codEntrega)
+        public static DataTable filtrarTablaEntregas(string codEntrega = "-1", string nombreTipoEntrega = "-1", string observacionesEntrega = "-1")
         {
             using (SqlConnection conect = conexion.GetConnection())
             {
@@ -41,6 +41,8 @@ namespace DataAccess
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Clear();
                 comando.Parameters.AddWithValue("@codEntrega", codEntrega);
+                comando.Parameters.AddWithValue("@nombreTipoEntrega", nombreTipoEntrega);
+                comando.Parameters.AddWithValue("@observacionEntrega", observacionesEntrega);
                 comando.Connection = conect;
 
                 conect.Open();
@@ -50,6 +52,24 @@ namespace DataAccess
                 adaptador.Fill(tabla);
 
                 return tabla;
+            }
+        }
+
+        public static int eliminarEntrega(string? codEntrega)
+        {
+            using (SqlConnection conect = conexion.GetConnection())
+            {
+                comando.CommandText = "sp_eliminar_entrega";
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@codEntrega", codEntrega);
+                comando.Connection = conect;
+
+                conect.Open();
+
+                int numRegistrosEliminados = comando.ExecuteNonQuery();
+                
+                return numRegistrosEliminados;
             }
         }
     }

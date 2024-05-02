@@ -15,9 +15,14 @@ namespace Dominio
             return EntregaDato.obtenerTablaEntregas();
         }
 
-        public static DataTable filtrarTablaEntregasPorCodigo(string codEntrega)
+        public static DataTable filtrarTablaEntregas(string codEntrega = "-1", string nombreTipoEntrega = "-1", string observacionesEntrega = "-1")
         {
-            return EntregaDato.filtrarTablaEntregasPorCodigo(codEntrega);
+            return EntregaDato.filtrarTablaEntregas(codEntrega, nombreTipoEntrega, observacionesEntrega);
+        }
+
+        public static int eliminarEntrega(string? codEntrega)
+        {
+            return EntregaDato.eliminarEntrega(codEntrega);
         }
     }
 }
