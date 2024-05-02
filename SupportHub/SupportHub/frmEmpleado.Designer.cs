@@ -163,6 +163,7 @@
             btnEliminarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnEliminarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEliminarEmpleado.UseVisualStyleBackColor = false;
+            btnEliminarEmpleado.Click += btnEliminarEmpleado_Click;
             // 
             // frmEmpleado
             // 
@@ -179,6 +180,7 @@
             Name = "frmEmpleado";
             Text = "EMPLEADO";
             Load += frmEmpleado_Load;
+            Shown += frmEmpleado_Shown;
             gbBusarEmpleado.ResumeLayout(false);
             gbBusarEmpleado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleado).EndInit();

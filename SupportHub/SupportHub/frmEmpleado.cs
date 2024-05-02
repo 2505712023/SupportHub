@@ -9,15 +9,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Presentacion
 {
     public partial class frmEmpleado : Form
     {
+        ModeloEmpleado EmpObjeto = new ModeloEmpleado();
+        private string idEmpleado = null;
         public frmEmpleado()
         {
             InitializeComponent();
         }
-        ModeloEmpleado Empleado = new ModeloEmpleado();
+
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
             frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado();
@@ -31,7 +34,69 @@ namespace Presentacion
 
             mostrarEmpleado();
 
-            dgvEmpleado.Columns["idEmpleado"].HeaderText = "ID";
+            ajusteDataGrid();
+            if (!CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
+            {
+
+                btnAgregarEmpleado.Visible = false;
+                btnEliminarEmpleado.Visible = false;
+                btnModificaEmpleado.Visible = false;
+            }
+            txtBuscarEmpleado.Focus();
+
+        }
+        private void mostrarEmpleado()
+        {
+
+            ModeloEmpleado Empleado = new ModeloEmpleado();
+            dgvEmpleado.DataSource = Empleado.mostrarEmpleado();
+
+        }
+
+        private void dgvEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnEliminarEmpleado_Click(object sender, EventArgs e)
+        {
+
+            if (dgvEmpleado.SelectedRows.Count > 0)
+            {
+                // Verificar si se ha seleccionado solo una fila
+                if (dgvEmpleado.SelectedRows.Count == 1)
+                {
+                    idEmpleado = dgvEmpleado.CurrentRow.Cells["idEmpleado"].Value.ToString();
+                    EmpObjeto.EliminarEmp(idEmpleado);
+                    MessageBox.Show("Eliminado Correctamente");
+
+
+                    mostrarEmpleado();
+
+
+
+                    txtBuscarEmpleado.Focus();
+
+                    mostrarEmpleado();
+                    ajusteDataGrid();
+                    dgvEmpleado.ClearSelection();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione solo una fila por favor");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una fila por favor");
+            }
+
+        }
+        public void ajusteDataGrid()
+        {
+
+
+           
             dgvEmpleado.Columns["codEmpleado"].HeaderText = "Código";
             dgvEmpleado.Columns["nombreEmpleado"].HeaderText = "Nombre";
             dgvEmpleado.Columns["apellidoEmpleado"].HeaderText = "Apellido";
@@ -42,22 +107,13 @@ namespace Presentacion
             dgvEmpleado.Columns["codCargo"].HeaderText = "Codigo Cargo";
             dgvEmpleado.Columns["nombreCargo"].HeaderText = "Cargo";
             dgvEmpleado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            if (!CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
-            {
 
-                btnAgregarEmpleado.Visible = false;
-                btnEliminarEmpleado.Visible = false;
-                btnModificaEmpleado.Visible = false;
-            }
-        }
-        private void mostrarEmpleado()
-        {
-            dgvEmpleado.DataSource = Empleado.mostrarEmpleado();
+
         }
 
-        private void dgvEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void frmEmpleado_Shown(object sender, EventArgs e)
         {
-
+            dgvEmpleado.ClearSelection();
         }
     }
 }

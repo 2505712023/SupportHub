@@ -62,5 +62,25 @@ namespace DataAccess
                 return tablaAreas;
             }
         }
+
+        public void EliminarEmpleado(int id) {
+
+            string nombreProcedimiento = "sp_eliminar_empleado";
+
+           // using (var conexion = new ConexionSql())
+            using (var comando = new SqlCommand())
+            {
+                comando.CommandText = nombreProcedimiento;
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@idEmpeado", id);
+
+                using (SqlConnection conn = conexion.GetConnection())
+                {
+                    comando.Connection = conn;
+                    conn.Open();
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
