@@ -30,12 +30,12 @@
         {
             pSuperiorAddEmpleado = new Panel();
             gbAddEmpleado = new GroupBox();
+            txtTelefonoEmpleado = new MaskedTextBox();
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
             cbxAreaEmpleado = new ComboBox();
             cbxCargoEmpleado = new ComboBox();
             txtEmailEmpleado = new TextBox();
-            txtTelefonoEmpleado = new TextBox();
             txtApellidoEmpleado = new TextBox();
             txtNombreEmpleado = new TextBox();
             lblAreaEmpleado = new Label();
@@ -44,26 +44,30 @@
             lblTelefonoEmpleado = new Label();
             lblApellidoEmpleado = new Label();
             lblNombreEmpleado = new Label();
+            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
+            pSuperiorAddEmpleado.SuspendLayout();
             gbAddEmpleado.SuspendLayout();
             SuspendLayout();
             // 
             // pSuperiorAddEmpleado
             // 
             pSuperiorAddEmpleado.BackColor = Color.FromArgb(5, 23, 59);
+            pSuperiorAddEmpleado.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorAddEmpleado.Dock = DockStyle.Top;
             pSuperiorAddEmpleado.Location = new Point(0, 0);
             pSuperiorAddEmpleado.Name = "pSuperiorAddEmpleado";
             pSuperiorAddEmpleado.Size = new Size(966, 60);
             pSuperiorAddEmpleado.TabIndex = 0;
+            pSuperiorAddEmpleado.Paint += pSuperiorAddEmpleado_Paint;
             // 
             // gbAddEmpleado
             // 
+            gbAddEmpleado.Controls.Add(txtTelefonoEmpleado);
             gbAddEmpleado.Controls.Add(btnCancelaEmpleado);
             gbAddEmpleado.Controls.Add(btnGuardarEmpleado);
             gbAddEmpleado.Controls.Add(cbxAreaEmpleado);
             gbAddEmpleado.Controls.Add(cbxCargoEmpleado);
             gbAddEmpleado.Controls.Add(txtEmailEmpleado);
-            gbAddEmpleado.Controls.Add(txtTelefonoEmpleado);
             gbAddEmpleado.Controls.Add(txtApellidoEmpleado);
             gbAddEmpleado.Controls.Add(txtNombreEmpleado);
             gbAddEmpleado.Controls.Add(lblAreaEmpleado);
@@ -78,6 +82,14 @@
             gbAddEmpleado.TabIndex = 1;
             gbAddEmpleado.TabStop = false;
             gbAddEmpleado.Text = "AGREGAR EMPLEADO";
+            // 
+            // txtTelefonoEmpleado
+            // 
+            txtTelefonoEmpleado.Location = new Point(55, 183);
+            txtTelefonoEmpleado.Mask = "0000-0000";
+            txtTelefonoEmpleado.Name = "txtTelefonoEmpleado";
+            txtTelefonoEmpleado.Size = new Size(266, 23);
+            txtTelefonoEmpleado.TabIndex = 14;
             // 
             // btnCancelaEmpleado
             // 
@@ -122,6 +134,7 @@
             btnGuardarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnGuardarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardarEmpleado.UseVisualStyleBackColor = false;
+            btnGuardarEmpleado.Click += btnGuardarEmpleado_Click;
             // 
             // cbxAreaEmpleado
             // 
@@ -138,6 +151,7 @@
             cbxCargoEmpleado.Name = "cbxCargoEmpleado";
             cbxCargoEmpleado.Size = new Size(155, 23);
             cbxCargoEmpleado.TabIndex = 10;
+            cbxCargoEmpleado.SelectedIndexChanged += cbxCargoEmpleado_SelectedIndexChanged;
             // 
             // txtEmailEmpleado
             // 
@@ -145,13 +159,6 @@
             txtEmailEmpleado.Name = "txtEmailEmpleado";
             txtEmailEmpleado.Size = new Size(266, 23);
             txtEmailEmpleado.TabIndex = 9;
-            // 
-            // txtTelefonoEmpleado
-            // 
-            txtTelefonoEmpleado.Location = new Point(55, 174);
-            txtTelefonoEmpleado.Name = "txtTelefonoEmpleado";
-            txtTelefonoEmpleado.Size = new Size(266, 23);
-            txtTelefonoEmpleado.TabIndex = 8;
             // 
             // txtApellidoEmpleado
             // 
@@ -221,6 +228,26 @@
             lblNombreEmpleado.TabIndex = 0;
             lblNombreEmpleado.Text = "Nombre:";
             // 
+            // btnCerrarAddEmpleado
+            // 
+            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
+            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
+            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
+            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
+            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnCerrarAddEmpleado.IconSize = 20;
+            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.Location = new Point(935, 3);
+            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
+            btnCerrarAddEmpleado.Size = new Size(28, 24);
+            btnCerrarAddEmpleado.TabIndex = 15;
+            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
+            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
+            // 
             // frmAgregarEmpleado
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -234,6 +261,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EMPLEADO ";
             Load += frmAgregarEmpleado_Load;
+            pSuperiorAddEmpleado.ResumeLayout(false);
             gbAddEmpleado.ResumeLayout(false);
             gbAddEmpleado.PerformLayout();
             ResumeLayout(false);
@@ -252,10 +280,11 @@
         private ComboBox cbxAreaEmpleado;
         private ComboBox cbxCargoEmpleado;
         private TextBox txtEmailEmpleado;
-        private TextBox txtTelefonoEmpleado;
         private TextBox txtApellidoEmpleado;
         private TextBox txtNombreEmpleado;
         private FontAwesome.Sharp.IconButton btnCancelaEmpleado;
         private FontAwesome.Sharp.IconButton btnGuardarEmpleado;
+        private MaskedTextBox txtTelefonoEmpleado;
+        private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
     }
 }

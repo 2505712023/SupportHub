@@ -9,12 +9,13 @@ namespace DataAccess
 {
     public class EmpleadoDato
     {
-        private ConexionSql conexion =new ConexionSql();
+        private ConexionSql conexion = new ConexionSql();
         SqlDataReader leer;
-        DataTable tabla =new DataTable();
+        DataTable tabla = new DataTable();
         SqlCommand cmd = new SqlCommand();
 
-        public DataTable obtenerEmpleado() {
+        public DataTable obtenerEmpleado()
+        {
             string nombreProcedimiento = "sp_obtener_empleados_general";
 
             using (SqlConnection conn = conexion.GetConnection())
@@ -33,7 +34,7 @@ namespace DataAccess
         }
         public DataTable ObtenerAreas()
         {
-            string querySelect = "SELECT nombreArea FROM Areas";
+            string querySelect = "SELECT * FROM Areas";
             using (SqlConnection conn = conexion.GetConnection())
             {
                 conn.Open();
@@ -47,9 +48,9 @@ namespace DataAccess
             }
         }
 
-        public DataTable ObtenerCargo()
+        public DataTable ObtenerCargos()
         {
-            string querySelect = "select nombreCargo from Cargos";
+            string querySelect = "select * from Cargos";
             using (SqlConnection conn = conexion.GetConnection())
             {
                 conn.Open();
@@ -79,6 +80,24 @@ namespace DataAccess
                 }
             }
         }
+
+        public void InsertarEmpleado(string nombreEmpleado, string apellidoEmpleado, string telefono, string email, int idCargo, int idArea)
+        {
+            using (SqlConnection conn = conexion.GetConnection())
+            {
+                using (SqlCommand comando = new SqlCommand("sp_crear_empleado", conn))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@nombreEmpleado", nombreEmpleado);
+                    comando.Parameters.AddWithValue("@apellidoEmpleado", apellidoEmpleado);
+                    comando.Parameters.AddWithValue("@telefonoEmpleado", telefono);
+                    comando.Parameters.AddWithValue("@emailEmpleado", email);
+                    comando.Parameters.AddWithValue("@IdCargo", idCargo);
+                    comando.Parameters.AddWithValue("@IdArea", idArea);
+                    conn.Open();
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
-

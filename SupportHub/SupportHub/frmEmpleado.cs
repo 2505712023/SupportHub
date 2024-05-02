@@ -20,12 +20,15 @@ namespace Presentacion
         {
             InitializeComponent();
         }
+        private void AgregarUpdateEvenHandler(object sender, frmAgregarEmpleado.UpdateEventArgs args) {
 
+            mostrarEmpleado();
+        }
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
-            frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado();
-
-            // Mostrar el formulario OtroFormulario
+            frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
+            formEmpleado.UpdateEventHandler += AgregarUpdateEvenHandler;
+            
             formEmpleado.Show();
         }
 
@@ -50,7 +53,7 @@ namespace Presentacion
 
             ModeloEmpleado Empleado = new ModeloEmpleado();
             dgvEmpleado.DataSource = Empleado.mostrarEmpleado();
-
+            dgvEmpleado.ClearSelection();
         }
 
         private void dgvEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -90,7 +93,7 @@ namespace Presentacion
         {
 
 
-           
+
             dgvEmpleado.Columns["codEmpleado"].HeaderText = "Código";
             dgvEmpleado.Columns["nombreEmpleado"].HeaderText = "Nombre";
             dgvEmpleado.Columns["apellidoEmpleado"].HeaderText = "Apellido";
@@ -108,6 +111,15 @@ namespace Presentacion
         private void frmEmpleado_Shown(object sender, EventArgs e)
         {
             dgvEmpleado.ClearSelection();
+        }
+
+        private void btnBuscarEmpleado_Click(object sender, EventArgs e)
+        {
+
+           
+            dgvEmpleado.DataSource = null; 
+
+
         }
     }
 }

@@ -77,6 +77,7 @@
             btnBuscarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnBuscarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnBuscarEmpleado.UseVisualStyleBackColor = false;
+            btnBuscarEmpleado.Click += btnBuscarEmpleado_Click;
             // 
             // dgvEmpleado
             // 
