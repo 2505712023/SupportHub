@@ -389,9 +389,9 @@
             // 
             pDerechoIndex.Controls.Add(pSubMenu);
             pDerechoIndex.Dock = DockStyle.Right;
-            pDerechoIndex.Location = new Point(817, 0);
+            pDerechoIndex.Location = new Point(956, 0);
             pDerechoIndex.Name = "pDerechoIndex";
-            pDerechoIndex.Size = new Size(139, 600);
+            pDerechoIndex.Size = new Size(0, 600);
             pDerechoIndex.TabIndex = 5;
             // 
             // pSubMenu
@@ -403,7 +403,7 @@
             pSubMenu.Dock = DockStyle.Top;
             pSubMenu.Location = new Point(0, 0);
             pSubMenu.Name = "pSubMenu";
-            pSubMenu.Size = new Size(139, 175);
+            pSubMenu.Size = new Size(0, 175);
             pSubMenu.TabIndex = 0;
             // 
             // btnInfo
@@ -417,7 +417,7 @@
             btnInfo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnInfo.IconSize = 20;
             btnInfo.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInfo.Location = new Point(3, 6);
+            btnInfo.Location = new Point(-136, 6);
             btnInfo.Name = "btnInfo";
             btnInfo.Size = new Size(128, 49);
             btnInfo.TabIndex = 2;
@@ -438,7 +438,7 @@
             btnSalir.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnSalir.IconSize = 20;
             btnSalir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSalir.Location = new Point(3, 110);
+            btnSalir.Location = new Point(-136, 110);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(128, 49);
             btnSalir.TabIndex = 4;
@@ -459,7 +459,7 @@
             btnAcerca.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAcerca.IconSize = 20;
             btnAcerca.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAcerca.Location = new Point(8, 55);
+            btnAcerca.Location = new Point(-131, 55);
             btnAcerca.Name = "btnAcerca";
             btnAcerca.Size = new Size(128, 49);
             btnAcerca.TabIndex = 3;

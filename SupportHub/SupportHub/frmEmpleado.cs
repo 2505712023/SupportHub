@@ -31,7 +31,7 @@ namespace Presentacion
 
             mostrarEmpleado();
 
-            dgvEmpleado.Columns["idEmpleado"].HeaderText = "ID";
+            //dgvEmpleado.Columns["idEmpleado"].HeaderText = "ID";
             dgvEmpleado.Columns["codEmpleado"].HeaderText = "Código";
             dgvEmpleado.Columns["nombreEmpleado"].HeaderText = "Nombre";
             dgvEmpleado.Columns["apellidoEmpleado"].HeaderText = "Apellido";
@@ -44,7 +44,6 @@ namespace Presentacion
             dgvEmpleado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             if (!CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
             {
-
                 btnAgregarEmpleado.Visible = false;
                 btnEliminarEmpleado.Visible = false;
                 btnModificaEmpleado.Visible = false;
@@ -53,11 +52,6 @@ namespace Presentacion
         private void mostrarEmpleado()
         {
             dgvEmpleado.DataSource = Empleado.mostrarEmpleado();
-        }
-
-        private void dgvEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
