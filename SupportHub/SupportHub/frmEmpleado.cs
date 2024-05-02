@@ -15,7 +15,7 @@ namespace Presentacion
     public partial class frmEmpleado : Form
     {
         ModeloEmpleado EmpObjeto = new ModeloEmpleado();
-        private string idEmpleado = null;
+        private string codEmpleado = null;
         public frmEmpleado()
         {
             InitializeComponent();
@@ -60,23 +60,16 @@ namespace Presentacion
 
         private void btnEliminarEmpleado_Click(object sender, EventArgs e)
         {
-
             if (dgvEmpleado.SelectedRows.Count > 0)
             {
                 // Verificar si se ha seleccionado solo una fila
                 if (dgvEmpleado.SelectedRows.Count == 1)
                 {
-                    idEmpleado = dgvEmpleado.CurrentRow.Cells["idEmpleado"].Value.ToString();
-                    EmpObjeto.EliminarEmp(idEmpleado);
+                    string codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
+                    EmpObjeto.EliminarEmp(codEmpleado); // Pasar el código del empleado como string
                     MessageBox.Show("Eliminado Correctamente");
-
-
                     mostrarEmpleado();
-
-
-
                     txtBuscarEmpleado.Focus();
-
                     mostrarEmpleado();
                     ajusteDataGrid();
                     dgvEmpleado.ClearSelection();
@@ -90,6 +83,7 @@ namespace Presentacion
             {
                 MessageBox.Show("Seleccione una fila por favor");
             }
+
 
         }
         public void ajusteDataGrid()

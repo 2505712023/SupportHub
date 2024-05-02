@@ -62,18 +62,15 @@ namespace DataAccess
                 return tablaAreas;
             }
         }
-
-        public void EliminarEmpleado(int id) {
-
+        public void EliminarEmpleado(string codEmp)
+        {
             string nombreProcedimiento = "sp_eliminar_empleado";
 
-           // using (var conexion = new ConexionSql())
             using (var comando = new SqlCommand())
             {
                 comando.CommandText = nombreProcedimiento;
                 comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@idEmpeado", id);
-
+                comando.Parameters.AddWithValue("@codEmpleado", codEmp);
                 using (SqlConnection conn = conexion.GetConnection())
                 {
                     comando.Connection = conn;
@@ -84,3 +81,4 @@ namespace DataAccess
         }
     }
 }
+

@@ -28,10 +28,9 @@ namespace Dominio
         {
             return empDato.ObtenerCargo();
         }
-        public void EliminarEmp(string id)
+        public void EliminarEmp(string codEmp)
         {
-
-            empDato.EliminarEmpleado(Convert.ToInt32(id));
+            empDato.EliminarEmpleado(codEmp); 
         }
     }
 
