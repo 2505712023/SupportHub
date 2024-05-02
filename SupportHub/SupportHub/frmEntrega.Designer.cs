@@ -31,11 +31,11 @@
             btnEliminarEntrega = new FontAwesome.Sharp.IconButton();
             btnModificarEntrega = new FontAwesome.Sharp.IconButton();
             btnAgregarEntrega = new FontAwesome.Sharp.IconButton();
-            dgvEmpleado = new DataGridView();
+            dgvEntregas = new DataGridView();
             gbBusarEmpleado = new GroupBox();
             txtBuscarEntrega = new TextBox();
             btnBuscarEntrega = new FontAwesome.Sharp.IconButton();
-            ((System.ComponentModel.ISupportInitialize)dgvEmpleado).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEntregas).BeginInit();
             gbBusarEmpleado.SuspendLayout();
             SuspendLayout();
             // 
@@ -102,18 +102,18 @@
             btnAgregarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregarEntrega.UseVisualStyleBackColor = false;
             // 
-            // dgvEmpleado
+            // dgvEntregas
             // 
-            dgvEmpleado.AllowUserToAddRows = false;
-            dgvEmpleado.AllowUserToDeleteRows = false;
-            dgvEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvEmpleado.BackgroundColor = Color.FromArgb(148, 184, 216);
-            dgvEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmpleado.Location = new Point(12, 86);
-            dgvEmpleado.Name = "dgvEmpleado";
-            dgvEmpleado.ReadOnly = true;
-            dgvEmpleado.Size = new Size(945, 417);
-            dgvEmpleado.TabIndex = 11;
+            dgvEntregas.AllowUserToAddRows = false;
+            dgvEntregas.AllowUserToDeleteRows = false;
+            dgvEntregas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvEntregas.BackgroundColor = Color.FromArgb(148, 184, 216);
+            dgvEntregas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvEntregas.Location = new Point(12, 86);
+            dgvEntregas.Name = "dgvEntregas";
+            dgvEntregas.ReadOnly = true;
+            dgvEntregas.Size = new Size(945, 417);
+            dgvEntregas.TabIndex = 11;
             // 
             // gbBusarEmpleado
             // 
@@ -134,6 +134,7 @@
             txtBuscarEntrega.Name = "txtBuscarEntrega";
             txtBuscarEntrega.Size = new Size(875, 23);
             txtBuscarEntrega.TabIndex = 5;
+            txtBuscarEntrega.TextChanged += txtBuscarEntrega_TextChanged;
             // 
             // btnBuscarEntrega
             // 
@@ -162,11 +163,12 @@
             Controls.Add(btnEliminarEntrega);
             Controls.Add(btnModificarEntrega);
             Controls.Add(btnAgregarEntrega);
-            Controls.Add(dgvEmpleado);
+            Controls.Add(dgvEntregas);
             Controls.Add(gbBusarEmpleado);
             Name = "frmEntrega";
             Text = "ENTREGAS";
-            ((System.ComponentModel.ISupportInitialize)dgvEmpleado).EndInit();
+            Load += frmEntrega_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvEntregas).EndInit();
             gbBusarEmpleado.ResumeLayout(false);
             gbBusarEmpleado.PerformLayout();
             ResumeLayout(false);
@@ -178,7 +180,7 @@
         private FontAwesome.Sharp.IconButton btnEliminarEntrega;
         private FontAwesome.Sharp.IconButton btnModificarEntrega;
         private FontAwesome.Sharp.IconButton btnAgregarEntrega;
-        private DataGridView dgvEmpleado;
+        private DataGridView dgvEntregas;
         private GroupBox gbBusarEmpleado;
         private TextBox txtBuscarEntrega;
         private FontAwesome.Sharp.IconButton btnBuscarEntrega;

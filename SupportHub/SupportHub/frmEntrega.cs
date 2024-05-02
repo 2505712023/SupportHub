@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dominio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,24 @@ namespace Presentacion
         public frmEntrega()
         {
             InitializeComponent();
+        }
+
+        private void frmEntrega_Load(object sender, EventArgs e)
+        {
+            dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
+            dgvEntregas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void txtBuscarEntrega_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtBuscarEntrega.Text))
+            {
+                dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
+            }
+            else
+            { 
+                dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregasPorCodigo(txtBuscarEntrega.Text);
+            }
         }
     }
 }
