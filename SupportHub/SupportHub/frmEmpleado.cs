@@ -15,12 +15,13 @@ namespace Presentacion
     public partial class frmEmpleado : Form
     {
         ModeloEmpleado EmpObjeto = new ModeloEmpleado();
-        private string codEmpleado = null;
+        //private string codEmpleado = null;
         public frmEmpleado()
         {
             InitializeComponent();
         }
-        private void AgregarUpdateEvenHandler(object sender, frmAgregarEmpleado.UpdateEventArgs args) {
+        private void AgregarUpdateEvenHandler(object sender, frmAgregarEmpleado.UpdateEventArgs args)
+        {
 
             mostrarEmpleado();
         }
@@ -28,7 +29,7 @@ namespace Presentacion
         {
             frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
             formEmpleado.UpdateEventHandler += AgregarUpdateEvenHandler;
-            
+
             formEmpleado.Show();
         }
 
@@ -69,7 +70,7 @@ namespace Presentacion
                 if (dgvEmpleado.SelectedRows.Count == 1)
                 {
                     string codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
-                    EmpObjeto.EliminarEmp(codEmpleado); // Pasar el código del empleado como string
+                    EmpObjeto.EliminarEmp(codEmpleado);
                     MessageBox.Show("Eliminado Correctamente");
                     mostrarEmpleado();
                     txtBuscarEmpleado.Focus();
@@ -116,9 +117,38 @@ namespace Presentacion
         private void btnBuscarEmpleado_Click(object sender, EventArgs e)
         {
 
-           
-            dgvEmpleado.DataSource = null; 
 
+            dgvEmpleado.DataSource = null;
+
+
+        }
+
+        private void btnModificaEmpleado_Click(object sender, EventArgs e)
+        {
+            if (dgvEmpleado.SelectedRows.Count > 0)
+            {
+                // Obtén una referencia al formulario de modificación
+                frmModificarEmpleado modiEmpleado = new frmModificarEmpleado();
+
+                // Configura los datos a pasar al formulario de modificación
+                modiEmpleado.Operacion = "Editar";
+                modiEmpleado.CargarDatosEmpleado(
+                    dgvEmpleado.CurrentRow.Cells["nombreEmpleado"].Value.ToString(),
+                    dgvEmpleado.CurrentRow.Cells["apellidoEmpleado"].Value.ToString(),
+                    dgvEmpleado.CurrentRow.Cells["telefonoEmpleado"].Value.ToString(),
+                    dgvEmpleado.CurrentRow.Cells["emailEmpleado"].Value.ToString(),
+                    dgvEmpleado.CurrentRow.Cells["codArea"].Value.ToString(),
+                    dgvEmpleado.CurrentRow.Cells["codCargo"].Value.ToString()
+                );
+
+                // Muestra el formulario de modificación
+                modiEmpleado.ShowDialog();
+            }
+            else
+            {
+                // Si no hay filas seleccionadas en el DataGridView, muestra un mensaje de advertencia
+                MessageBox.Show("Debe seleccionar una fila");
+            }
 
         }
     }

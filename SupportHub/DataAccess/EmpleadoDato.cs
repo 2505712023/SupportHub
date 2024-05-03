@@ -98,6 +98,27 @@ namespace DataAccess
                     comando.ExecuteNonQuery();
                 }
             }
+
+
+        }
+        public void Editar(string nombreEmpleado, string apellidoEmpleado, string telefonoEmpleado, string emailEmpleado, int idCargo, int idArea)
+        {
+            using (SqlConnection connection = conexion.GetConnection())
+            {
+                using (SqlCommand comando = new SqlCommand("sp_modificar_empleado", connection))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@nombreEmpleado", nombreEmpleado);
+                    comando.Parameters.AddWithValue("@apellidoEmpleado", apellidoEmpleado);
+                    comando.Parameters.AddWithValue("@telefono", telefonoEmpleado);
+                    comando.Parameters.AddWithValue("@emailEmpleado", emailEmpleado);
+                    comando.Parameters.AddWithValue("@idCargo", idCargo);
+                    comando.Parameters.AddWithValue("@idArea", idArea);
+
+                    connection.Open();
+                    comando.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

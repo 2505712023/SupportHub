@@ -143,6 +143,7 @@
             btnModificaEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnModificaEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnModificaEmpleado.UseVisualStyleBackColor = false;
+            btnModificaEmpleado.Click += btnModificaEmpleado_Click;
             // 
             // btnEliminarEmpleado
             // 

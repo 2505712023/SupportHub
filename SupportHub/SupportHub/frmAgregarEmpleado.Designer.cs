@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             pSuperiorAddEmpleado = new Panel();
+            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbAddEmpleado = new GroupBox();
             txtTelefonoEmpleado = new MaskedTextBox();
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
@@ -44,7 +45,6 @@
             lblTelefonoEmpleado = new Label();
             lblApellidoEmpleado = new Label();
             lblNombreEmpleado = new Label();
-            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             pSuperiorAddEmpleado.SuspendLayout();
             gbAddEmpleado.SuspendLayout();
             SuspendLayout();
@@ -59,6 +59,26 @@
             pSuperiorAddEmpleado.Size = new Size(966, 60);
             pSuperiorAddEmpleado.TabIndex = 0;
             pSuperiorAddEmpleado.Paint += pSuperiorAddEmpleado_Paint;
+            // 
+            // btnCerrarAddEmpleado
+            // 
+            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
+            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
+            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
+            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
+            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnCerrarAddEmpleado.IconSize = 20;
+            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.Location = new Point(935, 3);
+            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
+            btnCerrarAddEmpleado.Size = new Size(28, 24);
+            btnCerrarAddEmpleado.TabIndex = 15;
+            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
+            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
             // 
             // gbAddEmpleado
             // 
@@ -82,6 +102,7 @@
             gbAddEmpleado.TabIndex = 1;
             gbAddEmpleado.TabStop = false;
             gbAddEmpleado.Text = "AGREGAR EMPLEADO";
+            gbAddEmpleado.Enter += gbAddEmpleado_Enter;
             // 
             // txtTelefonoEmpleado
             // 
@@ -227,26 +248,6 @@
             lblNombreEmpleado.Size = new Size(54, 15);
             lblNombreEmpleado.TabIndex = 0;
             lblNombreEmpleado.Text = "Nombre:";
-            // 
-            // btnCerrarAddEmpleado
-            // 
-            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
-            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
-            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
-            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
-            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
-            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnCerrarAddEmpleado.IconSize = 20;
-            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(935, 3);
-            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
-            btnCerrarAddEmpleado.Size = new Size(28, 24);
-            btnCerrarAddEmpleado.TabIndex = 15;
-            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
-            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
             // 
             // frmAgregarEmpleado
             // 

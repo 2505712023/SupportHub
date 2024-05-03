@@ -18,6 +18,7 @@ namespace Presentacion
         public frmAgregarEmpleado(frmEmpleado formEmpleado)
         {
             InitializeComponent();
+            
         }
         public delegate void UpdateDelagate(object sender, UpdateEventArgs arg);
         public event UpdateDelagate UpdateEventHandler;
@@ -47,7 +48,7 @@ namespace Presentacion
         }
 
 
-       
+
         private void LlenarComboBoxAreas()
         {
             DataTable areas = agregarEmpleados.ObtenerArea();
@@ -66,7 +67,7 @@ namespace Presentacion
             cbxCargoEmpleado.ValueMember = "idCargo";
         }
 
-      
+
 
         private void cbxCargoEmpleado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -165,6 +166,11 @@ namespace Presentacion
         private void btnCerrarAddEmpleado_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void gbAddEmpleado_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
