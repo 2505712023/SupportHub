@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,20 +14,36 @@ namespace Presentacion
 {
     public partial class frmModificarEmpleado : Form
     {
+        ModeloEmpleado agregarEmpleados = new ModeloEmpleado();
 
-
-
-        public frmModificarEmpleado()
+        public frmModificarEmpleado(frmEmpleado Emple)
         {
             InitializeComponent();
-        }
-        ModeloEmpleado modEmpleado = new ModeloEmpleado();
-      public string Operacion = "Insertar";
-      public string codEmpleado;
 
+
+        }
+        ModeloEmpleado modeloEmpleado = new ModeloEmpleado();
+        public string Operacion = "Insertar";
+        public string codEmpleado;
+
+        public delegate void ModificarDelegate(object sender, ModificarEventArgs arg);
+        public event ModificarDelegate UpdateEventHandler;
+        public class ModificarEventArgs : EventArgs
+        {
+            public string Data { get; set; }
+
+        }
+        protected void Actualizar()
+        {
+
+            ModificarEventArgs args = new ModificarEventArgs();
+            UpdateEventHandler.Invoke(this, args);
+        }
         public void LlenarComboBoxAreas()
         {
-            DataTable areas = modEmpleado.ObtenerArea();
+
+
+            DataTable areas = agregarEmpleados.ObtenerArea();
 
             cbxAreaEmpleadoUpdate.DataSource = areas;
             cbxAreaEmpleadoUpdate.DisplayMember = "nombreArea";
@@ -35,58 +52,152 @@ namespace Presentacion
 
         public void LlenarComboBoxCargos()
         {
-            DataTable cargos = modEmpleado.ObtenerCargo();
+            DataTable cargos = agregarEmpleados.ObtenerCargo();
 
             cbxCargoEmpleadoUpdate.DataSource = cargos;
             cbxCargoEmpleadoUpdate.DisplayMember = "nombreCargo";
             cbxCargoEmpleadoUpdate.ValueMember = "idCargo";
+
         }
+
+
         private void frmModificarEmpleado_Load(object sender, EventArgs e)
         {
 
         }
-        public void CargarDatosEmpleado(string nombreEmpleado, string apellidoEmpleado, string telefono, string email, string idCargo, string idArea)
-        {
-            // Llena los controles del formulario con los datos del empleado seleccionado
-            txtNombreEmpleadoUpdate.Text = nombreEmpleado;
-            txtApellidoEmpleadoUpdate.Text = apellidoEmpleado;
-            txtTelefonoEmpleadoUpdate.Text = telefono;
-            txtEmailEmpleadoUpdate.Text = email;
 
-            // Selecciona los valores en los ComboBox basados en los ID proporcionados
-            cbxCargoEmpleadoUpdate.SelectedValue = idCargo;
-            cbxAreaEmpleadoUpdate.SelectedValue = idArea;
-        }
 
         private void btnGuaardarUpdate_Click(object sender, EventArgs e)
         {
-            if (Operacion == "Insertar")
+            if (ValidarCampos())
             {
-                modEmpleado.InsertarEmpleado(
-                    txtNombreEmpleadoUpdate.Text,
+                modeloEmpleado.ActualizarEmpleado(codEmpleado,
+                 txtNombreEmpleadoUpdate.Text,
                     txtApellidoEmpleadoUpdate.Text,
                     txtTelefonoEmpleadoUpdate.Text,
                     txtEmailEmpleadoUpdate.Text,
-                    Convert.ToInt32(cbxAreaEmpleadoUpdate.SelectedValue),
-                    Convert.ToInt32(cbxCargoEmpleadoUpdate.SelectedValue)
+                     Convert.ToInt32(cbxCargoEmpleadoUpdate.SelectedValue),
+                    Convert.ToInt32(cbxAreaEmpleadoUpdate.SelectedValue)
+
                 );
-                MessageBox.Show("Se insertó correctamente");
+                MessageBox.Show("Se  guardo correctamente");
+                Actualizar();
+                txtNombreEmpleadoUpdate.Text = "";
+                txtApellidoEmpleadoUpdate.Text = "";
+                txtTelefonoEmpleadoUpdate.Text = "";
+                txtEmailEmpleadoUpdate.Text = "";
+                cbxAreaEmpleadoUpdate.Text = null;
+                cbxCargoEmpleadoUpdate.Text = null;
             }
-            // Si la operación es una edición
-            else if (Operacion == "Editar")
+
+        }
+
+
+        private void btnGuardarUpdate_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cbxCargoEmpleadoUpdate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private bool ValidarCampos()
+        {
+
+            if (string.IsNullOrEmpty(txtNombreEmpleadoUpdate.Text) || !EsLetras(txtNombreEmpleadoUpdate.Text))
             {
-                modEmpleado.EditarEmpleado(
-                    txtNombreEmpleadoUpdate.Text,
-                    txtApellidoEmpleadoUpdate.Text,
-                    txtTelefonoEmpleadoUpdate.Text,
-                    txtEmailEmpleadoUpdate.Text,
-                    Convert.ToInt32(cbxAreaEmpleadoUpdate.SelectedValue),
-                    Convert.ToInt32(cbxCargoEmpleadoUpdate.SelectedValue)
-                );
-                MessageBox.Show("Se editó correctamente");
-
+                MessageBox.Show("Ingrese un nombre válido.");
+                return false;
             }
 
+            // Validar apellido
+            if (string.IsNullOrEmpty(txtApellidoEmpleadoUpdate.Text) || !EsLetras(txtApellidoEmpleadoUpdate.Text))
+            {
+                MessageBox.Show("Ingrese un apellido válido.");
+                return false;
+            }
+
+
+            if (string.IsNullOrWhiteSpace(txtTelefonoEmpleadoUpdate.Text) || !EsTelefono(txtTelefonoEmpleadoUpdate.Text))
+            {
+                MessageBox.Show("Ingrese un número de teléfono válido (formato: 2222-0000).");
+                return false;
+            }
+
+
+            if (string.IsNullOrWhiteSpace(txtEmailEmpleadoUpdate.Text) || !EsCorreo(txtEmailEmpleadoUpdate.Text))
+            {
+                MessageBox.Show("Ingrese un correo electrónico válido.");
+                return false;
+            }
+
+
+            if (cbxCargoEmpleadoUpdate.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un cargo.");
+                return false;
+            }
+
+
+            if (cbxAreaEmpleadoUpdate.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un área.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool EsLetras(string texto)
+        {
+
+            string[] palabras = texto.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string palabra in palabras)
+            {
+                if (!palabra.All(char.IsLetter))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool EsTelefono(string telefono)
+        {
+
+            return Regex.IsMatch(telefono, @"^\d{4}-\d{4}$");
+        }
+
+        private bool EsCorreo(string correo)
+        {
+
+            return Regex.IsMatch(correo, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        }
+        private void pSuperiorAddEmpleado_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnCerrarAddEmpleado_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void gbAddEmpleado_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGuardarUpdate_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCerrarModificarEmpleado_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 

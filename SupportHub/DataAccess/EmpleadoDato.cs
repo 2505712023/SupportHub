@@ -101,21 +101,26 @@ namespace DataAccess
 
 
         }
-        public void Editar(string nombreEmpleado, string apellidoEmpleado, string telefonoEmpleado, string emailEmpleado, int idCargo, int idArea)
+        public void ActualizarEmpleado(string codEmpleado, string nombreEmpleado, string apellidoEmpleado, string telefono, string email, int idCargo, int idArea)
         {
-            using (SqlConnection connection = conexion.GetConnection())
-            {
-                using (SqlCommand comando = new SqlCommand("sp_modificar_empleado", connection))
-                {
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@nombreEmpleado", nombreEmpleado);
-                    comando.Parameters.AddWithValue("@apellidoEmpleado", apellidoEmpleado);
-                    comando.Parameters.AddWithValue("@telefono", telefonoEmpleado);
-                    comando.Parameters.AddWithValue("@emailEmpleado", emailEmpleado);
-                    comando.Parameters.AddWithValue("@idCargo", idCargo);
-                    comando.Parameters.AddWithValue("@idArea", idArea);
+            string nombreProcedimiento = "sp_modificar_empleado";
 
-                    connection.Open();
+            using (var comando = new SqlCommand())
+            {
+                comando.CommandText = nombreProcedimiento;
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@codEmpleado", codEmpleado);
+                comando.Parameters.AddWithValue("@nombreEmpleado", nombreEmpleado);
+                comando.Parameters.AddWithValue("@apellidoEmpleado", apellidoEmpleado);
+                comando.Parameters.AddWithValue("@telefono", telefono);
+                comando.Parameters.AddWithValue("@emailEmpleado", email);
+                comando.Parameters.AddWithValue("@idCargo", idCargo);
+                comando.Parameters.AddWithValue("@idArea", idArea);
+
+                using (SqlConnection conn = conexion.GetConnection())
+                {
+                    comando.Connection = conn;
+                    conn.Open();
                     comando.ExecuteNonQuery();
                 }
             }

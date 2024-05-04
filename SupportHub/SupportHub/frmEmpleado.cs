@@ -25,10 +25,20 @@ namespace Presentacion
 
             mostrarEmpleado();
         }
+        private void ModificarUpdateEvenHandler(object sender, frmModificarEmpleado.ModificarEventArgs args)
+        {
+
+            mostrarEmpleado();
+        }
+
+
+
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
             frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
             formEmpleado.UpdateEventHandler += AgregarUpdateEvenHandler;
+
+          
 
             formEmpleado.Show();
         }
@@ -127,29 +137,31 @@ namespace Presentacion
         {
             if (dgvEmpleado.SelectedRows.Count > 0)
             {
-                // Obtén una referencia al formulario de modificación
-                frmModificarEmpleado modiEmpleado = new frmModificarEmpleado();
+                if (dgvEmpleado.SelectedRows.Count == 1)
+                {
+                    frmModificarEmpleado frm = new frmModificarEmpleado(this);
+                frm.UpdateEventHandler += ModificarUpdateEvenHandler;
+                frm.LlenarComboBoxCargos();
+                frm.LlenarComboBoxAreas();
+                frm.codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
+                frm.txtNombreEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreEmpleado"].Value.ToString();
+                frm.txtApellidoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["apellidoEmpleado"].Value.ToString();
+                frm.txtTelefonoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["telefonoEmpleado"].Value.ToString();
+                frm.txtEmailEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["emailEmpleado"].Value.ToString();
+                frm.cbxAreaEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreArea"].Value.ToString();
+                frm.cbxCargoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreCargo"].Value.ToString();
+                frm.ShowDialog();
 
-                // Configura los datos a pasar al formulario de modificación
-                modiEmpleado.Operacion = "Editar";
-                modiEmpleado.CargarDatosEmpleado(
-                    dgvEmpleado.CurrentRow.Cells["nombreEmpleado"].Value.ToString(),
-                    dgvEmpleado.CurrentRow.Cells["apellidoEmpleado"].Value.ToString(),
-                    dgvEmpleado.CurrentRow.Cells["telefonoEmpleado"].Value.ToString(),
-                    dgvEmpleado.CurrentRow.Cells["emailEmpleado"].Value.ToString(),
-                    dgvEmpleado.CurrentRow.Cells["codArea"].Value.ToString(),
-                    dgvEmpleado.CurrentRow.Cells["codCargo"].Value.ToString()
-                );
-
-                // Muestra el formulario de modificación
-                modiEmpleado.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione solo una fila por favor");
+                }
             }
             else
             {
-                // Si no hay filas seleccionadas en el DataGridView, muestra un mensaje de advertencia
-                MessageBox.Show("Debe seleccionar una fila");
+                MessageBox.Show("Seleccione una fila por favor");
             }
-
         }
     }
 }

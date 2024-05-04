@@ -45,6 +45,8 @@ namespace Presentacion
         {
             LlenarComboBoxAreas();
             LlenarComboBoxCargos();
+            cbxAreaEmpleado.Text = null;
+            cbxCargoEmpleado.Text = null;
         }
 
 
@@ -91,34 +93,40 @@ namespace Presentacion
                 MessageBox.Show("Se insertó correctamente");
                 Agregar();
 
+                txtNombreEmpleado.Text = "";
+                txtApellidoEmpleado.Text = "";
+                txtTelefonoEmpleado.Text = "";
+                txtEmailEmpleado.Text = "";
+                cbxAreaEmpleado.Text=null;
+                cbxCargoEmpleado.Text = null;
             }
         }
 
         private bool ValidarCampos()
         {
             // Validar nombre
-            if (string.IsNullOrWhiteSpace(txtNombreEmpleado.Text) || !EsLetras(txtNombreEmpleado.Text))
+            if (string.IsNullOrEmpty(txtNombreEmpleado.Text) || !EsLetras(txtNombreEmpleado.Text))
             {
                 MessageBox.Show("Ingrese un nombre válido.");
                 return false;
             }
 
             // Validar apellido
-            if (string.IsNullOrWhiteSpace(txtApellidoEmpleado.Text) || !EsLetras(txtApellidoEmpleado.Text))
+            if (string.IsNullOrEmpty(txtApellidoEmpleado.Text) || !EsLetras(txtApellidoEmpleado.Text))
             {
                 MessageBox.Show("Ingrese un apellido válido.");
                 return false;
             }
 
 
-            if (string.IsNullOrWhiteSpace(txtTelefonoEmpleado.Text) || !EsTelefono(txtTelefonoEmpleado.Text))
+            if (string.IsNullOrEmpty(txtTelefonoEmpleado.Text) || !EsTelefono(txtTelefonoEmpleado.Text))
             {
                 MessageBox.Show("Ingrese un número de teléfono válido (formato: 2222-0000).");
                 return false;
             }
 
 
-            if (string.IsNullOrWhiteSpace(txtEmailEmpleado.Text) || !EsCorreo(txtEmailEmpleado.Text))
+            if (string.IsNullOrEmpty(txtEmailEmpleado.Text) || !EsCorreo(txtEmailEmpleado.Text))
             {
                 MessageBox.Show("Ingrese un correo electrónico válido.");
                 return false;
@@ -144,7 +152,15 @@ namespace Presentacion
         private bool EsLetras(string texto)
         {
 
-            return texto.All(char.IsLetter);
+            string[] palabras = texto.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (string palabra in palabras)
+            {
+                if (!palabra.All(char.IsLetter))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         private bool EsTelefono(string telefono)

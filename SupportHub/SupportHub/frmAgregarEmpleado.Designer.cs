@@ -110,7 +110,7 @@
             txtTelefonoEmpleado.Mask = "0000-0000";
             txtTelefonoEmpleado.Name = "txtTelefonoEmpleado";
             txtTelefonoEmpleado.Size = new Size(266, 23);
-            txtTelefonoEmpleado.TabIndex = 14;
+            txtTelefonoEmpleado.TabIndex = 8;
             // 
             // btnCancelaEmpleado
             // 

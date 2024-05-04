@@ -36,9 +36,9 @@ namespace Dominio
         {
             empDato.InsertarEmpleado(nombreEmpleado, apellidoEmpleado, telefono, email, idCargo, idArea);
         }
-        public void EditarEmpleado(string nombreEmpleado, string apellidoEmpleado, string telefonoEmpleado, string emailEmpleado, int idCargo, int idArea)
+        public void ActualizarEmpleado(string codEmpleado, string nombreEmpleado, string apellidoEmpleado, string telefono, string email, int idCargo, int idArea)
         {
-            empDato.Editar(nombreEmpleado, apellidoEmpleado, telefonoEmpleado, emailEmpleado, idCargo, idArea);
+            empDato.ActualizarEmpleado(codEmpleado, nombreEmpleado, apellidoEmpleado, telefono, email, idCargo, idArea);
         }
     }
 

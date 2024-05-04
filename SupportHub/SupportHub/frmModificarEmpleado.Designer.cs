@@ -47,6 +47,7 @@
             lblTelefonoEmpleadoUpdate = new Label();
             lblApellidoEmpleadoUpdate = new Label();
             lblNombreEmpleadoUpdate = new Label();
+            btnCerrarModificarEmpleado = new FontAwesome.Sharp.IconButton();
             pSuperiorUpdEmpleado.SuspendLayout();
             gbUpdEmpleado.SuspendLayout();
             SuspendLayout();
@@ -54,6 +55,7 @@
             // pSuperiorUpdEmpleado
             // 
             pSuperiorUpdEmpleado.BackColor = Color.FromArgb(5, 23, 59);
+            pSuperiorUpdEmpleado.Controls.Add(btnCerrarModificarEmpleado);
             pSuperiorUpdEmpleado.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorUpdEmpleado.Dock = DockStyle.Top;
             pSuperiorUpdEmpleado.Location = new Point(0, 0);
@@ -121,11 +123,12 @@
             btnGuardarUpdate.Location = new Point(738, 250);
             btnGuardarUpdate.Name = "btnGuardarUpdate";
             btnGuardarUpdate.Size = new Size(115, 38);
-            btnGuardarUpdate.TabIndex = 16;
+            btnGuardarUpdate.TabIndex = 13;
             btnGuardarUpdate.Text = "CANCELAR";
             btnGuardarUpdate.TextAlign = ContentAlignment.MiddleLeft;
             btnGuardarUpdate.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardarUpdate.UseVisualStyleBackColor = false;
+            btnGuardarUpdate.Click += btnGuardarUpdate_Click_1;
             // 
             // btnGuaardarUpdate
             // 
@@ -142,7 +145,7 @@
             btnGuaardarUpdate.Location = new Point(606, 250);
             btnGuaardarUpdate.Name = "btnGuaardarUpdate";
             btnGuaardarUpdate.Size = new Size(115, 38);
-            btnGuaardarUpdate.TabIndex = 15;
+            btnGuaardarUpdate.TabIndex = 12;
             btnGuaardarUpdate.Text = "GUARDAR";
             btnGuaardarUpdate.TextAlign = ContentAlignment.MiddleLeft;
             btnGuaardarUpdate.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -155,7 +158,7 @@
             txtTelefonoEmpleadoUpdate.Mask = "0000-0000";
             txtTelefonoEmpleadoUpdate.Name = "txtTelefonoEmpleadoUpdate";
             txtTelefonoEmpleadoUpdate.Size = new Size(266, 23);
-            txtTelefonoEmpleadoUpdate.TabIndex = 14;
+            txtTelefonoEmpleadoUpdate.TabIndex = 8;
             // 
             // btnCancelaEmpleado
             // 
@@ -211,6 +214,7 @@
             // cbxCargoEmpleadoUpdate
             // 
             cbxCargoEmpleadoUpdate.FormattingEnabled = true;
+            cbxCargoEmpleadoUpdate.ItemHeight = 15;
             cbxCargoEmpleadoUpdate.Location = new Point(456, 47);
             cbxCargoEmpleadoUpdate.Name = "cbxCargoEmpleadoUpdate";
             cbxCargoEmpleadoUpdate.Size = new Size(155, 23);
@@ -291,6 +295,26 @@
             lblNombreEmpleadoUpdate.TabIndex = 0;
             lblNombreEmpleadoUpdate.Text = "Nombre:";
             // 
+            // btnCerrarModificarEmpleado
+            // 
+            btnCerrarModificarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarModificarEmpleado.FlatAppearance.BorderSize = 0;
+            btnCerrarModificarEmpleado.FlatStyle = FlatStyle.Flat;
+            btnCerrarModificarEmpleado.ForeColor = SystemColors.ControlLightLight;
+            btnCerrarModificarEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnCerrarModificarEmpleado.IconColor = SystemColors.Window;
+            btnCerrarModificarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnCerrarModificarEmpleado.IconSize = 20;
+            btnCerrarModificarEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCerrarModificarEmpleado.Location = new Point(935, 3);
+            btnCerrarModificarEmpleado.Name = "btnCerrarModificarEmpleado";
+            btnCerrarModificarEmpleado.Size = new Size(28, 24);
+            btnCerrarModificarEmpleado.TabIndex = 16;
+            btnCerrarModificarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
+            btnCerrarModificarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCerrarModificarEmpleado.UseVisualStyleBackColor = true;
+            btnCerrarModificarEmpleado.Click += btnCerrarModificarEmpleado_Click;
+            // 
             // frmModificarEmpleado
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -331,5 +355,6 @@
         public Label lblTelefonoEmpleadoUpdate;
         public Label lblApellidoEmpleadoUpdate;
         public Label lblNombreEmpleadoUpdate;
+        private FontAwesome.Sharp.IconButton btnCerrarModificarEmpleado;
     }
 }
