@@ -30,7 +30,11 @@
         {
             pSuperiorAddEntrega = new Panel();
             gbAddEntrega = new GroupBox();
-            comboBox2 = new ComboBox();
+            tboxCantidadEntrega = new MaskedTextBox();
+            lblCantidadAEntregar = new Label();
+            tboxCantidadDisponible = new TextBox();
+            lblCantidadDisponible = new Label();
+            cboxEquipo = new ComboBox();
             lblEquipo = new Label();
             cboxEmpleado = new ComboBox();
             labEmpleado = new Label();
@@ -40,14 +44,10 @@
             ibtnGuardarEntrega = new FontAwesome.Sharp.IconButton();
             lblFechaEntrega = new Label();
             dtpickerFechaEntrega = new DateTimePicker();
-            cbxTipoEntrega = new ComboBox();
+            cboxTipoEntrega = new ComboBox();
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
             lblTipoDeEntrega = new Label();
-            lblCantidadDisponible = new Label();
-            tboxCantidadDisponible = new TextBox();
-            textBox1 = new TextBox();
-            lblCantidadAEntregar = new Label();
             gbAddEntrega.SuspendLayout();
             SuspendLayout();
             // 
@@ -63,11 +63,11 @@
             // gbAddEntrega
             // 
             gbAddEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            gbAddEntrega.Controls.Add(textBox1);
+            gbAddEntrega.Controls.Add(tboxCantidadEntrega);
             gbAddEntrega.Controls.Add(lblCantidadAEntregar);
             gbAddEntrega.Controls.Add(tboxCantidadDisponible);
             gbAddEntrega.Controls.Add(lblCantidadDisponible);
-            gbAddEntrega.Controls.Add(comboBox2);
+            gbAddEntrega.Controls.Add(cboxEquipo);
             gbAddEntrega.Controls.Add(lblEquipo);
             gbAddEntrega.Controls.Add(cboxEmpleado);
             gbAddEntrega.Controls.Add(labEmpleado);
@@ -77,7 +77,7 @@
             gbAddEntrega.Controls.Add(ibtnGuardarEntrega);
             gbAddEntrega.Controls.Add(lblFechaEntrega);
             gbAddEntrega.Controls.Add(dtpickerFechaEntrega);
-            gbAddEntrega.Controls.Add(cbxTipoEntrega);
+            gbAddEntrega.Controls.Add(cboxTipoEntrega);
             gbAddEntrega.Controls.Add(btnCancelaEmpleado);
             gbAddEntrega.Controls.Add(btnGuardarEmpleado);
             gbAddEntrega.Controls.Add(lblTipoDeEntrega);
@@ -89,14 +89,55 @@
             gbAddEntrega.TabStop = false;
             gbAddEntrega.Text = "AGREGAR ENTREGA";
             // 
-            // comboBox2
+            // tboxCantidadEntrega
             // 
-            comboBox2.Font = new Font("Segoe UI", 12F);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(198, 146);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(363, 29);
-            comboBox2.TabIndex = 25;
+            tboxCantidadEntrega.Location = new Point(198, 216);
+            tboxCantidadEntrega.Mask = "99999";
+            tboxCantidadEntrega.Name = "tboxCantidadEntrega";
+            tboxCantidadEntrega.Size = new Size(98, 29);
+            tboxCantidadEntrega.TabIndex = 29;
+            tboxCantidadEntrega.TextAlign = HorizontalAlignment.Center;
+            tboxCantidadEntrega.ValidatingType = typeof(int);
+            tboxCantidadEntrega.Leave += tboxCantidadEntrega_Leave;
+            // 
+            // lblCantidadAEntregar
+            // 
+            lblCantidadAEntregar.AutoSize = true;
+            lblCantidadAEntregar.Location = new Point(22, 219);
+            lblCantidadAEntregar.Name = "lblCantidadAEntregar";
+            lblCantidadAEntregar.Size = new Size(166, 21);
+            lblCantidadAEntregar.TabIndex = 28;
+            lblCantidadAEntregar.Text = "Cantidad a Entregar:";
+            // 
+            // tboxCantidadDisponible
+            // 
+            tboxCantidadDisponible.Enabled = false;
+            tboxCantidadDisponible.ForeColor = Color.Green;
+            tboxCantidadDisponible.Location = new Point(198, 181);
+            tboxCantidadDisponible.Name = "tboxCantidadDisponible";
+            tboxCantidadDisponible.ReadOnly = true;
+            tboxCantidadDisponible.Size = new Size(98, 29);
+            tboxCantidadDisponible.TabIndex = 27;
+            tboxCantidadDisponible.TextAlign = HorizontalAlignment.Center;
+            // 
+            // lblCantidadDisponible
+            // 
+            lblCantidadDisponible.AutoSize = true;
+            lblCantidadDisponible.Location = new Point(22, 184);
+            lblCantidadDisponible.Name = "lblCantidadDisponible";
+            lblCantidadDisponible.Size = new Size(170, 21);
+            lblCantidadDisponible.TabIndex = 26;
+            lblCantidadDisponible.Text = "Cantidad Disponible:";
+            // 
+            // cboxEquipo
+            // 
+            cboxEquipo.Font = new Font("Segoe UI", 12F);
+            cboxEquipo.FormattingEnabled = true;
+            cboxEquipo.Location = new Point(198, 146);
+            cboxEquipo.Name = "cboxEquipo";
+            cboxEquipo.Size = new Size(363, 29);
+            cboxEquipo.TabIndex = 25;
+            cboxEquipo.Leave += cboxEquipo_Leave;
             // 
             // lblEquipo
             // 
@@ -204,14 +245,14 @@
             dtpickerFechaEntrega.Size = new Size(188, 29);
             dtpickerFechaEntrega.TabIndex = 15;
             // 
-            // cbxTipoEntrega
+            // cboxTipoEntrega
             // 
-            cbxTipoEntrega.Font = new Font("Segoe UI", 12F);
-            cbxTipoEntrega.FormattingEnabled = true;
-            cbxTipoEntrega.Location = new Point(198, 41);
-            cbxTipoEntrega.Name = "cbxTipoEntrega";
-            cbxTipoEntrega.Size = new Size(217, 29);
-            cbxTipoEntrega.TabIndex = 14;
+            cboxTipoEntrega.Font = new Font("Segoe UI", 12F);
+            cboxTipoEntrega.FormattingEnabled = true;
+            cboxTipoEntrega.Location = new Point(198, 41);
+            cboxTipoEntrega.Name = "cboxTipoEntrega";
+            cboxTipoEntrega.Size = new Size(217, 29);
+            cboxTipoEntrega.TabIndex = 14;
             // 
             // btnCancelaEmpleado
             // 
@@ -265,39 +306,6 @@
             lblTipoDeEntrega.TabIndex = 4;
             lblTipoDeEntrega.Text = "Tipo de Entrega:";
             // 
-            // lblCantidadDisponible
-            // 
-            lblCantidadDisponible.AutoSize = true;
-            lblCantidadDisponible.Location = new Point(22, 184);
-            lblCantidadDisponible.Name = "lblCantidadDisponible";
-            lblCantidadDisponible.Size = new Size(170, 21);
-            lblCantidadDisponible.TabIndex = 26;
-            lblCantidadDisponible.Text = "Cantidad Disponible:";
-            // 
-            // tboxCantidadDisponible
-            // 
-            tboxCantidadDisponible.Location = new Point(198, 181);
-            tboxCantidadDisponible.Name = "tboxCantidadDisponible";
-            tboxCantidadDisponible.ReadOnly = true;
-            tboxCantidadDisponible.Size = new Size(98, 29);
-            tboxCantidadDisponible.TabIndex = 27;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(198, 216);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(98, 29);
-            textBox1.TabIndex = 29;
-            // 
-            // lblCantidadAEntregar
-            // 
-            lblCantidadAEntregar.AutoSize = true;
-            lblCantidadAEntregar.Location = new Point(22, 219);
-            lblCantidadAEntregar.Name = "lblCantidadAEntregar";
-            lblCantidadAEntregar.Size = new Size(166, 21);
-            lblCantidadAEntregar.TabIndex = 28;
-            lblCantidadAEntregar.Text = "Cantidad a Entregar:";
-            // 
             // frmAgregarEntrega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -336,20 +344,20 @@
         private Label lblTelefonoEmpleado;
         private Label lblApellidoEmpleado;
         private Label lblNombreEmpleado;
-        private ComboBox cbxTipoEntrega;
+        private ComboBox cboxTipoEntrega;
         private Label lblFechaEntrega;
         private DateTimePicker dtpickerFechaEntrega;
         private FontAwesome.Sharp.IconButton ibtnCancelarEntrega;
         private FontAwesome.Sharp.IconButton ibtnGuardarEntrega;
         private Label lblObservacionEntrega;
         private RichTextBox rtxtObservacionEntrega;
-        private ComboBox comboBox2;
+        private ComboBox cboxEquipo;
         private Label lblEquipo;
         private ComboBox cboxEmpleado;
         private Label labEmpleado;
         private TextBox tboxCantidadDisponible;
         private Label lblCantidadDisponible;
-        private TextBox textBox1;
         private Label lblCantidadAEntregar;
+        private MaskedTextBox tboxCantidadEntrega;
     }
 }

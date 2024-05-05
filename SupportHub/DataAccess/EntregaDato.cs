@@ -86,7 +86,7 @@ namespace DataAccess
 
         public static DataTable obtenerEmpleados()
         {
-            string querySelectEmpleados = "select idEmpleado as [idEmpleado],nombreEmpleado + ' ' + apellidosEmpleados as [Empleado] from Empleados";
+            string querySelectEmpleados = "select idEmpleado as [idEmpleado],nombreEmpleado + ' ' + apellidoEmpleado + ' - ' + codEmpleado as [Empleado] from Empleados";
 
             using (SqlConnection conect = conexion.GetConnection())
             {
@@ -115,6 +115,44 @@ namespace DataAccess
                 tablaEquipos.Load(lector);
 
                 return tablaEquipos;
+            }
+        }
+
+        public static int cantidadDisponibleEquipo(int idEquipo)
+        {
+            string querySelectCantidadDisponibleEquipo = "select case when (E.cantidadEquipo - isnull(sum(EN.cantidadEntrega), 0)) > 0 then (E.cantidadEquipo - isnull(sum(EN.cantidadEntrega), 0)) else 0 end as [cantidadDisponible] from Equipos E left join Entregas EN on EN.idEquipo = E.idEquipo where E.idEquipo = " + idEquipo.ToString() + " group by E.cantidadEquipo, EN.cantidadEntrega";
+            int cantidadDisponible = 0;
+
+
+            using (SqlConnection conect = conexion.GetConnection())
+            {
+                conect.Open();
+                SqlCommand comando = new SqlCommand(querySelectCantidadDisponibleEquipo, conect);
+                SqlDataReader lector = comando.ExecuteReader();
+
+                if (lector.Read())
+                {
+                    cantidadDisponible = Convert.ToInt32(lector.GetValue("cantidadDisponible"));
+                }
+            }
+
+            return cantidadDisponible;
+        }
+
+        public static DataTable obtenerTiposEntrega()
+        {
+            string querySelectTiposEntrega = "select idTipoEntrega, nombreTipoEntrega from TiposEntregas";
+
+            using (SqlConnection conect = conexion.GetConnection())
+            {
+                conect.Open();
+                SqlCommand comando = new SqlCommand(querySelectTiposEntrega, conect);
+                SqlDataReader lector = comando.ExecuteReader();
+
+                DataTable tablaTiposEntrega = new DataTable();
+                tablaTiposEntrega.Load(lector);
+
+                return tablaTiposEntrega;
             }
         }
     }

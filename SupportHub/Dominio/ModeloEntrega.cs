@@ -44,9 +44,17 @@ namespace Dominio
             return EntregaDato.obtenerEmpleados();
         }
 
-        public static DataTable obternerEquipos()
+        public static DataTable obtenerEquipos()
         {
             return EntregaDato.obtenerEquipos();
+        }
+        public static int cantidadDisponibleEquipo(int idEquipo)
+        {
+            return EntregaDato.cantidadDisponibleEquipo(idEquipo);
+        }
+        public static DataTable obtenerTiposEntrega()
+        {
+            return EntregaDato.obtenerTiposEntrega();
         }
     }
 }
