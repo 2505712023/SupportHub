@@ -16,9 +16,18 @@ namespace Presentacion
     {
         ModeloEmpleado EmpObjeto = new ModeloEmpleado();
         //private string codEmpleado = null;
+        private List<string> tipoEmpleado;
         public frmEmpleado()
         {
             InitializeComponent();
+
+            tipoEmpleado = new List<string>()
+ {
+            "Código de Empleado",
+            "Nombre",
+             "Apellido"
+ };
+            cbxTipoBusquedaEmpleado.DataSource = tipoEmpleado;
         }
         private void AgregarUpdateEvenHandler(object sender, frmAgregarEmpleado.UpdateEventArgs args)
         {
@@ -38,7 +47,7 @@ namespace Presentacion
             frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
             formEmpleado.UpdateEventHandler += AgregarUpdateEvenHandler;
 
-          
+
 
             formEmpleado.Show();
         }
@@ -59,6 +68,45 @@ namespace Presentacion
             txtBuscarEmpleado.Focus();
 
         }
+        private void cbxTipoBusquedaEmpleado_TextChanged(object sender, EventArgs e)
+        {
+            actualizarTablaEmpleado();
+        }
+
+        private void txtBuscarEmpleado_TextChanged(object sender, EventArgs e)
+        {
+            actualizarTablaEmpleado();
+        }
+
+        private void actualizarTablaEmpleado()
+        {
+            if (string.IsNullOrEmpty(txtBuscarEmpleado.Text))
+            {
+                mostrarEmpleado();
+                dgvEmpleado.ClearSelection();
+
+            }
+            else
+            {
+                switch (cbxTipoBusquedaEmpleado.Text)
+                {
+                    case "Código de Empleado":
+                        dgvEmpleado.DataSource = EmpObjeto.filtrarTablaEmpleado(codEmpleado: txtBuscarEmpleado.Text);
+                        break;
+                    case "Nombre":
+                        dgvEmpleado.DataSource = EmpObjeto.filtrarTablaEmpleado(nombreEmpleado: txtBuscarEmpleado.Text);
+                        break;
+                    case "Apellido":
+                        dgvEmpleado.DataSource = EmpObjeto.filtrarTablaEmpleado(apellidoEmpleado: txtBuscarEmpleado.Text);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            dgvEmpleado.ClearSelection();
+        }
+
+
         private void mostrarEmpleado()
         {
 
@@ -74,30 +122,33 @@ namespace Presentacion
 
         private void btnEliminarEmpleado_Click(object sender, EventArgs e)
         {
-            if (dgvEmpleado.SelectedRows.Count > 0)
+            DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar empleado?", "Eliminar empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (resultado == DialogResult.Yes)
             {
-                // Verificar si se ha seleccionado solo una fila
-                if (dgvEmpleado.SelectedRows.Count == 1)
+                if (dgvEmpleado.SelectedRows.Count > 0)
                 {
-                    string codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
-                    EmpObjeto.EliminarEmp(codEmpleado);
-                    MessageBox.Show("Eliminado Correctamente");
-                    mostrarEmpleado();
-                    txtBuscarEmpleado.Focus();
-                    mostrarEmpleado();
-                    ajusteDataGrid();
-                    dgvEmpleado.ClearSelection();
+                    // Verificar si se ha seleccionado solo una fila
+                    if (dgvEmpleado.SelectedRows.Count == 1)
+                    {
+                        string codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
+                        EmpObjeto.EliminarEmp(codEmpleado);
+                        MessageBox.Show("Eliminado Correctamente");
+                        mostrarEmpleado();
+                        txtBuscarEmpleado.Focus();
+                        mostrarEmpleado();
+                        ajusteDataGrid();
+                        dgvEmpleado.ClearSelection();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione solo una fila por favor");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione solo una fila por favor");
+                    MessageBox.Show("Seleccione una fila por favor");
                 }
             }
-            else
-            {
-                MessageBox.Show("Seleccione una fila por favor");
-            }
-
 
         }
         public void ajusteDataGrid()
@@ -140,17 +191,17 @@ namespace Presentacion
                 if (dgvEmpleado.SelectedRows.Count == 1)
                 {
                     frmModificarEmpleado frm = new frmModificarEmpleado(this);
-                frm.UpdateEventHandler += ModificarUpdateEvenHandler;
-                frm.LlenarComboBoxCargos();
-                frm.LlenarComboBoxAreas();
-                frm.codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
-                frm.txtNombreEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreEmpleado"].Value.ToString();
-                frm.txtApellidoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["apellidoEmpleado"].Value.ToString();
-                frm.txtTelefonoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["telefonoEmpleado"].Value.ToString();
-                frm.txtEmailEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["emailEmpleado"].Value.ToString();
-                frm.cbxAreaEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreArea"].Value.ToString();
-                frm.cbxCargoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreCargo"].Value.ToString();
-                frm.ShowDialog();
+                    frm.UpdateEventHandler += ModificarUpdateEvenHandler;
+                    frm.LlenarComboBoxCargos();
+                    frm.LlenarComboBoxAreas();
+                    frm.codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
+                    frm.txtNombreEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreEmpleado"].Value.ToString();
+                    frm.txtApellidoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["apellidoEmpleado"].Value.ToString();
+                    frm.txtTelefonoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["telefonoEmpleado"].Value.ToString();
+                    frm.txtEmailEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["emailEmpleado"].Value.ToString();
+                    frm.cbxAreaEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreArea"].Value.ToString();
+                    frm.cbxCargoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreCargo"].Value.ToString();
+                    frm.ShowDialog();
 
                 }
                 else
@@ -162,6 +213,13 @@ namespace Presentacion
             {
                 MessageBox.Show("Seleccione una fila por favor");
             }
+        }
+
+       
+
+        private void cbxTipoBusquedaEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

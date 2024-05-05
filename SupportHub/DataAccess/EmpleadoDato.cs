@@ -125,5 +125,28 @@ namespace DataAccess
                 }
             }
         }
+
+        public  DataTable filtrarTablaEmpleado(string codEmpleado = "-1", string nombreEmpleado = "-1", string apellidoEmpleado = "-1")
+        {
+          
+            using (SqlConnection conn = conexion.GetConnection())
+            {
+                cmd.CommandText = "sp_obtener_empleado";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@codEmpleado" , codEmpleado);
+                cmd.Parameters.AddWithValue("@nombreEmpleado", nombreEmpleado);
+                cmd.Parameters.AddWithValue("@apellidoEmpleado", apellidoEmpleado);
+                cmd.Connection = conn;
+
+                conn.Open();
+
+                SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
+                tabla.Clear();
+                adaptador.Fill(tabla);
+
+                return tabla;
+            }
+        }
     }
 }

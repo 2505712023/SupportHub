@@ -40,6 +40,10 @@ namespace Dominio
         {
             empDato.ActualizarEmpleado(codEmpleado, nombreEmpleado, apellidoEmpleado, telefono, email, idCargo, idArea);
         }
+        public  DataTable filtrarTablaEmpleado(string codEmpleado = "-1", string nombreEmpleado = "-1", string apellidoEmpleado = "-1")
+        {
+            return empDato.filtrarTablaEmpleado(codEmpleado, nombreEmpleado, apellidoEmpleado);
+        }
     }
 
 }

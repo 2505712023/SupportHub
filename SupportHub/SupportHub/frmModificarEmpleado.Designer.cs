@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             pSuperiorUpdEmpleado = new Panel();
+            btnCerrarModificarEmpleado = new FontAwesome.Sharp.IconButton();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbUpdEmpleado = new GroupBox();
             btnGuardarUpdate = new FontAwesome.Sharp.IconButton();
@@ -47,7 +48,6 @@
             lblTelefonoEmpleadoUpdate = new Label();
             lblApellidoEmpleadoUpdate = new Label();
             lblNombreEmpleadoUpdate = new Label();
-            btnCerrarModificarEmpleado = new FontAwesome.Sharp.IconButton();
             pSuperiorUpdEmpleado.SuspendLayout();
             gbUpdEmpleado.SuspendLayout();
             SuspendLayout();
@@ -62,6 +62,26 @@
             pSuperiorUpdEmpleado.Name = "pSuperiorUpdEmpleado";
             pSuperiorUpdEmpleado.Size = new Size(966, 60);
             pSuperiorUpdEmpleado.TabIndex = 1;
+            // 
+            // btnCerrarModificarEmpleado
+            // 
+            btnCerrarModificarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarModificarEmpleado.FlatAppearance.BorderSize = 0;
+            btnCerrarModificarEmpleado.FlatStyle = FlatStyle.Flat;
+            btnCerrarModificarEmpleado.ForeColor = SystemColors.ControlLightLight;
+            btnCerrarModificarEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnCerrarModificarEmpleado.IconColor = SystemColors.Window;
+            btnCerrarModificarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnCerrarModificarEmpleado.IconSize = 20;
+            btnCerrarModificarEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCerrarModificarEmpleado.Location = new Point(935, 3);
+            btnCerrarModificarEmpleado.Name = "btnCerrarModificarEmpleado";
+            btnCerrarModificarEmpleado.Size = new Size(28, 24);
+            btnCerrarModificarEmpleado.TabIndex = 16;
+            btnCerrarModificarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
+            btnCerrarModificarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCerrarModificarEmpleado.UseVisualStyleBackColor = true;
+            btnCerrarModificarEmpleado.Click += btnCerrarModificarEmpleado_Click;
             // 
             // btnCerrarAddEmpleado
             // 
@@ -294,26 +314,6 @@
             lblNombreEmpleadoUpdate.Size = new Size(54, 15);
             lblNombreEmpleadoUpdate.TabIndex = 0;
             lblNombreEmpleadoUpdate.Text = "Nombre:";
-            // 
-            // btnCerrarModificarEmpleado
-            // 
-            btnCerrarModificarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCerrarModificarEmpleado.FlatAppearance.BorderSize = 0;
-            btnCerrarModificarEmpleado.FlatStyle = FlatStyle.Flat;
-            btnCerrarModificarEmpleado.ForeColor = SystemColors.ControlLightLight;
-            btnCerrarModificarEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
-            btnCerrarModificarEmpleado.IconColor = SystemColors.Window;
-            btnCerrarModificarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnCerrarModificarEmpleado.IconSize = 20;
-            btnCerrarModificarEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarModificarEmpleado.Location = new Point(935, 3);
-            btnCerrarModificarEmpleado.Name = "btnCerrarModificarEmpleado";
-            btnCerrarModificarEmpleado.Size = new Size(28, 24);
-            btnCerrarModificarEmpleado.TabIndex = 16;
-            btnCerrarModificarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
-            btnCerrarModificarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCerrarModificarEmpleado.UseVisualStyleBackColor = true;
-            btnCerrarModificarEmpleado.Click += btnCerrarModificarEmpleado_Click;
             // 
             // frmModificarEmpleado
             // 

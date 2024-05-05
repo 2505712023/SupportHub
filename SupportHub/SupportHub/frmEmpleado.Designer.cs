@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             gbBusarEmpleado = new GroupBox();
+            cbxTipoBusquedaEmpleado = new ComboBox();
             txtBuscarEmpleado = new TextBox();
-            btnBuscarEmpleado = new FontAwesome.Sharp.IconButton();
             dgvEmpleado = new DataGridView();
             pDerechoEmpleado = new Panel();
             btnAgregarEmpleado = new FontAwesome.Sharp.IconButton();
@@ -43,41 +43,36 @@
             // gbBusarEmpleado
             // 
             gbBusarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            gbBusarEmpleado.Controls.Add(cbxTipoBusquedaEmpleado);
             gbBusarEmpleado.Controls.Add(txtBuscarEmpleado);
-            gbBusarEmpleado.Controls.Add(btnBuscarEmpleado);
+            gbBusarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             gbBusarEmpleado.Location = new Point(12, 25);
             gbBusarEmpleado.Name = "gbBusarEmpleado";
-            gbBusarEmpleado.Size = new Size(810, 56);
+            gbBusarEmpleado.Size = new Size(932, 68);
             gbBusarEmpleado.TabIndex = 0;
             gbBusarEmpleado.TabStop = false;
             gbBusarEmpleado.Text = "EMPLEADO::...";
             // 
+            // cbxTipoBusquedaEmpleado
+            // 
+            cbxTipoBusquedaEmpleado.Font = new Font("Segoe UI", 9F);
+            cbxTipoBusquedaEmpleado.FormattingEnabled = true;
+            cbxTipoBusquedaEmpleado.Location = new Point(6, 26);
+            cbxTipoBusquedaEmpleado.Name = "cbxTipoBusquedaEmpleado";
+            cbxTipoBusquedaEmpleado.Size = new Size(121, 23);
+            cbxTipoBusquedaEmpleado.TabIndex = 6;
+            cbxTipoBusquedaEmpleado.SelectedIndexChanged += cbxTipoBusquedaEmpleado_SelectedIndexChanged;
+            cbxTipoBusquedaEmpleado.TextChanged += cbxTipoBusquedaEmpleado_TextChanged;
+            // 
             // txtBuscarEmpleado
             // 
             txtBuscarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtBuscarEmpleado.Location = new Point(64, 26);
+            txtBuscarEmpleado.Font = new Font("Segoe UI", 9F);
+            txtBuscarEmpleado.Location = new Point(139, 26);
             txtBuscarEmpleado.Name = "txtBuscarEmpleado";
-            txtBuscarEmpleado.Size = new Size(740, 23);
+            txtBuscarEmpleado.Size = new Size(787, 23);
             txtBuscarEmpleado.TabIndex = 5;
-            // 
-            // btnBuscarEmpleado
-            // 
-            btnBuscarEmpleado.BackColor = Color.FromArgb(219, 231, 242);
-            btnBuscarEmpleado.FlatAppearance.BorderSize = 0;
-            btnBuscarEmpleado.FlatStyle = FlatStyle.Flat;
-            btnBuscarEmpleado.ForeColor = SystemColors.ControlLightLight;
-            btnBuscarEmpleado.IconChar = FontAwesome.Sharp.IconChar.Search;
-            btnBuscarEmpleado.IconColor = Color.FromArgb(31, 35, 40);
-            btnBuscarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnBuscarEmpleado.IconSize = 30;
-            btnBuscarEmpleado.Location = new Point(6, 22);
-            btnBuscarEmpleado.Name = "btnBuscarEmpleado";
-            btnBuscarEmpleado.Size = new Size(52, 28);
-            btnBuscarEmpleado.TabIndex = 4;
-            btnBuscarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
-            btnBuscarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnBuscarEmpleado.UseVisualStyleBackColor = false;
-            btnBuscarEmpleado.Click += btnBuscarEmpleado_Click;
+            txtBuscarEmpleado.TextChanged += txtBuscarEmpleado_TextChanged;
             // 
             // dgvEmpleado
             // 
@@ -192,12 +187,12 @@
         #endregion
 
         private GroupBox gbBusarEmpleado;
-        private FontAwesome.Sharp.IconButton btnBuscarEmpleado;
         private TextBox txtBuscarEmpleado;
         private DataGridView dgvEmpleado;
         private Panel pDerechoEmpleado;
         private FontAwesome.Sharp.IconButton btnAgregarEmpleado;
         private FontAwesome.Sharp.IconButton btnModificaEmpleado;
         private FontAwesome.Sharp.IconButton btnEliminarEmpleado;
+        private ComboBox cbxTipoBusquedaEmpleado;
     }
 }
