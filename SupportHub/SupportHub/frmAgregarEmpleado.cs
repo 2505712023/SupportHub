@@ -36,10 +36,10 @@ namespace Presentacion
 
             cbxAreaEmpleado.Items.Clear();
 
-          
+
             foreach (DataRow row in areas.Rows)
             {
-               
+
                 cbxAreaEmpleado.Items.Add(row["nombreArea"]);
             }
         }
@@ -58,6 +58,5 @@ namespace Presentacion
                 cbxCargoEmpleado.Items.Add(row["nombreCargo"]);
             }
         }
-
     }
 }

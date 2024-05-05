@@ -77,8 +77,8 @@ namespace SupportHub
                 var LoginValido = usuario.LoginUsuario(txtUsuario.Text, txtContraseña.Text);
                 if (LoginValido == true) {
                     this.Hide();
-                    frmCarga formLogin = new frmCarga();
-                    formLogin.ShowDialog();
+                    //frmCarga formLogin = new frmCarga();
+                    //formLogin.ShowDialog();
                     frmIndex inicio = new frmIndex();
                     inicio.Show();
                     inicio.FormClosed += CerrarSeccion;

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             btnEliminarEntrega = new FontAwesome.Sharp.IconButton();
             btnModificarEntrega = new FontAwesome.Sharp.IconButton();
             btnAgregarEntrega = new FontAwesome.Sharp.IconButton();
@@ -36,6 +39,7 @@
             gbBusarEmpleado = new GroupBox();
             cBoxTipoBusqueda = new ComboBox();
             txtBuscarEntrega = new TextBox();
+            btnGenerarDevolucion = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvEntregas).BeginInit();
             gbBusarEmpleado.SuspendLayout();
             SuspendLayout();
@@ -53,7 +57,7 @@
             btnEliminarEntrega.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarEntrega.IconSize = 20;
-            btnEliminarEntrega.Location = new Point(963, 235);
+            btnEliminarEntrega.Location = new Point(963, 298);
             btnEliminarEntrega.Name = "btnEliminarEntrega";
             btnEliminarEntrega.Size = new Size(156, 57);
             btnEliminarEntrega.TabIndex = 14;
@@ -106,12 +110,15 @@
             btnAgregarEntrega.Text = "AGREGAR";
             btnAgregarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregarEntrega.UseVisualStyleBackColor = false;
+            btnAgregarEntrega.Click += btnAgregarEntrega_Click;
             // 
             // dgvEntregas
             // 
             dgvEntregas.AllowUserToAddRows = false;
             dgvEntregas.AllowUserToDeleteRows = false;
             dgvEntregas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvEntregas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvEntregas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dgvEntregas.BackgroundColor = Color.FromArgb(148, 184, 216);
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
@@ -122,9 +129,28 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvEntregas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvEntregas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvEntregas.DefaultCellStyle = dataGridViewCellStyle2;
             dgvEntregas.Location = new Point(12, 86);
             dgvEntregas.Name = "dgvEntregas";
             dgvEntregas.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvEntregas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvEntregas.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvEntregas.Size = new Size(945, 417);
             dgvEntregas.TabIndex = 11;
             // 
@@ -161,12 +187,35 @@
             txtBuscarEntrega.TabIndex = 5;
             txtBuscarEntrega.TextChanged += txtBuscarEntrega_TextChanged;
             // 
+            // btnGenerarDevolucion
+            // 
+            btnGenerarDevolucion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnGenerarDevolucion.AutoSize = true;
+            btnGenerarDevolucion.BackColor = Color.FromArgb(237, 157, 36);
+            btnGenerarDevolucion.FlatAppearance.BorderSize = 0;
+            btnGenerarDevolucion.FlatStyle = FlatStyle.Flat;
+            btnGenerarDevolucion.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnGenerarDevolucion.ForeColor = Color.FromArgb(31, 35, 40);
+            btnGenerarDevolucion.IconChar = FontAwesome.Sharp.IconChar.RotateBack;
+            btnGenerarDevolucion.IconColor = Color.FromArgb(31, 35, 40);
+            btnGenerarDevolucion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnGenerarDevolucion.IconSize = 20;
+            btnGenerarDevolucion.Location = new Point(963, 235);
+            btnGenerarDevolucion.Name = "btnGenerarDevolucion";
+            btnGenerarDevolucion.Size = new Size(156, 57);
+            btnGenerarDevolucion.TabIndex = 15;
+            btnGenerarDevolucion.Text = "DEVOLUCIÓN";
+            btnGenerarDevolucion.TextAlign = ContentAlignment.MiddleLeft;
+            btnGenerarDevolucion.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnGenerarDevolucion.UseVisualStyleBackColor = false;
+            // 
             // frmEntrega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
             ClientSize = new Size(1131, 515);
+            Controls.Add(btnGenerarDevolucion);
             Controls.Add(btnEliminarEntrega);
             Controls.Add(btnModificarEntrega);
             Controls.Add(btnAgregarEntrega);
@@ -191,5 +240,6 @@
         private GroupBox gbBusarEmpleado;
         private TextBox txtBuscarEntrega;
         private ComboBox cBoxTipoBusqueda;
+        private FontAwesome.Sharp.IconButton btnGenerarDevolucion;
     }
 }

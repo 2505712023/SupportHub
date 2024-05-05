@@ -22,6 +22,10 @@ namespace Presentacion
             {
                 "Código de Entrega",
                 "Tipo de Entrega",
+                "Tipo de Equipo",
+                "Modelo",
+                "Marca",
+                "Empleado",
                 "Observación"
             };
             cBoxTipoBusqueda.DataSource = tiposDeBusqueda;
@@ -30,6 +34,9 @@ namespace Presentacion
         private void frmEntrega_Load(object sender, EventArgs e)
         {
             dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
+            dgvEntregas.Columns["idTipoEntrega"].Visible = false;
+            dgvEntregas.Columns["idEquipo"].Visible = false;
+            dgvEntregas.Columns["idEmpleado"].Visible = false;
             dgvEntregas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEntregas.ClearSelection();
         }
@@ -61,19 +68,34 @@ namespace Presentacion
                     case "Tipo de Entrega":
                         dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregas(nombreTipoEntrega: txtBuscarEntrega.Text);
                         break;
+                    case "Tipo de Equipo":
+                        dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregas(nombreTipoEquipo: txtBuscarEntrega.Text);
+                        break;
+                    case "Modelo":
+                        dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregas(modeloEquipo: txtBuscarEntrega.Text);
+                        break;
+                    case "Marca":
+                        dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregas(marcaEquipo: txtBuscarEntrega.Text);
+                        break;
+                    case "Empleado":
+                        dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregas(empleadoEntrega: txtBuscarEntrega.Text);
+                        break;
                     case "Observación":
-                        dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregas(observacionesEntrega: txtBuscarEntrega.Text);
+                        dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregas(observacionEntrega: txtBuscarEntrega.Text);
                         break;
                     default:
                         break;
                 }
             }
+            dgvEntregas.Columns["idTipoEntrega"].Visible = false;
+            dgvEntregas.Columns["idEquipo"].Visible = false;
+            dgvEntregas.Columns["idEmpleado"].Visible = false;
             dgvEntregas.ClearSelection();
         }
 
         private void btnEliminarEntrega_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar entregas?", "Eliminar entregas", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar entregas?", "Eliminar entregas", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (resultado == DialogResult.Yes)
             {
@@ -101,7 +123,13 @@ namespace Presentacion
                     MessageBox.Show("Debe seleccionar una o varias entregas para eliminarlas.");
                 }
                 actualizarTablaEntregas();
-            }            
+            }
+        }
+
+        private void btnAgregarEntrega_Click(object sender, EventArgs e)
+        {
+            frmAgregarEntrega formEntrega = new frmAgregarEntrega();
+            formEntrega.Show();
         }
     }
 }
