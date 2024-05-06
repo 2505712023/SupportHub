@@ -130,7 +130,7 @@
             btnModificaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModificaEmpleado.IconSize = 20;
             btnModificaEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnModificaEmpleado.Location = new Point(950, 216);
+            btnModificaEmpleado.Location = new Point(950, 222);
             btnModificaEmpleado.Name = "btnModificaEmpleado";
             btnModificaEmpleado.Size = new Size(113, 55);
             btnModificaEmpleado.TabIndex = 8;

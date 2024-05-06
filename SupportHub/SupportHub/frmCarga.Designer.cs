@@ -89,7 +89,7 @@
             lblBienve.AutoSize = true;
             lblBienve.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
             lblBienve.ForeColor = Color.FromArgb(31, 35, 40);
-            lblBienve.Location = new Point(271, 111);
+            lblBienve.Location = new Point(264, 87);
             lblBienve.Name = "lblBienve";
             lblBienve.Size = new Size(427, 86);
             lblBienve.TabIndex = 2;
@@ -105,7 +105,7 @@
             cpbCarga.InnerColor = Color.FromArgb(224, 224, 224);
             cpbCarga.InnerMargin = 2;
             cpbCarga.InnerWidth = -1;
-            cpbCarga.Location = new Point(426, 200);
+            cpbCarga.Location = new Point(426, 176);
             cpbCarga.MarqueeAnimationSpeed = 2000;
             cpbCarga.Name = "cpbCarga";
             cpbCarga.OuterColor = Color.FromArgb(148, 184, 216);
@@ -114,7 +114,7 @@
             cpbCarga.ProgressColor = Color.FromArgb(89, 134, 213);
             cpbCarga.ProgressWidth = 25;
             cpbCarga.SecondaryFont = new Font("Segoe UI", 26F, FontStyle.Bold);
-            cpbCarga.Size = new Size(178, 127);
+            cpbCarga.Size = new Size(178, 151);
             cpbCarga.StartAngle = 270;
             cpbCarga.Style = ProgressBarStyle.Marquee;
             cpbCarga.SubscriptColor = Color.FromArgb(64, 64, 64);
@@ -141,10 +141,10 @@
             // lblNombreApellido
             // 
             lblNombreApellido.AutoSize = true;
-            lblNombreApellido.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNombreApellido.Location = new Point(610, 182);
+            lblNombreApellido.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNombreApellido.Location = new Point(610, 173);
             lblNombreApellido.Name = "lblNombreApellido";
-            lblNombreApellido.Size = new Size(81, 21);
+            lblNombreApellido.Size = new Size(107, 30);
             lblNombreApellido.TabIndex = 4;
             lblNombreApellido.Text = "USUARIO";
             // 

@@ -78,10 +78,10 @@ namespace Presentacion
         public event EventHandler EmpleadoGuardado;
         private void btnGuardarEmpleado_Click(object sender, EventArgs e)
         {
-            // Validar que los campos no estén vacíos y cumplan con los formatos requeridos
+            
             if (ValidarCampos())
             {
-                // Si la validación es exitosa, guardar el empleado
+                
                 agregarEmpleados.InsertarEmpleado(
                     txtNombreEmpleado.Text,
                     txtApellidoEmpleado.Text,

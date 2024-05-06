@@ -54,22 +54,39 @@ namespace Presentacion
 
         private void frmEmpleado_Load(object sender, EventArgs e)
         {
-
+            cbxTipoBusquedaEmpleado.DropDownStyle = ComboBoxStyle.DropDownList;
             mostrarEmpleado();
 
             ajusteDataGrid();
-            if (!CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
+    
+            if (CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
+            {
+                
+                btnAgregarEmpleado.Visible = true;
+                btnEliminarEmpleado.Visible = true;
+                btnModificaEmpleado.Visible = true;
+            }
+            else if (CacheInicioUsuario.permisosUser.Contains("Agregar") &&
+                     CacheInicioUsuario.permisosUser.Contains("Modificar") &&
+                     CacheInicioUsuario.permisosUser.Contains("Consultar Datos"))
+            {
+              
+                btnEliminarEmpleado.Visible = false;
+            }
+            else if (CacheInicioUsuario.permisosUser.Contains("Consultar Datos"))
             {
 
                 btnAgregarEmpleado.Visible = false;
                 btnEliminarEmpleado.Visible = false;
                 btnModificaEmpleado.Visible = false;
             }
+
             txtBuscarEmpleado.Focus();
 
         }
         private void cbxTipoBusquedaEmpleado_TextChanged(object sender, EventArgs e)
         {
+            txtBuscarEmpleado.Focus();
             actualizarTablaEmpleado();
         }
 
@@ -125,6 +142,7 @@ namespace Presentacion
             DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar empleado?", "Eliminar empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (resultado == DialogResult.Yes)
             {
+            
                 if (dgvEmpleado.SelectedRows.Count > 0)
                 {
                     // Verificar si se ha seleccionado solo una fila
@@ -143,13 +161,10 @@ namespace Presentacion
                     {
                         MessageBox.Show("Seleccione solo una fila por favor");
                     }
-                }
-                else
-                {
+                }else{
                     MessageBox.Show("Seleccione una fila por favor");
                 }
             }
-
         }
         public void ajusteDataGrid()
         {
