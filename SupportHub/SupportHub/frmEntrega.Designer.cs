@@ -86,6 +86,7 @@
             btnModificarEntrega.TextAlign = ContentAlignment.MiddleLeft;
             btnModificarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnModificarEntrega.UseVisualStyleBackColor = false;
+            btnModificarEntrega.Click += btnModificarEntrega_Click;
             // 
             // btnAgregarEntrega
             // 
@@ -146,8 +147,11 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvEntregas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             dgvEntregas.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dgvEntregas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEntregas.Size = new Size(945, 417);
             dgvEntregas.TabIndex = 11;
             dgvEntregas.SelectionChanged += dgvEntregas_SelectionChanged;

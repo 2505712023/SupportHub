@@ -92,6 +92,30 @@ namespace DataAccess
             }
         }
 
+        public static int modificarEntrega(string codEntrega, int idTipoEntrega, string fechaEntrega, int idEmpleadoRecibe, int idEquipo, int cantidadEntrega, string? observacionEntrega)
+        {
+            using (SqlConnection conect = conexion.GetConnection())
+            {
+                comando.CommandText = "sp_modificar_entrega";
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@codEntrega", codEntrega);
+                comando.Parameters.AddWithValue("@idTipoEntrega", idTipoEntrega);
+                comando.Parameters.AddWithValue("@cantidadEntrega", cantidadEntrega);
+                comando.Parameters.AddWithValue("@fechaEntrega", fechaEntrega);
+                comando.Parameters.AddWithValue("@observacionEntrega", observacionEntrega);
+                comando.Parameters.AddWithValue("@idEmpleadoRecibe", idEmpleadoRecibe);
+                comando.Parameters.AddWithValue("@idEquipo", idEquipo);
+                comando.Connection = conect;
+
+                conect.Open();
+
+                int numRegistrosModificados = comando.ExecuteNonQuery();
+
+                return numRegistrosModificados;
+            }
+        }
+
         public static int eliminarEntrega(string? codEntrega)
         {
             using (SqlConnection conect = conexion.GetConnection())

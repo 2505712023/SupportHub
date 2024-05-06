@@ -14,9 +14,52 @@ namespace Presentacion
 {
     public partial class frmAgregarEntrega : Form
     {
+        private bool esModificacion = false;
+        private int cantidadEntregaAnterior = 0;
+        private string codEntrega = string.Empty;
+
         public frmAgregarEntrega()
         {
             InitializeComponent();
+            dtpickerFechaEntrega.Format = DateTimePickerFormat.Custom;
+            dtpickerFechaEntrega.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dtpickerFechaEntrega.ShowUpDown = false;
+            llenarTiposEntrega();
+            llenarEmpleados();
+            llenarEquipos();
+        }
+
+        public frmAgregarEntrega(
+                string codEntrega,
+                bool esModificacion,
+                int cantidadEntregaAnterior,
+                int idTipoEntrega,
+                string fechaEntrega,
+                string empleadoEntrega,
+                int idEmpleadoRecibe,
+                int idEquipo,
+                int cantidadEntrega,
+                string observacion = ""
+                )
+        {
+            InitializeComponent();
+            dtpickerFechaEntrega.Format = DateTimePickerFormat.Custom;
+            dtpickerFechaEntrega.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dtpickerFechaEntrega.ShowUpDown = false;
+            llenarTiposEntrega();
+            llenarEmpleados();
+            llenarEquipos();
+
+            this.codEntrega = codEntrega;
+            this.esModificacion = esModificacion;
+            this.cantidadEntregaAnterior = cantidadEntregaAnterior;
+            this.cboxTipoEntrega.SelectedValue = idTipoEntrega;
+            this.dtpickerFechaEntrega.Text = fechaEntrega;
+            this.tboxEmpleadoEntrega.Text = empleadoEntrega;
+            this.cboxEmpleadoRecibe.SelectedValue = idEmpleadoRecibe;
+            this.cboxEquipo.SelectedValue = idEquipo;
+            this.tboxCantidadEntrega.Text = cantidadEntrega.ToString();
+            this.rtxtObservacionEntrega.Text = observacion;
         }
 
         public class UpdateEventArgs : EventArgs
@@ -42,22 +85,20 @@ namespace Presentacion
 
         private void frmAgregarEntrega_Load(object sender, EventArgs e)
         {
-            dtpickerFechaEntrega.Format = DateTimePickerFormat.Custom;
-            dtpickerFechaEntrega.CustomFormat = "yyyy-MM-dd HH:mm:ss";
-            dtpickerFechaEntrega.ShowUpDown = false;
-            dtpickerFechaEntrega.Value = DateTime.Now;
-
-            llenarTiposEntrega();
-            cboxTipoEntrega.SelectedItem = 0;
-
-            llenarEmpleados();
-            cboxEmpleadoRecibe.SelectedItem = null;
-
-            llenarEquipos();
-            cboxEquipo.SelectedItem = null;
-            obtenerCantidadDisponible();
-
-            tboxEmpleadoEntrega.Text = CacheInicioUsuario.empleado;
+            if (!esModificacion)
+            {
+                dtpickerFechaEntrega.Value = DateTime.Now;
+                cboxTipoEntrega.SelectedItem = 0;
+                cboxEmpleadoRecibe.SelectedItem = null;
+                cboxEquipo.SelectedItem = null;
+                tboxCantidadDisponible.Text = "0";
+                tboxEmpleadoEntrega.Text = CacheInicioUsuario.empleado;
+            }
+            else
+            {
+                gbAddEntrega.Text = "MODIFICAR ENTREGA: " + codEntrega;
+                obtenerCantidadDisponible();
+            }
         }
 
         private void ibtnCancelarEntrega_Click(object sender, EventArgs e)
@@ -92,7 +133,7 @@ namespace Presentacion
             if (cboxEquipo.SelectedValue != null)
             {
                 int cantidadDisponible = ModeloEntrega.cantidadDisponibleEquipo(Convert.ToInt32(cboxEquipo.SelectedValue));
-                tboxCantidadDisponible.Text = cantidadDisponible.ToString();
+                tboxCantidadDisponible.Text = (cantidadDisponible + cantidadEntregaAnterior).ToString();
             }
             else
             {
@@ -146,13 +187,15 @@ namespace Presentacion
             {
                 MessageBox.Show("La cantidad a entregar no puede ser mayor a la cantidad disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (Convert.ToInt32(tboxCantidadEntrega.Text) <= 0)
+            else if (Convert.ToInt32(tboxCantidadEntrega.Text) <= 0 || string.IsNullOrEmpty(tboxCantidadEntrega.Text))
             {
                 MessageBox.Show("La cantidad a entregar debe ser mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                int registrosAgregados = ModeloEntrega.crearEntrega(
+                if (!esModificacion)
+                {
+                    int registrosAgregados = ModeloEntrega.crearEntrega(
                     Convert.ToInt32(cboxTipoEntrega.SelectedValue),
                     dtpickerFechaEntrega.Text,
                     CacheInicioUsuario.idEmpleado,
@@ -162,16 +205,36 @@ namespace Presentacion
                     rtxtObservacionEntrega.Text
                     );
 
-                MessageBox.Show("Se agregó " + registrosAgregados.ToString() + " entrega correctamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Se agregó " + registrosAgregados.ToString() + " entrega correctamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                actualizardgvEntregas();
-                cboxTipoEntrega.SelectedItem = 1;
-                dtpickerFechaEntrega.Value = DateTime.Now;
-                cboxEmpleadoRecibe.SelectedItem = null;
-                cboxEquipo.SelectedItem = null;
-                tboxCantidadDisponible.Text = "0";
-                tboxCantidadEntrega.Text = "0";
-                rtxtObservacionEntrega.Text = string.Empty;
+                    actualizardgvEntregas();
+                    cboxTipoEntrega.SelectedItem = 1;
+                    dtpickerFechaEntrega.Value = DateTime.Now;
+                    cboxEmpleadoRecibe.SelectedItem = null;
+                    cboxEquipo.SelectedItem = null;
+                    tboxCantidadDisponible.Text = "0";
+                    tboxCantidadEntrega.Text = "0";
+                    rtxtObservacionEntrega.Text = string.Empty;
+                }
+                else
+                {
+                    int registrosModificados = ModeloEntrega.modificarEntrega(
+                        codEntrega,
+                        Convert.ToInt32(cboxTipoEntrega.SelectedValue.ToString()),
+                        dtpickerFechaEntrega.Text,
+                        Convert.ToInt32(cboxEmpleadoRecibe.SelectedValue.ToString()),
+                        Convert.ToInt32(cboxEquipo.SelectedValue.ToString()),
+                        Convert.ToInt32(tboxCantidadEntrega.Text),
+                        rtxtObservacionEntrega.Text
+                    );
+
+                    MessageBox.Show("Se modificó " + registrosModificados.ToString() + " entrega correctamente.", "Modificación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    actualizardgvEntregas();
+                    habilitardgvEntregas();
+                    this.Close();
+                }
+
             }
         }
     }

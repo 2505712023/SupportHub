@@ -41,6 +41,11 @@ namespace Dominio
             return EntregaDato.crearEntrega(idTipoEntrega, fechaEntrega, idEmpleadoEntrega, idEmpleadoRecibe, idEquipo, cantidadEntrega, observacionEntrega);
         }
 
+        public static int modificarEntrega(string codEntrega, int idTipoEntrega, string fechaEntrega, int idEmpleadoRecibe, int idEquipo, int cantidadEntrega, string? observacionEntrega)
+        {
+            return EntregaDato.modificarEntrega(codEntrega, idTipoEntrega, fechaEntrega, idEmpleadoRecibe, idEquipo, cantidadEntrega, observacionEntrega);
+        }
+
         public static int eliminarEntrega(string? codEntrega)
         {
             return EntregaDato.eliminarEntrega(codEntrega);
