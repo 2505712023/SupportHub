@@ -183,8 +183,17 @@ namespace DataAccess
 
         public static string asignarFechaDevolucion(string fechaDevolucion, string codEntrega)
         {
-            string queryUpdateEntrega = "update entregas set fechaDevolucion = '" + fechaDevolucion + "' where codEntrega = '" + codEntrega + "'";
+            string queryUpdateEntrega = string.Empty;
 
+            if (fechaDevolucion == "ELIMINAR")
+            {
+                queryUpdateEntrega = "update entregas set fechaDevolucion = null where codEntrega = '" + codEntrega + "'";
+            }
+            else
+            {
+                queryUpdateEntrega = "update entregas set fechaDevolucion = '" + fechaDevolucion + "' where codEntrega = '" + codEntrega + "'";
+            }
+            
             using (SqlConnection conect = conexion.GetConnection())
             {
                 conect.Open();

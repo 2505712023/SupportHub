@@ -16,6 +16,9 @@ namespace Presentacion
     public partial class frmEntrega : Form
     {
         private List<string> tiposDeBusqueda;
+        private bool formCargado = false;
+        private string? codEntrega = string.Empty;
+
         public frmEntrega()
         {
             InitializeComponent();
@@ -42,6 +45,7 @@ namespace Presentacion
             dgvEntregas.Columns["idEmpleadoRecibe"].Visible = false;
             dgvEntregas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEntregas.ClearSelection();
+            formCargado = true;
         }
 
         private void txtBuscarEntrega_TextChanged(object sender, EventArgs e)
@@ -169,37 +173,17 @@ namespace Presentacion
 
         private void btnGenerarDevolucion_Click(object sender, EventArgs e)
         {
-            if (dgvEntregas.SelectedRows.Count == 1)
+            frmDevolucionEntrega devolucionEntrega = new frmDevolucionEntrega(codEntrega);
+            SuscribirEventosDevolucionEntrega(devolucionEntrega);
+
+            if (btnGenerarDevolucion.Text == "DEVOLUCIÓN")
             {
-                string? codEntrega = string.Empty;
-
-                DataGridViewSelectedRowCollection selectedRow = dgvEntregas.SelectedRows;
-
-                foreach (DataGridViewRow row in selectedRow)
-                {
-                    if (string.IsNullOrEmpty(row.Cells["Fecha de Devolución"].Value.ToString()))
-                    {
-                        codEntrega = row.Cells["Código de Entrega"].Value.ToString();
-                    }
-                    else
-                    {
-                        MessageBox.Show("La entrega seleccionada ya tiene fecha de devolución.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                }
-
-                frmDevolucionEntrega devolucionEntrega = new frmDevolucionEntrega(codEntrega);
-                SuscribirEventosDevolucionEntrega(devolucionEntrega);
-                dgvEntregas.Enabled = false;
+                dgvEntregas.Enabled= false;
                 devolucionEntrega.Show();
             }
-            else if (dgvEntregas.SelectedRows.Count > 1)
+            else if (btnGenerarDevolucion.Text == "ELIMINAR DEVOLUCIÓN")
             {
-                MessageBox.Show("Solo debe seleccionar una entrega para asignar fecha de devolución.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                MessageBox.Show("Debe seleccionar una entrega para asignar fecha de devolución.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                devolucionEntrega.eliminarFechaDevolucion();
             }
         }
 
@@ -219,6 +203,35 @@ namespace Presentacion
             {
                 form.UpdateEventHandler += DevolucionActualizarEventHandler;
                 form.CloseEventHandler += DevolucionHabilitarEventHandler;
+            }
+        }
+
+        private void dgvEntregas_SelectionChanged(object sender, EventArgs e)
+        {
+            if (formCargado && dgvEntregas.SelectedRows.Count == 1)
+            {
+                DataGridViewSelectedRowCollection selectedRow = dgvEntregas.SelectedRows;
+
+                foreach (DataGridViewRow row in selectedRow)
+                {
+                    if (string.IsNullOrEmpty(row.Cells["Fecha de Devolución"].Value.ToString()))
+                    {
+                        btnGenerarDevolucion.Enabled = true;
+                        btnGenerarDevolucion.Text = "DEVOLUCIÓN";
+                        codEntrega = row.Cells["Código de Entrega"].Value.ToString();
+                    }
+                    else
+                    {
+                        btnGenerarDevolucion.Enabled = true;
+                        btnGenerarDevolucion.Text = "ELIMINAR DEVOLUCIÓN";
+                        codEntrega = row.Cells["Código de Entrega"].Value.ToString();
+                    }
+                }
+            }
+            else if (formCargado && dgvEntregas.SelectedRows.Count > 1)
+            {
+                btnGenerarDevolucion.Text = "DEVOLUCIÓN";
+                btnGenerarDevolucion.Enabled = false;
             }
         }
     }

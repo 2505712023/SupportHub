@@ -47,7 +47,6 @@
             // btnEliminarEntrega
             // 
             btnEliminarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnEliminarEntrega.AutoSize = true;
             btnEliminarEntrega.BackColor = Color.FromArgb(184, 82, 82);
             btnEliminarEntrega.FlatAppearance.BorderSize = 0;
             btnEliminarEntrega.FlatStyle = FlatStyle.Flat;
@@ -70,7 +69,6 @@
             // btnModificarEntrega
             // 
             btnModificarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnModificarEntrega.AutoSize = true;
             btnModificarEntrega.BackColor = Color.FromArgb(55, 166, 104);
             btnModificarEntrega.FlatAppearance.BorderSize = 0;
             btnModificarEntrega.FlatStyle = FlatStyle.Flat;
@@ -92,7 +90,6 @@
             // btnAgregarEntrega
             // 
             btnAgregarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnAgregarEntrega.AutoSize = true;
             btnAgregarEntrega.BackColor = Color.FromArgb(89, 134, 213);
             btnAgregarEntrega.FlatAppearance.BorderSize = 0;
             btnAgregarEntrega.FlatStyle = FlatStyle.Flat;
@@ -153,6 +150,7 @@
             dgvEntregas.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvEntregas.Size = new Size(945, 417);
             dgvEntregas.TabIndex = 11;
+            dgvEntregas.SelectionChanged += dgvEntregas_SelectionChanged;
             // 
             // gbBusarEmpleado
             // 
@@ -192,7 +190,6 @@
             // btnGenerarDevolucion
             // 
             btnGenerarDevolucion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnGenerarDevolucion.AutoSize = true;
             btnGenerarDevolucion.BackColor = Color.FromArgb(237, 157, 36);
             btnGenerarDevolucion.FlatAppearance.BorderSize = 0;
             btnGenerarDevolucion.FlatStyle = FlatStyle.Flat;
@@ -207,7 +204,6 @@
             btnGenerarDevolucion.Size = new Size(156, 57);
             btnGenerarDevolucion.TabIndex = 4;
             btnGenerarDevolucion.Text = "DEVOLUCIÓN";
-            btnGenerarDevolucion.TextAlign = ContentAlignment.MiddleLeft;
             btnGenerarDevolucion.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGenerarDevolucion.UseVisualStyleBackColor = false;
             btnGenerarDevolucion.Click += btnGenerarDevolucion_Click;
@@ -231,7 +227,6 @@
             gbBusarEmpleado.ResumeLayout(false);
             gbBusarEmpleado.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
