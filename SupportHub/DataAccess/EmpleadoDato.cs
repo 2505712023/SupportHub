@@ -65,18 +65,35 @@ namespace DataAccess
         }
         public void EliminarEmpleado(string codEmp)
         {
-            string nombreProcedimiento = "sp_eliminar_empleado";
-
-            using (var comando = new SqlCommand())
+            try
             {
-                comando.CommandText = nombreProcedimiento;
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@codEmpleado", codEmp);
-                using (SqlConnection conn = conexion.GetConnection())
+                string nombreProcedimiento = "sp_eliminar_empleado";
+
+                using (var comando = new SqlCommand())
                 {
-                    comando.Connection = conn;
-                    conn.Open();
-                    comando.ExecuteNonQuery();
+                    comando.CommandText = nombreProcedimiento;
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@codEmpleado", codEmp);
+                    using (SqlConnection conn = conexion.GetConnection())
+                    {
+                        comando.Connection = conn;
+                        conn.Open();
+                        comando.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                
+                if (ex.Number == 547) 
+                {
+                 
+                    Console.WriteLine("No se puede eliminar el empleado porque tiene entregas pendientes.");
+                }
+                else
+                {
+                  
+                    Console.WriteLine($"Error al intentar eliminar el empleado: {ex.Message}");
                 }
             }
         }

@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Linq.Expressions;
+using System.Data.SqlClient;
 namespace Presentacion
 {
     public partial class frmEmpleado : Form
@@ -139,32 +141,50 @@ namespace Presentacion
 
         private void btnEliminarEmpleado_Click(object sender, EventArgs e)
         {
+
+            
             DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar empleado?", "Eliminar empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (resultado == DialogResult.Yes)
             {
-            
-                if (dgvEmpleado.SelectedRows.Count > 0)
+                if (dgvEmpleado.SelectedRows.Count == 1)
                 {
-                    // Verificar si se ha seleccionado solo una fila
-                    if (dgvEmpleado.SelectedRows.Count == 1)
+                    string codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
+                    try
                     {
-                        string codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
                         EmpObjeto.EliminarEmp(codEmpleado);
-                        MessageBox.Show("Eliminado Correctamente");
+                        MessageBox.Show("Empleado eliminado correctamente");
                         mostrarEmpleado();
                         txtBuscarEmpleado.Focus();
                         mostrarEmpleado();
                         ajusteDataGrid();
                         dgvEmpleado.ClearSelection();
                     }
-                    else
+                    catch (SqlException ex)
                     {
-                        MessageBox.Show("Seleccione solo una fila por favor");
+                        if (ex.Number == 547)
+                        {
+                            MessageBox.Show("No se puede eliminar el empleado porque tiene entregas pendientes.");
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Error al intentar eliminar el empleado: {ex.Message}");
+                        }
                     }
-                }else{
-                    MessageBox.Show("Seleccione una fila por favor");
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("El empleado tiene entregas o asignaciones pendientes");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione solo una fila por favor");
                 }
             }
+            else
+            {
+                MessageBox.Show("Operación de eliminación cancelada");
+            }
+
         }
         public void ajusteDataGrid()
         {

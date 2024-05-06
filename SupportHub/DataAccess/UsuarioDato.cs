@@ -12,6 +12,26 @@ namespace DataAccess
 {
     public class UsuarioDato : ConexionSql
     {
+        public void editarMiInformacion(int idUser, string claveUser)
+        {
+            using (var coneccion = GetConnection())
+            {
+                coneccion.Open();
+                using (var comando = new SqlCommand())
+                {
+                    comando.Connection = coneccion;
+                    comando.CommandText = "sp_modificar_contraseña";
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@claveUsuario", claveUser);
+                    comando.Parameters.AddWithValue("@idUsuario", idUser);
+
+                    comando.ExecuteNonQuery();
+
+                }
+            }
+
+        }
+        
         public string Login(string user, string pass)
 
         {
@@ -32,22 +52,24 @@ namespace DataAccess
                         {
                             if (reader.HasRows)
                             {
-                                // Leer los datos del usuario
-                                int idUsuario = reader.GetInt32(reader.GetOrdinal("idUsuario"));
-                                string claveUsuario = reader.GetString(reader.GetOrdinal("claveUsuario"));
-                                string loginUsuario = reader.GetString(reader.GetOrdinal("loginUsuario"));
-                                string nombreUsuario = reader.GetString(reader.GetOrdinal("nombreUsuario"));
-                                string apellidoUsuario = reader.GetString(reader.GetOrdinal("apellidoUsuario"));
-                 
-                                int idRol = reader.GetInt32(reader.GetOrdinal("idRol"));
-                                string nombreRol = reader.GetString(reader.GetOrdinal("nombreRol"));
-                                CacheInicioUsuario.nombreUser = reader.GetString(3);
-                                CacheInicioUsuario.apellidoUser = reader.GetString(4);
-                                CacheInicioUsuario.rolUser = reader.GetString(reader.GetOrdinal("nombreRol"));
-                                CacheInicioUsuario.empleado = reader.GetString(reader.GetOrdinal("Empleado"));
-                                CacheInicioUsuario.idEmpleado = reader.GetInt32(reader.GetOrdinal("idEmpleado"));
-                            }
-                            reader.Close();
+                                while (reader.Read())
+                                {
+                                    // Leer los datos del usuario
+                                    int idUsuario = reader.GetInt32(reader.GetOrdinal("idUsuario"));
+                                    string claveUsuario = reader.GetString(reader.GetOrdinal("claveUsuario"));
+                                    string loginUsuario = reader.GetString(reader.GetOrdinal("loginUsuario"));
+                                    string nombreUsuario = reader.GetString(reader.GetOrdinal("nombreUsuario"));
+                                    string apellidoUsuario = reader.GetString(reader.GetOrdinal("apellidoUsuario"));
+
+                                    int idRol = reader.GetInt32(reader.GetOrdinal("idRol"));
+                                    string nombreRol = reader.GetString(reader.GetOrdinal("nombreRol"));
+                                    CacheInicioUsuario.nombreUser = reader.GetString(3);
+                                    CacheInicioUsuario.apellidoUser = reader.GetString(4);
+                                    CacheInicioUsuario.rolUser = reader.GetString(reader.GetOrdinal("nombreRol"));
+                                    CacheInicioUsuario.empleado = reader.GetString(reader.GetOrdinal("Empleado"));
+                                    CacheInicioUsuario.idEmpleado = reader.GetInt32(reader.GetOrdinal("idEmpleado"));
+                                }
+                                reader.Close();
 
                                 using (var comandoPermisos = new SqlCommand())
                                 {
@@ -84,7 +106,7 @@ namespace DataAccess
             }
             catch (Exception ex)
             {
-                
+
                 return "Error durante el inicio de sesión: " + ex.Message;
             }
         }
