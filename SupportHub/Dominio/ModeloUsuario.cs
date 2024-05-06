@@ -10,7 +10,7 @@ namespace Dominio
     public class ModeloUsuario
     {
         UsuarioDato userData = new UsuarioDato();
-        public bool LoginUsuario(string user, string pass)
+        public string LoginUsuario(string user, string pass)
         {
             return userData.Login(user,pass);
         }    

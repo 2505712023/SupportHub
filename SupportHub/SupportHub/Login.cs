@@ -1,5 +1,6 @@
 using Dominio;
 using Presentacion;
+using System.Windows.Forms;
 namespace SupportHub
 {
     public partial class frmLogin : Form
@@ -15,7 +16,7 @@ namespace SupportHub
            
             if (e.KeyChar == (char)Keys.Enter)
             {
-                // Simula un clic en el botón Acceder cuando se presiona Enter en el campo de contraseña
+        
                 btnAcceder_Click(sender, e);
             }
         }
@@ -71,11 +72,23 @@ namespace SupportHub
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
+
             if (txtUsuario.Text != "USUARIO" && txtContraseña.Text != "CONTRASEÑA" && txtUsuario.Text != "" && txtContraseña.Text != "")
-            { 
-                ModeloUsuario usuario = new ModeloUsuario();
-                var LoginValido = usuario.LoginUsuario(txtUsuario.Text, txtContraseña.Text);
-                if (LoginValido == true) {
+            {
+                
+                DataAccess.UsuarioDato usuarioDato = new DataAccess.UsuarioDato();
+
+                
+                string user = txtUsuario.Text;
+                string pass = txtContraseña.Text;
+
+                
+                string mensaje = usuarioDato.Login(user, pass);
+
+          
+                if (mensaje == "Inicio de sesión exitoso")
+                {
+                   
                     this.Hide();
                     frmCarga formLogin = new frmCarga();
                     formLogin.ShowDialog();
@@ -85,17 +98,30 @@ namespace SupportHub
                 }
                 else
                 {
-                    lblMensajeError.Text = "             " +"USUARIO O CONTRASEÑA INCORECTO";
-                    lblMensajeError.Visible = true;
-                    txtUsuario.Focus();
+               
+                    if (mensaje == "Usuario o contraseña incorrecto")
+                    {
+                        pictureError.Visible = true;
+                        lblMensajeError.Text = mensaje;
+                        lblMensajeError.Visible = true;
+                        txtUsuario.Focus();
+                    }
+                    else
+                    {
+                       
+                        MessageBox.Show("El sistema no tiene conexión con el servidor de datos. Favor contacte al administrador de redes o de sistema y notifique el impase.", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtUsuario.Focus();
+                    }
                 }
             }
+
+
         }
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
             if (txtUsuario.Text == "USUARIO" || txtContraseña.Text == "CONTRASEÑA" || txtUsuario.Text == "" || txtContraseña.Text == "")
-            {
+            {   pictureError.Visible = false;
                 lblMensajeError.Visible = false;
                 btnAcceder.Enabled = false;
             }
@@ -109,6 +135,7 @@ namespace SupportHub
         {
             if (txtUsuario.Text == "USUARIO" || txtContraseña.Text == "CONTRASEÑA" || txtUsuario.Text == "" || txtContraseña.Text == "")
             {
+                pictureError.Visible =false;
                 lblMensajeError.Visible = false;
                 btnAcceder.Enabled = false;
             }
@@ -129,3 +156,5 @@ namespace SupportHub
         }
     }
 }
+
+
