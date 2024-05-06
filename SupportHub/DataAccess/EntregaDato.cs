@@ -120,9 +120,8 @@ namespace DataAccess
 
         public static int cantidadDisponibleEquipo(int idEquipo)
         {
-            string querySelectCantidadDisponibleEquipo = "select case when (E.cantidadEquipo - isnull(sum(EN.cantidadEntrega), 0)) > 0 then (E.cantidadEquipo - isnull(sum(EN.cantidadEntrega), 0)) else 0 end as [cantidadDisponible] from Equipos E left join Entregas EN on EN.idEquipo = E.idEquipo where E.idEquipo = " + idEquipo.ToString() + " group by E.cantidadEquipo, EN.cantidadEntrega";
+            string querySelectCantidadDisponibleEquipo = "select * from vwCantidadEquiposDisponibles E where E.idEquipo = " + idEquipo.ToString();
             int cantidadDisponible = 0;
-
 
             using (SqlConnection conect = conexion.GetConnection())
             {

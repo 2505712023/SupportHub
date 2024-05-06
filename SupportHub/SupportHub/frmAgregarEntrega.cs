@@ -88,6 +88,10 @@ namespace Presentacion
                 {
                     tboxCantidadEntrega.ForeColor = Color.Red;
                 }
+                else
+                {
+                    tboxCantidadEntrega.ForeColor = Color.Black;
+                }
             }
         }
     }

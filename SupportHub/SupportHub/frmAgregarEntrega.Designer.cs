@@ -57,7 +57,7 @@
             pSuperiorAddEntrega.Dock = DockStyle.Top;
             pSuperiorAddEntrega.Location = new Point(0, 0);
             pSuperiorAddEntrega.Name = "pSuperiorAddEntrega";
-            pSuperiorAddEntrega.Size = new Size(736, 60);
+            pSuperiorAddEntrega.Size = new Size(706, 60);
             pSuperiorAddEntrega.TabIndex = 1;
             // 
             // gbAddEntrega
@@ -84,16 +84,18 @@
             gbAddEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             gbAddEntrega.Location = new Point(12, 66);
             gbAddEntrega.Name = "gbAddEntrega";
-            gbAddEntrega.Size = new Size(712, 338);
+            gbAddEntrega.Size = new Size(682, 338);
             gbAddEntrega.TabIndex = 2;
             gbAddEntrega.TabStop = false;
             gbAddEntrega.Text = "AGREGAR ENTREGA";
             // 
             // tboxCantidadEntrega
             // 
+            tboxCantidadEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             tboxCantidadEntrega.Location = new Point(198, 216);
-            tboxCantidadEntrega.Mask = "99999";
+            tboxCantidadEntrega.Mask = "999999";
             tboxCantidadEntrega.Name = "tboxCantidadEntrega";
+            tboxCantidadEntrega.RightToLeft = RightToLeft.Yes;
             tboxCantidadEntrega.Size = new Size(98, 29);
             tboxCantidadEntrega.TabIndex = 29;
             tboxCantidadEntrega.TextAlign = HorizontalAlignment.Center;
@@ -135,7 +137,7 @@
             cboxEquipo.FormattingEnabled = true;
             cboxEquipo.Location = new Point(198, 146);
             cboxEquipo.Name = "cboxEquipo";
-            cboxEquipo.Size = new Size(363, 29);
+            cboxEquipo.Size = new Size(325, 29);
             cboxEquipo.TabIndex = 25;
             cboxEquipo.Leave += cboxEquipo_Leave;
             // 
@@ -154,7 +156,7 @@
             cboxEmpleado.FormattingEnabled = true;
             cboxEmpleado.Location = new Point(198, 111);
             cboxEmpleado.Name = "cboxEmpleado";
-            cboxEmpleado.Size = new Size(363, 29);
+            cboxEmpleado.Size = new Size(325, 29);
             cboxEmpleado.TabIndex = 23;
             // 
             // labEmpleado
@@ -168,9 +170,10 @@
             // 
             // rtxtObservacionEntrega
             // 
+            rtxtObservacionEntrega.Font = new Font("Segoe UI", 12F);
             rtxtObservacionEntrega.Location = new Point(198, 251);
             rtxtObservacionEntrega.Name = "rtxtObservacionEntrega";
-            rtxtObservacionEntrega.Size = new Size(363, 62);
+            rtxtObservacionEntrega.Size = new Size(325, 62);
             rtxtObservacionEntrega.TabIndex = 21;
             rtxtObservacionEntrega.Text = "";
             // 
@@ -197,7 +200,7 @@
             ibtnCancelarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnCancelarEntrega.IconSize = 20;
             ibtnCancelarEntrega.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnCancelarEntrega.Location = new Point(587, 102);
+            ibtnCancelarEntrega.Location = new Point(557, 102);
             ibtnCancelarEntrega.Name = "ibtnCancelarEntrega";
             ibtnCancelarEntrega.Size = new Size(100, 40);
             ibtnCancelarEntrega.TabIndex = 18;
@@ -218,7 +221,7 @@
             ibtnGuardarEntrega.IconColor = Color.White;
             ibtnGuardarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnGuardarEntrega.IconSize = 20;
-            ibtnGuardarEntrega.Location = new Point(587, 56);
+            ibtnGuardarEntrega.Location = new Point(557, 56);
             ibtnGuardarEntrega.Name = "ibtnGuardarEntrega";
             ibtnGuardarEntrega.Size = new Size(100, 40);
             ibtnGuardarEntrega.TabIndex = 17;
@@ -251,7 +254,7 @@
             cboxTipoEntrega.FormattingEnabled = true;
             cboxTipoEntrega.Location = new Point(198, 41);
             cboxTipoEntrega.Name = "cboxTipoEntrega";
-            cboxTipoEntrega.Size = new Size(217, 29);
+            cboxTipoEntrega.Size = new Size(188, 29);
             cboxTipoEntrega.TabIndex = 14;
             // 
             // btnCancelaEmpleado
@@ -267,7 +270,7 @@
             btnCancelaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelaEmpleado.IconSize = 20;
             btnCancelaEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelaEmpleado.Location = new Point(1224, 238);
+            btnCancelaEmpleado.Location = new Point(1194, 238);
             btnCancelaEmpleado.Name = "btnCancelaEmpleado";
             btnCancelaEmpleado.Size = new Size(115, 38);
             btnCancelaEmpleado.TabIndex = 13;
@@ -288,7 +291,7 @@
             btnGuardarEmpleado.IconColor = Color.White;
             btnGuardarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardarEmpleado.IconSize = 20;
-            btnGuardarEmpleado.Location = new Point(1092, 238);
+            btnGuardarEmpleado.Location = new Point(1062, 238);
             btnGuardarEmpleado.Name = "btnGuardarEmpleado";
             btnGuardarEmpleado.Size = new Size(115, 38);
             btnGuardarEmpleado.TabIndex = 12;
@@ -311,7 +314,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(98, 122, 144);
-            ClientSize = new Size(736, 416);
+            ClientSize = new Size(706, 416);
             Controls.Add(gbAddEntrega);
             Controls.Add(pSuperiorAddEntrega);
             FormBorderStyle = FormBorderStyle.None;
