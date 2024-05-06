@@ -33,14 +33,11 @@ namespace Presentacion
             leftBorderBtn.Size = new Size(7, 60);
             pIzquierdoIndex.Controls.Add(leftBorderBtn);
 
-
-
             this.Text = string.Empty;
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             hideSubMenu();
-
         }
 
         private struct RGBColors
@@ -113,9 +110,7 @@ namespace Presentacion
             btnIconoFrmActual.IconChar = IconChar.HouseChimneyWindow;
             btnIconoFrmActual.IconColor = Color.FromArgb(128, 0, 128);
             lblIconoFrmActual.Text = "HOME";
-
         }
-
 
         private void OpenChildForm(Form childForm)
         {
@@ -134,7 +129,6 @@ namespace Presentacion
             childForm.BringToFront();
             childForm.Show();
             lblIconoFrmActual.Text = childForm.Text;
-
         }
 
         private void btnEmpleado_Click(object sender, EventArgs e)
@@ -251,20 +245,17 @@ namespace Presentacion
         {
             if (CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
             {
-
                 
             }
             else if (CacheInicioUsuario.permisosUser.Contains("Agregar") &&
                      CacheInicioUsuario.permisosUser.Contains("Modificar") &&
                      CacheInicioUsuario.permisosUser.Contains("Consultar Datos"))
             {
-
-               btnEmpleado.Visible = false;
+                btnEmpleado.Visible = false;
                 btnUsuarios.Visible = false;
             }
             else if (CacheInicioUsuario.permisosUser.Contains("Consultar Datos"))
             {
-
                 btnEmpleado.Visible = false;
                 btnUsuarios.Visible = false;
             }

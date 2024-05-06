@@ -45,5 +45,4 @@ namespace Dominio
             return empDato.filtrarTablaEmpleado(codEmpleado, nombreEmpleado, apellidoEmpleado);
         }
     }
-
 }

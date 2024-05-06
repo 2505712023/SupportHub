@@ -38,6 +38,7 @@ namespace Presentacion
 
         private void frmEntrega_Load(object sender, EventArgs e)
         {
+            cBoxTipoBusqueda.DropDownStyle = ComboBoxStyle.DropDownList;
             dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
             dgvEntregas.Columns["idTipoEntrega"].Visible = false;
             dgvEntregas.Columns["idEquipo"].Visible = false;
@@ -69,6 +70,7 @@ namespace Presentacion
 
         private void cBoxTipoBusqueda_TextChanged(object sender, EventArgs e)
         {
+            txtBuscarEntrega.Focus();
             actualizarTablaEntregas();
         }
 
@@ -136,16 +138,16 @@ namespace Presentacion
 
                     if (totalRegistrosEliminados > 1)
                     {
-                        MessageBox.Show("Se eliminaron " + totalRegistrosEliminados.ToString() + " entregas.");
+                        MessageBox.Show("Se eliminaron " + totalRegistrosEliminados.ToString() + " entregas.","Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Se eliminó " + totalRegistrosEliminados.ToString() + " entrega.");
+                        MessageBox.Show("Se eliminó " + totalRegistrosEliminados.ToString() + " entrega.", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debe seleccionar una o varias entregas para eliminarlas.");
+                    MessageBox.Show("Debe seleccionar una o varias entregas para eliminarlas.", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 actualizarTablaEntregas();
             }

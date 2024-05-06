@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             pImagen = new Panel();
+            imgFondoLog = new PictureBox();
             imgLogoLogin = new PictureBox();
             lblLogin = new Label();
             pUser = new Panel();
@@ -40,11 +41,10 @@
             btnCerrarLogin = new FontAwesome.Sharp.IconButton();
             lblMensajeError = new Label();
             pictureError = new PictureBox();
-            imgFondoLog = new PictureBox();
             pImagen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgFondoLog).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureError).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)imgFondoLog).BeginInit();
             SuspendLayout();
             // 
             // pImagen
@@ -57,6 +57,16 @@
             pImagen.Name = "pImagen";
             pImagen.Size = new Size(228, 330);
             pImagen.TabIndex = 0;
+            // 
+            // imgFondoLog
+            // 
+            imgFondoLog.Image = (Image)resources.GetObject("imgFondoLog.Image");
+            imgFondoLog.Location = new Point(0, 86);
+            imgFondoLog.Name = "imgFondoLog";
+            imgFondoLog.Size = new Size(230, 244);
+            imgFondoLog.SizeMode = PictureBoxSizeMode.StretchImage;
+            imgFondoLog.TabIndex = 1;
+            imgFondoLog.TabStop = false;
             // 
             // imgLogoLogin
             // 
@@ -163,7 +173,7 @@
             lblMensajeError.AutoSize = true;
             lblMensajeError.ForeColor = Color.FromArgb(31, 35, 40);
             lblMensajeError.ImageAlign = ContentAlignment.MiddleLeft;
-            lblMensajeError.Location = new Point(288, 216);
+            lblMensajeError.Location = new Point(323, 227);
             lblMensajeError.Name = "lblMensajeError";
             lblMensajeError.Size = new Size(79, 15);
             lblMensajeError.TabIndex = 5;
@@ -173,23 +183,13 @@
             // pictureError
             // 
             pictureError.Image = (Image)resources.GetObject("pictureError.Image");
-            pictureError.Location = new Point(262, 205);
+            pictureError.Location = new Point(288, 216);
             pictureError.Name = "pictureError";
             pictureError.Size = new Size(29, 26);
             pictureError.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureError.TabIndex = 6;
             pictureError.TabStop = false;
             pictureError.Visible = false;
-            // 
-            // imgFondoLog
-            // 
-            imgFondoLog.Image = (Image)resources.GetObject("imgFondoLog.Image");
-            imgFondoLog.Location = new Point(0, 86);
-            imgFondoLog.Name = "imgFondoLog";
-            imgFondoLog.Size = new Size(230, 244);
-            imgFondoLog.SizeMode = PictureBoxSizeMode.StretchImage;
-            imgFondoLog.TabIndex = 1;
-            imgFondoLog.TabStop = false;
             // 
             // frmLogin
             // 
@@ -214,9 +214,9 @@
             Text = "Form1";
             Load += frmLogin_Load;
             pImagen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)imgFondoLog).EndInit();
             ((System.ComponentModel.ISupportInitialize)imgLogoLogin).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureError).EndInit();
-            ((System.ComponentModel.ISupportInitialize)imgFondoLog).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

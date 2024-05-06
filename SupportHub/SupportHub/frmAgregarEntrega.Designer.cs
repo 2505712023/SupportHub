@@ -51,12 +51,15 @@
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
             lblTipoDeEntrega = new Label();
+            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
+            pSuperiorAddEntrega.SuspendLayout();
             gbAddEntrega.SuspendLayout();
             SuspendLayout();
             // 
             // pSuperiorAddEntrega
             // 
             pSuperiorAddEntrega.BackColor = Color.FromArgb(5, 23, 59);
+            pSuperiorAddEntrega.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorAddEntrega.Dock = DockStyle.Top;
             pSuperiorAddEntrega.Location = new Point(0, 0);
             pSuperiorAddEntrega.Name = "pSuperiorAddEntrega";
@@ -346,6 +349,26 @@
             lblTipoDeEntrega.TabIndex = 4;
             lblTipoDeEntrega.Text = "Tipo de Entrega:";
             // 
+            // btnCerrarAddEmpleado
+            // 
+            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
+            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
+            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
+            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
+            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnCerrarAddEmpleado.IconSize = 20;
+            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.Location = new Point(694, 12);
+            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
+            btnCerrarAddEmpleado.Size = new Size(28, 24);
+            btnCerrarAddEmpleado.TabIndex = 16;
+            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
+            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
+            // 
             // frmAgregarEntrega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -361,6 +384,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAgregarEntrega";
             Load += frmAgregarEntrega_Load;
+            pSuperiorAddEntrega.ResumeLayout(false);
             gbAddEntrega.ResumeLayout(false);
             gbAddEntrega.PerformLayout();
             ResumeLayout(false);
@@ -402,5 +426,6 @@
         private Label lblErrorCantidad;
         private TextBox tboxEmpleadoEntrega;
         private Label lblEmpleadoRecibe;
+        private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
     }
 }

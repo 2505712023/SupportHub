@@ -60,7 +60,7 @@
             imgFondoCarga.Image = (Image)resources.GetObject("imgFondoCarga.Image");
             imgFondoCarga.Location = new Point(0, 83);
             imgFondoCarga.Name = "imgFondoCarga";
-            imgFondoCarga.Size = new Size(256, 251);
+            imgFondoCarga.Size = new Size(245, 251);
             imgFondoCarga.SizeMode = PictureBoxSizeMode.StretchImage;
             imgFondoCarga.TabIndex = 2;
             imgFondoCarga.TabStop = false;

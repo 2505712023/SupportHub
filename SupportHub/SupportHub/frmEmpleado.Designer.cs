@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             gbBusarEmpleado = new GroupBox();
             cbxTipoBusquedaEmpleado = new ComboBox();
             txtBuscarEmpleado = new TextBox();
@@ -45,12 +46,12 @@
             gbBusarEmpleado.Controls.Add(cbxTipoBusquedaEmpleado);
             gbBusarEmpleado.Controls.Add(txtBuscarEmpleado);
             gbBusarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            gbBusarEmpleado.Location = new Point(12, 25);
+            gbBusarEmpleado.Location = new Point(12, 12);
             gbBusarEmpleado.Name = "gbBusarEmpleado";
-            gbBusarEmpleado.Size = new Size(932, 68);
+            gbBusarEmpleado.Size = new Size(945, 68);
             gbBusarEmpleado.TabIndex = 0;
             gbBusarEmpleado.TabStop = false;
-            gbBusarEmpleado.Text = "EMPLEADO::...";
+            gbBusarEmpleado.Text = "BUSCAR EMPLEADO::...";
             // 
             // cbxTipoBusquedaEmpleado
             // 
@@ -58,18 +59,17 @@
             cbxTipoBusquedaEmpleado.FormattingEnabled = true;
             cbxTipoBusquedaEmpleado.Location = new Point(6, 26);
             cbxTipoBusquedaEmpleado.Name = "cbxTipoBusquedaEmpleado";
-            cbxTipoBusquedaEmpleado.Size = new Size(121, 23);
+            cbxTipoBusquedaEmpleado.Size = new Size(139, 23);
             cbxTipoBusquedaEmpleado.TabIndex = 6;
-            cbxTipoBusquedaEmpleado.SelectedIndexChanged += cbxTipoBusquedaEmpleado_SelectedIndexChanged;
             cbxTipoBusquedaEmpleado.TextChanged += cbxTipoBusquedaEmpleado_TextChanged;
             // 
             // txtBuscarEmpleado
             // 
             txtBuscarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBuscarEmpleado.Font = new Font("Segoe UI", 9F);
-            txtBuscarEmpleado.Location = new Point(139, 26);
+            txtBuscarEmpleado.Location = new Point(151, 26);
             txtBuscarEmpleado.Name = "txtBuscarEmpleado";
-            txtBuscarEmpleado.Size = new Size(787, 23);
+            txtBuscarEmpleado.Size = new Size(788, 23);
             txtBuscarEmpleado.TabIndex = 5;
             txtBuscarEmpleado.TextChanged += txtBuscarEmpleado_TextChanged;
             // 
@@ -80,10 +80,19 @@
             dgvEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvEmpleado.BackgroundColor = Color.FromArgb(148, 184, 216);
             dgvEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmpleado.Location = new Point(12, 119);
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvEmpleado.DefaultCellStyle = dataGridViewCellStyle1;
+            dgvEmpleado.Location = new Point(12, 86);
             dgvEmpleado.Name = "dgvEmpleado";
             dgvEmpleado.ReadOnly = true;
-            dgvEmpleado.Size = new Size(932, 373);
+            dgvEmpleado.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEmpleado.Size = new Size(945, 417);
             dgvEmpleado.TabIndex = 1;
             // 
             // btnAgregarEmpleado
@@ -92,18 +101,17 @@
             btnAgregarEmpleado.BackColor = Color.FromArgb(89, 134, 213);
             btnAgregarEmpleado.FlatAppearance.BorderSize = 0;
             btnAgregarEmpleado.FlatStyle = FlatStyle.Flat;
+            btnAgregarEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnAgregarEmpleado.ForeColor = Color.FromArgb(31, 35, 40);
             btnAgregarEmpleado.IconChar = FontAwesome.Sharp.IconChar.Plus;
             btnAgregarEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnAgregarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarEmpleado.IconSize = 20;
-            btnAgregarEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregarEmpleado.Location = new Point(950, 151);
+            btnAgregarEmpleado.Location = new Point(963, 118);
             btnAgregarEmpleado.Name = "btnAgregarEmpleado";
-            btnAgregarEmpleado.Size = new Size(113, 50);
+            btnAgregarEmpleado.Size = new Size(156, 50);
             btnAgregarEmpleado.TabIndex = 7;
             btnAgregarEmpleado.Text = "AGREGAR";
-            btnAgregarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnAgregarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregarEmpleado.UseVisualStyleBackColor = false;
             btnAgregarEmpleado.Click += btnAgregarEmpleado_Click;
@@ -114,18 +122,17 @@
             btnModificaEmpleado.BackColor = Color.FromArgb(55, 166, 104);
             btnModificaEmpleado.FlatAppearance.BorderSize = 0;
             btnModificaEmpleado.FlatStyle = FlatStyle.Flat;
+            btnModificaEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnModificaEmpleado.ForeColor = Color.FromArgb(31, 35, 40);
             btnModificaEmpleado.IconChar = FontAwesome.Sharp.IconChar.PenNib;
             btnModificaEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnModificaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModificaEmpleado.IconSize = 20;
-            btnModificaEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnModificaEmpleado.Location = new Point(950, 222);
+            btnModificaEmpleado.Location = new Point(963, 174);
             btnModificaEmpleado.Name = "btnModificaEmpleado";
-            btnModificaEmpleado.Size = new Size(113, 55);
+            btnModificaEmpleado.Size = new Size(156, 55);
             btnModificaEmpleado.TabIndex = 8;
             btnModificaEmpleado.Text = "MODIFICAR";
-            btnModificaEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnModificaEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnModificaEmpleado.UseVisualStyleBackColor = false;
             btnModificaEmpleado.Click += btnModificaEmpleado_Click;
@@ -136,18 +143,17 @@
             btnEliminarEmpleado.BackColor = Color.FromArgb(184, 82, 82);
             btnEliminarEmpleado.FlatAppearance.BorderSize = 0;
             btnEliminarEmpleado.FlatStyle = FlatStyle.Flat;
+            btnEliminarEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnEliminarEmpleado.ForeColor = Color.FromArgb(31, 35, 40);
             btnEliminarEmpleado.IconChar = FontAwesome.Sharp.IconChar.Trash;
             btnEliminarEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarEmpleado.IconSize = 20;
-            btnEliminarEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEliminarEmpleado.Location = new Point(950, 299);
+            btnEliminarEmpleado.Location = new Point(963, 235);
             btnEliminarEmpleado.Name = "btnEliminarEmpleado";
-            btnEliminarEmpleado.Size = new Size(113, 57);
+            btnEliminarEmpleado.Size = new Size(156, 57);
             btnEliminarEmpleado.TabIndex = 9;
             btnEliminarEmpleado.Text = "ELIMINAR";
-            btnEliminarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnEliminarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEliminarEmpleado.UseVisualStyleBackColor = false;
             btnEliminarEmpleado.Click += btnEliminarEmpleado_Click;
@@ -157,7 +163,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
-            ClientSize = new Size(1161, 515);
+            ClientSize = new Size(1131, 515);
             Controls.Add(btnEliminarEmpleado);
             Controls.Add(btnModificaEmpleado);
             Controls.Add(btnAgregarEmpleado);

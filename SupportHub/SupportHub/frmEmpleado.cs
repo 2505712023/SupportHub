@@ -24,33 +24,26 @@ namespace Presentacion
             InitializeComponent();
 
             tipoEmpleado = new List<string>()
- {
+            {
             "Código de Empleado",
             "Nombre",
              "Apellido"
- };
+            };
             cbxTipoBusquedaEmpleado.DataSource = tipoEmpleado;
         }
         private void AgregarUpdateEvenHandler(object sender, frmAgregarEmpleado.UpdateEventArgs args)
         {
-
             mostrarEmpleado();
         }
         private void ModificarUpdateEvenHandler(object sender, frmModificarEmpleado.ModificarEventArgs args)
         {
-
             mostrarEmpleado();
         }
-
-
 
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
             frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
             formEmpleado.UpdateEventHandler += AgregarUpdateEvenHandler;
-
-
-
             formEmpleado.Show();
         }
 
@@ -58,12 +51,10 @@ namespace Presentacion
         {
             cbxTipoBusquedaEmpleado.DropDownStyle = ComboBoxStyle.DropDownList;
             mostrarEmpleado();
-
             ajusteDataGrid();
     
             if (CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
             {
-                
                 btnAgregarEmpleado.Visible = true;
                 btnEliminarEmpleado.Visible = true;
                 btnModificaEmpleado.Visible = true;
@@ -72,19 +63,16 @@ namespace Presentacion
                      CacheInicioUsuario.permisosUser.Contains("Modificar") &&
                      CacheInicioUsuario.permisosUser.Contains("Consultar Datos"))
             {
-              
                 btnEliminarEmpleado.Visible = false;
             }
             else if (CacheInicioUsuario.permisosUser.Contains("Consultar Datos"))
             {
-
                 btnAgregarEmpleado.Visible = false;
                 btnEliminarEmpleado.Visible = false;
                 btnModificaEmpleado.Visible = false;
             }
 
             txtBuscarEmpleado.Focus();
-
         }
         private void cbxTipoBusquedaEmpleado_TextChanged(object sender, EventArgs e)
         {
@@ -103,7 +91,6 @@ namespace Presentacion
             {
                 mostrarEmpleado();
                 dgvEmpleado.ClearSelection();
-
             }
             else
             {
@@ -125,64 +112,61 @@ namespace Presentacion
             dgvEmpleado.ClearSelection();
         }
 
-
         private void mostrarEmpleado()
         {
-
             ModeloEmpleado Empleado = new ModeloEmpleado();
             dgvEmpleado.DataSource = Empleado.mostrarEmpleado();
             dgvEmpleado.ClearSelection();
         }
 
-        private void dgvEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnEliminarEmpleado_Click(object sender, EventArgs e)
         {
-
-            
             DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar empleado?", "Eliminar empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (resultado == DialogResult.Yes)
             {
                 if (dgvEmpleado.SelectedRows.Count == 1)
                 {
                     string codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
+                    bool hasError = false;
                     try
                     {
                         EmpObjeto.EliminarEmp(codEmpleado);
-                        MessageBox.Show("Empleado eliminado correctamente");
+                    }
+                    catch (SqlException ex)
+                    {
+                        hasError = true;
+                        if (ex.Number == 547)
+                        {
+                            MessageBox.Show("No se puede eliminar el empleado porque tiene entregas pendientes.", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Error al intentar eliminar el empleado: {ex.Message}", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        hasError = true;
+                        MessageBox.Show("El empleado tiene entregas o asignaciones pendientes", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    if (hasError == false)
+                    {
+                        MessageBox.Show("Empleado eliminado correctamente", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         mostrarEmpleado();
                         txtBuscarEmpleado.Focus();
                         mostrarEmpleado();
                         ajusteDataGrid();
                         dgvEmpleado.ClearSelection();
                     }
-                    catch (SqlException ex)
-                    {
-                        if (ex.Number == 547)
-                        {
-                            MessageBox.Show("No se puede eliminar el empleado porque tiene entregas pendientes.");
-                        }
-                        else
-                        {
-                            MessageBox.Show($"Error al intentar eliminar el empleado: {ex.Message}");
-                        }
-                    }
-                    catch (FormatException)
-                    {
-                        MessageBox.Show("El empleado tiene entregas o asignaciones pendientes");
-                    }
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione solo una fila por favor");
+                    MessageBox.Show("Seleccione solo una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Operación de eliminación cancelada");
+                MessageBox.Show("Operación de eliminación cancelada", "Operación cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
         }
@@ -214,11 +198,7 @@ namespace Presentacion
 
         private void btnBuscarEmpleado_Click(object sender, EventArgs e)
         {
-
-
             dgvEmpleado.DataSource = null;
-
-
         }
 
         private void btnModificaEmpleado_Click(object sender, EventArgs e)
@@ -239,24 +219,16 @@ namespace Presentacion
                     frm.cbxAreaEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreArea"].Value.ToString();
                     frm.cbxCargoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreCargo"].Value.ToString();
                     frm.ShowDialog();
-
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione solo una fila por favor");
+                    MessageBox.Show("Seleccione solo una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Seleccione una fila por favor");
+                MessageBox.Show("Seleccione una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-       
-
-        private void cbxTipoBusquedaEmpleado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

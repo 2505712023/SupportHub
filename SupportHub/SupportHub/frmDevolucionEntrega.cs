@@ -70,5 +70,11 @@ namespace Presentacion
             MessageBox.Show("Se eliminó la fecha de devolución exitosamente", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
             actualizardgvEntregas();
         }
+
+        private void btnCerrarAddEmpleado_Click(object sender, EventArgs e)
+        {
+            habilitardgvEntregas();
+            this.Close();
+        }
     }
 }

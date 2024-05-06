@@ -40,12 +40,15 @@
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
             lblCodigoEntrega = new Label();
+            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
+            pSuperiorAddEntrega.SuspendLayout();
             gbAddEntrega.SuspendLayout();
             SuspendLayout();
             // 
             // pSuperiorAddEntrega
             // 
             pSuperiorAddEntrega.BackColor = Color.FromArgb(5, 23, 59);
+            pSuperiorAddEntrega.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorAddEntrega.Dock = DockStyle.Top;
             pSuperiorAddEntrega.Location = new Point(0, 0);
             pSuperiorAddEntrega.Name = "pSuperiorAddEntrega";
@@ -239,6 +242,26 @@
             lblCodigoEntrega.TabIndex = 4;
             lblCodigoEntrega.Text = "Código Entrega:";
             // 
+            // btnCerrarAddEmpleado
+            // 
+            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
+            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
+            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
+            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
+            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnCerrarAddEmpleado.IconSize = 20;
+            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.Location = new Point(402, 12);
+            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
+            btnCerrarAddEmpleado.Size = new Size(28, 24);
+            btnCerrarAddEmpleado.TabIndex = 17;
+            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
+            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
+            // 
             // frmDevolucionEntrega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -254,6 +277,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmDevolucionEntrega";
             Load += frmDevolucionEntrega_Load;
+            pSuperiorAddEntrega.ResumeLayout(false);
             gbAddEntrega.ResumeLayout(false);
             gbAddEntrega.PerformLayout();
             ResumeLayout(false);
@@ -273,5 +297,6 @@
         private Label lblCodigoEntrega;
         private FontAwesome.Sharp.IconButton btnCancelarDevolucion;
         private FontAwesome.Sharp.IconButton btnGuardarDevolucion;
+        private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
     }
 }
