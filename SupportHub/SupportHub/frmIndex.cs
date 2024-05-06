@@ -56,18 +56,21 @@ namespace Presentacion
         private void hideSubMenu()
         {
             pSubMenu.Visible = false;
+            pDerechoIndex.Width = 0;
         }
         private void showSubMenu(Panel subMenu)
         {
             if (subMenu.Visible == false)
             {
                 hideSubMenu();
+                pDerechoIndex.Width = 139;
                 subMenu.Visible = true;
             }
             else
-                subMenu.Visible = false;
+            {
+                hideSubMenu();
+            }
         }
-
 
         private void ActivateButton(object senderBtn, Color color)
         {
@@ -272,8 +275,6 @@ namespace Presentacion
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es");
 
-
-
             DialogResult resultado = MessageBox.Show("¿Está seguro que desea cerrar la aplicación?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (resultado == DialogResult.Yes)
             {
@@ -281,9 +282,5 @@ namespace Presentacion
             }
 
         }
-
-    
-
-      
     }
 }
