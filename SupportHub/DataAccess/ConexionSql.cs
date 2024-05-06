@@ -22,6 +22,5 @@ namespace DataAccess
         {
             return new SqlConnection(cadenaconexion);
         }
-
     }
 }

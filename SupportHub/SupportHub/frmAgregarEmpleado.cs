@@ -23,7 +23,6 @@ namespace Presentacion
         public delegate void UpdateDelagate(object sender, UpdateEventArgs arg);
         public event UpdateDelagate UpdateEventHandler;
 
-
         public class UpdateEventArgs : EventArgs
         {
             public string Data { get; set; }
@@ -67,10 +66,6 @@ namespace Presentacion
             cbxCargoEmpleado.ValueMember = "idCargo";
         }
 
-        private void cbxCargoEmpleado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         public event EventHandler EmpleadoGuardado;
         private void btnGuardarEmpleado_Click(object sender, EventArgs e)
         {
@@ -86,7 +81,7 @@ namespace Presentacion
                     Convert.ToInt32(cbxCargoEmpleado.SelectedValue),
                     Convert.ToInt32(cbxAreaEmpleado.SelectedValue)
                 );
-                MessageBox.Show("Se insertó correctamente");
+                MessageBox.Show("El empleado se registró correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Agregar();
 
                 txtNombreEmpleado.Text = "";
@@ -95,51 +90,44 @@ namespace Presentacion
                 txtEmailEmpleado.Text = "";
                 cbxAreaEmpleado.Text=null;
                 cbxCargoEmpleado.Text = null;
-
             }
         }
 
         private bool ValidarCampos()
         {
-            // Validar nombre
             if (string.IsNullOrEmpty(txtNombreEmpleado.Text) || !EsLetras(txtNombreEmpleado.Text))
             {
-                MessageBox.Show("Ingrese un nombre válido.");
+                MessageBox.Show("Ingrese un nombre válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            // Validar apellido
             if (string.IsNullOrEmpty(txtApellidoEmpleado.Text) || !EsLetras(txtApellidoEmpleado.Text))
             {
-                MessageBox.Show("Ingrese un apellido válido.");
+                MessageBox.Show("Ingrese un apellido válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
 
             if (string.IsNullOrEmpty(txtTelefonoEmpleado.Text) || !EsTelefono(txtTelefonoEmpleado.Text))
             {
-                MessageBox.Show("Ingrese un número de teléfono válido (formato: 2222-0000).");
+                MessageBox.Show("Ingrese un número de teléfono válido (formato: 2222-0000).", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
 
             if (string.IsNullOrEmpty(txtEmailEmpleado.Text) || !EsCorreo(txtEmailEmpleado.Text))
             {
-                MessageBox.Show("Ingrese un correo electrónico válido.");
+                MessageBox.Show("Ingrese un correo electrónico válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
 
             if (cbxCargoEmpleado.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione un cargo.");
+                MessageBox.Show("Seleccione un cargo.", "Dato faltante", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-
             if (cbxAreaEmpleado.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione un área.");
+                MessageBox.Show("Seleccione un área.", "Dato faltante", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -162,29 +150,17 @@ namespace Presentacion
 
         private bool EsTelefono(string telefono)
         {
-
             return Regex.IsMatch(telefono, @"^\d{4}-\d{4}$");
         }
 
         private bool EsCorreo(string correo)
         {
-
             return Regex.IsMatch(correo, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
-        }
-        private void pSuperiorAddEmpleado_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btnCerrarAddEmpleado_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void gbAddEmpleado_Enter(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

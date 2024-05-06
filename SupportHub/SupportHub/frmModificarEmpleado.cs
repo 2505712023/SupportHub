@@ -19,8 +19,6 @@ namespace Presentacion
         public frmModificarEmpleado(frmEmpleado Emple)
         {
             InitializeComponent();
-
-
         }
         ModeloEmpleado modeloEmpleado = new ModeloEmpleado();
         public string Operacion = "Insertar";
@@ -31,18 +29,14 @@ namespace Presentacion
         public class ModificarEventArgs : EventArgs
         {
             public string Data { get; set; }
-
         }
         protected void Actualizar()
         {
-
             ModificarEventArgs args = new ModificarEventArgs();
             UpdateEventHandler.Invoke(this, args);
         }
         public void LlenarComboBoxAreas()
         {
-
-
             DataTable areas = agregarEmpleados.ObtenerArea();
 
             cbxAreaEmpleadoUpdate.DataSource = areas;
@@ -57,15 +51,7 @@ namespace Presentacion
             cbxCargoEmpleadoUpdate.DataSource = cargos;
             cbxCargoEmpleadoUpdate.DisplayMember = "nombreCargo";
             cbxCargoEmpleadoUpdate.ValueMember = "idCargo";
-
         }
-
-
-        private void frmModificarEmpleado_Load(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void btnGuaardarUpdate_Click(object sender, EventArgs e)
         {
@@ -80,7 +66,7 @@ namespace Presentacion
                     Convert.ToInt32(cbxAreaEmpleadoUpdate.SelectedValue)
 
                 );
-                MessageBox.Show("Se  guardo correctamente");
+                MessageBox.Show("El empleado se modificó correctamente", "Modificación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Actualizar();
                 txtNombreEmpleadoUpdate.Text = "";
                 txtApellidoEmpleadoUpdate.Text = "";
@@ -89,18 +75,11 @@ namespace Presentacion
                 cbxAreaEmpleadoUpdate.Text = null;
                 cbxCargoEmpleadoUpdate.Text = null;
             }
-
         }
-
 
         private void btnGuardarUpdate_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void cbxCargoEmpleadoUpdate_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private bool ValidarCampos()
@@ -108,42 +87,38 @@ namespace Presentacion
 
             if (string.IsNullOrEmpty(txtNombreEmpleadoUpdate.Text) || !EsLetras(txtNombreEmpleadoUpdate.Text))
             {
-                MessageBox.Show("Ingrese un nombre válido.");
+                MessageBox.Show("Ingrese un nombre válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
             // Validar apellido
             if (string.IsNullOrEmpty(txtApellidoEmpleadoUpdate.Text) || !EsLetras(txtApellidoEmpleadoUpdate.Text))
             {
-                MessageBox.Show("Ingrese un apellido válido.");
+                MessageBox.Show("Ingrese un apellido válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
 
             if (string.IsNullOrWhiteSpace(txtTelefonoEmpleadoUpdate.Text) || !EsTelefono(txtTelefonoEmpleadoUpdate.Text))
             {
-                MessageBox.Show("Ingrese un número de teléfono válido (formato: 2222-0000).");
+                MessageBox.Show("Ingrese un número de teléfono válido (formato: 2222-0000).", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
 
             if (string.IsNullOrWhiteSpace(txtEmailEmpleadoUpdate.Text) || !EsCorreo(txtEmailEmpleadoUpdate.Text))
             {
-                MessageBox.Show("Ingrese un correo electrónico válido.");
+                MessageBox.Show("Ingrese un correo electrónico válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
 
             if (cbxCargoEmpleadoUpdate.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione un cargo.");
+                MessageBox.Show("Seleccione un cargo.", "Dato faltante", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-
             if (cbxAreaEmpleadoUpdate.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione un área.");
+                MessageBox.Show("Seleccione un área.", "Dato faltante", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -166,28 +141,17 @@ namespace Presentacion
 
         private bool EsTelefono(string telefono)
         {
-
             return Regex.IsMatch(telefono, @"^\d{4}-\d{4}$");
         }
 
         private bool EsCorreo(string correo)
         {
-
             return Regex.IsMatch(correo, @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
-        }
-        private void pSuperiorAddEmpleado_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void btnCerrarAddEmpleado_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void gbAddEmpleado_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void btnGuardarUpdate_Click_1(object sender, EventArgs e)
@@ -200,5 +164,4 @@ namespace Presentacion
             this.Close();
         }
     }
-
 }
