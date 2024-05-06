@@ -12,7 +12,25 @@ namespace DataAccess
 {
     public class UsuarioDato : ConexionSql
     {
+        public void editarMiInformacion(int idUser, string claveUser)
+        {
+            using (var coneccion = GetConnection())
+            {
+                coneccion.Open();
+                using (var comando = new SqlCommand())
+                {
+                    comando.Connection = coneccion;
+                    comando.CommandText = "sp_modificar_contraseña";
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@claveUsuario", claveUser);
+                    comando.Parameters.AddWithValue("@idUsuario", idUser);
 
+                    comando.ExecuteNonQuery();
+
+                }
+            }
+
+        }
         public string Login(string user, string pass)
         {
             try
@@ -46,6 +64,8 @@ namespace DataAccess
                                     CacheInicioUsuario.nombreUser = reader.GetString(3);
                                     CacheInicioUsuario.apellidoUser = reader.GetString(4);
                                     CacheInicioUsuario.rolUser = reader.GetString(reader.GetOrdinal("nombreRol"));
+                                    CacheInicioUsuario.empleado = reader.GetString(reader.GetOrdinal("Empleado"));
+                                    CacheInicioUsuario.idEmpleado = reader.GetInt32(reader.GetOrdinal("idEmpleado"));
                                 }
                                 reader.Close();
 
@@ -84,7 +104,7 @@ namespace DataAccess
             }
             catch (Exception ex)
             {
-                
+
                 return "Error durante el inicio de sesión: " + ex.Message;
             }
         }
