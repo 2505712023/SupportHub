@@ -12,24 +12,25 @@ namespace DataAccess
 {
     public class UsuarioDato : ConexionSql
     {
-        public bool Login(string user, string pass)
-        {
-            using (var coneccion = GetConnection())
-            {
-                coneccion.Open();
-                using (var comando = new SqlCommand())
-                {
-                    comando.Connection = coneccion;
-                    comando.CommandText = "sp_autenticar_usuario";
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@LoginName", user);
-                    comando.Parameters.AddWithValue("@Password", pass);
+        public string Login(string user, string pass)
 
-                    using (SqlDataReader reader = comando.ExecuteReader())
+        {
+            try
+            {
+                using (var coneccion = GetConnection())
+                {
+                    coneccion.Open();
+                    using (var comando = new SqlCommand())
                     {
-                        if (reader.HasRows)
+                        comando.Connection = coneccion;
+                        comando.CommandText = "sp_autenticar_usuario";
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@LoginName", user);
+                        comando.Parameters.AddWithValue("@Password", pass);
+
+                        using (SqlDataReader reader = comando.ExecuteReader())
                         {
-                            while (reader.Read())
+                            if (reader.HasRows)
                             {
                                 // Leer los datos del usuario
                                 int idUsuario = reader.GetInt32(reader.GetOrdinal("idUsuario"));
@@ -48,34 +49,45 @@ namespace DataAccess
                             }
                             reader.Close();
 
-                            using (var comandoPermisos = new SqlCommand())
-                            {
-                                comandoPermisos.Connection = coneccion;
-                                comandoPermisos.CommandText = "select p.nombrePermiso " +
-                                                                "from PermisosXRoles pr " +
-                                                                "inner join Permisos p on p.idPermiso = pr.idPermiso " +
-                                                                "inner join Roles r on r.idRol = pr.idRol " +
-                                                                "where r.nombreRol = '" + CacheInicioUsuario.rolUser + "'";
-                                comandoPermisos.CommandType = CommandType.Text;
-                                
-                                using (SqlDataReader readerPermisos = comandoPermisos.ExecuteReader())
+                                using (var comandoPermisos = new SqlCommand())
                                 {
-                                    CacheInicioUsuario.permisosUser = new ArrayList();
-                                    while (readerPermisos.Read())
+                                    comandoPermisos.Connection = coneccion;
+                                    comandoPermisos.CommandText = "select p.nombrePermiso " +
+                                                                    "from PermisosXRoles pr " +
+                                                                    "inner join Permisos p on p.idPermiso = pr.idPermiso " +
+                                                                    "inner join Roles r on r.idRol = pr.idRol " +
+                                                                    "where r.nombreRol = '" + CacheInicioUsuario.rolUser + "'";
+                                    comandoPermisos.CommandType = CommandType.Text;
+
+                                    using (SqlDataReader readerPermisos = comandoPermisos.ExecuteReader())
                                     {
-                                        CacheInicioUsuario.permisosUser.Add(readerPermisos.GetString(readerPermisos.GetOrdinal("nombrePermiso")));
+                                        CacheInicioUsuario.permisosUser = new ArrayList();
+                                        while (readerPermisos.Read())
+                                        {
+                                            CacheInicioUsuario.permisosUser.Add(readerPermisos.GetString(readerPermisos.GetOrdinal("nombrePermiso")));
+                                        }
                                     }
                                 }
+                                return "Inicio de sesión exitoso";
                             }
-                            return true; 
-                        }
-                        else
-                        {
-                            return false;
+                            else
+                            {
+                                return "Usuario o contraseña incorrecto";
+                            }
                         }
                     }
                 }
             }
+            catch (SqlException ex)
+            {
+                return "Error de conexión: " + ex.Message;
+            }
+            catch (Exception ex)
+            {
+                
+                return "Error durante el inicio de sesión: " + ex.Message;
+            }
         }
+
     }
 }

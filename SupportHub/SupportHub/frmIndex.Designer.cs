@@ -384,6 +384,7 @@
             pDesktop.Name = "pDesktop";
             pDesktop.Size = new Size(956, 600);
             pDesktop.TabIndex = 3;
+
             // 
             // pDerechoIndex
             // 
