@@ -49,8 +49,6 @@ namespace Presentacion
             cbxCargoEmpleado.Text = null;
         }
 
-
-
         private void LlenarComboBoxAreas()
         {
             DataTable areas = agregarEmpleados.ObtenerArea();
@@ -68,8 +66,6 @@ namespace Presentacion
             cbxCargoEmpleado.DisplayMember = "nombreCargo";
             cbxCargoEmpleado.ValueMember = "idCargo";
         }
-
-
 
         private void cbxCargoEmpleado_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -99,6 +95,7 @@ namespace Presentacion
                 txtEmailEmpleado.Text = "";
                 cbxAreaEmpleado.Text=null;
                 cbxCargoEmpleado.Text = null;
+
             }
         }
 
@@ -188,5 +185,6 @@ namespace Presentacion
         {
 
         }
+
     }
 }

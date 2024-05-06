@@ -168,9 +168,6 @@ namespace Presentacion
         }
         public void ajusteDataGrid()
         {
-
-
-
             dgvEmpleado.Columns["codEmpleado"].HeaderText = "Código";
             dgvEmpleado.Columns["nombreEmpleado"].HeaderText = "Nombre";
             dgvEmpleado.Columns["apellidoEmpleado"].HeaderText = "Apellido";
@@ -182,7 +179,12 @@ namespace Presentacion
             dgvEmpleado.Columns["nombreCargo"].HeaderText = "Cargo";
             dgvEmpleado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-
+            if (!CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
+            {
+                btnAgregarEmpleado.Visible = false;
+                btnEliminarEmpleado.Visible = false;
+                btnModificaEmpleado.Visible = false;
+            }
         }
 
         private void frmEmpleado_Shown(object sender, EventArgs e)

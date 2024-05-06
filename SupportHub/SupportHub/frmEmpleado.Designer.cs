@@ -32,7 +32,6 @@
             cbxTipoBusquedaEmpleado = new ComboBox();
             txtBuscarEmpleado = new TextBox();
             dgvEmpleado = new DataGridView();
-            pDerechoEmpleado = new Panel();
             btnAgregarEmpleado = new FontAwesome.Sharp.IconButton();
             btnModificaEmpleado = new FontAwesome.Sharp.IconButton();
             btnEliminarEmpleado = new FontAwesome.Sharp.IconButton();
@@ -86,15 +85,6 @@
             dgvEmpleado.ReadOnly = true;
             dgvEmpleado.Size = new Size(932, 373);
             dgvEmpleado.TabIndex = 1;
-            dgvEmpleado.CellContentClick += dgvEmpleado_CellContentClick;
-            // 
-            // pDerechoEmpleado
-            // 
-            pDerechoEmpleado.Dock = DockStyle.Right;
-            pDerechoEmpleado.Location = new Point(1062, 0);
-            pDerechoEmpleado.Name = "pDerechoEmpleado";
-            pDerechoEmpleado.Size = new Size(99, 515);
-            pDerechoEmpleado.TabIndex = 6;
             // 
             // btnAgregarEmpleado
             // 
@@ -171,7 +161,6 @@
             Controls.Add(btnEliminarEmpleado);
             Controls.Add(btnModificaEmpleado);
             Controls.Add(btnAgregarEmpleado);
-            Controls.Add(pDerechoEmpleado);
             Controls.Add(dgvEmpleado);
             Controls.Add(gbBusarEmpleado);
             Name = "frmEmpleado";
@@ -189,7 +178,6 @@
         private GroupBox gbBusarEmpleado;
         private TextBox txtBuscarEmpleado;
         private DataGridView dgvEmpleado;
-        private Panel pDerechoEmpleado;
         private FontAwesome.Sharp.IconButton btnAgregarEmpleado;
         private FontAwesome.Sharp.IconButton btnModificaEmpleado;
         private FontAwesome.Sharp.IconButton btnEliminarEmpleado;
