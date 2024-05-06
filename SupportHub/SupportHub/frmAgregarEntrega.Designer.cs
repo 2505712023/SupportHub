@@ -30,14 +30,17 @@
         {
             pSuperiorAddEntrega = new Panel();
             gbAddEntrega = new GroupBox();
+            tboxEmpleadoEntrega = new TextBox();
+            lblEmpleadoRecibe = new Label();
+            lblErrorCantidad = new Label();
             tboxCantidadEntrega = new MaskedTextBox();
             lblCantidadAEntregar = new Label();
             tboxCantidadDisponible = new TextBox();
             lblCantidadDisponible = new Label();
             cboxEquipo = new ComboBox();
             lblEquipo = new Label();
-            cboxEmpleado = new ComboBox();
-            labEmpleado = new Label();
+            cboxEmpleadoRecibe = new ComboBox();
+            labEmpleadoEntrega = new Label();
             rtxtObservacionEntrega = new RichTextBox();
             lblObservacionEntrega = new Label();
             ibtnCancelarEntrega = new FontAwesome.Sharp.IconButton();
@@ -57,20 +60,23 @@
             pSuperiorAddEntrega.Dock = DockStyle.Top;
             pSuperiorAddEntrega.Location = new Point(0, 0);
             pSuperiorAddEntrega.Name = "pSuperiorAddEntrega";
-            pSuperiorAddEntrega.Size = new Size(706, 60);
+            pSuperiorAddEntrega.Size = new Size(734, 60);
             pSuperiorAddEntrega.TabIndex = 1;
             // 
             // gbAddEntrega
             // 
             gbAddEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gbAddEntrega.Controls.Add(tboxEmpleadoEntrega);
+            gbAddEntrega.Controls.Add(lblEmpleadoRecibe);
+            gbAddEntrega.Controls.Add(lblErrorCantidad);
             gbAddEntrega.Controls.Add(tboxCantidadEntrega);
             gbAddEntrega.Controls.Add(lblCantidadAEntregar);
             gbAddEntrega.Controls.Add(tboxCantidadDisponible);
             gbAddEntrega.Controls.Add(lblCantidadDisponible);
             gbAddEntrega.Controls.Add(cboxEquipo);
             gbAddEntrega.Controls.Add(lblEquipo);
-            gbAddEntrega.Controls.Add(cboxEmpleado);
-            gbAddEntrega.Controls.Add(labEmpleado);
+            gbAddEntrega.Controls.Add(cboxEmpleadoRecibe);
+            gbAddEntrega.Controls.Add(labEmpleadoEntrega);
             gbAddEntrega.Controls.Add(rtxtObservacionEntrega);
             gbAddEntrega.Controls.Add(lblObservacionEntrega);
             gbAddEntrega.Controls.Add(ibtnCancelarEntrega);
@@ -84,15 +90,45 @@
             gbAddEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             gbAddEntrega.Location = new Point(12, 66);
             gbAddEntrega.Name = "gbAddEntrega";
-            gbAddEntrega.Size = new Size(682, 338);
+            gbAddEntrega.Size = new Size(710, 388);
             gbAddEntrega.TabIndex = 2;
             gbAddEntrega.TabStop = false;
             gbAddEntrega.Text = "AGREGAR ENTREGA";
             // 
+            // tboxEmpleadoEntrega
+            // 
+            tboxEmpleadoEntrega.Enabled = false;
+            tboxEmpleadoEntrega.Font = new Font("Segoe UI", 12F);
+            tboxEmpleadoEntrega.ForeColor = Color.Black;
+            tboxEmpleadoEntrega.Location = new Point(226, 113);
+            tboxEmpleadoEntrega.Name = "tboxEmpleadoEntrega";
+            tboxEmpleadoEntrega.ReadOnly = true;
+            tboxEmpleadoEntrega.Size = new Size(325, 29);
+            tboxEmpleadoEntrega.TabIndex = 32;
+            // 
+            // lblEmpleadoRecibe
+            // 
+            lblEmpleadoRecibe.AutoSize = true;
+            lblEmpleadoRecibe.Location = new Point(41, 151);
+            lblEmpleadoRecibe.Name = "lblEmpleadoRecibe";
+            lblEmpleadoRecibe.Size = new Size(179, 21);
+            lblEmpleadoRecibe.TabIndex = 31;
+            lblEmpleadoRecibe.Text = "Empleado que Recibe:";
+            // 
+            // lblErrorCantidad
+            // 
+            lblErrorCantidad.AutoSize = true;
+            lblErrorCantidad.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            lblErrorCantidad.ForeColor = Color.Red;
+            lblErrorCantidad.Location = new Point(330, 259);
+            lblErrorCantidad.Name = "lblErrorCantidad";
+            lblErrorCantidad.Size = new Size(0, 19);
+            lblErrorCantidad.TabIndex = 30;
+            // 
             // tboxCantidadEntrega
             // 
             tboxCantidadEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            tboxCantidadEntrega.Location = new Point(198, 216);
+            tboxCantidadEntrega.Location = new Point(226, 253);
             tboxCantidadEntrega.Mask = "999999";
             tboxCantidadEntrega.Name = "tboxCantidadEntrega";
             tboxCantidadEntrega.RightToLeft = RightToLeft.Yes;
@@ -105,7 +141,7 @@
             // lblCantidadAEntregar
             // 
             lblCantidadAEntregar.AutoSize = true;
-            lblCantidadAEntregar.Location = new Point(22, 219);
+            lblCantidadAEntregar.Location = new Point(50, 256);
             lblCantidadAEntregar.Name = "lblCantidadAEntregar";
             lblCantidadAEntregar.Size = new Size(166, 21);
             lblCantidadAEntregar.TabIndex = 28;
@@ -115,7 +151,7 @@
             // 
             tboxCantidadDisponible.Enabled = false;
             tboxCantidadDisponible.ForeColor = Color.Green;
-            tboxCantidadDisponible.Location = new Point(198, 181);
+            tboxCantidadDisponible.Location = new Point(226, 218);
             tboxCantidadDisponible.Name = "tboxCantidadDisponible";
             tboxCantidadDisponible.ReadOnly = true;
             tboxCantidadDisponible.Size = new Size(98, 29);
@@ -125,7 +161,7 @@
             // lblCantidadDisponible
             // 
             lblCantidadDisponible.AutoSize = true;
-            lblCantidadDisponible.Location = new Point(22, 184);
+            lblCantidadDisponible.Location = new Point(50, 221);
             lblCantidadDisponible.Name = "lblCantidadDisponible";
             lblCantidadDisponible.Size = new Size(170, 21);
             lblCantidadDisponible.TabIndex = 26;
@@ -135,7 +171,7 @@
             // 
             cboxEquipo.Font = new Font("Segoe UI", 12F);
             cboxEquipo.FormattingEnabled = true;
-            cboxEquipo.Location = new Point(198, 146);
+            cboxEquipo.Location = new Point(226, 183);
             cboxEquipo.Name = "cboxEquipo";
             cboxEquipo.Size = new Size(325, 29);
             cboxEquipo.TabIndex = 25;
@@ -144,34 +180,34 @@
             // lblEquipo
             // 
             lblEquipo.AutoSize = true;
-            lblEquipo.Location = new Point(124, 149);
+            lblEquipo.Location = new Point(152, 186);
             lblEquipo.Name = "lblEquipo";
             lblEquipo.Size = new Size(68, 21);
             lblEquipo.TabIndex = 24;
             lblEquipo.Text = "Equipo:";
             // 
-            // cboxEmpleado
+            // cboxEmpleadoRecibe
             // 
-            cboxEmpleado.Font = new Font("Segoe UI", 12F);
-            cboxEmpleado.FormattingEnabled = true;
-            cboxEmpleado.Location = new Point(198, 111);
-            cboxEmpleado.Name = "cboxEmpleado";
-            cboxEmpleado.Size = new Size(325, 29);
-            cboxEmpleado.TabIndex = 23;
+            cboxEmpleadoRecibe.Font = new Font("Segoe UI", 12F);
+            cboxEmpleadoRecibe.FormattingEnabled = true;
+            cboxEmpleadoRecibe.Location = new Point(226, 148);
+            cboxEmpleadoRecibe.Name = "cboxEmpleadoRecibe";
+            cboxEmpleadoRecibe.Size = new Size(325, 29);
+            cboxEmpleadoRecibe.TabIndex = 23;
             // 
-            // labEmpleado
+            // labEmpleadoEntrega
             // 
-            labEmpleado.AutoSize = true;
-            labEmpleado.Location = new Point(101, 114);
-            labEmpleado.Name = "labEmpleado";
-            labEmpleado.Size = new Size(91, 21);
-            labEmpleado.TabIndex = 22;
-            labEmpleado.Text = "Empleado:";
+            labEmpleadoEntrega.AutoSize = true;
+            labEmpleadoEntrega.Location = new Point(33, 116);
+            labEmpleadoEntrega.Name = "labEmpleadoEntrega";
+            labEmpleadoEntrega.Size = new Size(187, 21);
+            labEmpleadoEntrega.TabIndex = 22;
+            labEmpleadoEntrega.Text = "Empleado que Entrega:";
             // 
             // rtxtObservacionEntrega
             // 
             rtxtObservacionEntrega.Font = new Font("Segoe UI", 12F);
-            rtxtObservacionEntrega.Location = new Point(198, 251);
+            rtxtObservacionEntrega.Location = new Point(226, 288);
             rtxtObservacionEntrega.Name = "rtxtObservacionEntrega";
             rtxtObservacionEntrega.Size = new Size(325, 62);
             rtxtObservacionEntrega.TabIndex = 21;
@@ -181,7 +217,7 @@
             // 
             lblObservacionEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             lblObservacionEntrega.AutoSize = true;
-            lblObservacionEntrega.Location = new Point(78, 251);
+            lblObservacionEntrega.Location = new Point(106, 288);
             lblObservacionEntrega.Name = "lblObservacionEntrega";
             lblObservacionEntrega.Size = new Size(110, 21);
             lblObservacionEntrega.TabIndex = 19;
@@ -200,7 +236,7 @@
             ibtnCancelarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnCancelarEntrega.IconSize = 20;
             ibtnCancelarEntrega.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnCancelarEntrega.Location = new Point(557, 102);
+            ibtnCancelarEntrega.Location = new Point(585, 102);
             ibtnCancelarEntrega.Name = "ibtnCancelarEntrega";
             ibtnCancelarEntrega.Size = new Size(100, 40);
             ibtnCancelarEntrega.TabIndex = 18;
@@ -221,18 +257,19 @@
             ibtnGuardarEntrega.IconColor = Color.White;
             ibtnGuardarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnGuardarEntrega.IconSize = 20;
-            ibtnGuardarEntrega.Location = new Point(557, 56);
+            ibtnGuardarEntrega.Location = new Point(585, 56);
             ibtnGuardarEntrega.Name = "ibtnGuardarEntrega";
             ibtnGuardarEntrega.Size = new Size(100, 40);
             ibtnGuardarEntrega.TabIndex = 17;
             ibtnGuardarEntrega.Text = "GUARDAR";
             ibtnGuardarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
             ibtnGuardarEntrega.UseVisualStyleBackColor = false;
+            ibtnGuardarEntrega.Click += ibtnGuardarEntrega_Click;
             // 
             // lblFechaEntrega
             // 
             lblFechaEntrega.AutoSize = true;
-            lblFechaEntrega.Location = new Point(48, 76);
+            lblFechaEntrega.Location = new Point(76, 78);
             lblFechaEntrega.Name = "lblFechaEntrega";
             lblFechaEntrega.Size = new Size(144, 21);
             lblFechaEntrega.TabIndex = 16;
@@ -243,7 +280,7 @@
             dtpickerFechaEntrega.Cursor = Cursors.Hand;
             dtpickerFechaEntrega.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             dtpickerFechaEntrega.Font = new Font("Segoe UI", 12F);
-            dtpickerFechaEntrega.Location = new Point(198, 76);
+            dtpickerFechaEntrega.Location = new Point(226, 78);
             dtpickerFechaEntrega.Name = "dtpickerFechaEntrega";
             dtpickerFechaEntrega.Size = new Size(188, 29);
             dtpickerFechaEntrega.TabIndex = 15;
@@ -252,7 +289,7 @@
             // 
             cboxTipoEntrega.Font = new Font("Segoe UI", 12F);
             cboxTipoEntrega.FormattingEnabled = true;
-            cboxTipoEntrega.Location = new Point(198, 41);
+            cboxTipoEntrega.Location = new Point(226, 43);
             cboxTipoEntrega.Name = "cboxTipoEntrega";
             cboxTipoEntrega.Size = new Size(188, 29);
             cboxTipoEntrega.TabIndex = 14;
@@ -270,7 +307,7 @@
             btnCancelaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelaEmpleado.IconSize = 20;
             btnCancelaEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelaEmpleado.Location = new Point(1194, 238);
+            btnCancelaEmpleado.Location = new Point(1222, 238);
             btnCancelaEmpleado.Name = "btnCancelaEmpleado";
             btnCancelaEmpleado.Size = new Size(115, 38);
             btnCancelaEmpleado.TabIndex = 13;
@@ -291,7 +328,7 @@
             btnGuardarEmpleado.IconColor = Color.White;
             btnGuardarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardarEmpleado.IconSize = 20;
-            btnGuardarEmpleado.Location = new Point(1062, 238);
+            btnGuardarEmpleado.Location = new Point(1090, 238);
             btnGuardarEmpleado.Name = "btnGuardarEmpleado";
             btnGuardarEmpleado.Size = new Size(115, 38);
             btnGuardarEmpleado.TabIndex = 12;
@@ -303,7 +340,7 @@
             // lblTipoDeEntrega
             // 
             lblTipoDeEntrega.AutoSize = true;
-            lblTipoDeEntrega.Location = new Point(58, 41);
+            lblTipoDeEntrega.Location = new Point(86, 43);
             lblTipoDeEntrega.Name = "lblTipoDeEntrega";
             lblTipoDeEntrega.Size = new Size(134, 21);
             lblTipoDeEntrega.TabIndex = 4;
@@ -314,7 +351,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(98, 122, 144);
-            ClientSize = new Size(706, 416);
+            ClientSize = new Size(734, 466);
             Controls.Add(gbAddEntrega);
             Controls.Add(pSuperiorAddEntrega);
             FormBorderStyle = FormBorderStyle.None;
@@ -356,11 +393,14 @@
         private RichTextBox rtxtObservacionEntrega;
         private ComboBox cboxEquipo;
         private Label lblEquipo;
-        private ComboBox cboxEmpleado;
-        private Label labEmpleado;
+        private ComboBox cboxEmpleadoRecibe;
+        private Label labEmpleadoEntrega;
         private TextBox tboxCantidadDisponible;
         private Label lblCantidadDisponible;
         private Label lblCantidadAEntregar;
         private MaskedTextBox tboxCantidadEntrega;
+        private Label lblErrorCantidad;
+        private TextBox tboxEmpleadoEntrega;
+        private Label lblEmpleadoRecibe;
     }
 }

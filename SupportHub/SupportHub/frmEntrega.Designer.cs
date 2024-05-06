@@ -60,7 +60,7 @@
             btnEliminarEntrega.Location = new Point(963, 298);
             btnEliminarEntrega.Name = "btnEliminarEntrega";
             btnEliminarEntrega.Size = new Size(156, 57);
-            btnEliminarEntrega.TabIndex = 14;
+            btnEliminarEntrega.TabIndex = 5;
             btnEliminarEntrega.Text = "ELIMINAR";
             btnEliminarEntrega.TextAlign = ContentAlignment.MiddleLeft;
             btnEliminarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -83,7 +83,7 @@
             btnModificarEntrega.Location = new Point(963, 174);
             btnModificarEntrega.Name = "btnModificarEntrega";
             btnModificarEntrega.Size = new Size(156, 55);
-            btnModificarEntrega.TabIndex = 13;
+            btnModificarEntrega.TabIndex = 3;
             btnModificarEntrega.Text = "MODIFICAR";
             btnModificarEntrega.TextAlign = ContentAlignment.MiddleLeft;
             btnModificarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -106,7 +106,7 @@
             btnAgregarEntrega.Name = "btnAgregarEntrega";
             btnAgregarEntrega.RightToLeft = RightToLeft.No;
             btnAgregarEntrega.Size = new Size(156, 50);
-            btnAgregarEntrega.TabIndex = 12;
+            btnAgregarEntrega.TabIndex = 2;
             btnAgregarEntrega.Text = "AGREGAR";
             btnAgregarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAgregarEntrega.UseVisualStyleBackColor = false;
@@ -169,12 +169,14 @@
             // 
             // cBoxTipoBusqueda
             // 
+            cBoxTipoBusqueda.AutoCompleteMode = AutoCompleteMode.Append;
+            cBoxTipoBusqueda.AutoCompleteSource = AutoCompleteSource.ListItems;
             cBoxTipoBusqueda.Font = new Font("Segoe UI", 9F);
             cBoxTipoBusqueda.FormattingEnabled = true;
             cBoxTipoBusqueda.Location = new Point(6, 26);
             cBoxTipoBusqueda.Name = "cBoxTipoBusqueda";
             cBoxTipoBusqueda.Size = new Size(122, 23);
-            cBoxTipoBusqueda.TabIndex = 6;
+            cBoxTipoBusqueda.TabIndex = 0;
             cBoxTipoBusqueda.TextChanged += cBoxTipoBusqueda_TextChanged;
             // 
             // txtBuscarEntrega
@@ -184,7 +186,7 @@
             txtBuscarEntrega.Location = new Point(134, 26);
             txtBuscarEntrega.Name = "txtBuscarEntrega";
             txtBuscarEntrega.Size = new Size(805, 23);
-            txtBuscarEntrega.TabIndex = 5;
+            txtBuscarEntrega.TabIndex = 1;
             txtBuscarEntrega.TextChanged += txtBuscarEntrega_TextChanged;
             // 
             // btnGenerarDevolucion
@@ -203,11 +205,12 @@
             btnGenerarDevolucion.Location = new Point(963, 235);
             btnGenerarDevolucion.Name = "btnGenerarDevolucion";
             btnGenerarDevolucion.Size = new Size(156, 57);
-            btnGenerarDevolucion.TabIndex = 15;
+            btnGenerarDevolucion.TabIndex = 4;
             btnGenerarDevolucion.Text = "DEVOLUCIÓN";
             btnGenerarDevolucion.TextAlign = ContentAlignment.MiddleLeft;
             btnGenerarDevolucion.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGenerarDevolucion.UseVisualStyleBackColor = false;
+            btnGenerarDevolucion.Click += btnGenerarDevolucion_Click;
             // 
             // frmEntrega
             // 

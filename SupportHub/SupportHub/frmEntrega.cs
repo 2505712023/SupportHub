@@ -1,4 +1,5 @@
-﻿using Dominio;
+﻿using Comun.Cache;
+using Dominio;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +26,8 @@ namespace Presentacion
                 "Tipo de Equipo",
                 "Modelo",
                 "Marca",
-                "Empleado",
+                "Empleado Entregó",
+                "Empleado Recibió",
                 "Observación"
             };
             cBoxTipoBusqueda.DataSource = tiposDeBusqueda;
@@ -36,7 +38,8 @@ namespace Presentacion
             dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
             dgvEntregas.Columns["idTipoEntrega"].Visible = false;
             dgvEntregas.Columns["idEquipo"].Visible = false;
-            dgvEntregas.Columns["idEmpleado"].Visible = false;
+            dgvEntregas.Columns["idEmpleadoEntrega"].Visible = false;
+            dgvEntregas.Columns["idEmpleadoRecibe"].Visible = false;
             dgvEntregas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvEntregas.ClearSelection();
         }
@@ -51,7 +54,7 @@ namespace Presentacion
             actualizarTablaEntregas();
         }
 
-        private void actualizarTablaEntregas()
+        public void actualizarTablaEntregas()
         {
             if (string.IsNullOrEmpty(txtBuscarEntrega.Text))
             {
@@ -77,8 +80,11 @@ namespace Presentacion
                     case "Marca":
                         dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregas(marcaEquipo: txtBuscarEntrega.Text);
                         break;
-                    case "Empleado":
+                    case "Empleado Entregó":
                         dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregas(empleadoEntrega: txtBuscarEntrega.Text);
+                        break;
+                    case "Empleado Recibió":
+                        dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregas(empleadoRecibe: txtBuscarEntrega.Text);
                         break;
                     case "Observación":
                         dgvEntregas.DataSource = ModeloEntrega.filtrarTablaEntregas(observacionEntrega: txtBuscarEntrega.Text);
@@ -89,7 +95,8 @@ namespace Presentacion
             }
             dgvEntregas.Columns["idTipoEntrega"].Visible = false;
             dgvEntregas.Columns["idEquipo"].Visible = false;
-            dgvEntregas.Columns["idEmpleado"].Visible = false;
+            dgvEntregas.Columns["idEmpleadoEntrega"].Visible = false;
+            dgvEntregas.Columns["idEmpleadoRecibe"].Visible = false;
             dgvEntregas.ClearSelection();
         }
 
@@ -111,11 +118,11 @@ namespace Presentacion
 
                     if (totalRegistrosEliminados > 1)
                     {
-                        MessageBox.Show("Se eliminaron " + totalRegistrosEliminados.ToString() + " registros.");
+                        MessageBox.Show("Se eliminaron " + totalRegistrosEliminados.ToString() + " entregas.");
                     }
                     else
                     {
-                        MessageBox.Show("Se eliminó " + totalRegistrosEliminados.ToString() + " registro.");
+                        MessageBox.Show("Se eliminó " + totalRegistrosEliminados.ToString() + " entrega.");
                     }
                 }
                 else
@@ -128,8 +135,91 @@ namespace Presentacion
 
         private void btnAgregarEntrega_Click(object sender, EventArgs e)
         {
-            frmAgregarEntrega formEntrega = new frmAgregarEntrega();
-            formEntrega.Show();
+            if (CacheInicioUsuario.idEmpleado == 0)
+            {
+                MessageBox.Show("Su usuario debe tener un empleado asociado para poder agregar una entrega.", "Usuario Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                dgvEntregas.Enabled = false;
+                frmAgregarEntrega formEntrega = new frmAgregarEntrega();
+                SuscribirEventosAgregarEntrega(formEntrega);
+                formEntrega.Show();
+            }
+        }
+
+        private void AgregarActualizarEventHandler(object sender, frmAgregarEntrega.UpdateEventArgs args)
+        {
+            actualizarTablaEntregas();
+        }
+
+        private void AgregarHabilitarEventHandler(object sender, frmAgregarEntrega.UpdateEventArgs args)
+        {
+            dgvEntregas.Enabled = true;
+        }
+
+        private void SuscribirEventosAgregarEntrega(frmAgregarEntrega form)
+        {
+            if (form != null)
+            {
+                form.UpdateEventHandler += AgregarActualizarEventHandler;
+                form.CloseEventHandler += AgregarHabilitarEventHandler;
+            }
+        }
+
+        private void btnGenerarDevolucion_Click(object sender, EventArgs e)
+        {
+            if (dgvEntregas.SelectedRows.Count == 1)
+            {
+                string? codEntrega = string.Empty;
+
+                DataGridViewSelectedRowCollection selectedRow = dgvEntregas.SelectedRows;
+
+                foreach (DataGridViewRow row in selectedRow)
+                {
+                    if (string.IsNullOrEmpty(row.Cells["Fecha de Devolución"].Value.ToString()))
+                    {
+                        codEntrega = row.Cells["Código de Entrega"].Value.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("La entrega seleccionada ya tiene fecha de devolución.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                frmDevolucionEntrega devolucionEntrega = new frmDevolucionEntrega(codEntrega);
+                SuscribirEventosDevolucionEntrega(devolucionEntrega);
+                dgvEntregas.Enabled = false;
+                devolucionEntrega.Show();
+            }
+            else if (dgvEntregas.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Solo debe seleccionar una entrega para asignar fecha de devolución.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una entrega para asignar fecha de devolución.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DevolucionActualizarEventHandler(object sender, frmDevolucionEntrega.UpdateEventArgs args)
+        {
+            actualizarTablaEntregas();
+        }
+
+        private void DevolucionHabilitarEventHandler(object sender, frmDevolucionEntrega.UpdateEventArgs args)
+        {
+            dgvEntregas.Enabled = true;
+        }
+
+        private void SuscribirEventosDevolucionEntrega(frmDevolucionEntrega form)
+        {
+            if (form != null)
+            {
+                form.UpdateEventHandler += DevolucionActualizarEventHandler;
+                form.CloseEventHandler += DevolucionHabilitarEventHandler;
+            }
         }
     }
 }

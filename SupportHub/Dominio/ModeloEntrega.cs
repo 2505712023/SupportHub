@@ -22,6 +22,7 @@ namespace Dominio
             string modeloEquipo = "-1",
             string marcaEquipo = "-1",
             string empleadoEntrega = "-1",
+            string empleadoRecibe = "-1",
             string observacionEntrega = "-1")
         {
             return EntregaDato.filtrarTablaEntregas(
@@ -31,7 +32,13 @@ namespace Dominio
                 modeloEquipo, 
                 marcaEquipo,
                 empleadoEntrega,
+                empleadoRecibe,
                 observacionEntrega);
+        }
+
+        public static int crearEntrega(int idTipoEntrega, string fechaEntrega, int idEmpleadoEntrega, int idEmpleadoRecibe, int idEquipo, int cantidadEntrega, string? observacionEntrega)
+        {
+            return EntregaDato.crearEntrega(idTipoEntrega, fechaEntrega, idEmpleadoEntrega, idEmpleadoRecibe, idEquipo, cantidadEntrega, observacionEntrega);
         }
 
         public static int eliminarEntrega(string? codEntrega)
@@ -55,6 +62,10 @@ namespace Dominio
         public static DataTable obtenerTiposEntrega()
         {
             return EntregaDato.obtenerTiposEntrega();
+        }
+        public static string asignarFechaDevolucion(string fechaDevolucion, string codEntrega)
+        {
+            return EntregaDato.asignarFechaDevolucion(fechaDevolucion, codEntrega);
         }
     }
 }

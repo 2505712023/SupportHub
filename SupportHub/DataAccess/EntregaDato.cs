@@ -40,11 +40,12 @@ namespace DataAccess
             string modeloEquipo = "-1",
             string marcaEquipo = "-1",
             string empleadoEntrega = "-1",
+            string empleadoRecibe = "-1",
             string observacionEntrega = "-1")
         {
             using (SqlConnection conect = conexion.GetConnection())
             {
-                comando.CommandText = "sp_obtener_entrega";
+                comando.CommandText = "sp_obtener_entregas_filtradas";
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Clear();
                 comando.Parameters.AddWithValue("@codEntrega", codEntrega);
@@ -52,7 +53,8 @@ namespace DataAccess
                 comando.Parameters.AddWithValue("@nombreTipoEquipo", nombreTipoEquipo);
                 comando.Parameters.AddWithValue("@modeloEquipo", modeloEquipo);
                 comando.Parameters.AddWithValue("@marcaEquipo", marcaEquipo);
-                comando.Parameters.AddWithValue("@empleado", empleadoEntrega);
+                comando.Parameters.AddWithValue("@empleadoEntrega", empleadoEntrega);
+                comando.Parameters.AddWithValue("@empleadoRecibe", empleadoRecibe);
                 comando.Parameters.AddWithValue("@observacionEntrega", observacionEntrega);
                 comando.Connection = conect;
 
@@ -63,6 +65,30 @@ namespace DataAccess
                 adaptador.Fill(tabla);
 
                 return tabla;
+            }
+        }
+
+        public static int crearEntrega(int idTipoEntrega, string fechaEntrega, int idEmpleadoEntrega, int idEmpleadoRecibe, int idEquipo, int cantidadEntrega, string? observacionEntrega)
+        {
+            using (SqlConnection conect = conexion.GetConnection())
+            {
+                comando.CommandText = "sp_crear_entrega";
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@idTipoEntrega", idTipoEntrega);
+                comando.Parameters.AddWithValue("@fechaEntrega", fechaEntrega);
+                comando.Parameters.AddWithValue("@idEmpleadoEntrega", idEmpleadoEntrega);
+                comando.Parameters.AddWithValue("@idEmpleadoRecibe", idEmpleadoRecibe);
+                comando.Parameters.AddWithValue("@idEquipo", idEquipo);
+                comando.Parameters.AddWithValue("@cantidadEntrega", cantidadEntrega);
+                comando.Parameters.AddWithValue("@observacionEntrega", observacionEntrega);
+                comando.Connection = conect;
+
+                conect.Open();
+
+                int numRegistrosAgregados = comando.ExecuteNonQuery();
+
+                return numRegistrosAgregados;
             }
         }
 
@@ -103,7 +129,7 @@ namespace DataAccess
 
         public static DataTable obtenerEquipos()
         {
-            string querySelectEquipos = "select idEquipo as [idEquipo],trim(tipoEquipo) + ' - ' + trim(modeloEquipo) + ' - ' + trim(marcaEquipo) as [Equipo] from Equipos";
+            string querySelectEquipos = "select idEquipo as [idEquipo],trim(tipoEquipo) + ' - ' + trim(marcaEquipo) + ' - ' + trim(modeloEquipo) as [Equipo] from Equipos";
 
             using (SqlConnection conect = conexion.GetConnection())
             {
@@ -153,6 +179,21 @@ namespace DataAccess
 
                 return tablaTiposEntrega;
             }
+        }
+
+        public static string asignarFechaDevolucion(string fechaDevolucion, string codEntrega)
+        {
+            string queryUpdateEntrega = "update entregas set fechaDevolucion = '" + fechaDevolucion + "' where codEntrega = '" + codEntrega + "'";
+
+            using (SqlConnection conect = conexion.GetConnection())
+            {
+                conect.Open();
+                SqlCommand comando = new SqlCommand(queryUpdateEntrega, conect);
+                
+                comando.ExecuteNonQuery();
+            }
+
+            return "Fecha de devolución asignada exitosamente.";
         }
     }
 }
