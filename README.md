@@ -1,5 +1,5 @@
 # SupportHub
-Proyecto para aprobar el curso de Programación 1
+Proyecto para aprobar el curso de Programación 1 del grado en Ingenieria en Sistemas y Computación de la Universidad Tecnológica de El Salvador
 
 ## Integrantes
 
