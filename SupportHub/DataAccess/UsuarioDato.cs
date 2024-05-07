@@ -63,6 +63,9 @@ namespace DataAccess
 
                                     int idRol = reader.GetInt32(reader.GetOrdinal("idRol"));
                                     string nombreRol = reader.GetString(reader.GetOrdinal("nombreRol"));
+                                    CacheInicioUsuario.IdUser = reader.GetInt32(0);
+                                    CacheInicioUsuario.password = reader.GetString(1);
+                                    CacheInicioUsuario.user=reader.GetString(2);
                                     CacheInicioUsuario.nombreUser = reader.GetString(3);
                                     CacheInicioUsuario.apellidoUser = reader.GetString(4);
                                     CacheInicioUsuario.rolUser = reader.GetString(reader.GetOrdinal("nombreRol"));
