@@ -8,3 +8,5 @@ Proyecto para aprobar el curso de Programación 1
 - Vanessa Arely Guevara Lazo _ 2511732023
 - Carlos Enrique Sura Renderos _ 2505712023
 - Guillermo Gabriel Castro López _ 2501602023
+- Kevin Ernesto Cortez Cañas _ 2537132023
+- Estrella Naara Palencia Monge _ 2508302023
