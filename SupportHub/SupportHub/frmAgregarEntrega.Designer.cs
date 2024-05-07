@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarEntrega));
             pSuperiorAddEntrega = new Panel();
+            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbAddEntrega = new GroupBox();
             tboxEmpleadoEntrega = new TextBox();
             lblEmpleadoRecibe = new Label();
@@ -51,20 +53,42 @@
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
             lblTipoDeEntrega = new Label();
-            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
+            pboxLogo = new PictureBox();
             pSuperiorAddEntrega.SuspendLayout();
             gbAddEntrega.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             SuspendLayout();
             // 
             // pSuperiorAddEntrega
             // 
             pSuperiorAddEntrega.BackColor = Color.FromArgb(5, 23, 59);
+            pSuperiorAddEntrega.Controls.Add(pboxLogo);
             pSuperiorAddEntrega.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorAddEntrega.Dock = DockStyle.Top;
             pSuperiorAddEntrega.Location = new Point(0, 0);
             pSuperiorAddEntrega.Name = "pSuperiorAddEntrega";
             pSuperiorAddEntrega.Size = new Size(734, 60);
             pSuperiorAddEntrega.TabIndex = 1;
+            // 
+            // btnCerrarAddEmpleado
+            // 
+            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
+            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
+            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
+            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
+            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnCerrarAddEmpleado.IconSize = 20;
+            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.Location = new Point(694, 12);
+            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
+            btnCerrarAddEmpleado.Size = new Size(28, 24);
+            btnCerrarAddEmpleado.TabIndex = 16;
+            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
+            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
             // 
             // gbAddEntrega
             // 
@@ -349,25 +373,16 @@
             lblTipoDeEntrega.TabIndex = 4;
             lblTipoDeEntrega.Text = "Tipo de Entrega:";
             // 
-            // btnCerrarAddEmpleado
+            // pboxLogo
             // 
-            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
-            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
-            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
-            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
-            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
-            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnCerrarAddEmpleado.IconSize = 20;
-            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(694, 12);
-            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
-            btnCerrarAddEmpleado.Size = new Size(28, 24);
-            btnCerrarAddEmpleado.TabIndex = 16;
-            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
-            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
+            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
+            pboxLogo.Location = new Point(20, 0);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(184, 60);
+            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
+            pboxLogo.TabIndex = 17;
+            pboxLogo.TabStop = false;
             // 
             // frmAgregarEntrega
             // 
@@ -385,8 +400,10 @@
             Text = "frmAgregarEntrega";
             Load += frmAgregarEntrega_Load;
             pSuperiorAddEntrega.ResumeLayout(false);
+            pSuperiorAddEntrega.PerformLayout();
             gbAddEntrega.ResumeLayout(false);
             gbAddEntrega.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             ResumeLayout(false);
         }
 
@@ -427,5 +444,6 @@
         private TextBox tboxEmpleadoEntrega;
         private Label lblEmpleadoRecibe;
         private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
+        private PictureBox pboxLogo;
     }
 }

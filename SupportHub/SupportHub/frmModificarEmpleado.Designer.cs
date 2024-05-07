@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmModificarEmpleado));
             pSuperiorUpdEmpleado = new Panel();
             btnCerrarModificarEmpleado = new FontAwesome.Sharp.IconButton();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
@@ -48,13 +49,16 @@
             lblTelefonoEmpleadoUpdate = new Label();
             lblApellidoEmpleadoUpdate = new Label();
             lblNombreEmpleadoUpdate = new Label();
+            pboxLogo = new PictureBox();
             pSuperiorUpdEmpleado.SuspendLayout();
             gbUpdEmpleado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             SuspendLayout();
             // 
             // pSuperiorUpdEmpleado
             // 
             pSuperiorUpdEmpleado.BackColor = Color.FromArgb(5, 23, 59);
+            pSuperiorUpdEmpleado.Controls.Add(pboxLogo);
             pSuperiorUpdEmpleado.Controls.Add(btnCerrarModificarEmpleado);
             pSuperiorUpdEmpleado.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorUpdEmpleado.Dock = DockStyle.Top;
@@ -322,6 +326,17 @@
             lblNombreEmpleadoUpdate.TabIndex = 0;
             lblNombreEmpleadoUpdate.Text = "Nombre:";
             // 
+            // pboxLogo
+            // 
+            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
+            pboxLogo.Location = new Point(20, 0);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(184, 60);
+            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
+            pboxLogo.TabIndex = 17;
+            pboxLogo.TabStop = false;
+            // 
             // frmModificarEmpleado
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -335,8 +350,10 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmModificarEmpleado";
             pSuperiorUpdEmpleado.ResumeLayout(false);
+            pSuperiorUpdEmpleado.PerformLayout();
             gbUpdEmpleado.ResumeLayout(false);
             gbUpdEmpleado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             ResumeLayout(false);
         }
 
@@ -362,5 +379,6 @@
         public Label lblApellidoEmpleadoUpdate;
         public Label lblNombreEmpleadoUpdate;
         private FontAwesome.Sharp.IconButton btnCerrarModificarEmpleado;
+        private PictureBox pboxLogo;
     }
 }
