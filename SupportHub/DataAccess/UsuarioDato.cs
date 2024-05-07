@@ -12,26 +12,22 @@ namespace DataAccess
 {
     public class UsuarioDato : ConexionSql
     {
-        public void editarMiInformacion(int idUser, string claveUser)
+        public void ModificarContraseña(int idUsuario, string nuevaContraseña)
         {
-            using (var coneccion = GetConnection())
+            using (var conexion = GetConnection())
             {
-                coneccion.Open();
-                using (var comando = new SqlCommand())
+                conexion.Open();
+                using (var comando = new SqlCommand("sp_modificar_contraseña", conexion))
                 {
-                    comando.Connection = coneccion;
-                    comando.CommandText = "sp_modificar_contraseña";
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@claveUsuario", claveUser);
-                    comando.Parameters.AddWithValue("@idUsuario", idUser);
+                    comando.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    comando.Parameters.AddWithValue("@claveUsuario", nuevaContraseña);
 
                     comando.ExecuteNonQuery();
-
                 }
             }
-
         }
-        
+
         public string Login(string user, string pass)
 
         {

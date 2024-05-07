@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pDerechoInformacion = new Panel();
-            panel1 = new Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmInformacion));
             gbMiInformacion = new GroupBox();
             linkEditar = new LinkLabel();
             lblApellidoInfor = new Label();
@@ -40,7 +39,7 @@
             lblApellidoUsuario = new Label();
             lblNombreUsuario = new Label();
             lblUsuario = new Label();
-            panel2 = new Panel();
+            pCambiarcontraseña = new Panel();
             lblEditar = new LinkLabel();
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarContraseña = new FontAwesome.Sharp.IconButton();
@@ -57,30 +56,15 @@
             lblNombrePanel = new Label();
             lblUsuarioPanel = new Label();
             lblCambiarContraseña = new Label();
-            pDerechoInformacion.SuspendLayout();
+            imgUser = new PictureBox();
             gbMiInformacion.SuspendLayout();
-            panel2.SuspendLayout();
+            pCambiarcontraseña.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)imgUser).BeginInit();
             SuspendLayout();
-            // 
-            // pDerechoInformacion
-            // 
-            pDerechoInformacion.Controls.Add(panel1);
-            pDerechoInformacion.Dock = DockStyle.Right;
-            pDerechoInformacion.Location = new Point(1062, 0);
-            pDerechoInformacion.Name = "pDerechoInformacion";
-            pDerechoInformacion.Size = new Size(99, 515);
-            pDerechoInformacion.TabIndex = 8;
-            // 
-            // panel1
-            // 
-            panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(99, 515);
-            panel1.TabIndex = 0;
             // 
             // gbMiInformacion
             // 
+            gbMiInformacion.Controls.Add(imgUser);
             gbMiInformacion.Controls.Add(linkEditar);
             gbMiInformacion.Controls.Add(lblApellidoInfor);
             gbMiInformacion.Controls.Add(lblNombreInfo);
@@ -106,40 +90,45 @@
             linkEditar.TabIndex = 8;
             linkEditar.TabStop = true;
             linkEditar.Text = "Editar mi Perfil";
+            linkEditar.LinkClicked += linkEditar_LinkClicked;
             // 
             // lblApellidoInfor
             // 
             lblApellidoInfor.AutoSize = true;
-            lblApellidoInfor.Location = new Point(8, 338);
+            lblApellidoInfor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblApellidoInfor.Location = new Point(8, 333);
             lblApellidoInfor.Name = "lblApellidoInfor";
-            lblApellidoInfor.Size = new Size(49, 15);
+            lblApellidoInfor.Size = new Size(65, 21);
             lblApellidoInfor.TabIndex = 7;
             lblApellidoInfor.Text = "apellido";
             // 
             // lblNombreInfo
             // 
             lblNombreInfo.AutoSize = true;
+            lblNombreInfo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblNombreInfo.Location = new Point(8, 238);
             lblNombreInfo.Name = "lblNombreInfo";
-            lblNombreInfo.Size = new Size(49, 15);
+            lblNombreInfo.Size = new Size(65, 21);
             lblNombreInfo.TabIndex = 6;
             lblNombreInfo.Text = "nombre";
             // 
             // lblIdInfo
             // 
             lblIdInfo.AutoSize = true;
-            lblIdInfo.Location = new Point(8, 86);
+            lblIdInfo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblIdInfo.Location = new Point(14, 84);
             lblIdInfo.Name = "lblIdInfo";
-            lblIdInfo.Size = new Size(17, 15);
+            lblIdInfo.Size = new Size(23, 21);
             lblIdInfo.TabIndex = 5;
             lblIdInfo.Text = "id";
             // 
             // lblUser
             // 
             lblUser.AutoSize = true;
+            lblUser.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblUser.Location = new Point(8, 159);
             lblUser.Name = "lblUser";
-            lblUser.Size = new Size(29, 15);
+            lblUser.Size = new Size(40, 21);
             lblUser.TabIndex = 4;
             lblUser.Text = "user";
             // 
@@ -183,31 +172,31 @@
             lblUsuario.TabIndex = 0;
             lblUsuario.Text = "USUARIO:";
             // 
-            // panel2
+            // pCambiarcontraseña
             // 
-            panel2.BackColor = Color.FromArgb(5, 23, 59);
-            panel2.Controls.Add(lblEditar);
-            panel2.Controls.Add(btnCancelaEmpleado);
-            panel2.Controls.Add(btnGuardarContraseña);
-            panel2.Controls.Add(txtContraActual);
-            panel2.Controls.Add(txtConfirmarContra);
-            panel2.Controls.Add(txtNuevaContra);
-            panel2.Controls.Add(txtApellidoUsuario);
-            panel2.Controls.Add(txtNombreUsuario);
-            panel2.Controls.Add(txtUsuario);
-            panel2.Controls.Add(lblContraActual);
-            panel2.Controls.Add(lblConfirmarContra);
-            panel2.Controls.Add(lblNuevaContra);
-            panel2.Controls.Add(lblApellidoPanel);
-            panel2.Controls.Add(lblNombrePanel);
-            panel2.Controls.Add(lblUsuarioPanel);
-            panel2.Controls.Add(lblCambiarContraseña);
-            panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(660, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(402, 515);
-            panel2.TabIndex = 10;
-            panel2.Visible = false;
+            pCambiarcontraseña.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            pCambiarcontraseña.BackColor = Color.FromArgb(5, 23, 59);
+            pCambiarcontraseña.Controls.Add(lblEditar);
+            pCambiarcontraseña.Controls.Add(btnCancelaEmpleado);
+            pCambiarcontraseña.Controls.Add(btnGuardarContraseña);
+            pCambiarcontraseña.Controls.Add(txtContraActual);
+            pCambiarcontraseña.Controls.Add(txtConfirmarContra);
+            pCambiarcontraseña.Controls.Add(txtNuevaContra);
+            pCambiarcontraseña.Controls.Add(txtApellidoUsuario);
+            pCambiarcontraseña.Controls.Add(txtNombreUsuario);
+            pCambiarcontraseña.Controls.Add(txtUsuario);
+            pCambiarcontraseña.Controls.Add(lblContraActual);
+            pCambiarcontraseña.Controls.Add(lblConfirmarContra);
+            pCambiarcontraseña.Controls.Add(lblNuevaContra);
+            pCambiarcontraseña.Controls.Add(lblApellidoPanel);
+            pCambiarcontraseña.Controls.Add(lblNombrePanel);
+            pCambiarcontraseña.Controls.Add(lblUsuarioPanel);
+            pCambiarcontraseña.Controls.Add(lblCambiarContraseña);
+            pCambiarcontraseña.Location = new Point(759, 0);
+            pCambiarcontraseña.Name = "pCambiarcontraseña";
+            pCambiarcontraseña.Size = new Size(402, 515);
+            pCambiarcontraseña.TabIndex = 10;
+            pCambiarcontraseña.Visible = false;
             // 
             // lblEditar
             // 
@@ -219,6 +208,7 @@
             lblEditar.TabIndex = 9;
             lblEditar.TabStop = true;
             lblEditar.Text = "Editar";
+            lblEditar.LinkClicked += lblEditar_LinkClicked;
             // 
             // btnCancelaEmpleado
             // 
@@ -241,6 +231,7 @@
             btnCancelaEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnCancelaEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCancelaEmpleado.UseVisualStyleBackColor = false;
+            btnCancelaEmpleado.Click += btnCancelaEmpleado_Click;
             // 
             // btnGuardarContraseña
             // 
@@ -262,6 +253,7 @@
             btnGuardarContraseña.TextAlign = ContentAlignment.MiddleLeft;
             btnGuardarContraseña.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardarContraseña.UseVisualStyleBackColor = false;
+            btnGuardarContraseña.Click += btnGuardarContraseña_Click;
             // 
             // txtContraActual
             // 
@@ -286,22 +278,28 @@
             // 
             // txtApellidoUsuario
             // 
+            txtApellidoUsuario.Enabled = false;
             txtApellidoUsuario.Location = new Point(31, 217);
             txtApellidoUsuario.Name = "txtApellidoUsuario";
+            txtApellidoUsuario.ReadOnly = true;
             txtApellidoUsuario.Size = new Size(256, 23);
             txtApellidoUsuario.TabIndex = 9;
             // 
             // txtNombreUsuario
             // 
+            txtNombreUsuario.Enabled = false;
             txtNombreUsuario.Location = new Point(31, 163);
             txtNombreUsuario.Name = "txtNombreUsuario";
+            txtNombreUsuario.ReadOnly = true;
             txtNombreUsuario.Size = new Size(256, 23);
             txtNombreUsuario.TabIndex = 8;
             // 
             // txtUsuario
             // 
+            txtUsuario.Enabled = false;
             txtUsuario.Location = new Point(31, 98);
             txtUsuario.Name = "txtUsuario";
+            txtUsuario.ReadOnly = true;
             txtUsuario.Size = new Size(256, 23);
             txtUsuario.TabIndex = 7;
             // 
@@ -375,29 +373,36 @@
             lblCambiarContraseña.TabIndex = 0;
             lblCambiarContraseña.Text = "Cambiar contraseña";
             // 
+            // imgUser
+            // 
+            imgUser.Image = (Image)resources.GetObject("imgUser.Image");
+            imgUser.Location = new Point(428, 17);
+            imgUser.Name = "imgUser";
+            imgUser.Size = new Size(198, 183);
+            imgUser.SizeMode = PictureBoxSizeMode.StretchImage;
+            imgUser.TabIndex = 9;
+            imgUser.TabStop = false;
+            // 
             // frmInformacion
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
             ClientSize = new Size(1161, 515);
-            Controls.Add(panel2);
+            Controls.Add(pCambiarcontraseña);
             Controls.Add(gbMiInformacion);
-            Controls.Add(pDerechoInformacion);
             Name = "frmInformacion";
             Text = "frmInformacion";
             Load += frmInformacion_Load;
-            pDerechoInformacion.ResumeLayout(false);
             gbMiInformacion.ResumeLayout(false);
             gbMiInformacion.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            pCambiarcontraseña.ResumeLayout(false);
+            pCambiarcontraseña.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)imgUser).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel pDerechoInformacion;
         private GroupBox gbMiInformacion;
         private Label lblApellidoUsuario;
         private Label lblNombreUsuario;
@@ -407,9 +412,8 @@
         private Label lblIdInfo;
         private Label lblUser;
         private Label lblID;
-        private Panel panel1;
         private LinkLabel linkEditar;
-        private Panel panel2;
+        private Panel pCambiarcontraseña;
         private Label lblCambiarContraseña;
         private Label lblContraActual;
         private Label lblConfirmarContra;
@@ -426,5 +430,6 @@
         private FontAwesome.Sharp.IconButton btnGuardarContraseña;
         private FontAwesome.Sharp.IconButton btnCancelaEmpleado;
         private LinkLabel lblEditar;
+        private PictureBox imgUser;
     }
 }

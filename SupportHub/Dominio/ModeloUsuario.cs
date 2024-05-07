@@ -12,37 +12,27 @@ namespace Dominio
         UsuarioDato userData = new UsuarioDato();
 
         private int idUsuario;
-        private string claveUsuario;
-        private string loginUsuario;
-        private string nombreUsuario;
-        private string apellidoUsuario;
-        private bool activoUsuario;
-        private int idEmpleado;
+        private string nuevaContraseña;
 
-        public ModeloUsuario(int idUsuario, string claveUsuario, string loginUsuario, string nombreUsuario, string apellidoUsuario, bool activoUsuario, int idEmpleado)
+        public ModeloUsuario(int idUsuario, string nuevaContraseña)
         {
             this.idUsuario = idUsuario;
-            this.claveUsuario = claveUsuario;
-            this.loginUsuario = loginUsuario;
-            this.nombreUsuario = nombreUsuario;
-            this.apellidoUsuario = apellidoUsuario;
-            this.activoUsuario = activoUsuario;
-            this.idEmpleado = idEmpleado;
+            this.nuevaContraseña = nuevaContraseña;
         }
-        public string editarPerfil()
+
+        public string EditarPerfil()
         {
             try
             {
-                userData.editarMiInformacion(idUsuario, claveUsuario);
-                LoginUsuario(loginUsuario, claveUsuario);
-                return "Tú perfil ha sido actualizado satisfactoriamente";
+                userData.ModificarContraseña(idUsuario, nuevaContraseña);
+                return "Tu perfil ha sido actualizado satisfactoriamente";
             }
             catch (Exception ex)
             {
-                return "El nombre de usuario ya está registrado, prueba con otro";
+                return "Hubo un error al intentar actualizar tu perfil: " + ex.Message;
             }
         }
-            public string LoginUsuario(string user, string pass)
+        public string LoginUsuario(string user, string pass)
             {
                 return userData.Login(user, pass);
             }

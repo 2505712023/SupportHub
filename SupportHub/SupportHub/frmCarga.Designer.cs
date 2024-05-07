@@ -81,7 +81,7 @@
             pCargaSuperior.Dock = DockStyle.Top;
             pCargaSuperior.Location = new Point(245, 0);
             pCargaSuperior.Name = "pCargaSuperior";
-            pCargaSuperior.Size = new Size(617, 84);
+            pCargaSuperior.Size = new Size(631, 84);
             pCargaSuperior.TabIndex = 1;
             // 
             // lblBienve
@@ -105,7 +105,7 @@
             cpbCarga.InnerColor = Color.FromArgb(224, 224, 224);
             cpbCarga.InnerMargin = 2;
             cpbCarga.InnerWidth = -1;
-            cpbCarga.Location = new Point(426, 176);
+            cpbCarga.Location = new Point(417, 176);
             cpbCarga.MarqueeAnimationSpeed = 2000;
             cpbCarga.Name = "cpbCarga";
             cpbCarga.OuterColor = Color.FromArgb(148, 184, 216);
@@ -142,7 +142,7 @@
             // 
             lblNombreApellido.AutoSize = true;
             lblNombreApellido.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNombreApellido.Location = new Point(610, 173);
+            lblNombreApellido.Location = new Point(601, 173);
             lblNombreApellido.Name = "lblNombreApellido";
             lblNombreApellido.Size = new Size(107, 30);
             lblNombreApellido.TabIndex = 4;
@@ -153,7 +153,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
-            ClientSize = new Size(862, 334);
+            ClientSize = new Size(876, 334);
             Controls.Add(lblNombreApellido);
             Controls.Add(cpbCarga);
             Controls.Add(lblBienve);
