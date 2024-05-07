@@ -38,14 +38,8 @@ namespace Presentacion
 
         private void frmEntrega_Load(object sender, EventArgs e)
         {
-            cBoxTipoBusqueda.DropDownStyle = ComboBoxStyle.DropDownList;
-            dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
-            dgvEntregas.Columns["idTipoEntrega"].Visible = false;
-            dgvEntregas.Columns["idEquipo"].Visible = false;
-            dgvEntregas.Columns["idEmpleadoEntrega"].Visible = false;
-            dgvEntregas.Columns["idEmpleadoRecibe"].Visible = false;
-            dgvEntregas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvEntregas.ClearSelection();
+            prepararDgvEntregas();
+
             formCargado = true;
 
             if (!CacheInicioUsuario.permisosUser.Contains("Agregar"))
@@ -61,6 +55,30 @@ namespace Presentacion
             {
                 btnEliminarEntrega.Visible = false;
             }
+        }
+
+        private void prepararDgvEntregas()
+        {
+            cBoxTipoBusqueda.DropDownStyle = ComboBoxStyle.DropDownList;
+            dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
+            dgvEntregas.Columns["idTipoEntrega"].Visible = false;
+            dgvEntregas.Columns["idEquipo"].Visible = false;
+            dgvEntregas.Columns["idEmpleadoEntrega"].Visible = false;
+            dgvEntregas.Columns["idEmpleadoRecibe"].Visible = false;
+            dgvEntregas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            foreach (DataGridViewColumn col in dgvEntregas.Columns)
+            {
+                if (col.Name == "Cantidad Entregada")
+                {
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                }
+                else
+                {
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                }
+            }
+            dgvEntregas.ClearSelection();
         }
 
         private void txtBuscarEntrega_TextChanged(object sender, EventArgs e)
@@ -113,11 +131,7 @@ namespace Presentacion
                         break;
                 }
             }
-            dgvEntregas.Columns["idTipoEntrega"].Visible = false;
-            dgvEntregas.Columns["idEquipo"].Visible = false;
-            dgvEntregas.Columns["idEmpleadoEntrega"].Visible = false;
-            dgvEntregas.Columns["idEmpleadoRecibe"].Visible = false;
-            dgvEntregas.ClearSelection();
+            prepararDgvEntregas();
         }
 
         private void btnEliminarEntrega_Click(object sender, EventArgs e)
@@ -235,12 +249,14 @@ namespace Presentacion
                     {
                         btnGenerarDevolucion.Enabled = true;
                         btnGenerarDevolucion.Text = "DEVOLUCIÓN";
+                        btnGenerarDevolucion.IconChar = FontAwesome.Sharp.IconChar.RotateBack;
                         codEntrega = row.Cells["Código de Entrega"].Value.ToString();
                     }
                     else
                     {
                         btnGenerarDevolucion.Enabled = true;
                         btnGenerarDevolucion.Text = "ELIMINAR DEVOLUCIÓN";
+                        btnGenerarDevolucion.IconChar = FontAwesome.Sharp.IconChar.Xmark;
                         codEntrega = row.Cells["Código de Entrega"].Value.ToString();
                     }
                 }
@@ -248,6 +264,7 @@ namespace Presentacion
             else if (formCargado && dgvEntregas.SelectedRows.Count > 1)
             {
                 btnGenerarDevolucion.Text = "DEVOLUCIÓN";
+                btnGenerarDevolucion.IconChar = FontAwesome.Sharp.IconChar.RotateBack;
                 btnGenerarDevolucion.Enabled = false;
                 btnModificarEntrega.Enabled = false;
             }

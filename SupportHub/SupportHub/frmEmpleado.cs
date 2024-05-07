@@ -175,11 +175,11 @@ namespace Presentacion
             dgvEmpleado.Columns["codEmpleado"].HeaderText = "Código";
             dgvEmpleado.Columns["nombreEmpleado"].HeaderText = "Nombre";
             dgvEmpleado.Columns["apellidoEmpleado"].HeaderText = "Apellido";
-            dgvEmpleado.Columns["telefonoEmpleado"].HeaderText = "Telefono";
+            dgvEmpleado.Columns["telefonoEmpleado"].HeaderText = "Teléfono";
             dgvEmpleado.Columns["emailEmpleado"].HeaderText = "Correo";
-            dgvEmpleado.Columns["codArea"].HeaderText = "Codigo Area";
-            dgvEmpleado.Columns["nombreArea"].HeaderText = " Area";
-            dgvEmpleado.Columns["codCargo"].HeaderText = "Codigo Cargo";
+            dgvEmpleado.Columns["codArea"].HeaderText = "Código Área";
+            dgvEmpleado.Columns["nombreArea"].HeaderText = "Área";
+            dgvEmpleado.Columns["codCargo"].HeaderText = "Código Cargo";
             dgvEmpleado.Columns["nombreCargo"].HeaderText = "Cargo";
             dgvEmpleado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
