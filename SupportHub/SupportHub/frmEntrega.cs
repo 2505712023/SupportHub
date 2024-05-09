@@ -38,9 +38,8 @@ namespace Presentacion
 
         private void frmEntrega_Load(object sender, EventArgs e)
         {
-            prepararDgvEntregas();
-
             formCargado = true;
+            prepararDgvEntregas();
 
             if (!CacheInicioUsuario.permisosUser.Contains("Agregar"))
             {
@@ -261,11 +260,12 @@ namespace Presentacion
                     }
                 }
             }
-            else if (formCargado && dgvEntregas.SelectedRows.Count > 1)
+            else if (formCargado && dgvEntregas.SelectedRows.Count != 1)
             {
                 btnGenerarDevolucion.Text = "DEVOLUCIÓN";
                 btnGenerarDevolucion.IconChar = FontAwesome.Sharp.IconChar.RotateBack;
                 btnGenerarDevolucion.Enabled = false;
+
                 btnModificarEntrega.Enabled = false;
             }
         }
