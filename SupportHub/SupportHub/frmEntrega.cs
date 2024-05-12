@@ -213,7 +213,11 @@ namespace Presentacion
             }
             else if (btnGenerarDevolucion.Text == "ELIMINAR DEVOLUCIÓN")
             {
-                devolucionEntrega.eliminarFechaDevolucion();
+                AdvertenciaMessageBox advertencia = new("Eliminar devolución", $"¿Está seguro que desea eliminar la fecha de devolución de la entrega {codEntrega}?");
+                if (advertencia.obtenerConfirmacion() == DialogResult.Yes)
+                {
+                    devolucionEntrega.eliminarFechaDevolucion();
+                }
             }
         }
 
