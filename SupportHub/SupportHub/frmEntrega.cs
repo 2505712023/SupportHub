@@ -1,5 +1,6 @@
 ﻿using Comun.Cache;
 using Dominio;
+using Presentacion.CustomMessageBoxes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -135,9 +136,9 @@ namespace Presentacion
 
         private void btnEliminarEntrega_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar entregas?", "Eliminar entregas", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            AdvertenciaMessageBox advertencia = new("Confirmar eliminación","¿Seguro que desea eliminar entregas?");
 
-            if (resultado == DialogResult.Yes)
+            if (advertencia.obtenerConfirmacion() == DialogResult.Yes)
             {
                 if (dgvEntregas.SelectedRows.Count > 0)
                 {
@@ -151,16 +152,16 @@ namespace Presentacion
 
                     if (totalRegistrosEliminados > 1)
                     {
-                        MessageBox.Show("Se eliminaron " + totalRegistrosEliminados.ToString() + " entregas.","Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ExitoMessageBox exito = new("Eliminación exitosa", "Se eliminaron " + totalRegistrosEliminados.ToString() + " entregas.");
                     }
                     else
                     {
-                        MessageBox.Show("Se eliminó " + totalRegistrosEliminados.ToString() + " entrega.", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ExitoMessageBox exito = new("Eliminación exitosa", "Se eliminó " + totalRegistrosEliminados.ToString() + " entrega.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debe seleccionar una o varias entregas para eliminarlas.", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ErrorMessageBox error = new("Error en selección", "Debe seleccionar una o varias entregas para eliminarlas.");
                 }
                 actualizarTablaEntregas();
             }
@@ -170,7 +171,7 @@ namespace Presentacion
         {
             if (CacheInicioUsuario.idEmpleado == 0)
             {
-                MessageBox.Show("Su usuario debe tener un empleado asociado para poder agregar una entrega.", "Usuario Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorMessageBox error = new("Usuario Inválido", "Su usuario debe tener un empleado asociado para poder agregar una entrega.");
             }
             else
             {

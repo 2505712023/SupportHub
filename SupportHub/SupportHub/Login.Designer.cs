@@ -71,7 +71,7 @@
             // imgLogoLogin
             // 
             imgLogoLogin.Image = (Image)resources.GetObject("imgLogoLogin.Image");
-            imgLogoLogin.Location = new Point(3, 3);
+            imgLogoLogin.Location = new Point(10, 7);
             imgLogoLogin.Name = "imgLogoLogin";
             imgLogoLogin.Size = new Size(227, 93);
             imgLogoLogin.SizeMode = PictureBoxSizeMode.CenterImage;

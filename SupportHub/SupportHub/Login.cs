@@ -1,5 +1,6 @@
 using Dominio;
 using Presentacion;
+using Presentacion.CustomMessageBoxes;
 using System.Windows.Forms;
 namespace SupportHub
 {
@@ -87,8 +88,8 @@ namespace SupportHub
                 {
                    
                     this.Hide();
-                    frmCarga formLogin = new frmCarga();
-                    formLogin.ShowDialog();
+                    //frmCarga formLogin = new frmCarga();
+                    //formLogin.ShowDialog();
                     frmIndex inicio = new frmIndex();
                     inicio.Show();
                     inicio.FormClosed += CerrarSeccion;
@@ -105,8 +106,7 @@ namespace SupportHub
                     }
                     else
                     {
-                       
-                        MessageBox.Show("El sistema no tiene conexión con el servidor de datos. Favor contacte al administrador de redes o de sistema y notifique el impase.", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ErrorMessageBox error = new("Error de conexión", "El sistema no tiene conexión con el servidor. Favor notifique el impase al administrador.");
                         txtUsuario.Focus();
                     }
                 }
