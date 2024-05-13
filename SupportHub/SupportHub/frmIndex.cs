@@ -224,14 +224,14 @@ namespace Presentacion
 
         private void btnAcerca_Click(object sender, EventArgs e)
         {
-            pSubMenu.Visible = false;
+            hideSubMenu();
             OpenChildForm(new frmAcerca());
             lblIconoFrmActual.Text = "ACERCA DE";
         }
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
-            pSubMenu.Visible = false;
+            hideSubMenu();
             OpenChildForm(new frmInformacion());
             lblIconoFrmActual.Text = "INFORMACIÓN";
         }
