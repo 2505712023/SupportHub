@@ -76,6 +76,7 @@ namespace Presentacion
                 cbxAreaEmpleadoUpdate.Text = null;
                 cbxCargoEmpleadoUpdate.Text = null;
             }
+            this.Close();
         }
 
         private void btnGuardarUpdate_Click(object sender, EventArgs e)
@@ -163,6 +164,22 @@ namespace Presentacion
         private void btnCerrarModificarEmpleado_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+
+        private void frmModificarEmpleado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+
+                btnGuaardarUpdate_Click(sender, e);
+            }
+        }
+
+        private void frmModificarEmpleado_Load(object sender, EventArgs e)
+        {
+            txtNombreEmpleadoUpdate.Focus();
         }
     }
 }

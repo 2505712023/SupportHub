@@ -40,7 +40,30 @@ namespace Presentacion
         {
             mostrarEmpleado();
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            
+            if (keyData == (Keys.Control | Keys.Shift | Keys.A))
+            {
+             
+                btnAgregarEmpleado_Click(this, EventArgs.Empty);
+                return true; 
+            }
 
+            if (keyData == (Keys.Control | Keys.Shift | Keys.M))
+            {
+
+                btnModificaEmpleado_Click(this, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.D))
+            {
+
+                btnEliminarEmpleado_Click(this, EventArgs.Empty);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
             frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
@@ -200,6 +223,10 @@ namespace Presentacion
         {
             dgvEmpleado.DataSource = null;
         }
+
+
+      
+    
 
         private void btnModificaEmpleado_Click(object sender, EventArgs e)
         {

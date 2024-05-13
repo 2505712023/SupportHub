@@ -23,7 +23,44 @@ namespace Presentacion
         private IconButton? currentBtn;
         private Panel leftBorderBtn;
         private Form? currentChildForm;
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
 
+            if (keyData == (Keys.Control | Keys.Shift | Keys.H))
+            {
+
+                btnHome_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+          
+            if (keyData == (Keys.Control | Keys.Shift | Keys.Y))
+            {
+
+                btnCerrarSeccion_Click(this, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.Z))
+            {
+
+                btnCerrar_Click(this, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.G))
+            {
+
+                btnAcerca_Click(this, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.I))
+            {
+
+                btnInfo_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         public frmIndex()
         {
             InitializeComponent();
@@ -112,7 +149,7 @@ namespace Presentacion
             btnIconoFrmActual.IconColor = Color.FromArgb(128, 0, 128);
             lblIconoFrmActual.Text = "HOME";
         }
-
+        
         private void OpenChildForm(Form childForm)
         {
             //open only form
@@ -131,6 +168,8 @@ namespace Presentacion
             childForm.Show();
             lblIconoFrmActual.Text = childForm.Text;
         }
+
+
 
         private void btnEmpleado_Click(object sender, EventArgs e)
         {

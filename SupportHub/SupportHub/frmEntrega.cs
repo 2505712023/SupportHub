@@ -19,7 +19,7 @@ namespace Presentacion
         private List<string> tiposDeBusqueda;
         private bool formCargado = false;
         private string? codEntrega = string.Empty;
-
+      
         public frmEntrega()
         {
             InitializeComponent();
@@ -35,9 +35,13 @@ namespace Presentacion
                 "Observación"
             };
             cBoxTipoBusqueda.DataSource = tiposDeBusqueda;
-        }
 
-        private void frmEntrega_Load(object sender, EventArgs e)
+
+
+
+        }
+       
+        public  void frmEntrega_Load(object sender, EventArgs e)
         {
             formCargado = true;
             prepararDgvEntregas();
@@ -55,8 +59,12 @@ namespace Presentacion
             {
                 btnEliminarEntrega.Visible = false;
             }
-        }
 
+
+
+
+        }
+       
         private void prepararDgvEntregas()
         {
             cBoxTipoBusqueda.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -164,7 +172,36 @@ namespace Presentacion
                 actualizarTablaEntregas();
             }
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
 
+            if (keyData == (Keys.Control | Keys.Shift | Keys.A))
+            {
+
+                btnAgregarEntrega_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.M))
+            {
+                btnModificarEntrega_Click(this, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.D))
+            {
+
+                btnEliminarEntrega_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.R))
+            {
+
+                btnGenerarDevolucion_Click(this, EventArgs.Empty);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void btnAgregarEntrega_Click(object sender, EventArgs e)
         {
             if (CacheInicioUsuario.idEmpleado == 0)

@@ -16,5 +16,10 @@ namespace Presentacion
         {
             InitializeComponent();
         }
+
+        private void rtbAcerca_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

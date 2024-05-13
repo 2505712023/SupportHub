@@ -225,13 +225,13 @@
             // btnCancelaEmpleado
             // 
             btnCancelaEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCancelaEmpleado.BackColor = Color.White;
+            btnCancelaEmpleado.BackColor = Color.FromArgb(5, 23, 59);
             btnCancelaEmpleado.FlatAppearance.BorderSize = 0;
             btnCancelaEmpleado.FlatStyle = FlatStyle.Flat;
             btnCancelaEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancelaEmpleado.ForeColor = Color.FromArgb(5, 23, 59);
+            btnCancelaEmpleado.ForeColor = Color.White;
             btnCancelaEmpleado.IconChar = FontAwesome.Sharp.IconChar.CheckSquare;
-            btnCancelaEmpleado.IconColor = Color.FromArgb(5, 23, 59);
+            btnCancelaEmpleado.IconColor = Color.White;
             btnCancelaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelaEmpleado.IconSize = 20;
             btnCancelaEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
@@ -248,13 +248,13 @@
             // btnGuardarContraseña
             // 
             btnGuardarContraseña.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnGuardarContraseña.BackColor = Color.FromArgb(5, 23, 59);
+            btnGuardarContraseña.BackColor = Color.White;
             btnGuardarContraseña.FlatAppearance.BorderSize = 0;
             btnGuardarContraseña.FlatStyle = FlatStyle.Flat;
             btnGuardarContraseña.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGuardarContraseña.ForeColor = Color.White;
+            btnGuardarContraseña.ForeColor = Color.FromArgb(5, 23, 59);
             btnGuardarContraseña.IconChar = FontAwesome.Sharp.IconChar.Save;
-            btnGuardarContraseña.IconColor = Color.White;
+            btnGuardarContraseña.IconColor = Color.FromArgb(5, 23, 59);
             btnGuardarContraseña.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardarContraseña.IconSize = 20;
             btnGuardarContraseña.Location = new Point(41, 456);

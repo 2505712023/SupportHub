@@ -29,26 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAcerca));
-            pDerechoAcerca = new Panel();
             rtbAcerca = new RichTextBox();
             SuspendLayout();
             // 
-            // pDerechoAcerca
-            // 
-            pDerechoAcerca.Dock = DockStyle.Right;
-            pDerechoAcerca.Location = new Point(1062, 0);
-            pDerechoAcerca.Name = "pDerechoAcerca";
-            pDerechoAcerca.Size = new Size(99, 515);
-            pDerechoAcerca.TabIndex = 7;
-            // 
             // rtbAcerca
             // 
-            rtbAcerca.Anchor = AnchorStyles.None;
-            rtbAcerca.Location = new Point(3, 0);
+            rtbAcerca.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            rtbAcerca.Enabled = false;
+            rtbAcerca.Location = new Point(21, 49);
             rtbAcerca.Name = "rtbAcerca";
-            rtbAcerca.Size = new Size(1053, 515);
+            rtbAcerca.Size = new Size(1128, 454);
             rtbAcerca.TabIndex = 8;
             rtbAcerca.Text = resources.GetString("rtbAcerca.Text");
+            rtbAcerca.TextChanged += rtbAcerca_TextChanged;
             // 
             // frmAcerca
             // 
@@ -57,15 +50,12 @@
             BackColor = Color.FromArgb(148, 184, 216);
             ClientSize = new Size(1161, 515);
             Controls.Add(rtbAcerca);
-            Controls.Add(pDerechoAcerca);
             Name = "frmAcerca";
             Text = "frmAcerca";
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel pDerechoAcerca;
         private RichTextBox rtbAcerca;
     }
 }

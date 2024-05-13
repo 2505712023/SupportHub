@@ -63,6 +63,9 @@ namespace Presentacion
             this.cboxEquipo.SelectedValue = idEquipo;
             this.tboxCantidadEntrega.Text = cantidadEntrega.ToString();
             this.rtxtObservacionEntrega.Text = observacion;
+
+
+         
         }
 
         public class UpdateEventArgs : EventArgs
@@ -245,6 +248,15 @@ namespace Presentacion
         {
             habilitardgvEntregas();
             this.Close();
+        }
+
+        private void frmAgregarEntrega_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+
+                ibtnGuardarEntrega_Click(sender, e);
+            }
         }
     }
 }

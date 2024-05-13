@@ -178,5 +178,6 @@
         private Label lblTextoTab;
         private FontAwesome.Sharp.IconButton iconButtonX;
         private RichTextBox tboxDescripcionExito;
+        
     }
 }

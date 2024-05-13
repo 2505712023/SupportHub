@@ -40,9 +40,9 @@ namespace Presentacion
             txtUsuario.Text = CacheInicioUsuario.user;
             txtNombreUsuario.Text = CacheInicioUsuario.nombreUser;
             txtApellidoUsuario.Text = CacheInicioUsuario.apellidoUser;
-            txtNuevaContra.Text = CacheInicioUsuario.password;
+            txtNuevaContra.Text = "";
             txtContraActual.Text = "";
-            txtConfirmarContra.Text = CacheInicioUsuario.password;
+            txtConfirmarContra.Text = "";
         }
         private void inicializarControlPass()
         {
