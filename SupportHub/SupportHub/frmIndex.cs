@@ -267,8 +267,7 @@ namespace Presentacion
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es");
 
-            AdvertenciaMessageBox advertencia = new("Cerrar sesión", "¿Está seguro que desea cerrar la aplicación?");
-            if (advertencia.obtenerConfirmacion() == DialogResult.Yes)
+            if (CustomMessageBox.Advertencia("Cerrar sesión", "¿Está seguro que desea cerrar la aplicación?") == DialogResult.Yes)
             {
                 this.Close();
             }

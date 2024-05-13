@@ -102,11 +102,11 @@ namespace Presentacion
 
                         if (resultado.Contains("error"))
                         {
-                            ErrorMessageBox error = new("Error", resultado);
+                            CustomMessageBox.Error("Error", resultado);
                         }
                         else
                         {
-                            ExitoMessageBox exito = new("Registro exitoso", resultado);
+                            CustomMessageBox.Exito("Registro exitoso", resultado);
                         }
 
                         ResetearFormulario();
@@ -114,17 +114,17 @@ namespace Presentacion
                     }
                     else
                     {
-                        ErrorMessageBox error = new("Error", "Contraseña actual incorrecta.");
+                        CustomMessageBox.Error("Error", "Contraseña actual incorrecta.");
                     }
                 }
                 else
                 {
-                    ErrorMessageBox error = new("Error", "La contraseña ingresada no coincide con la confirmación de contraseña.");
+                    CustomMessageBox.Error("Error", "La contraseña ingresada no coincide con la confirmación de contraseña.");
                 }
             }
             else
             {
-                ErrorMessageBox error = new("Error", "La contraseña debe tener al menos 5 caracteres.");
+                CustomMessageBox.Error("Error", "La contraseña debe tener al menos 5 caracteres.");
             }
 
 

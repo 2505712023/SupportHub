@@ -106,7 +106,7 @@ namespace SupportHub
                     }
                     else
                     {
-                        ErrorMessageBox error = new("Error de conexión", "El sistema no tiene conexión con el servidor. Favor notifique el impase al administrador.");
+                        CustomMessageBox.Error("Error de conexión", "El sistema no tiene conexión con el servidor. Favor notifique el impase al administrador.");
                         txtUsuario.Focus();
                     }
                 }

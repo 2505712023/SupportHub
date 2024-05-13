@@ -122,8 +122,7 @@ namespace Presentacion
 
         private void btnEliminarEmpleado_Click(object sender, EventArgs e)
         {
-            AdvertenciaMessageBox advertencia = new("Eliminar empleado", "¿Seguro que desea eliminar empleado?");
-            if (advertencia.obtenerConfirmacion() == DialogResult.Yes)
+            if (CustomMessageBox.Advertencia("Eliminar empleado", "¿Seguro que desea eliminar empleado?") == DialogResult.Yes)
             {
                 if (dgvEmpleado.SelectedRows.Count == 1)
                 {
@@ -138,21 +137,21 @@ namespace Presentacion
                         hasError = true;
                         if (ex.Number == 547)
                         {
-                            ErrorMessageBox error = new("Error en eliminación", "No se puede eliminar el empleado porque tiene entregas pendientes.");
+                            CustomMessageBox.Error("Error en eliminación", "No se puede eliminar el empleado porque tiene entregas pendientes.");
                         }
                         else
                         {
-                            ErrorMessageBox error = new("Error en eliminación", $"Error al intentar eliminar el empleado: {ex.Message}.");
+                            CustomMessageBox.Error("Error en eliminación", $"Error al intentar eliminar el empleado: {ex.Message}.");
                         }
                     }
                     catch (FormatException)
                     {
                         hasError = true;
-                        ErrorMessageBox error = new("Error en eliminación", "El empleado tiene entregas o asignaciones pendientes.");
+                        CustomMessageBox.Error("Error en eliminación", "El empleado tiene entregas o asignaciones pendientes.");
                     }
                     if (hasError == false)
                     {
-                        ExitoMessageBox exito = new("Eliminación exitosa", "Empleado eliminado correctamente.");
+                        CustomMessageBox.Exito("Eliminación exitosa", "Empleado eliminado correctamente.");
                         mostrarEmpleado();
                         txtBuscarEmpleado.Focus();
                         mostrarEmpleado();
@@ -162,12 +161,12 @@ namespace Presentacion
                 }
                 else
                 {
-                    ErrorMessageBox error = new("Error en selección", "Seleccione solo una fila por favor.");
+                    CustomMessageBox.Error("Error en selección", "Seleccione solo una fila por favor.");
                 }
             }
             else
             {
-                ErrorMessageBox error = new("Operación cancelada", "Operación de eliminación cancelada.");
+                CustomMessageBox.Error("Operación cancelada", "Operación de eliminación cancelada.");
             }
 
         }
@@ -223,12 +222,12 @@ namespace Presentacion
                 }
                 else
                 {
-                    ErrorMessageBox error = new("Error en selección", "Seleccione solo una fila por favor.");
+                    CustomMessageBox.Error("Error en selección", "Seleccione solo una fila por favor.");
                 }
             }
             else
             {
-                ErrorMessageBox error = new("Error en selección", "Seleccione solo una fila por favor.");
+                CustomMessageBox.Error("Error en selección", "Seleccione solo una fila por favor.");
             }
         }
     }

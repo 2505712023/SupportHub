@@ -176,23 +176,23 @@ namespace Presentacion
         {
             if (cboxTipoEntrega.SelectedItem == null)
             {
-                ErrorMessageBox error = new("Error", "Debe seleccionar un tipo de entrega.");
+                CustomMessageBox.Error("Error", "Debe seleccionar un tipo de entrega.");
             }
             else if (cboxEmpleadoRecibe.SelectedItem == null)
             {
-                ErrorMessageBox error = new("Error", "Debe seleccionar un empleado.");
+                CustomMessageBox.Error("Error", "Debe seleccionar un empleado.");
             }
             else if (cboxEquipo.SelectedItem == null)
             {
-                ErrorMessageBox error = new("Error", "Debe seleccionar un equipo.");
+                CustomMessageBox.Error("Error", "Debe seleccionar un equipo.");
             }
             else if (tboxCantidadEntrega.ForeColor == Color.Red)
             {
-                ErrorMessageBox error = new("Error", "La cantidad a entregar no puede ser mayor a la cantidad disponible.");
+                CustomMessageBox.Error("Error", "La cantidad a entregar no puede ser mayor a la cantidad disponible.");
             }
             else if (Convert.ToInt32(tboxCantidadEntrega.Text) <= 0 || string.IsNullOrEmpty(tboxCantidadEntrega.Text))
             {
-                ErrorMessageBox error = new("Error", "La cantidad a entregar debe ser mayor a cero.");
+                CustomMessageBox.Error("Error", "La cantidad a entregar debe ser mayor a cero.");
             }
             else
             {
@@ -208,7 +208,7 @@ namespace Presentacion
                     rtxtObservacionEntrega.Text
                     );
 
-                    ExitoMessageBox exito = new("Registro exitoso", "Se agregó " + registrosAgregados.ToString() + " entrega correctamente.");
+                    CustomMessageBox.Exito("Registro exitoso", "Se agregó " + registrosAgregados.ToString() + " entrega correctamente.");
 
                     actualizardgvEntregas();
                     cboxTipoEntrega.SelectedItem = 1;
@@ -231,7 +231,7 @@ namespace Presentacion
                         rtxtObservacionEntrega.Text
                     );
 
-                    ExitoMessageBox exito = new("Modificación exitosa", "Se modificó " + registrosModificados.ToString() + " entrega correctamente.");
+                    CustomMessageBox.Exito("Modificación exitosa", "Se modificó " + registrosModificados.ToString() + " entrega correctamente.");
 
                     actualizardgvEntregas();
                     habilitardgvEntregas();

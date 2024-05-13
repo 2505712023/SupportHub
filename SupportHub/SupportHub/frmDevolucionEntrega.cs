@@ -59,7 +59,7 @@ namespace Presentacion
         private void btnGuardarDevolucion_Click(object sender, EventArgs e)
         {
             string asignarDevolucion = ModeloEntrega.asignarFechaDevolucion(dtpickerFechaDevolucion.Text, tboxCodigoEntrega.Text);
-            ExitoMessageBox exito = new("Devolución exitosa", asignarDevolucion);
+            CustomMessageBox.Exito("Devolución exitosa", asignarDevolucion);
             actualizardgvEntregas();
             habilitardgvEntregas();
             this.Close();
@@ -68,7 +68,7 @@ namespace Presentacion
         public void eliminarFechaDevolucion()
         {
             string asignarDevolucion = ModeloEntrega.asignarFechaDevolucion("ELIMINAR", tboxCodigoEntrega.Text);
-            ExitoMessageBox exito = new("Eliminación exitosa", "Se eliminó la fecha de devolución exitosamente");
+            CustomMessageBox.Exito("Eliminación exitosa", "Se eliminó la fecha de devolución exitosamente");
             actualizardgvEntregas();
         }
 
