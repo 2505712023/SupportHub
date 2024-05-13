@@ -35,10 +35,6 @@ namespace Presentacion
                 "Observación"
             };
             cBoxTipoBusqueda.DataSource = tiposDeBusqueda;
-
-
-
-
         }
        
         public  void frmEntrega_Load(object sender, EventArgs e)
@@ -59,10 +55,6 @@ namespace Presentacion
             {
                 btnEliminarEntrega.Visible = false;
             }
-
-
-
-
         }
        
         private void prepararDgvEntregas()
@@ -87,6 +79,7 @@ namespace Presentacion
                 }
             }
             dgvEntregas.ClearSelection();
+            txtBuscarEntrega.Focus();
         }
 
         private void txtBuscarEntrega_TextChanged(object sender, EventArgs e)
@@ -177,31 +170,35 @@ namespace Presentacion
 
             if (keyData == (Keys.Control | Keys.Shift | Keys.A))
             {
-
                 btnAgregarEntrega_Click(this, EventArgs.Empty);
                 return true;
             }
 
             if (keyData == (Keys.Control | Keys.Shift | Keys.M))
             {
-                btnModificarEntrega_Click(this, EventArgs.Empty);
+                if (btnModificarEntrega.Enabled == true)
+                {
+                    btnModificarEntrega_Click(this, EventArgs.Empty);
+                }
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.Shift | Keys.D))
+            if (keyData == (Keys.Control | Keys.Shift | Keys.E))
             {
-
                 btnEliminarEntrega_Click(this, EventArgs.Empty);
                 return true;
             }
 
-            if (keyData == (Keys.Control | Keys.Shift | Keys.R))
+            if (keyData == (Keys.Control | Keys.Shift | Keys.G))
             {
-
-                btnGenerarDevolucion_Click(this, EventArgs.Empty);
+                if (btnGenerarDevolucion.Enabled == true)
+                {
+                    btnGenerarDevolucion_Click(this, EventArgs.Empty);
+                }                
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
         private void btnAgregarEntrega_Click(object sender, EventArgs e)
         {
             if (CacheInicioUsuario.idEmpleado == 0)
