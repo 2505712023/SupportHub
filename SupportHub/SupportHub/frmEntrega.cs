@@ -136,9 +136,7 @@ namespace Presentacion
 
         private void btnEliminarEntrega_Click(object sender, EventArgs e)
         {
-            AdvertenciaMessageBox advertencia = new("Confirmar eliminación","¿Seguro que desea eliminar entregas?");
-
-            if (advertencia.obtenerConfirmacion() == DialogResult.Yes)
+            if (CustomMessageBox.Advertencia("Confirmar eliminación", "¿Seguro que desea eliminar entregas?") == DialogResult.Yes)
             {
                 if (dgvEntregas.SelectedRows.Count > 0)
                 {
@@ -152,16 +150,16 @@ namespace Presentacion
 
                     if (totalRegistrosEliminados > 1)
                     {
-                        ExitoMessageBox exito = new("Eliminación exitosa", "Se eliminaron " + totalRegistrosEliminados.ToString() + " entregas.");
+                        CustomMessageBox.Exito("Eliminación exitosa", "Se eliminaron " + totalRegistrosEliminados.ToString() + " entregas.");
                     }
                     else
                     {
-                        ExitoMessageBox exito = new("Eliminación exitosa", "Se eliminó " + totalRegistrosEliminados.ToString() + " entrega.");
+                        CustomMessageBox.Exito("Eliminación exitosa", "Se eliminó " + totalRegistrosEliminados.ToString() + " entrega.");
                     }
                 }
                 else
                 {
-                    ErrorMessageBox error = new("Error en selección", "Debe seleccionar una o varias entregas para eliminarlas.");
+                    CustomMessageBox.Error("Error en selección", "Debe seleccionar una o varias entregas para eliminarlas.");
                 }
                 actualizarTablaEntregas();
             }
@@ -171,7 +169,7 @@ namespace Presentacion
         {
             if (CacheInicioUsuario.idEmpleado == 0)
             {
-                ErrorMessageBox error = new("Usuario Inválido", "Su usuario debe tener un empleado asociado para poder agregar una entrega.");
+                CustomMessageBox.Error("Usuario Inválido", "Su usuario debe tener un empleado asociado para poder agregar una entrega.");
             }
             else
             {
@@ -213,8 +211,7 @@ namespace Presentacion
             }
             else if (btnGenerarDevolucion.Text == "ELIMINAR DEVOLUCIÓN")
             {
-                AdvertenciaMessageBox advertencia = new("Eliminar devolución", $"¿Está seguro que desea eliminar la fecha de devolución de la entrega {codEntrega}?");
-                if (advertencia.obtenerConfirmacion() == DialogResult.Yes)
+                if (CustomMessageBox.Advertencia("Eliminar devolución", $"¿Está seguro que desea eliminar la fecha de devolución de la entrega {codEntrega}?") == DialogResult.Yes)
                 {
                     devolucionEntrega.eliminarFechaDevolucion();
                 }

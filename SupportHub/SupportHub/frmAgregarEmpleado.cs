@@ -82,7 +82,7 @@ namespace Presentacion
                     Convert.ToInt32(cbxCargoEmpleado.SelectedValue),
                     Convert.ToInt32(cbxAreaEmpleado.SelectedValue)
                 );
-                ExitoMessageBox exito = new("Registro exitoso", "El empleado se registró correctamente.");
+                CustomMessageBox.Exito("Registro exitoso", "El empleado se registró correctamente.");
                 Agregar();
 
                 txtNombreEmpleado.Text = "";
@@ -98,37 +98,37 @@ namespace Presentacion
         {
             if (string.IsNullOrEmpty(txtNombreEmpleado.Text) || !EsLetras(txtNombreEmpleado.Text))
             {
-                ErrorMessageBox error = new("Dato inválido", "Ingrese un nombre válido.");
+                CustomMessageBox.Error("Dato inválido", "Ingrese un nombre válido.");
                 return false;
             }
 
             if (string.IsNullOrEmpty(txtApellidoEmpleado.Text) || !EsLetras(txtApellidoEmpleado.Text))
             {
-                ErrorMessageBox error = new("Dato inválido", "Ingrese un apellido válido.");
+                CustomMessageBox.Error("Dato inválido", "Ingrese un apellido válido.");
                 return false;
             }
 
             if (string.IsNullOrEmpty(txtTelefonoEmpleado.Text) || !EsTelefono(txtTelefonoEmpleado.Text))
             {
-                ErrorMessageBox error = new("Dato inválido", "Ingrese un número de teléfono válido (formato: 2222-0000).");
+                CustomMessageBox.Error("Dato inválido", "Ingrese un número de teléfono válido (formato: 2222-0000).");
                 return false;
             }
 
             if (string.IsNullOrEmpty(txtEmailEmpleado.Text) || !EsCorreo(txtEmailEmpleado.Text))
             {
-                ErrorMessageBox error = new("Dato inválido", "Ingrese un correo electrónico válido.");
+                CustomMessageBox.Error("Dato inválido", "Ingrese un correo electrónico válido.");
                 return false;
             }
 
             if (cbxCargoEmpleado.SelectedIndex == -1)
             {
-                ErrorMessageBox error = new("Dato faltante", "Seleccione un cargo.");
+                CustomMessageBox.Error("Dato faltante", "Seleccione un cargo.");
                 return false;
             }
 
             if (cbxAreaEmpleado.SelectedIndex == -1)
             {
-                ErrorMessageBox error = new("Dato faltante", "Seleccione un área.");
+                CustomMessageBox.Error("Dato faltante", "Seleccione un área.");
                 return false;
             }
 

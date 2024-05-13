@@ -12,11 +12,11 @@ namespace Presentacion.CustomMessageBoxes
 {
     public partial class ExitoMessageBox : Form
     {
-        public ExitoMessageBox(string encabezadoError, string descripcionError)
+        public ExitoMessageBox(string encabezadoExito, string descripcionExito)
         {
             InitializeComponent();
-            this.lblTextoTab.Text = encabezadoError;
-            this.tboxDescripcionExito.Text = descripcionError;
+            this.lblTextoTab.Text = encabezadoExito;
+            this.tboxDescripcionExito.Text = descripcionExito;
             this.ShowDialog();
         }
 
