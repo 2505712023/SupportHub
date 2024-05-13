@@ -12,6 +12,7 @@ using Dominio;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Linq.Expressions;
 using System.Data.SqlClient;
+using Presentacion.CustomMessageBoxes;
 namespace Presentacion
 {
     public partial class frmEmpleado : Form
@@ -121,8 +122,8 @@ namespace Presentacion
 
         private void btnEliminarEmpleado_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar empleado?", "Eliminar empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (resultado == DialogResult.Yes)
+            AdvertenciaMessageBox advertencia = new("Eliminar empleado", "¿Seguro que desea eliminar empleado?");
+            if (advertencia.obtenerConfirmacion() == DialogResult.Yes)
             {
                 if (dgvEmpleado.SelectedRows.Count == 1)
                 {
@@ -137,21 +138,21 @@ namespace Presentacion
                         hasError = true;
                         if (ex.Number == 547)
                         {
-                            MessageBox.Show("No se puede eliminar el empleado porque tiene entregas pendientes.", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            ErrorMessageBox error = new("Error en eliminación", "No se puede eliminar el empleado porque tiene entregas pendientes.");
                         }
                         else
                         {
-                            MessageBox.Show($"Error al intentar eliminar el empleado: {ex.Message}", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            ErrorMessageBox error = new("Error en eliminación", $"Error al intentar eliminar el empleado: {ex.Message}.");
                         }
                     }
                     catch (FormatException)
                     {
                         hasError = true;
-                        MessageBox.Show("El empleado tiene entregas o asignaciones pendientes", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        ErrorMessageBox error = new("Error en eliminación", "El empleado tiene entregas o asignaciones pendientes.");
                     }
                     if (hasError == false)
                     {
-                        MessageBox.Show("Empleado eliminado correctamente", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ExitoMessageBox exito = new("Eliminación exitosa", "Empleado eliminado correctamente.");
                         mostrarEmpleado();
                         txtBuscarEmpleado.Focus();
                         mostrarEmpleado();
@@ -161,12 +162,12 @@ namespace Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione solo una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ErrorMessageBox error = new("Error en selección", "Seleccione solo una fila por favor.");
                 }
             }
             else
             {
-                MessageBox.Show("Operación de eliminación cancelada", "Operación cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ErrorMessageBox error = new("Operación cancelada", "Operación de eliminación cancelada.");
             }
 
         }
@@ -222,12 +223,12 @@ namespace Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione solo una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ErrorMessageBox error = new("Error en selección", "Seleccione solo una fila por favor.");
                 }
             }
             else
             {
-                MessageBox.Show("Seleccione una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorMessageBox error = new("Error en selección", "Seleccione solo una fila por favor.");
             }
         }
     }

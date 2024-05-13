@@ -68,7 +68,7 @@
             // imgCarga
             // 
             imgCarga.Image = (Image)resources.GetObject("imgCarga.Image");
-            imgCarga.Location = new Point(3, 3);
+            imgCarga.Location = new Point(9, 3);
             imgCarga.Name = "imgCarga";
             imgCarga.Size = new Size(242, 81);
             imgCarga.SizeMode = PictureBoxSizeMode.CenterImage;

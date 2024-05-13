@@ -14,6 +14,7 @@ using Color = System.Drawing.Color;
 using Microsoft.VisualBasic;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using Comun.Cache;
+using Presentacion.CustomMessageBoxes;
 
 namespace Presentacion
 {
@@ -223,14 +224,14 @@ namespace Presentacion
 
         private void btnAcerca_Click(object sender, EventArgs e)
         {
-            pSubMenu.Visible = false;
+            hideSubMenu();
             OpenChildForm(new frmAcerca());
             lblIconoFrmActual.Text = "ACERCA DE";
         }
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
-            pSubMenu.Visible = false;
+            hideSubMenu();
             OpenChildForm(new frmInformacion());
             lblIconoFrmActual.Text = "INFORMACIÓN";
         }
@@ -266,8 +267,8 @@ namespace Presentacion
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es");
 
-            DialogResult resultado = MessageBox.Show("¿Está seguro que desea cerrar la aplicación?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (resultado == DialogResult.Yes)
+            AdvertenciaMessageBox advertencia = new("Cerrar sesión", "¿Está seguro que desea cerrar la aplicación?");
+            if (advertencia.obtenerConfirmacion() == DialogResult.Yes)
             {
                 this.Close();
             }
