@@ -20,6 +20,7 @@ namespace Presentacion
         ModeloEmpleado EmpObjeto = new ModeloEmpleado();
         //private string codEmpleado = null;
         private List<string> tipoEmpleado;
+        private bool frmAgregarEmpleadoAbierto = false;
         public frmEmpleado()
         {
             InitializeComponent();
@@ -66,9 +67,13 @@ namespace Presentacion
         }
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
-            frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
+            if (!frmAgregarEmpleadoAbierto)
+            {
+                frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
             formEmpleado.UpdateEventHandler += AgregarUpdateEvenHandler;
-            formEmpleado.Show();
+                formEmpleado.ShowDialog();
+                frmAgregarEmpleadoAbierto = true;
+            }
         }
 
         private void frmEmpleado_Load(object sender, EventArgs e)

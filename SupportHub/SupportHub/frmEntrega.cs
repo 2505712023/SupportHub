@@ -210,7 +210,7 @@ namespace Presentacion
                 dgvEntregas.Enabled = false;
                 frmAgregarEntrega formEntrega = new frmAgregarEntrega();
                 SuscribirEventosAgregarEntrega(formEntrega);
-                formEntrega.Show();
+                formEntrega.ShowDialog();
             }
         }
 
@@ -241,7 +241,7 @@ namespace Presentacion
             if (btnGenerarDevolucion.Text == "DEVOLUCIÓN")
             {
                 dgvEntregas.Enabled = false;
-                devolucionEntrega.Show();
+                devolucionEntrega.ShowDialog();
             }
             else if (btnGenerarDevolucion.Text == "ELIMINAR DEVOLUCIÓN")
             {
@@ -324,7 +324,7 @@ namespace Presentacion
                 );
             dgvEntregas.Enabled = false;
             SuscribirEventosAgregarEntrega(modificarEntrega);
-            modificarEntrega.Show();
+            modificarEntrega.ShowDialog();
         }
     }
 }
