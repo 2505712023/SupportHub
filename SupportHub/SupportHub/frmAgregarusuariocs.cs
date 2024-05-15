@@ -10,14 +10,19 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class frmUsuario : Form
+    public partial class frmAgregarusuariocs : Form
     {
-        public frmUsuario()
+        public frmAgregarusuariocs()
         {
             InitializeComponent();
         }
 
-        private void frmUsuario_Load(object sender, EventArgs e)
+        private void pSuperiorAddEmpleado_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void gbAddUsuario_Enter(object sender, EventArgs e)
         {
 
         }
