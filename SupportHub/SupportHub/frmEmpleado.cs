@@ -52,7 +52,7 @@ namespace Presentacion
             cbxTipoBusquedaEmpleado.DropDownStyle = ComboBoxStyle.DropDownList;
             mostrarEmpleado();
             ajusteDataGrid();
-    
+
             if (CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
             {
                 btnAgregarEmpleado.Visible = true;
@@ -229,6 +229,16 @@ namespace Presentacion
             {
                 MessageBox.Show("Seleccione una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cbxTipoBusquedaEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

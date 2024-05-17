@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using Comun.Cache;
 using System.Reflection.Metadata;
 using System.Collections;
+using System.Runtime.CompilerServices;
 namespace DataAccess
 {
     public class UsuarioDato : ConexionSql
@@ -109,6 +110,65 @@ namespace DataAccess
                 return "Error durante el inicio de sesión: " + ex.Message;
             }
         }
+
+        //Hecho por KEVIN 
+        private DataTable tabla = new DataTable();
+        public DataTable obtenerUsuario()
+        {
+           
+         string nombreProcedimiento = "sp_obtener_usuario";
+
+            using (var conexion = GetConnection())
+            {
+                using (var comando=new SqlCommand())
+                {
+                    
+                    comando.CommandText = nombreProcedimiento;
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Connection = conexion;
+
+                    conexion.Open();
+
+                    SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                    adaptador.Fill(tabla);
+                }
+                    
+
+                return tabla;
+            }
+        }
+
+        public DataTable filtrarTablaUsuario(string idUsuario = "-1")
+        {
+
+            using (var conexion = GetConnection())
+            {
+                using (var comando = new SqlCommand())
+                {
+                    comando.CommandText = "sp_obtener_usuario";
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.Clear();
+                    comando.Parameters.AddWithValue("@idUsuario", idUsuario);
+                   
+                    comando.Connection = conexion;
+
+                    conexion.Open();
+
+                    SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                    tabla.Clear();
+                    adaptador.Fill(tabla);
+                }
+
+                return tabla;
+            }
+        }
+
+
+
+
+
+
+
 
     }
 }

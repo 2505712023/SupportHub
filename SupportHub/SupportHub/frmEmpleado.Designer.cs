@@ -48,9 +48,11 @@
             gbBusarEmpleado.Controls.Add(cbxTipoBusquedaEmpleado);
             gbBusarEmpleado.Controls.Add(txtBuscarEmpleado);
             gbBusarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            gbBusarEmpleado.Location = new Point(12, 12);
+            gbBusarEmpleado.Location = new Point(14, 16);
+            gbBusarEmpleado.Margin = new Padding(3, 4, 3, 4);
             gbBusarEmpleado.Name = "gbBusarEmpleado";
-            gbBusarEmpleado.Size = new Size(945, 68);
+            gbBusarEmpleado.Padding = new Padding(3, 4, 3, 4);
+            gbBusarEmpleado.Size = new Size(1080, 91);
             gbBusarEmpleado.TabIndex = 0;
             gbBusarEmpleado.TabStop = false;
             gbBusarEmpleado.Text = "BUSCAR EMPLEADO::...";
@@ -59,19 +61,22 @@
             // 
             cbxTipoBusquedaEmpleado.Font = new Font("Segoe UI", 9F);
             cbxTipoBusquedaEmpleado.FormattingEnabled = true;
-            cbxTipoBusquedaEmpleado.Location = new Point(6, 26);
+            cbxTipoBusquedaEmpleado.Location = new Point(7, 35);
+            cbxTipoBusquedaEmpleado.Margin = new Padding(3, 4, 3, 4);
             cbxTipoBusquedaEmpleado.Name = "cbxTipoBusquedaEmpleado";
-            cbxTipoBusquedaEmpleado.Size = new Size(139, 23);
+            cbxTipoBusquedaEmpleado.Size = new Size(158, 28);
             cbxTipoBusquedaEmpleado.TabIndex = 6;
+            cbxTipoBusquedaEmpleado.SelectedIndexChanged += cbxTipoBusquedaEmpleado_SelectedIndexChanged;
             cbxTipoBusquedaEmpleado.TextChanged += cbxTipoBusquedaEmpleado_TextChanged;
             // 
             // txtBuscarEmpleado
             // 
             txtBuscarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBuscarEmpleado.Font = new Font("Segoe UI", 9F);
-            txtBuscarEmpleado.Location = new Point(151, 26);
+            txtBuscarEmpleado.Location = new Point(173, 35);
+            txtBuscarEmpleado.Margin = new Padding(3, 4, 3, 4);
             txtBuscarEmpleado.Name = "txtBuscarEmpleado";
-            txtBuscarEmpleado.Size = new Size(788, 23);
+            txtBuscarEmpleado.Size = new Size(900, 27);
             txtBuscarEmpleado.TabIndex = 5;
             txtBuscarEmpleado.TextChanged += txtBuscarEmpleado_TextChanged;
             // 
@@ -99,9 +104,11 @@
             dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvEmpleado.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvEmpleado.Location = new Point(12, 86);
+            dgvEmpleado.Location = new Point(14, 115);
+            dgvEmpleado.Margin = new Padding(3, 4, 3, 4);
             dgvEmpleado.Name = "dgvEmpleado";
             dgvEmpleado.ReadOnly = true;
+            dgvEmpleado.RowHeadersWidth = 51;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle3.ForeColor = Color.Black;
@@ -110,8 +117,9 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvEmpleado.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvEmpleado.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEmpleado.Size = new Size(945, 417);
+            dgvEmpleado.Size = new Size(1080, 556);
             dgvEmpleado.TabIndex = 1;
+            dgvEmpleado.CellContentClick += dgvEmpleado_CellContentClick;
             // 
             // btnAgregarEmpleado
             // 
@@ -125,9 +133,10 @@
             btnAgregarEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnAgregarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarEmpleado.IconSize = 20;
-            btnAgregarEmpleado.Location = new Point(963, 118);
+            btnAgregarEmpleado.Location = new Point(1101, 157);
+            btnAgregarEmpleado.Margin = new Padding(3, 4, 3, 4);
             btnAgregarEmpleado.Name = "btnAgregarEmpleado";
-            btnAgregarEmpleado.Size = new Size(156, 50);
+            btnAgregarEmpleado.Size = new Size(178, 67);
             btnAgregarEmpleado.TabIndex = 7;
             btnAgregarEmpleado.Text = "AGREGAR";
             btnAgregarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -146,9 +155,10 @@
             btnModificaEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnModificaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModificaEmpleado.IconSize = 20;
-            btnModificaEmpleado.Location = new Point(963, 174);
+            btnModificaEmpleado.Location = new Point(1101, 232);
+            btnModificaEmpleado.Margin = new Padding(3, 4, 3, 4);
             btnModificaEmpleado.Name = "btnModificaEmpleado";
-            btnModificaEmpleado.Size = new Size(156, 55);
+            btnModificaEmpleado.Size = new Size(178, 73);
             btnModificaEmpleado.TabIndex = 8;
             btnModificaEmpleado.Text = "MODIFICAR";
             btnModificaEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -167,9 +177,10 @@
             btnEliminarEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarEmpleado.IconSize = 20;
-            btnEliminarEmpleado.Location = new Point(963, 235);
+            btnEliminarEmpleado.Location = new Point(1101, 313);
+            btnEliminarEmpleado.Margin = new Padding(3, 4, 3, 4);
             btnEliminarEmpleado.Name = "btnEliminarEmpleado";
-            btnEliminarEmpleado.Size = new Size(156, 57);
+            btnEliminarEmpleado.Size = new Size(178, 76);
             btnEliminarEmpleado.TabIndex = 9;
             btnEliminarEmpleado.Text = "ELIMINAR";
             btnEliminarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -178,15 +189,16 @@
             // 
             // frmEmpleado
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
-            ClientSize = new Size(1131, 515);
+            ClientSize = new Size(1293, 687);
             Controls.Add(btnEliminarEmpleado);
             Controls.Add(btnModificaEmpleado);
             Controls.Add(btnAgregarEmpleado);
             Controls.Add(dgvEmpleado);
             Controls.Add(gbBusarEmpleado);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "frmEmpleado";
             Text = "EMPLEADO";
             Load += frmEmpleado_Load;

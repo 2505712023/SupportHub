@@ -43,10 +43,10 @@
             txtNombreEmpleado = new TextBox();
             lblAreaEmpleado = new Label();
             lblCargoEmpleado = new Label();
+            lblEmailEmpleado = new Label();
             lblTelefonoEmpleado = new Label();
             lblApellidoEmpleado = new Label();
             lblNombreEmpleado = new Label();
-            lblEmailEmpleado = new Label();
             pSuperiorAddEmpleado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             gbAddEmpleado.SuspendLayout();
@@ -63,6 +63,7 @@
             pSuperiorAddEmpleado.Name = "pSuperiorAddEmpleado";
             pSuperiorAddEmpleado.Size = new Size(669, 80);
             pSuperiorAddEmpleado.TabIndex = 0;
+            pSuperiorAddEmpleado.Paint += pSuperiorAddEmpleado_Paint;
             // 
             // pboxLogo
             // 
@@ -123,6 +124,7 @@
             gbAddEmpleado.TabIndex = 1;
             gbAddEmpleado.TabStop = false;
             gbAddEmpleado.Text = "AGREGAR EMPLEADO";
+            gbAddEmpleado.Enter += gbAddEmpleado_Enter;
             // 
             // txtTelefonoEmpleado
             // 
@@ -188,6 +190,7 @@
             cbxAreaEmpleado.Name = "cbxAreaEmpleado";
             cbxAreaEmpleado.Size = new Size(235, 36);
             cbxAreaEmpleado.TabIndex = 11;
+            cbxAreaEmpleado.SelectedIndexChanged += cbxAreaEmpleado_SelectedIndexChanged;
             // 
             // cbxCargoEmpleado
             // 
@@ -244,6 +247,15 @@
             lblCargoEmpleado.TabIndex = 4;
             lblCargoEmpleado.Text = "Cargo:";
             // 
+            // lblEmailEmpleado
+            // 
+            lblEmailEmpleado.AutoSize = true;
+            lblEmailEmpleado.Location = new Point(30, 267);
+            lblEmailEmpleado.Name = "lblEmailEmpleado";
+            lblEmailEmpleado.Size = new Size(69, 28);
+            lblEmailEmpleado.TabIndex = 3;
+            lblEmailEmpleado.Text = "Email:";
+            // 
             // lblTelefonoEmpleado
             // 
             lblTelefonoEmpleado.AutoSize = true;
@@ -270,15 +282,6 @@
             lblNombreEmpleado.Size = new Size(94, 28);
             lblNombreEmpleado.TabIndex = 0;
             lblNombreEmpleado.Text = "Nombre:";
-            // 
-            // lblEmailEmpleado
-            // 
-            lblEmailEmpleado.AutoSize = true;
-            lblEmailEmpleado.Location = new Point(30, 267);
-            lblEmailEmpleado.Name = "lblEmailEmpleado";
-            lblEmailEmpleado.Size = new Size(69, 28);
-            lblEmailEmpleado.TabIndex = 3;
-            lblEmailEmpleado.Text = "Email:";
             // 
             // frmAgregarEmpleado
             // 

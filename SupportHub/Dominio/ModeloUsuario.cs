@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,21 @@ namespace Dominio
             {
                 return userData.Login(user, pass);
             }
+
+        //Hecho por KEVIN
+        public DataTable mostrarUsuario()
+        {
+            DataTable tabla = new DataTable();
+            tabla = userData.obtenerUsuario();
+            return tabla;
+
+        }
+        public DataTable filtrarTablaUsuario(string idUsuario="-1")
+        {
+            return userData.filtrarTablaUsuario(idUsuario);
+        }
+
+
     }
 }
 

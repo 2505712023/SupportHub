@@ -18,7 +18,7 @@ namespace Presentacion
         public frmAgregarEmpleado(frmEmpleado formEmpleado)
         {
             InitializeComponent();
-            
+
         }
         public delegate void UpdateDelagate(object sender, UpdateEventArgs arg);
         public event UpdateDelagate UpdateEventHandler;
@@ -69,10 +69,10 @@ namespace Presentacion
         public event EventHandler EmpleadoGuardado;
         private void btnGuardarEmpleado_Click(object sender, EventArgs e)
         {
-            
+
             if (ValidarCampos())
             {
-                
+
                 agregarEmpleados.InsertarEmpleado(
                     txtNombreEmpleado.Text,
                     txtApellidoEmpleado.Text,
@@ -88,7 +88,7 @@ namespace Presentacion
                 txtApellidoEmpleado.Text = "";
                 txtTelefonoEmpleado.Text = "";
                 txtEmailEmpleado.Text = "";
-                cbxAreaEmpleado.Text=null;
+                cbxAreaEmpleado.Text = null;
                 cbxCargoEmpleado.Text = null;
             }
         }
@@ -161,6 +161,21 @@ namespace Presentacion
         private void btnCerrarAddEmpleado_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void pSuperiorAddEmpleado_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cbxAreaEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gbAddEmpleado_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
