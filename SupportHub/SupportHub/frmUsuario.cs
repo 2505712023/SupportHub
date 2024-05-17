@@ -17,9 +17,35 @@ namespace Presentacion
             InitializeComponent();
         }
 
+<<<<<<< Updated upstream
         private void frmUsuario_Load(object sender, EventArgs e)
         {
 
         }
     }
+=======
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnagregarusuario_Click(object sender, EventArgs e)
+        {
+            frmAgregarusuario agrusuario = new frmAgregarusuario();
+            agrusuario.Show();
+        }
+
+        private void btnmodificarusuario_Click(object sender, EventArgs e)
+        {
+            frmModificarusuario mdfusuario = new frmModificarusuario();
+            mdfusuario.Show();
+        }
+
+        private void btnEliminarusuario_Click(object sender, EventArgs e)
+        {
+            frmEliminarusuario elmusuario = new frmEliminarusuario();
+            elmusuario.Show();
+        }
+}
+>>>>>>> Stashed changes
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< Updated upstream
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
@@ -155,14 +156,67 @@
             Text = "frmUsuario";
             Load += frmUsuario_Load;
             ((System.ComponentModel.ISupportInitialize)dgvUsuario).EndInit();
+=======
+            btnagregarusuario = new Button();
+            btnmodificarusuario = new Button();
+            btnEliminarusuario = new Button();
+            SuspendLayout();
+            // 
+            // btnagregarusuario
+            // 
+            btnagregarusuario.Location = new Point(727, 52);
+            btnagregarusuario.Name = "btnagregarusuario";
+            btnagregarusuario.Size = new Size(112, 34);
+            btnagregarusuario.TabIndex = 0;
+            btnagregarusuario.Text = "Agregar";
+            btnagregarusuario.UseVisualStyleBackColor = true;
+            btnagregarusuario.Click += btnagregarusuario_Click;
+            // 
+            // btnmodificarusuario
+            // 
+            btnmodificarusuario.Location = new Point(727, 138);
+            btnmodificarusuario.Name = "btnmodificarusuario";
+            btnmodificarusuario.Size = new Size(112, 34);
+            btnmodificarusuario.TabIndex = 1;
+            btnmodificarusuario.Text = "Editar";
+            btnmodificarusuario.UseVisualStyleBackColor = true;
+            btnmodificarusuario.Click += btnmodificarusuario_Click;
+            // 
+            // btnEliminarusuario
+            // 
+            btnEliminarusuario.Location = new Point(727, 247);
+            btnEliminarusuario.Name = "btnEliminarusuario";
+            btnEliminarusuario.Size = new Size(112, 34);
+            btnEliminarusuario.TabIndex = 2;
+            btnEliminarusuario.Text = "Eliminar";
+            btnEliminarusuario.UseVisualStyleBackColor = true;
+            btnEliminarusuario.Click += btnEliminarusuario_Click;
+            // 
+            // frmUsuario
+            // 
+            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1449, 667);
+            Controls.Add(btnEliminarusuario);
+            Controls.Add(btnmodificarusuario);
+            Controls.Add(btnagregarusuario);
+            Name = "frmUsuario";
+            Text = "frmUsuario";
+>>>>>>> Stashed changes
             ResumeLayout(false);
         }
 
         #endregion
 
+<<<<<<< Updated upstream
         private FontAwesome.Sharp.IconButton btnEliminarUsuario;
         private FontAwesome.Sharp.IconButton btnModificaUsuario;
         private FontAwesome.Sharp.IconButton btnAgregarUsuario;
         private DataGridView dgvUsuario;
+=======
+        private Button btnagregarusuario;
+        private Button btnmodificarusuario;
+        private Button btnEliminarusuario;
+>>>>>>> Stashed changes
     }
 }
