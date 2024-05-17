@@ -245,7 +245,7 @@ namespace Presentacion
         {
             if (CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
             {
-                
+
             }
             else if (CacheInicioUsuario.permisosUser.Contains("Agregar") &&
                      CacheInicioUsuario.permisosUser.Contains("Modificar") &&
@@ -271,6 +271,11 @@ namespace Presentacion
             {
                 this.Close();
             }
+
+        }
+
+        private void pDesktop_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
