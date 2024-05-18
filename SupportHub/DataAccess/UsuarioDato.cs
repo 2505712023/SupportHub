@@ -132,8 +132,6 @@ namespace DataAccess
                     SqlDataAdapter adaptador = new SqlDataAdapter(comando);
                     adaptador.Fill(tabla);
                 }
-                    
-
                 return tabla;
             }
         }

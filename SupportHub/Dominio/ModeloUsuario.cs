@@ -15,6 +15,11 @@ namespace Dominio
         private int idUsuario;
         private string nuevaContraseña;
 
+        public ModeloUsuario()
+        {
+
+        }
+
         public ModeloUsuario(int idUsuario, string nuevaContraseña)
         {
             this.idUsuario = idUsuario;
@@ -44,14 +49,11 @@ namespace Dominio
             DataTable tabla = new DataTable();
             tabla = userData.obtenerUsuario();
             return tabla;
-
         }
+
         public DataTable filtrarTablaUsuario(string idUsuario="-1")
         {
             return userData.filtrarTablaUsuario(idUsuario);
         }
-
-
     }
 }
-

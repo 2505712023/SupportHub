@@ -22,7 +22,7 @@ namespace Presentacion
             InitializeComponent();
             tipoUsuario = new List<string>()
             {
-            "Codigo de usuario",
+            "Código de usuario",
             "Nombre",
              "Apellido"
             };
