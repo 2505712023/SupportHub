@@ -138,17 +138,25 @@ namespace Presentacion
             }
             else
             {
-                switch (cbxTipoBusquedaProveedor.Text)
+                try
                 {
-                    case "Id proveedor":
-                        dgvProveedor.DataSource = proveedor.ObtenerProveedor(int.Parse(txtBuscarProveedor.Text), null);
-                        break;
-                    case "Código proveedor":
-                        dgvProveedor.DataSource = proveedor.ObtenerProveedor(null, txtBuscarProveedor.Text);
-                        break;
-                    default:
-                        break;
+                    switch (cbxTipoBusquedaProveedor.Text)
+                    {
+                        case "Id proveedor":
+                            dgvProveedor.DataSource = proveedor.ObtenerProveedor(int.Parse(txtBuscarProveedor.Text), null);
+                            break;
+                        case "Código proveedor":
+                            dgvProveedor.DataSource = proveedor.ObtenerProveedor(null, txtBuscarProveedor.Text);
+                            break;
+                        default:
+                            break;
+                    }
                 }
+                catch (FormatException)
+                {
+                    CustomMessageBox.Error("Error en busqueda", "El Id del proveedor debe de ser un numero");
+                }
+
             }
             dgvProveedor.ClearSelection();
         }
