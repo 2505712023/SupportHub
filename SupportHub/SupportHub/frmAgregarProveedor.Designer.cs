@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarProveedor));
-            gbAddEmpleado = new GroupBox();
+            gbAddProveedor = new GroupBox();
+            label2 = new Label();
             label1 = new Label();
             lblCod = new Label();
             txtDireccion = new TextBox();
@@ -41,33 +42,44 @@
             lblNombre = new Label();
             txtId = new TextBox();
             pSuperiorAddProveedor = new Panel();
+            iconButton1 = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
-            gbAddEmpleado.SuspendLayout();
+            gbAddProveedor.SuspendLayout();
             pSuperiorAddProveedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             SuspendLayout();
             // 
-            // gbAddEmpleado
+            // gbAddProveedor
             // 
-            gbAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            gbAddEmpleado.Controls.Add(label1);
-            gbAddEmpleado.Controls.Add(lblCod);
-            gbAddEmpleado.Controls.Add(txtDireccion);
-            gbAddEmpleado.Controls.Add(txtTelefono);
-            gbAddEmpleado.Controls.Add(btnCancela);
-            gbAddEmpleado.Controls.Add(btnGuardarProveedor);
-            gbAddEmpleado.Controls.Add(txtCodProveedor);
-            gbAddEmpleado.Controls.Add(txtNombre);
-            gbAddEmpleado.Controls.Add(lblNombre);
-            gbAddEmpleado.Controls.Add(txtId);
-            gbAddEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            gbAddEmpleado.Location = new Point(12, 66);
-            gbAddEmpleado.Name = "gbAddEmpleado";
-            gbAddEmpleado.Size = new Size(561, 276);
-            gbAddEmpleado.TabIndex = 2;
-            gbAddEmpleado.TabStop = false;
-            gbAddEmpleado.Text = "AGREGAR EMPLEADO";
+            gbAddProveedor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gbAddProveedor.Controls.Add(label2);
+            gbAddProveedor.Controls.Add(label1);
+            gbAddProveedor.Controls.Add(lblCod);
+            gbAddProveedor.Controls.Add(txtDireccion);
+            gbAddProveedor.Controls.Add(txtTelefono);
+            gbAddProveedor.Controls.Add(btnCancela);
+            gbAddProveedor.Controls.Add(btnGuardarProveedor);
+            gbAddProveedor.Controls.Add(txtCodProveedor);
+            gbAddProveedor.Controls.Add(txtNombre);
+            gbAddProveedor.Controls.Add(lblNombre);
+            gbAddProveedor.Controls.Add(txtId);
+            gbAddProveedor.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            gbAddProveedor.Location = new Point(12, 66);
+            gbAddProveedor.Name = "gbAddProveedor";
+            gbAddProveedor.Size = new Size(561, 276);
+            gbAddProveedor.TabIndex = 2;
+            gbAddProveedor.TabStop = false;
+            gbAddProveedor.Text = "AGREGAR  O MODIFICAR PROVEEDOR";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(337, 29);
+            label2.Name = "label2";
+            label2.Size = new Size(81, 21);
+            label2.TabIndex = 18;
+            label2.Text = "Teléfono:";
             // 
             // label1
             // 
@@ -81,11 +93,11 @@
             // lblCod
             // 
             lblCod.AutoSize = true;
-            lblCod.Location = new Point(26, 88);
+            lblCod.Location = new Point(26, 29);
             lblCod.Name = "lblCod";
             lblCod.Size = new Size(153, 21);
             lblCod.TabIndex = 16;
-            lblCod.Text = "Codigo Proveedor:";
+            lblCod.Text = "Código Proveedor:";
             // 
             // txtDireccion
             // 
@@ -93,7 +105,7 @@
             txtDireccion.Location = new Point(26, 172);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(266, 29);
-            txtDireccion.TabIndex = 15;
+            txtDireccion.TabIndex = 8;
             // 
             // txtTelefono
             // 
@@ -102,7 +114,7 @@
             txtTelefono.Mask = "0000-0000";
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(197, 29);
-            txtTelefono.TabIndex = 8;
+            txtTelefono.TabIndex = 12;
             // 
             // btnCancela
             // 
@@ -119,7 +131,7 @@
             btnCancela.Location = new Point(419, 216);
             btnCancela.Name = "btnCancela";
             btnCancela.Size = new Size(115, 35);
-            btnCancela.TabIndex = 13;
+            btnCancela.TabIndex = 16;
             btnCancela.Text = "CANCELAR";
             btnCancela.TextAlign = ContentAlignment.MiddleLeft;
             btnCancela.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -140,7 +152,7 @@
             btnGuardarProveedor.Location = new Point(419, 163);
             btnGuardarProveedor.Name = "btnGuardarProveedor";
             btnGuardarProveedor.Size = new Size(115, 38);
-            btnGuardarProveedor.TabIndex = 12;
+            btnGuardarProveedor.TabIndex = 15;
             btnGuardarProveedor.Text = "GUARDAR";
             btnGuardarProveedor.TextAlign = ContentAlignment.MiddleLeft;
             btnGuardarProveedor.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -150,23 +162,23 @@
             // txtCodProveedor
             // 
             txtCodProveedor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtCodProveedor.Location = new Point(26, 112);
+            txtCodProveedor.Location = new Point(26, 53);
             txtCodProveedor.Name = "txtCodProveedor";
             txtCodProveedor.Size = new Size(266, 29);
-            txtCodProveedor.TabIndex = 7;
+            txtCodProveedor.TabIndex = 6;
             // 
             // txtNombre
             // 
             txtNombre.Font = new Font("Segoe UI", 12F);
-            txtNombre.Location = new Point(26, 53);
+            txtNombre.Location = new Point(26, 112);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(266, 29);
-            txtNombre.TabIndex = 6;
+            txtNombre.TabIndex = 7;
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(26, 29);
+            lblNombre.Location = new Point(26, 88);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(77, 21);
             lblNombre.TabIndex = 0;
@@ -185,6 +197,7 @@
             // pSuperiorAddProveedor
             // 
             pSuperiorAddProveedor.BackColor = Color.FromArgb(5, 23, 59);
+            pSuperiorAddProveedor.Controls.Add(iconButton1);
             pSuperiorAddProveedor.Controls.Add(pboxLogo);
             pSuperiorAddProveedor.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorAddProveedor.Dock = DockStyle.Top;
@@ -192,6 +205,26 @@
             pSuperiorAddProveedor.Name = "pSuperiorAddProveedor";
             pSuperiorAddProveedor.Size = new Size(585, 60);
             pSuperiorAddProveedor.TabIndex = 3;
+            // 
+            // iconButton1
+            // 
+            iconButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            iconButton1.FlatAppearance.BorderSize = 0;
+            iconButton1.FlatStyle = FlatStyle.Flat;
+            iconButton1.ForeColor = SystemColors.ControlLightLight;
+            iconButton1.IconChar = FontAwesome.Sharp.IconChar.X;
+            iconButton1.IconColor = SystemColors.Window;
+            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            iconButton1.IconSize = 20;
+            iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
+            iconButton1.Location = new Point(554, 3);
+            iconButton1.Name = "iconButton1";
+            iconButton1.Size = new Size(28, 24);
+            iconButton1.TabIndex = 19;
+            iconButton1.TextAlign = ContentAlignment.MiddleLeft;
+            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
+            iconButton1.UseVisualStyleBackColor = true;
+            iconButton1.Click += btnCancela_Click;
             // 
             // pboxLogo
             // 
@@ -230,13 +263,13 @@
             BackColor = Color.FromArgb(98, 122, 144);
             ClientSize = new Size(585, 354);
             Controls.Add(pSuperiorAddProveedor);
-            Controls.Add(gbAddEmpleado);
+            Controls.Add(gbAddProveedor);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmAgregarProveedor";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAgregarProveedor";
-            gbAddEmpleado.ResumeLayout(false);
-            gbAddEmpleado.PerformLayout();
+            gbAddProveedor.ResumeLayout(false);
+            gbAddProveedor.PerformLayout();
             pSuperiorAddProveedor.ResumeLayout(false);
             pSuperiorAddProveedor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
@@ -245,7 +278,7 @@
 
         #endregion
 
-        private GroupBox gbAddEmpleado;
+        private GroupBox gbAddProveedor;
         public MaskedTextBox txtTelefono;
         private FontAwesome.Sharp.IconButton btnCancela;
         private FontAwesome.Sharp.IconButton btnGuardarProveedor;
@@ -259,5 +292,7 @@
         private Panel pSuperiorAddProveedor;
         private PictureBox pboxLogo;
         private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
+        private Label label2;
+        private FontAwesome.Sharp.IconButton iconButton1;
     }
 }
