@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -57,7 +54,7 @@
             btnEliminarUsuario.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarUsuario.IconSize = 20;
-            btnEliminarUsuario.Location = new Point(1103, 233);
+            btnEliminarUsuario.Location = new Point(1103, 274);
             btnEliminarUsuario.Margin = new Padding(3, 4, 3, 4);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
             btnEliminarUsuario.Size = new Size(178, 76);
@@ -65,7 +62,7 @@
             btnEliminarUsuario.Text = "ELIMINAR";
             btnEliminarUsuario.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEliminarUsuario.UseVisualStyleBackColor = false;
-            btnEliminarUsuario.Click += btnEliminarUsuario_Click;
+            btnEliminarUsuario.Click += btnEliminarUsuario_Click_1;
             // 
             // btnModificaUsuario
             // 
@@ -79,7 +76,7 @@
             btnModificaUsuario.IconColor = Color.FromArgb(31, 35, 40);
             btnModificaUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModificaUsuario.IconSize = 20;
-            btnModificaUsuario.Location = new Point(1103, 152);
+            btnModificaUsuario.Location = new Point(1103, 193);
             btnModificaUsuario.Margin = new Padding(3, 4, 3, 4);
             btnModificaUsuario.Name = "btnModificaUsuario";
             btnModificaUsuario.Size = new Size(178, 73);
@@ -101,7 +98,7 @@
             btnAgregarUsuario.IconColor = Color.FromArgb(31, 35, 40);
             btnAgregarUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarUsuario.IconSize = 20;
-            btnAgregarUsuario.Location = new Point(1103, 77);
+            btnAgregarUsuario.Location = new Point(1103, 118);
             btnAgregarUsuario.Margin = new Padding(3, 4, 3, 4);
             btnAgregarUsuario.Name = "btnAgregarUsuario";
             btnAgregarUsuario.Size = new Size(178, 67);
@@ -174,7 +171,7 @@
             cbxTipoBusquedaUsuario.Location = new Point(7, 35);
             cbxTipoBusquedaUsuario.Margin = new Padding(3, 4, 3, 4);
             cbxTipoBusquedaUsuario.Name = "cbxTipoBusquedaUsuario";
-            cbxTipoBusquedaUsuario.Size = new Size(158, 28);
+            cbxTipoBusquedaUsuario.Size = new Size(158, 23);
             cbxTipoBusquedaUsuario.TabIndex = 6;
             cbxTipoBusquedaUsuario.SelectedIndexChanged += cbxTipoBusquedaUsuario_SelectedIndexChanged;
             // 
@@ -185,13 +182,13 @@
             txtBuscarUsuario.Location = new Point(173, 36);
             txtBuscarUsuario.Margin = new Padding(3, 4, 3, 4);
             txtBuscarUsuario.Name = "txtBuscarUsuario";
-            txtBuscarUsuario.Size = new Size(1780, 27);
+            txtBuscarUsuario.Size = new Size(901, 23);
             txtBuscarUsuario.TabIndex = 5;
             txtBuscarUsuario.TextChanged += txtBuscarUsuario_TextChanged;
             // 
             // frmUsuario
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
             ClientSize = new Size(1293, 687);
@@ -206,6 +203,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvUsuario).EndInit();
             gbBuscarUsuario.ResumeLayout(false);
             gbBuscarUsuario.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion

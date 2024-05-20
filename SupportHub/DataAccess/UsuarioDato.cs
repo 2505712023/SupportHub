@@ -116,7 +116,7 @@ namespace DataAccess
         public DataTable obtenerUsuario()
         {
            
-         string nombreProcedimiento = "sp_obtener_usuario";
+         string nombreProcedimiento = "sp_obtener_usuarios";
 
             using (var conexion = GetConnection())
             {

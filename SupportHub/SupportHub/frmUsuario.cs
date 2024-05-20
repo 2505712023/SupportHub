@@ -28,7 +28,7 @@ namespace Presentacion
             };
             cbxTipoBusquedaUsuario.DataSource = tipoUsuario;
         }
-        
+
         private void mostrarUsuario()
         {
             ModeloUsuario Usuario = new ModeloUsuario();
@@ -55,10 +55,7 @@ namespace Presentacion
         }
         public void ajusteDataGrid()
         {
-            dgvUsuario.Columns["loginUsuario"].HeaderText = "Nombre de usuario";
-            dgvUsuario.Columns["nombreUsuario"].HeaderText = "Nombre de empleado";
-            dgvUsuario.Columns["apellidoUsuario"].HeaderText = "Apellido de empleado";
-            
+
             dgvUsuario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             if (!CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
@@ -98,14 +95,10 @@ namespace Presentacion
 
         }
 
-        private void dgvUsuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnModificaUsuario_Click(object sender, EventArgs e)
         {
-
+            frmModificarusuario mdfusuario = new frmModificarusuario();
+            mdfusuario.Show();
         }
 
         private void txtBuscarUsuario_TextChanged(object sender, EventArgs e)
@@ -118,24 +111,13 @@ namespace Presentacion
 
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnagregarusuario_Click(object sender, EventArgs e)
+        private void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
             frmAgregarusuario agrusuario = new frmAgregarusuario();
             agrusuario.Show();
         }
 
-        private void btnmodificarusuario_Click(object sender, EventArgs e)
-        {
-            frmModificarusuario mdfusuario = new frmModificarusuario();
-            mdfusuario.Show();
-        }
-
-        private void btnEliminarusuario_Click(object sender, EventArgs e)
+        private void btnEliminarUsuario_Click_1(object sender, EventArgs e)
         {
             frmEliminarusuario elmusuario = new frmEliminarusuario();
             elmusuario.Show();
