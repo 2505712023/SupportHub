@@ -18,5 +18,15 @@ namespace Dominio
         {
             return EquipoDato.EliminarEquipo(codEquipo);
         }
+
+        public static int crearEquipo(string TipoEquipo, string marcaEquipo, string modeloEquipo, int cantidadEquipo, double precioEquipo, int idProveedor, string descripcionEquipo)
+        {
+            return EquipoDato.crearEquipo(TipoEquipo, marcaEquipo, modeloEquipo, cantidadEquipo, precioEquipo, idProveedor, descripcionEquipo);
+        }
+
+        public static DataTable obtenerProveedor()
+        {
+            return EquipoDato.obtenerProveedor();
+        }
     }
 }

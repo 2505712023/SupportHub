@@ -49,6 +49,45 @@ namespace DataAccess
                 return numRegistroEliminados;
             }
         }
-  
+        public static int crearEquipo(string TipoEquipo, string marcaEquipo, string modeloEquipo, int cantidadEquipo,double precioEquipo, int idProveedor, string descripcionEquipo)
+        {
+            using (SqlConnection conect = conexion.GetConnection())
+            {
+                comando.CommandText = "sp_crear_equipo";
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@TipoEquipo", TipoEquipo);
+                comando.Parameters.AddWithValue("@marcaEquipo", marcaEquipo);
+                comando.Parameters.AddWithValue("@TmodeloEquipo", modeloEquipo);
+                comando.Parameters.AddWithValue("@cantidadEquipo", cantidadEquipo);
+                comando.Parameters.AddWithValue("@precioEquipo", precioEquipo);
+                comando.Parameters.AddWithValue("@idProveedor", idProveedor);
+                comando.Parameters.AddWithValue("@descripcionEquipo", descripcionEquipo);
+
+                conect.Open();
+
+                int numRegistrosAgregados = comando.ExecuteNonQuery();
+
+                return numRegistrosAgregados;
+            }
+
+            }
+        public static DataTable obtenerProveedor()
+        {
+            string querySelectProveedores = "select idProveedor as [idProveedor], nombreProveedor as [Proveedor] from Proveedores";
+
+            using (SqlConnection conect = conexion.GetConnection())
+            {
+                conect.Open();
+                SqlCommand comando = new SqlCommand(querySelectProveedores, conect);
+                SqlDataReader lector = comando.ExecuteReader();
+
+                DataTable tablaProveedores = new DataTable();
+                tablaProveedores.Load(lector);
+
+                return tablaProveedores;
+            }
+        }
     }
-}
+    }
+

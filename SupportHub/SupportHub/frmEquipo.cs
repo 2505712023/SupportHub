@@ -1,4 +1,5 @@
-﻿using DataAccess;
+﻿using Comun.Cache;
+using DataAccess;
 using Dominio;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,11 @@ namespace Presentacion
         {
             dgvEquipo.DataSource = EquipoDato.obtenerTablaEquipos();
             dgvEquipo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            if (!CacheInicioUsuario.permisosUser.Contains("Agregar"))
+            {
+                btnAgregarEquipo.Visible = false;
+            }
         }
 
         private void btnEliminarEquipo_Click(object sender, EventArgs e)
@@ -35,13 +41,15 @@ namespace Presentacion
                 {
                     int totalRegistrosEliminados = 0;
 
-                    
+
                     totalRegistrosEliminados = ModeloEquipo.EliminarEquipo(dgvEquipo.SelectedRows[0].Cells["Código de Equipo"].Value.ToString());
 
                     if (totalRegistrosEliminados == 1)
                     {
                         MessageBox.Show("Se eliminaron " + totalRegistrosEliminados.ToString() + " Equipos. ", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }else {
+                    }
+                    else
+                    {
 
                         MessageBox.Show("No se pudo eliminar, verifique si el equipo tiene una entrega registrada");
                     }
@@ -64,6 +72,20 @@ namespace Presentacion
                 dgvEquipo.DataSource = ModeloEquipo.obtenerTablaEquipos();
                 dgvEquipo.ClearSelection();
             }
+        }
+
+        
+
+        private void btnAgregarEquipo_Click(object sender, EventArgs e)
+        {
+            dgvEquipo.Enabled = false;
+            frmAgregarEquipo formEquipo = new frmAgregarEquipo();
+            formEquipo.Show();
+        }
+
+        private void btnModificarEquipo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
