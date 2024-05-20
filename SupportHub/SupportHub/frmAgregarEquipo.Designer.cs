@@ -111,34 +111,28 @@
             // 
             // tboxcantidadEquipo
             // 
-            tboxcantidadEquipo.Enabled = false;
             tboxcantidadEquipo.Font = new Font("Segoe UI", 12F);
             tboxcantidadEquipo.ForeColor = Color.Black;
             tboxcantidadEquipo.Location = new Point(226, 178);
             tboxcantidadEquipo.Name = "tboxcantidadEquipo";
-            tboxcantidadEquipo.ReadOnly = true;
             tboxcantidadEquipo.Size = new Size(209, 29);
             tboxcantidadEquipo.TabIndex = 37;
             // 
             // tboxmodeloEquipo
             // 
-            tboxmodeloEquipo.Enabled = false;
             tboxmodeloEquipo.Font = new Font("Segoe UI", 12F);
             tboxmodeloEquipo.ForeColor = Color.Black;
             tboxmodeloEquipo.Location = new Point(226, 133);
             tboxmodeloEquipo.Name = "tboxmodeloEquipo";
-            tboxmodeloEquipo.ReadOnly = true;
             tboxmodeloEquipo.Size = new Size(209, 29);
             tboxmodeloEquipo.TabIndex = 36;
             // 
             // tboxTipoEquipo
             // 
-            tboxTipoEquipo.Enabled = false;
             tboxTipoEquipo.Font = new Font("Segoe UI", 12F);
             tboxTipoEquipo.ForeColor = Color.Black;
             tboxTipoEquipo.Location = new Point(226, 43);
             tboxTipoEquipo.Name = "tboxTipoEquipo";
-            tboxTipoEquipo.ReadOnly = true;
             tboxTipoEquipo.Size = new Size(209, 29);
             tboxTipoEquipo.TabIndex = 35;
             // 
@@ -187,12 +181,10 @@
             // 
             // tboxmarcaEquipo
             // 
-            tboxmarcaEquipo.Enabled = false;
             tboxmarcaEquipo.Font = new Font("Segoe UI", 12F);
             tboxmarcaEquipo.ForeColor = Color.Black;
             tboxmarcaEquipo.Location = new Point(226, 87);
             tboxmarcaEquipo.Name = "tboxmarcaEquipo";
-            tboxmarcaEquipo.ReadOnly = true;
             tboxmarcaEquipo.Size = new Size(209, 29);
             tboxmarcaEquipo.TabIndex = 32;
             // 

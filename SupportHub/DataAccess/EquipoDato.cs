@@ -58,11 +58,12 @@ namespace DataAccess
                 comando.Parameters.Clear();
                 comando.Parameters.AddWithValue("@TipoEquipo", TipoEquipo);
                 comando.Parameters.AddWithValue("@marcaEquipo", marcaEquipo);
-                comando.Parameters.AddWithValue("@TmodeloEquipo", modeloEquipo);
+                comando.Parameters.AddWithValue("@modeloEquipo", modeloEquipo);
                 comando.Parameters.AddWithValue("@cantidadEquipo", cantidadEquipo);
                 comando.Parameters.AddWithValue("@precioEquipo", precioEquipo);
                 comando.Parameters.AddWithValue("@idProveedor", idProveedor);
                 comando.Parameters.AddWithValue("@descripcionEquipo", descripcionEquipo);
+                comando.Connection = conect;
 
                 conect.Open();
 

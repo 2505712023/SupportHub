@@ -1,6 +1,7 @@
 ﻿using Comun.Cache;
 using DataAccess;
 using Dominio;
+using Presentacion.CustomMessageBoxes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,11 +30,12 @@ namespace Presentacion
             {
                 btnAgregarEquipo.Visible = false;
             }
+            dgvEquipo.Columns["Precio de Equipo"].DefaultCellStyle.Format = "C2";
         }
 
         private void btnEliminarEquipo_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Quiere eliminar un Equipo?", "Eliminar Equipo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult resultado = CustomMessageBox.Advertencia("Eliminar Equipo", "¿Quiere eliminar un Equipo?");
 
             if (resultado == DialogResult.Yes)
             {
@@ -59,7 +61,7 @@ namespace Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Debe seleccionar una o varias entregas para eliminarlas.", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Debe seleccionar una o varias Equipos para eliminarlos.", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
 

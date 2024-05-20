@@ -194,8 +194,9 @@ namespace Presentacion
             {
                 CustomMessageBox.Error("Error", "La cantidad a entregar debe ser mayor a cero.");
             }
-            else
+            else 
             {
+
                 if (!esModificacion)
                 {
                     int registrosAgregados = ModeloEntrega.crearEntrega(
