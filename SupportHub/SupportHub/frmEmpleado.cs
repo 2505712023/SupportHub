@@ -67,13 +67,12 @@ namespace Presentacion
         }
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
-            if (!frmAgregarEmpleadoAbierto)
-            {
+        
                 frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
             formEmpleado.UpdateEventHandler += AgregarUpdateEvenHandler;
                 formEmpleado.ShowDialog();
                 frmAgregarEmpleadoAbierto = true;
-            }
+            
         }
 
         private void frmEmpleado_Load(object sender, EventArgs e)
