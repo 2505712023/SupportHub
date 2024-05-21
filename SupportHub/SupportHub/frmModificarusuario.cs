@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class frmModificarusuario : Form
+    public partial class frmModificarUsuario : Form
     {
-        public frmModificarusuario()
+        public frmModificarUsuario()
         {
             InitializeComponent();
         }

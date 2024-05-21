@@ -23,8 +23,8 @@ namespace Presentacion
             tipoUsuario = new List<string>()
             {
             "Código de usuario",
-            "Nombre",
-             "Apellido"
+            "Nombres",
+            "Apellidos"
             };
             cbxTipoBusquedaUsuario.DataSource = tipoUsuario;
         }
@@ -97,7 +97,7 @@ namespace Presentacion
 
         private void btnModificaUsuario_Click(object sender, EventArgs e)
         {
-            frmModificarusuario mdfusuario = new frmModificarusuario();
+            frmModificarUsuario mdfusuario = new frmModificarUsuario();
             mdfusuario.Show();
         }
 
@@ -113,8 +113,8 @@ namespace Presentacion
 
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            frmAgregarusuario agrusuario = new frmAgregarusuario();
-            agrusuario.Show();
+            frmAgregarUsuario agrusuario = new frmAgregarUsuario();
+            agrusuario.ShowDialog();
         }
 
         private void btnEliminarUsuario_Click_1(object sender, EventArgs e)
