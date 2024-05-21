@@ -31,56 +31,57 @@ namespace DataAccess
         public string Login(string user, string pass)
 
         {
+           
             try
             {
-                using (var coneccion = GetConnection())
+                using (var connection = GetConnection())
                 {
-                    coneccion.Open();
-                    using (var comando = new SqlCommand())
+                    connection.Open();
+                    using (var command = new SqlCommand())
                     {
-                        comando.Connection = coneccion;
-                        comando.CommandText = "sp_autenticar_usuario";
-                        comando.CommandType = CommandType.StoredProcedure;
-                        comando.Parameters.AddWithValue("@LoginName", user);
-                        comando.Parameters.AddWithValue("@Password", pass);
+                        command.Connection = connection;
+                        command.CommandText = "sp_autenticar_usuario";
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@LoginName", user);
+                        command.Parameters.AddWithValue("@Password", pass);
 
-                        using (SqlDataReader reader = comando.ExecuteReader())
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.HasRows)
                             {
                                 while (reader.Read())
                                 {
-                                    // Leer los datos del usuario
-                                    int idUsuario = reader.GetInt32(reader.GetOrdinal("idUsuario"));
-                                    string claveUsuario = reader.GetString(reader.GetOrdinal("claveUsuario"));
-                                    string loginUsuario = reader.GetString(reader.GetOrdinal("loginUsuario"));
-                                    string nombreUsuario = reader.GetString(reader.GetOrdinal("nombreUsuario"));
-                                    string apellidoUsuario = reader.GetString(reader.GetOrdinal("apellidoUsuario"));
+                                    bool activoUsuario = reader.GetBoolean(reader.GetOrdinal("activoUsuario"));
+                                    if (!activoUsuario)
+                                    {
+                                        return "El usuario está inactivo";
+                                    }
 
-                                    int idRol = reader.GetInt32(reader.GetOrdinal("idRol"));
-                                    string nombreRol = reader.GetString(reader.GetOrdinal("nombreRol"));
-                                    CacheInicioUsuario.IdUser = reader.GetInt32(0);
-                                    CacheInicioUsuario.password = reader.GetString(1);
-                                    CacheInicioUsuario.user=reader.GetString(2);
-                                    CacheInicioUsuario.nombreUser = reader.GetString(3);
-                                    CacheInicioUsuario.apellidoUser = reader.GetString(4);
+                                    // Extracción y asignación de otros campos
+                                    CacheInicioUsuario.IdUser = reader.GetInt32(reader.GetOrdinal("idUsuario"));
+                                    CacheInicioUsuario.password = reader.GetString(reader.GetOrdinal("claveUsuario"));
+                                    CacheInicioUsuario.user = reader.GetString(reader.GetOrdinal("loginUsuario"));
+                                    CacheInicioUsuario.nombreUser = reader.GetString(reader.GetOrdinal("nombreUsuario"));
+                                    CacheInicioUsuario.apellidoUser = reader.GetString(reader.GetOrdinal("apellidoUsuario"));
                                     CacheInicioUsuario.rolUser = reader.GetString(reader.GetOrdinal("nombreRol"));
                                     CacheInicioUsuario.empleado = reader.GetString(reader.GetOrdinal("Empleado"));
                                     CacheInicioUsuario.idEmpleado = reader.GetInt32(reader.GetOrdinal("idEmpleado"));
                                 }
                                 reader.Close();
 
-                                using (var comandoPermisos = new SqlCommand())
+                                // Obtener permisos del usuario
+                                using (var commandPermisos = new SqlCommand())
                                 {
-                                    comandoPermisos.Connection = coneccion;
-                                    comandoPermisos.CommandText = "select p.nombrePermiso " +
-                                                                    "from PermisosXRoles pr " +
-                                                                    "inner join Permisos p on p.idPermiso = pr.idPermiso " +
-                                                                    "inner join Roles r on r.idRol = pr.idRol " +
-                                                                    "where r.nombreRol = '" + CacheInicioUsuario.rolUser + "'";
-                                    comandoPermisos.CommandType = CommandType.Text;
+                                    commandPermisos.Connection = connection;
+                                    commandPermisos.CommandText = "select p.nombrePermiso " +
+                                                                  "from PermisosXRoles pr " +
+                                                                  "inner join Permisos p on p.idPermiso = pr.idPermiso " +
+                                                                  "inner join Roles r on r.idRol = pr.idRol " +
+                                                                  "where r.nombreRol = @NombreRol";
+                                    commandPermisos.Parameters.AddWithValue("@NombreRol", CacheInicioUsuario.rolUser);
+                                    commandPermisos.CommandType = CommandType.Text;
 
-                                    using (SqlDataReader readerPermisos = comandoPermisos.ExecuteReader())
+                                    using (SqlDataReader readerPermisos = commandPermisos.ExecuteReader())
                                     {
                                         CacheInicioUsuario.permisosUser = new ArrayList();
                                         while (readerPermisos.Read())
@@ -105,10 +106,8 @@ namespace DataAccess
             }
             catch (Exception ex)
             {
-
                 return "Error durante el inicio de sesión: " + ex.Message;
             }
         }
-
-    }
+        }
 }

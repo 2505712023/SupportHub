@@ -46,80 +46,51 @@
             pSuperiorAddEntrega.Controls.Add(iconButtonX);
             pSuperiorAddEntrega.Controls.Add(lblTextoTab);
             pSuperiorAddEntrega.Controls.Add(btnCerrarAddEmpleado);
-            pSuperiorAddEntrega.Dock = DockStyle.Top;
-            pSuperiorAddEntrega.Location = new Point(0, 0);
+            resources.ApplyResources(pSuperiorAddEntrega, "pSuperiorAddEntrega");
             pSuperiorAddEntrega.Name = "pSuperiorAddEntrega";
-            pSuperiorAddEntrega.Size = new Size(734, 50);
-            pSuperiorAddEntrega.TabIndex = 3;
             // 
             // iconButtonX
             // 
-            iconButtonX.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            resources.ApplyResources(iconButtonX, "iconButtonX");
             iconButtonX.FlatAppearance.BorderSize = 0;
-            iconButtonX.FlatStyle = FlatStyle.Flat;
             iconButtonX.ForeColor = SystemColors.ControlLightLight;
             iconButtonX.IconChar = FontAwesome.Sharp.IconChar.X;
             iconButtonX.IconColor = SystemColors.Window;
             iconButtonX.IconFont = FontAwesome.Sharp.IconFont.Solid;
             iconButtonX.IconSize = 20;
-            iconButtonX.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButtonX.Location = new Point(694, 11);
             iconButtonX.Name = "iconButtonX";
-            iconButtonX.Size = new Size(28, 24);
-            iconButtonX.TabIndex = 19;
-            iconButtonX.TextAlign = ContentAlignment.MiddleLeft;
-            iconButtonX.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButtonX.UseVisualStyleBackColor = true;
             iconButtonX.Click += iconButtonX_Click;
             // 
             // lblTextoTab
             // 
-            lblTextoTab.AutoSize = true;
-            lblTextoTab.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
+            resources.ApplyResources(lblTextoTab, "lblTextoTab");
             lblTextoTab.ForeColor = Color.White;
-            lblTextoTab.Location = new Point(15, 11);
             lblTextoTab.Name = "lblTextoTab";
-            lblTextoTab.Size = new Size(178, 28);
-            lblTextoTab.TabIndex = 18;
-            lblTextoTab.Text = "Encabezado Éxito";
             // 
             // btnCerrarAddEmpleado
             // 
-            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            resources.ApplyResources(btnCerrarAddEmpleado, "btnCerrarAddEmpleado");
             btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
-            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
             btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
             btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
             btnCerrarAddEmpleado.IconColor = SystemColors.Window;
             btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarAddEmpleado.IconSize = 20;
-            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(936, 12);
             btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
-            btnCerrarAddEmpleado.Size = new Size(28, 24);
-            btnCerrarAddEmpleado.TabIndex = 17;
-            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
             // 
             // ibtnOK
             // 
-            ibtnOK.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            resources.ApplyResources(ibtnOK, "ibtnOK");
             ibtnOK.BackColor = Color.FromArgb(5, 23, 59);
             ibtnOK.FlatAppearance.BorderSize = 0;
-            ibtnOK.FlatStyle = FlatStyle.Flat;
-            ibtnOK.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             ibtnOK.ForeColor = Color.White;
             ibtnOK.IconChar = FontAwesome.Sharp.IconChar.Check;
             ibtnOK.IconColor = Color.White;
             ibtnOK.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnOK.IconSize = 20;
-            ibtnOK.Location = new Point(665, 156);
             ibtnOK.Name = "ibtnOK";
-            ibtnOK.Size = new Size(57, 32);
-            ibtnOK.TabIndex = 18;
-            ibtnOK.Text = "OK";
-            ibtnOK.TextImageRelation = TextImageRelation.ImageBeforeText;
             ibtnOK.UseVisualStyleBackColor = false;
             ibtnOK.Click += ibtnOK_Click;
             // 
@@ -131,38 +102,30 @@
             iconPrincipal.IconColor = Color.Green;
             iconPrincipal.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconPrincipal.IconSize = 93;
-            iconPrincipal.InitialImage = (Image)resources.GetObject("iconPrincipal.InitialImage");
-            iconPrincipal.Location = new Point(24, 77);
+            resources.ApplyResources(iconPrincipal, "iconPrincipal");
             iconPrincipal.Name = "iconPrincipal";
-            iconPrincipal.Size = new Size(93, 93);
-            iconPrincipal.TabIndex = 18;
             iconPrincipal.TabStop = false;
             // 
             // tboxDescripcionExito
             // 
             tboxDescripcionExito.BackColor = Color.FromArgb(98, 122, 144);
             tboxDescripcionExito.BorderStyle = BorderStyle.None;
-            tboxDescripcionExito.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-            tboxDescripcionExito.Location = new Point(128, 89);
+            resources.ApplyResources(tboxDescripcionExito, "tboxDescripcionExito");
             tboxDescripcionExito.Name = "tboxDescripcionExito";
-            tboxDescripcionExito.Size = new Size(537, 60);
-            tboxDescripcionExito.TabIndex = 19;
-            tboxDescripcionExito.Text = "Descripción del éxito";
             // 
             // ExitoMessageBox
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(98, 122, 144);
-            ClientSize = new Size(734, 200);
             Controls.Add(tboxDescripcionExito);
             Controls.Add(iconPrincipal);
             Controls.Add(ibtnOK);
             Controls.Add(pSuperiorAddEntrega);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ExitoMessageBox";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Error";
+            TopMost = true;
+            Load += ExitoMessageBox_Load;
             pSuperiorAddEntrega.ResumeLayout(false);
             pSuperiorAddEntrega.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPrincipal).EndInit();

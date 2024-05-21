@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExitoMessageBox));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErrorMessageBox));
             pSuperiorAddEntrega = new Panel();
             iconButtonX = new FontAwesome.Sharp.IconButton();
             lblTextoTab = new Label();
@@ -117,7 +117,7 @@
             ibtnOK.Location = new Point(665, 156);
             ibtnOK.Name = "ibtnOK";
             ibtnOK.Size = new Size(57, 32);
-            ibtnOK.TabIndex = 18;
+            ibtnOK.TabIndex = 0;
             ibtnOK.Text = "OK";
             ibtnOK.TextImageRelation = TextImageRelation.ImageBeforeText;
             ibtnOK.UseVisualStyleBackColor = false;
@@ -163,6 +163,7 @@
             Name = "ErrorMessageBox";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Error";
+            Load += ErrorMessageBox_Load;
             pSuperiorAddEntrega.ResumeLayout(false);
             pSuperiorAddEntrega.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPrincipal).EndInit();

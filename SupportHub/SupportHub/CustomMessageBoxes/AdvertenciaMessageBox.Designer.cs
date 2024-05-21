@@ -118,7 +118,7 @@
             ibtnNo.Location = new Point(665, 156);
             ibtnNo.Name = "ibtnNo";
             ibtnNo.Size = new Size(57, 32);
-            ibtnNo.TabIndex = 18;
+            ibtnNo.TabIndex = 1;
             ibtnNo.Text = "No";
             ibtnNo.TextImageRelation = TextImageRelation.ImageBeforeText;
             ibtnNo.UseVisualStyleBackColor = false;
@@ -165,7 +165,7 @@
             ibtnSi.Location = new Point(602, 156);
             ibtnSi.Name = "ibtnSi";
             ibtnSi.Size = new Size(57, 32);
-            ibtnSi.TabIndex = 20;
+            ibtnSi.TabIndex = 0;
             ibtnSi.Text = "Si";
             ibtnSi.TextImageRelation = TextImageRelation.ImageBeforeText;
             ibtnSi.UseVisualStyleBackColor = false;
@@ -186,6 +186,7 @@
             Name = "AdvertenciaMessageBox";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Error";
+            Load += AdvertenciaMessageBox_Load;
             pSuperiorAddEntrega.ResumeLayout(false);
             pSuperiorAddEntrega.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)iconPrincipal).EndInit();

@@ -57,7 +57,7 @@ namespace Presentacion
                 btnModificaEmpleado_Click(this, EventArgs.Empty);
                 return true;
             }
-            if (keyData == (Keys.Control | Keys.Shift | Keys.D))
+            if (keyData == (Keys.Control | Keys.Shift | Keys.E))
             {
 
                 btnEliminarEmpleado_Click(this, EventArgs.Empty);

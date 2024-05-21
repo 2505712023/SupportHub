@@ -17,7 +17,7 @@ namespace Presentacion.CustomMessageBoxes
             InitializeComponent();
             this.lblTextoTab.Text = encabezadoExito;
             this.tboxDescripcionExito.Text = descripcionExito;
-
+            
             this.ShowDialog();
         }
 
@@ -31,6 +31,9 @@ namespace Presentacion.CustomMessageBoxes
             this.Close();
         }
 
-      
+        private void ExitoMessageBox_Load(object sender, EventArgs e)
+        {
+            iconButtonX.Focus();
+        }
     }
 }

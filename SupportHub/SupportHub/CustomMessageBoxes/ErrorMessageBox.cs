@@ -29,5 +29,10 @@ namespace Presentacion.CustomMessageBoxes
         {
             this.Close();
         }
+
+        private void ErrorMessageBox_Load(object sender, EventArgs e)
+        {
+            iconButtonX.Focus();
+        }
     }
 }
