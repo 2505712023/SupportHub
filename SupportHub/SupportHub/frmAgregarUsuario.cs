@@ -26,5 +26,10 @@ namespace Presentacion
         {
             this.Close();
         }
+
+        private void gbAddUsuario_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -64,8 +64,9 @@
             pSuperiorAddUsuario.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorAddUsuario.Dock = DockStyle.Top;
             pSuperiorAddUsuario.Location = new Point(0, 0);
+            pSuperiorAddUsuario.Margin = new Padding(3, 4, 3, 4);
             pSuperiorAddUsuario.Name = "pSuperiorAddUsuario";
-            pSuperiorAddUsuario.Size = new Size(533, 60);
+            pSuperiorAddUsuario.Size = new Size(609, 80);
             pSuperiorAddUsuario.TabIndex = 2;
             // 
             // btnCerrar
@@ -79,9 +80,10 @@
             btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrar.IconSize = 20;
             btnCerrar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrar.Location = new Point(493, 12);
+            btnCerrar.Location = new Point(563, 16);
+            btnCerrar.Margin = new Padding(3, 4, 3, 4);
             btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(28, 24);
+            btnCerrar.Size = new Size(32, 32);
             btnCerrar.TabIndex = 18;
             btnCerrar.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -92,7 +94,8 @@
             // 
             pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
-            pboxLogo.Location = new Point(20, 0);
+            pboxLogo.Location = new Point(23, 0);
+            pboxLogo.Margin = new Padding(3, 4, 3, 4);
             pboxLogo.Name = "pboxLogo";
             pboxLogo.Size = new Size(184, 60);
             pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -110,9 +113,10 @@
             btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarAddEmpleado.IconSize = 20;
             btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(1027, 12);
+            btnCerrarAddEmpleado.Location = new Point(1174, 16);
+            btnCerrarAddEmpleado.Margin = new Padding(3, 4, 3, 4);
             btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
-            btnCerrarAddEmpleado.Size = new Size(28, 24);
+            btnCerrarAddEmpleado.Size = new Size(32, 32);
             btnCerrarAddEmpleado.TabIndex = 16;
             btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -139,27 +143,32 @@
             gbAddUsuario.Controls.Add(btnCancelaEmpleado);
             gbAddUsuario.Controls.Add(btnGuardarEmpleado);
             gbAddUsuario.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            gbAddUsuario.Location = new Point(12, 66);
+            gbAddUsuario.Location = new Point(14, 88);
+            gbAddUsuario.Margin = new Padding(3, 4, 3, 4);
             gbAddUsuario.Name = "gbAddUsuario";
-            gbAddUsuario.Size = new Size(509, 331);
+            gbAddUsuario.Padding = new Padding(3, 4, 3, 4);
+            gbAddUsuario.Size = new Size(582, 441);
             gbAddUsuario.TabIndex = 3;
             gbAddUsuario.TabStop = false;
             gbAddUsuario.Text = "AGREGAR USUARIO";
+            gbAddUsuario.Enter += gbAddUsuario_Enter;
             // 
             // mtboxConfirmarContrasenia
             // 
-            mtboxConfirmarContrasenia.Location = new Point(25, 280);
+            mtboxConfirmarContrasenia.Location = new Point(29, 373);
+            mtboxConfirmarContrasenia.Margin = new Padding(3, 4, 3, 4);
             mtboxConfirmarContrasenia.Name = "mtboxConfirmarContrasenia";
             mtboxConfirmarContrasenia.PasswordChar = '●';
-            mtboxConfirmarContrasenia.Size = new Size(325, 29);
+            mtboxConfirmarContrasenia.Size = new Size(371, 34);
             mtboxConfirmarContrasenia.TabIndex = 44;
             // 
             // mtboxContrasenia
             // 
-            mtboxContrasenia.Location = new Point(25, 226);
+            mtboxContrasenia.Location = new Point(29, 301);
+            mtboxContrasenia.Margin = new Padding(3, 4, 3, 4);
             mtboxContrasenia.Name = "mtboxContrasenia";
             mtboxContrasenia.PasswordChar = '●';
-            mtboxContrasenia.Size = new Size(325, 29);
+            mtboxContrasenia.Size = new Size(371, 34);
             mtboxContrasenia.TabIndex = 43;
             // 
             // tboxLoginUsuario
@@ -167,26 +176,27 @@
             tboxLoginUsuario.Enabled = false;
             tboxLoginUsuario.Font = new Font("Segoe UI", 12F);
             tboxLoginUsuario.ForeColor = Color.Black;
-            tboxLoginUsuario.Location = new Point(25, 58);
+            tboxLoginUsuario.Location = new Point(29, 77);
+            tboxLoginUsuario.Margin = new Padding(3, 4, 3, 4);
             tboxLoginUsuario.Name = "tboxLoginUsuario";
-            tboxLoginUsuario.Size = new Size(325, 29);
+            tboxLoginUsuario.Size = new Size(371, 34);
             tboxLoginUsuario.TabIndex = 42;
             // 
             // lblConfirmarContraseña
             // 
             lblConfirmarContraseña.AutoSize = true;
-            lblConfirmarContraseña.Location = new Point(25, 258);
+            lblConfirmarContraseña.Location = new Point(29, 344);
             lblConfirmarContraseña.Name = "lblConfirmarContraseña";
-            lblConfirmarContraseña.Size = new Size(181, 21);
+            lblConfirmarContraseña.Size = new Size(224, 28);
             lblConfirmarContraseña.TabIndex = 41;
             lblConfirmarContraseña.Text = "Confirmar Contraseña:";
             // 
             // lblContraseña
             // 
             lblContraseña.AutoSize = true;
-            lblContraseña.Location = new Point(25, 202);
+            lblContraseña.Location = new Point(29, 269);
             lblContraseña.Name = "lblContraseña";
-            lblContraseña.Size = new Size(100, 21);
+            lblContraseña.Size = new Size(123, 28);
             lblContraseña.TabIndex = 39;
             lblContraseña.Text = "Contraseña:";
             // 
@@ -195,17 +205,18 @@
             tboxApellidosUsuario.Enabled = false;
             tboxApellidosUsuario.Font = new Font("Segoe UI", 12F);
             tboxApellidosUsuario.ForeColor = Color.Black;
-            tboxApellidosUsuario.Location = new Point(25, 170);
+            tboxApellidosUsuario.Location = new Point(29, 227);
+            tboxApellidosUsuario.Margin = new Padding(3, 4, 3, 4);
             tboxApellidosUsuario.Name = "tboxApellidosUsuario";
-            tboxApellidosUsuario.Size = new Size(325, 29);
+            tboxApellidosUsuario.Size = new Size(371, 34);
             tboxApellidosUsuario.TabIndex = 38;
             // 
             // lblApellidos
             // 
             lblApellidos.AutoSize = true;
-            lblApellidos.Location = new Point(25, 146);
+            lblApellidos.Location = new Point(29, 195);
             lblApellidos.Name = "lblApellidos";
-            lblApellidos.Size = new Size(86, 21);
+            lblApellidos.Size = new Size(105, 28);
             lblApellidos.TabIndex = 37;
             lblApellidos.Text = "Apellidos:";
             // 
@@ -214,17 +225,18 @@
             tboxNombresUsuario.Enabled = false;
             tboxNombresUsuario.Font = new Font("Segoe UI", 12F);
             tboxNombresUsuario.ForeColor = Color.Black;
-            tboxNombresUsuario.Location = new Point(25, 114);
+            tboxNombresUsuario.Location = new Point(29, 152);
+            tboxNombresUsuario.Margin = new Padding(3, 4, 3, 4);
             tboxNombresUsuario.Name = "tboxNombresUsuario";
-            tboxNombresUsuario.Size = new Size(325, 29);
+            tboxNombresUsuario.Size = new Size(371, 34);
             tboxNombresUsuario.TabIndex = 36;
             // 
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(25, 90);
+            lblNombre.Location = new Point(29, 120);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(84, 21);
+            lblNombre.Size = new Size(103, 28);
             lblNombre.TabIndex = 35;
             lblNombre.Text = "Nombres:";
             // 
@@ -241,9 +253,10 @@
             btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelar.IconSize = 20;
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelar.Location = new Point(386, 268);
+            btnCancelar.Location = new Point(441, 357);
+            btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(100, 40);
+            btnCancelar.Size = new Size(114, 53);
             btnCancelar.TabIndex = 34;
             btnCancelar.Text = "CANCELAR";
             btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -262,9 +275,10 @@
             btnGuardar.IconColor = Color.White;
             btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardar.IconSize = 20;
-            btnGuardar.Location = new Point(386, 222);
+            btnGuardar.Location = new Point(441, 296);
+            btnGuardar.Margin = new Padding(3, 4, 3, 4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(100, 40);
+            btnGuardar.Size = new Size(114, 53);
             btnGuardar.TabIndex = 33;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -275,17 +289,17 @@
             lblErrorCantidad.AutoSize = true;
             lblErrorCantidad.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblErrorCantidad.ForeColor = Color.Red;
-            lblErrorCantidad.Location = new Point(327, 254);
+            lblErrorCantidad.Location = new Point(374, 339);
             lblErrorCantidad.Name = "lblErrorCantidad";
-            lblErrorCantidad.Size = new Size(0, 19);
+            lblErrorCantidad.Size = new Size(0, 23);
             lblErrorCantidad.TabIndex = 30;
             // 
             // lblLoginUsuario
             // 
             lblLoginUsuario.AutoSize = true;
-            lblLoginUsuario.Location = new Point(25, 34);
+            lblLoginUsuario.Location = new Point(29, 45);
             lblLoginUsuario.Name = "lblLoginUsuario";
-            lblLoginUsuario.Size = new Size(57, 21);
+            lblLoginUsuario.Size = new Size(69, 28);
             lblLoginUsuario.TabIndex = 22;
             lblLoginUsuario.Text = "Login:";
             // 
@@ -302,9 +316,10 @@
             ibtnCancelarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnCancelarEntrega.IconSize = 20;
             ibtnCancelarEntrega.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnCancelarEntrega.Location = new Point(894, 102);
+            ibtnCancelarEntrega.Location = new Point(1022, 136);
+            ibtnCancelarEntrega.Margin = new Padding(3, 4, 3, 4);
             ibtnCancelarEntrega.Name = "ibtnCancelarEntrega";
-            ibtnCancelarEntrega.Size = new Size(100, 40);
+            ibtnCancelarEntrega.Size = new Size(114, 53);
             ibtnCancelarEntrega.TabIndex = 18;
             ibtnCancelarEntrega.Text = "CANCELAR";
             ibtnCancelarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -322,9 +337,10 @@
             ibtnGuardarEntrega.IconColor = Color.White;
             ibtnGuardarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnGuardarEntrega.IconSize = 20;
-            ibtnGuardarEntrega.Location = new Point(894, 56);
+            ibtnGuardarEntrega.Location = new Point(1022, 75);
+            ibtnGuardarEntrega.Margin = new Padding(3, 4, 3, 4);
             ibtnGuardarEntrega.Name = "ibtnGuardarEntrega";
-            ibtnGuardarEntrega.Size = new Size(100, 40);
+            ibtnGuardarEntrega.Size = new Size(114, 53);
             ibtnGuardarEntrega.TabIndex = 17;
             ibtnGuardarEntrega.Text = "GUARDAR";
             ibtnGuardarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -343,9 +359,10 @@
             btnCancelaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelaEmpleado.IconSize = 20;
             btnCancelaEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelaEmpleado.Location = new Point(1531, 238);
+            btnCancelaEmpleado.Location = new Point(1750, 317);
+            btnCancelaEmpleado.Margin = new Padding(3, 4, 3, 4);
             btnCancelaEmpleado.Name = "btnCancelaEmpleado";
-            btnCancelaEmpleado.Size = new Size(115, 38);
+            btnCancelaEmpleado.Size = new Size(131, 51);
             btnCancelaEmpleado.TabIndex = 13;
             btnCancelaEmpleado.Text = "CANCELAR";
             btnCancelaEmpleado.TextAlign = ContentAlignment.MiddleLeft;
@@ -364,9 +381,10 @@
             btnGuardarEmpleado.IconColor = Color.White;
             btnGuardarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardarEmpleado.IconSize = 20;
-            btnGuardarEmpleado.Location = new Point(1399, 238);
+            btnGuardarEmpleado.Location = new Point(1599, 317);
+            btnGuardarEmpleado.Margin = new Padding(3, 4, 3, 4);
             btnGuardarEmpleado.Name = "btnGuardarEmpleado";
-            btnGuardarEmpleado.Size = new Size(115, 38);
+            btnGuardarEmpleado.Size = new Size(131, 51);
             btnGuardarEmpleado.TabIndex = 12;
             btnGuardarEmpleado.Text = "GUARDAR";
             btnGuardarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
@@ -375,14 +393,14 @@
             // 
             // frmAgregarUsuario
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(98, 122, 144);
-            ClientSize = new Size(533, 409);
+            ClientSize = new Size(609, 545);
             Controls.Add(gbAddUsuario);
             Controls.Add(pSuperiorAddUsuario);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "frmAgregarUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAgregarUsuario";
