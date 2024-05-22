@@ -79,7 +79,7 @@ namespace Presentacion
 
         private void btnEliminarProveedor_Click(object sender, EventArgs e)
         {
-            if (CustomMessageBox.Advertencia("Eliminar empleado", "¿Seguro que desea eliminar proveedor?") == DialogResult.Yes)
+            if (CustomMessageBox.Advertencia("Eliminar proveedor", "¿Seguro que desea eliminar proveedor?") == DialogResult.Yes)
             {
                 if (dgvProveedor.SelectedRows.Count == 1)
                 {
@@ -90,7 +90,7 @@ namespace Presentacion
                     }
                     catch (Exception ex)
                     {
-                        CustomMessageBox.Error("Error en eliminación", $"Error al intentar eliminar el empleado: {ex.Message}.");
+                        CustomMessageBox.Error("Error en eliminación", $"Error al intentar eliminar el proveedor: {ex.Message}.");
                     }
                 }
                 else

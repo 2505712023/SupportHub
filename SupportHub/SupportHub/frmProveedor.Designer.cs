@@ -77,7 +77,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvProveedor.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvProveedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProveedor.Size = new Size(945, 417);
+            dgvProveedor.Size = new Size(721, 417);
             dgvProveedor.TabIndex = 2;
             // 
             // gbBuscarProveedor
@@ -88,7 +88,7 @@
             gbBuscarProveedor.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             gbBuscarProveedor.Location = new Point(12, 12);
             gbBuscarProveedor.Name = "gbBuscarProveedor";
-            gbBuscarProveedor.Size = new Size(958, 68);
+            gbBuscarProveedor.Size = new Size(721, 68);
             gbBuscarProveedor.TabIndex = 3;
             gbBuscarProveedor.TabStop = false;
             gbBuscarProveedor.Text = "BUSCAR PROVEEDOR::...";
@@ -99,16 +99,16 @@
             cbxTipoBusquedaProveedor.FormattingEnabled = true;
             cbxTipoBusquedaProveedor.Location = new Point(6, 26);
             cbxTipoBusquedaProveedor.Name = "cbxTipoBusquedaProveedor";
-            cbxTipoBusquedaProveedor.Size = new Size(139, 23);
+            cbxTipoBusquedaProveedor.Size = new Size(125, 23);
             cbxTipoBusquedaProveedor.TabIndex = 6;
             // 
             // txtBuscarProveedor
             // 
             txtBuscarProveedor.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBuscarProveedor.Font = new Font("Segoe UI", 9F);
-            txtBuscarProveedor.Location = new Point(151, 26);
+            txtBuscarProveedor.Location = new Point(137, 26);
             txtBuscarProveedor.Name = "txtBuscarProveedor";
-            txtBuscarProveedor.Size = new Size(788, 23);
+            txtBuscarProveedor.Size = new Size(578, 23);
             txtBuscarProveedor.TabIndex = 5;
             txtBuscarProveedor.TextChanged += txtBuscarProveedor_TextChanged;
             // 
@@ -124,7 +124,7 @@
             btnAgregarProveedor.IconColor = Color.FromArgb(31, 35, 40);
             btnAgregarProveedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarProveedor.IconSize = 20;
-            btnAgregarProveedor.Location = new Point(963, 118);
+            btnAgregarProveedor.Location = new Point(739, 86);
             btnAgregarProveedor.Name = "btnAgregarProveedor";
             btnAgregarProveedor.Size = new Size(156, 50);
             btnAgregarProveedor.TabIndex = 8;
@@ -145,7 +145,7 @@
             btnModificaProveedor.IconColor = Color.FromArgb(31, 35, 40);
             btnModificaProveedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModificaProveedor.IconSize = 20;
-            btnModificaProveedor.Location = new Point(963, 174);
+            btnModificaProveedor.Location = new Point(739, 142);
             btnModificaProveedor.Name = "btnModificaProveedor";
             btnModificaProveedor.Size = new Size(156, 55);
             btnModificaProveedor.TabIndex = 10;
@@ -166,7 +166,7 @@
             btnEliminarProveedor.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarProveedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarProveedor.IconSize = 20;
-            btnEliminarProveedor.Location = new Point(963, 235);
+            btnEliminarProveedor.Location = new Point(739, 203);
             btnEliminarProveedor.Name = "btnEliminarProveedor";
             btnEliminarProveedor.Size = new Size(156, 57);
             btnEliminarProveedor.TabIndex = 11;
@@ -180,7 +180,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
-            ClientSize = new Size(1131, 515);
+            ClientSize = new Size(907, 515);
             Controls.Add(btnEliminarProveedor);
             Controls.Add(btnModificaProveedor);
             Controls.Add(btnAgregarProveedor);
