@@ -201,6 +201,7 @@
             cbxCargoEmpleado.Name = "cbxCargoEmpleado";
             cbxCargoEmpleado.Size = new Size(235, 36);
             cbxCargoEmpleado.TabIndex = 10;
+            cbxCargoEmpleado.SelectedIndexChanged += cbxCargoEmpleado_SelectedIndexChanged;
             // 
             // txtEmailEmpleado
             // 

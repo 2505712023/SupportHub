@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using Dominio;
 using Comun.Cache;
 
+
 namespace Presentacion
 {
     public partial class frmUsuario : Form
@@ -22,9 +23,9 @@ namespace Presentacion
             InitializeComponent();
             tipoUsuario = new List<string>()
             {
-            "Código de usuario",
-            "Nombres",
-            "Apellidos"
+            "Nombre de usuario",
+            "Nombre del empleado",
+            "Apellidos del empleado"
             };
             cbxTipoBusquedaUsuario.DataSource = tipoUsuario;
         }
@@ -35,7 +36,7 @@ namespace Presentacion
             dgvUsuario.DataSource = Usuario.mostrarUsuario();
             dgvUsuario.ClearSelection();
         }
-        private void actualizarTablaEmpleado()
+        private void actualizarTablaUsuario()
         {
             if (string.IsNullOrEmpty(txtBuscarUsuario.Text))
             {
@@ -46,8 +47,16 @@ namespace Presentacion
             {
                 switch (cbxTipoBusquedaUsuario.Text)
                 {
-                    case "Código de Empleado":
-                        dgvUsuario.DataSource = ModUser.filtrarTablaUsuario(idUsuario: txtBuscarUsuario.Text);
+                    case "Nombre de usuario":
+                        dgvUsuario.DataSource = ModUser.filtrarTablaUsuario(loginUsuario: txtBuscarUsuario.Text);
+                        break;
+                    case "Nombre del empleado":
+                        dgvUsuario.DataSource = ModUser.filtrarTablaUsuario(nombreUsuario: txtBuscarUsuario.Text);
+                        break;
+                    case "Apellidos del empleado":
+                        dgvUsuario.DataSource = ModUser.filtrarTablaUsuario(apellidoUsuario: txtBuscarUsuario.Text);
+                        break;
+                    default:
                         break;
                 }
             }
@@ -103,9 +112,14 @@ namespace Presentacion
 
         private void txtBuscarUsuario_TextChanged(object sender, EventArgs e)
         {
-            actualizarTablaEmpleado();
+            actualizarTablaUsuario();
         }
+        private void cbxTipoBusquedaUsuario_TextChanged(object sender, EventArgs e)
+        {
+            txtBuscarUsuario.Focus();
+            actualizarTablaUsuario();
 
+        }
         private void cbxTipoBusquedaUsuario_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -125,5 +139,7 @@ namespace Presentacion
         {
 
         }
+
+        
     }
 }

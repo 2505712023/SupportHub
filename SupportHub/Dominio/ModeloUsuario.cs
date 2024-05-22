@@ -51,9 +51,25 @@ namespace Dominio
             return tabla;
         }
 
-        public DataTable filtrarTablaUsuario(string idUsuario="-1")
+        public DataTable filtrarTablaUsuario(string loginUsuario = "-1", string nombreUsuario = "-1", string apellidoUsuario = "-1")
         {
-            return userData.filtrarTablaUsuario(idUsuario);
+            return userData.filtrarTablaUsuario(loginUsuario, nombreUsuario, apellidoUsuario);
         }
+
+        public DataTable ObtenerEmpleados() 
+        {
+        return userData.ObtenerEmpleado();
+        }
+
+        public DataTable ObtenerRoles()
+        { return userData.ObtenerRoles(); }
+
+        
+     
     }
+
+     
+
+    
+
 }

@@ -163,5 +163,10 @@ namespace Presentacion
         {
             this.Close();
         }
+
+        private void gbUpdEmpleado_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

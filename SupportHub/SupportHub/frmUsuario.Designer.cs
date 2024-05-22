@@ -175,6 +175,7 @@
             cbxTipoBusquedaUsuario.Size = new Size(180, 28);
             cbxTipoBusquedaUsuario.TabIndex = 6;
             cbxTipoBusquedaUsuario.SelectedIndexChanged += cbxTipoBusquedaUsuario_SelectedIndexChanged;
+            cbxTipoBusquedaUsuario.TextChanged += cbxTipoBusquedaUsuario_TextChanged;
             // 
             // txtBuscarUsuario
             // 

@@ -9,6 +9,7 @@ using Comun.Cache;
 using System.Reflection.Metadata;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using System.Diagnostics;
 namespace DataAccess
 {
     public class UsuarioDato : ConexionSql
@@ -62,7 +63,7 @@ namespace DataAccess
                                     string nombreRol = reader.GetString(reader.GetOrdinal("nombreRol"));
                                     CacheInicioUsuario.IdUser = reader.GetInt32(0);
                                     CacheInicioUsuario.password = reader.GetString(1);
-                                    CacheInicioUsuario.user=reader.GetString(2);
+                                    CacheInicioUsuario.user = reader.GetString(2);
                                     CacheInicioUsuario.nombreUser = reader.GetString(3);
                                     CacheInicioUsuario.apellidoUser = reader.GetString(4);
                                     CacheInicioUsuario.rolUser = reader.GetString(reader.GetOrdinal("nombreRol"));
@@ -115,14 +116,15 @@ namespace DataAccess
         private DataTable tabla = new DataTable();
         public DataTable obtenerUsuario()
         {
-           
-         string nombreProcedimiento = "sp_obtener_usuarios";
+
+            string nombreProcedimiento = "sp_obtener_usuarios";
 
             using (var conexion = GetConnection())
             {
-                using (var comando=new SqlCommand())
+
+                using (var comando = new SqlCommand())
                 {
-                    
+
                     comando.CommandText = nombreProcedimiento;
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.Connection = conexion;
@@ -134,39 +136,75 @@ namespace DataAccess
                 }
                 return tabla;
             }
+
         }
 
-        public DataTable filtrarTablaUsuario(string idUsuario = "-1")
+
+
+        public DataTable filtrarTablaUsuario(string loginUsuario = "-1", string nombreUsuario = "-1", string apellidoUsuario = "-1")
         {
 
             using (var conexion = GetConnection())
             {
-                using (var comando = new SqlCommand())
+                using (var cmd = new SqlCommand())
                 {
-                    comando.CommandText = "sp_obtener_usuario";
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.Clear();
-                    comando.Parameters.AddWithValue("@idUsuario", idUsuario);
-                   
-                    comando.Connection = conexion;
+                    cmd.CommandText = "SP_obtener_busqueda_Usuario";
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Clear();
+                    cmd.Parameters.AddWithValue("@nombrelogiUsuario", loginUsuario);
+                    cmd.Parameters.AddWithValue("@nombreusuario", nombreUsuario);
+                    cmd.Parameters.AddWithValue("@apellidousuario", apellidoUsuario);
+                    cmd.Connection = conexion;
 
                     conexion.Open();
 
-                    SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                    SqlDataAdapter adaptador = new SqlDataAdapter(cmd);
                     tabla.Clear();
                     adaptador.Fill(tabla);
                 }
+
 
                 return tabla;
             }
         }
 
+        public DataTable ObtenerEmpleado()
+        {
+            string querySelect = "SELECT nombreempleado,apellidoempleado FROM Empleados";
+            using (var conexion = GetConnection())
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand(querySelect, conexion);
+                SqlDataReader lector = cmd.ExecuteReader();
 
+                DataTable tablaAreas = new DataTable();
+                tablaAreas.Load(lector);
 
+                return tablaAreas;
+            }
+        }
 
+        public DataTable ObtenerRoles()
+        {
+            string querySelect = "select nombreRol from Roles";
+            using (var conexion = GetConnection())
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand(querySelect, conexion);
+                SqlDataReader lector = cmd.ExecuteReader();
 
+                DataTable tablaAreas = new DataTable();
+                tablaAreas.Load(lector);
 
+                return tablaAreas;
+            }
+        }
 
-
+        
+        
     }
+
+
+
 }
+

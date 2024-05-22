@@ -34,6 +34,11 @@
             pboxLogo = new PictureBox();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbAddUsuario = new GroupBox();
+            checkBox1 = new CheckBox();
+            cbxEmpAddUsuario = new ComboBox();
+            lblEmpAddUsuario = new Label();
+            cbxTipoUsuario = new ComboBox();
+            lblTipoUsuario = new Label();
             mtboxContrasenia = new MaskedTextBox();
             tboxLoginUsuario = new TextBox();
             lblContraseña = new Label();
@@ -49,11 +54,6 @@
             ibtnGuardarEntrega = new FontAwesome.Sharp.IconButton();
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
-            lblTipoUsuario = new Label();
-            cbxTipoUsuario = new ComboBox();
-            lblEmpAddUsuario = new Label();
-            comboBox1 = new ComboBox();
-            checkBox1 = new CheckBox();
             pSuperiorAddUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             gbAddUsuario.SuspendLayout();
@@ -129,7 +129,7 @@
             // 
             gbAddUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             gbAddUsuario.Controls.Add(checkBox1);
-            gbAddUsuario.Controls.Add(comboBox1);
+            gbAddUsuario.Controls.Add(cbxEmpAddUsuario);
             gbAddUsuario.Controls.Add(lblEmpAddUsuario);
             gbAddUsuario.Controls.Add(cbxTipoUsuario);
             gbAddUsuario.Controls.Add(lblTipoUsuario);
@@ -159,6 +159,51 @@
             gbAddUsuario.Text = "AGREGAR USUARIO";
             gbAddUsuario.Enter += gbAddUsuario_Enter;
             // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(598, 327);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(100, 32);
+            checkBox1.TabIndex = 49;
+            checkBox1.Text = "Activo:";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // cbxEmpAddUsuario
+            // 
+            cbxEmpAddUsuario.FormattingEnabled = true;
+            cbxEmpAddUsuario.Location = new Point(593, 152);
+            cbxEmpAddUsuario.Name = "cbxEmpAddUsuario";
+            cbxEmpAddUsuario.Size = new Size(215, 36);
+            cbxEmpAddUsuario.TabIndex = 48;
+            cbxEmpAddUsuario.SelectedIndexChanged += cbxEmpAddUsuario_SelectedIndexChanged;
+            // 
+            // lblEmpAddUsuario
+            // 
+            lblEmpAddUsuario.AutoSize = true;
+            lblEmpAddUsuario.Location = new Point(598, 120);
+            lblEmpAddUsuario.Name = "lblEmpAddUsuario";
+            lblEmpAddUsuario.Size = new Size(110, 28);
+            lblEmpAddUsuario.TabIndex = 47;
+            lblEmpAddUsuario.Text = "Empleado:";
+            // 
+            // cbxTipoUsuario
+            // 
+            cbxTipoUsuario.FormattingEnabled = true;
+            cbxTipoUsuario.Location = new Point(593, 77);
+            cbxTipoUsuario.Name = "cbxTipoUsuario";
+            cbxTipoUsuario.Size = new Size(215, 36);
+            cbxTipoUsuario.TabIndex = 46;
+            // 
+            // lblTipoUsuario
+            // 
+            lblTipoUsuario.AutoSize = true;
+            lblTipoUsuario.Location = new Point(593, 45);
+            lblTipoUsuario.Name = "lblTipoUsuario";
+            lblTipoUsuario.Size = new Size(164, 28);
+            lblTipoUsuario.TabIndex = 45;
+            lblTipoUsuario.Text = "Tipo de usuario:";
+            // 
             // mtboxContrasenia
             // 
             mtboxContrasenia.Location = new Point(29, 301);
@@ -167,6 +212,7 @@
             mtboxContrasenia.PasswordChar = '●';
             mtboxContrasenia.Size = new Size(371, 34);
             mtboxContrasenia.TabIndex = 43;
+            mtboxContrasenia.MaskInputRejected += mtboxContrasenia_MaskInputRejected;
             // 
             // tboxLoginUsuario
             // 
@@ -198,6 +244,7 @@
             tboxApellidosUsuario.Name = "tboxApellidosUsuario";
             tboxApellidosUsuario.Size = new Size(371, 34);
             tboxApellidosUsuario.TabIndex = 38;
+            tboxApellidosUsuario.TextChanged += tboxApellidosUsuario_TextChanged;
             // 
             // lblApellidos
             // 
@@ -218,6 +265,7 @@
             tboxNombresUsuario.Name = "tboxNombresUsuario";
             tboxNombresUsuario.Size = new Size(371, 34);
             tboxNombresUsuario.TabIndex = 36;
+            tboxNombresUsuario.TextChanged += tboxNombresUsuario_TextChanged;
             // 
             // lblNombre
             // 
@@ -271,6 +319,7 @@
             btnGuardar.Text = "GUARDAR";
             btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardar.UseVisualStyleBackColor = false;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // lblErrorCantidad
             // 
@@ -379,50 +428,6 @@
             btnGuardarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardarEmpleado.UseVisualStyleBackColor = false;
             // 
-            // lblTipoUsuario
-            // 
-            lblTipoUsuario.AutoSize = true;
-            lblTipoUsuario.Location = new Point(593, 45);
-            lblTipoUsuario.Name = "lblTipoUsuario";
-            lblTipoUsuario.Size = new Size(164, 28);
-            lblTipoUsuario.TabIndex = 45;
-            lblTipoUsuario.Text = "Tipo de usuario:";
-            // 
-            // cbxTipoUsuario
-            // 
-            cbxTipoUsuario.FormattingEnabled = true;
-            cbxTipoUsuario.Location = new Point(593, 77);
-            cbxTipoUsuario.Name = "cbxTipoUsuario";
-            cbxTipoUsuario.Size = new Size(215, 36);
-            cbxTipoUsuario.TabIndex = 46;
-            // 
-            // lblEmpAddUsuario
-            // 
-            lblEmpAddUsuario.AutoSize = true;
-            lblEmpAddUsuario.Location = new Point(598, 120);
-            lblEmpAddUsuario.Name = "lblEmpAddUsuario";
-            lblEmpAddUsuario.Size = new Size(110, 28);
-            lblEmpAddUsuario.TabIndex = 47;
-            lblEmpAddUsuario.Text = "Empleado:";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(593, 152);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(210, 36);
-            comboBox1.TabIndex = 48;
-            // 
-            // checkBox1
-            // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(609, 254);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(100, 32);
-            checkBox1.TabIndex = 49;
-            checkBox1.Text = "Activo:";
-            checkBox1.UseVisualStyleBackColor = true;
-            // 
             // frmAgregarUsuario
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -436,6 +441,7 @@
             Name = "frmAgregarUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAgregarUsuario";
+            Load += frmAgregarUsuario_Load;
             pSuperiorAddUsuario.ResumeLayout(false);
             pSuperiorAddUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
@@ -483,7 +489,7 @@
         private TextBox tboxLoginUsuario;
         private ComboBox cbxTipoUsuario;
         private Label lblTipoUsuario;
-        private ComboBox comboBox1;
+        private ComboBox cbxEmpAddUsuario;
         private Label lblEmpAddUsuario;
         private CheckBox checkBox1;
     }

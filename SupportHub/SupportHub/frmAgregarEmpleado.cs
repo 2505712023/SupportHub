@@ -177,5 +177,10 @@ namespace Presentacion
         {
 
         }
+
+        private void cbxCargoEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
