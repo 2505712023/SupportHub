@@ -119,8 +119,11 @@ namespace Presentacion
 
         private void btnEliminarUsuario_Click_1(object sender, EventArgs e)
         {
-            frmEliminarusuario elmusuario = new frmEliminarusuario();
-            elmusuario.Show();
+        }
+
+        private void dgvUsuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

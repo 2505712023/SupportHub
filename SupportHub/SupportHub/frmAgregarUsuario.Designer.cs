@@ -34,10 +34,8 @@
             pboxLogo = new PictureBox();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbAddUsuario = new GroupBox();
-            mtboxConfirmarContrasenia = new MaskedTextBox();
             mtboxContrasenia = new MaskedTextBox();
             tboxLoginUsuario = new TextBox();
-            lblConfirmarContraseña = new Label();
             lblContraseña = new Label();
             tboxApellidosUsuario = new TextBox();
             lblApellidos = new Label();
@@ -51,6 +49,11 @@
             ibtnGuardarEntrega = new FontAwesome.Sharp.IconButton();
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
+            lblTipoUsuario = new Label();
+            cbxTipoUsuario = new ComboBox();
+            lblEmpAddUsuario = new Label();
+            comboBox1 = new ComboBox();
+            checkBox1 = new CheckBox();
             pSuperiorAddUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             gbAddUsuario.SuspendLayout();
@@ -66,7 +69,7 @@
             pSuperiorAddUsuario.Location = new Point(0, 0);
             pSuperiorAddUsuario.Margin = new Padding(3, 4, 3, 4);
             pSuperiorAddUsuario.Name = "pSuperiorAddUsuario";
-            pSuperiorAddUsuario.Size = new Size(609, 80);
+            pSuperiorAddUsuario.Size = new Size(995, 80);
             pSuperiorAddUsuario.TabIndex = 2;
             // 
             // btnCerrar
@@ -80,7 +83,7 @@
             btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrar.IconSize = 20;
             btnCerrar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrar.Location = new Point(563, 16);
+            btnCerrar.Location = new Point(949, 16);
             btnCerrar.Margin = new Padding(3, 4, 3, 4);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(32, 32);
@@ -113,7 +116,7 @@
             btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarAddEmpleado.IconSize = 20;
             btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(1174, 16);
+            btnCerrarAddEmpleado.Location = new Point(1560, 16);
             btnCerrarAddEmpleado.Margin = new Padding(3, 4, 3, 4);
             btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
             btnCerrarAddEmpleado.Size = new Size(32, 32);
@@ -125,10 +128,13 @@
             // gbAddUsuario
             // 
             gbAddUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            gbAddUsuario.Controls.Add(mtboxConfirmarContrasenia);
+            gbAddUsuario.Controls.Add(checkBox1);
+            gbAddUsuario.Controls.Add(comboBox1);
+            gbAddUsuario.Controls.Add(lblEmpAddUsuario);
+            gbAddUsuario.Controls.Add(cbxTipoUsuario);
+            gbAddUsuario.Controls.Add(lblTipoUsuario);
             gbAddUsuario.Controls.Add(mtboxContrasenia);
             gbAddUsuario.Controls.Add(tboxLoginUsuario);
-            gbAddUsuario.Controls.Add(lblConfirmarContraseña);
             gbAddUsuario.Controls.Add(lblContraseña);
             gbAddUsuario.Controls.Add(tboxApellidosUsuario);
             gbAddUsuario.Controls.Add(lblApellidos);
@@ -147,20 +153,11 @@
             gbAddUsuario.Margin = new Padding(3, 4, 3, 4);
             gbAddUsuario.Name = "gbAddUsuario";
             gbAddUsuario.Padding = new Padding(3, 4, 3, 4);
-            gbAddUsuario.Size = new Size(582, 441);
+            gbAddUsuario.Size = new Size(968, 451);
             gbAddUsuario.TabIndex = 3;
             gbAddUsuario.TabStop = false;
             gbAddUsuario.Text = "AGREGAR USUARIO";
             gbAddUsuario.Enter += gbAddUsuario_Enter;
-            // 
-            // mtboxConfirmarContrasenia
-            // 
-            mtboxConfirmarContrasenia.Location = new Point(29, 373);
-            mtboxConfirmarContrasenia.Margin = new Padding(3, 4, 3, 4);
-            mtboxConfirmarContrasenia.Name = "mtboxConfirmarContrasenia";
-            mtboxConfirmarContrasenia.PasswordChar = '●';
-            mtboxConfirmarContrasenia.Size = new Size(371, 34);
-            mtboxConfirmarContrasenia.TabIndex = 44;
             // 
             // mtboxContrasenia
             // 
@@ -181,15 +178,6 @@
             tboxLoginUsuario.Name = "tboxLoginUsuario";
             tboxLoginUsuario.Size = new Size(371, 34);
             tboxLoginUsuario.TabIndex = 42;
-            // 
-            // lblConfirmarContraseña
-            // 
-            lblConfirmarContraseña.AutoSize = true;
-            lblConfirmarContraseña.Location = new Point(29, 344);
-            lblConfirmarContraseña.Name = "lblConfirmarContraseña";
-            lblConfirmarContraseña.Size = new Size(224, 28);
-            lblConfirmarContraseña.TabIndex = 41;
-            lblConfirmarContraseña.Text = "Confirmar Contraseña:";
             // 
             // lblContraseña
             // 
@@ -253,7 +241,7 @@
             btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelar.IconSize = 20;
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelar.Location = new Point(441, 357);
+            btnCancelar.Location = new Point(827, 367);
             btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(114, 53);
@@ -275,7 +263,7 @@
             btnGuardar.IconColor = Color.White;
             btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardar.IconSize = 20;
-            btnGuardar.Location = new Point(441, 296);
+            btnGuardar.Location = new Point(827, 306);
             btnGuardar.Margin = new Padding(3, 4, 3, 4);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(114, 53);
@@ -316,7 +304,7 @@
             ibtnCancelarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnCancelarEntrega.IconSize = 20;
             ibtnCancelarEntrega.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnCancelarEntrega.Location = new Point(1022, 136);
+            ibtnCancelarEntrega.Location = new Point(1408, 136);
             ibtnCancelarEntrega.Margin = new Padding(3, 4, 3, 4);
             ibtnCancelarEntrega.Name = "ibtnCancelarEntrega";
             ibtnCancelarEntrega.Size = new Size(114, 53);
@@ -337,7 +325,7 @@
             ibtnGuardarEntrega.IconColor = Color.White;
             ibtnGuardarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnGuardarEntrega.IconSize = 20;
-            ibtnGuardarEntrega.Location = new Point(1022, 75);
+            ibtnGuardarEntrega.Location = new Point(1408, 75);
             ibtnGuardarEntrega.Margin = new Padding(3, 4, 3, 4);
             ibtnGuardarEntrega.Name = "ibtnGuardarEntrega";
             ibtnGuardarEntrega.Size = new Size(114, 53);
@@ -359,7 +347,7 @@
             btnCancelaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelaEmpleado.IconSize = 20;
             btnCancelaEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelaEmpleado.Location = new Point(1750, 317);
+            btnCancelaEmpleado.Location = new Point(2136, 317);
             btnCancelaEmpleado.Margin = new Padding(3, 4, 3, 4);
             btnCancelaEmpleado.Name = "btnCancelaEmpleado";
             btnCancelaEmpleado.Size = new Size(131, 51);
@@ -381,7 +369,7 @@
             btnGuardarEmpleado.IconColor = Color.White;
             btnGuardarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardarEmpleado.IconSize = 20;
-            btnGuardarEmpleado.Location = new Point(1599, 317);
+            btnGuardarEmpleado.Location = new Point(1985, 317);
             btnGuardarEmpleado.Margin = new Padding(3, 4, 3, 4);
             btnGuardarEmpleado.Name = "btnGuardarEmpleado";
             btnGuardarEmpleado.Size = new Size(131, 51);
@@ -391,12 +379,56 @@
             btnGuardarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardarEmpleado.UseVisualStyleBackColor = false;
             // 
+            // lblTipoUsuario
+            // 
+            lblTipoUsuario.AutoSize = true;
+            lblTipoUsuario.Location = new Point(593, 45);
+            lblTipoUsuario.Name = "lblTipoUsuario";
+            lblTipoUsuario.Size = new Size(164, 28);
+            lblTipoUsuario.TabIndex = 45;
+            lblTipoUsuario.Text = "Tipo de usuario:";
+            // 
+            // cbxTipoUsuario
+            // 
+            cbxTipoUsuario.FormattingEnabled = true;
+            cbxTipoUsuario.Location = new Point(593, 77);
+            cbxTipoUsuario.Name = "cbxTipoUsuario";
+            cbxTipoUsuario.Size = new Size(215, 36);
+            cbxTipoUsuario.TabIndex = 46;
+            // 
+            // lblEmpAddUsuario
+            // 
+            lblEmpAddUsuario.AutoSize = true;
+            lblEmpAddUsuario.Location = new Point(598, 120);
+            lblEmpAddUsuario.Name = "lblEmpAddUsuario";
+            lblEmpAddUsuario.Size = new Size(110, 28);
+            lblEmpAddUsuario.TabIndex = 47;
+            lblEmpAddUsuario.Text = "Empleado:";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(593, 152);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(210, 36);
+            comboBox1.TabIndex = 48;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(609, 254);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(100, 32);
+            checkBox1.TabIndex = 49;
+            checkBox1.Text = "Activo:";
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
             // frmAgregarUsuario
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(98, 122, 144);
-            ClientSize = new Size(609, 545);
+            ClientSize = new Size(995, 555);
             Controls.Add(gbAddUsuario);
             Controls.Add(pSuperiorAddUsuario);
             FormBorderStyle = FormBorderStyle.None;
@@ -447,9 +479,12 @@
         private Label lblContraseña;
         private TextBox tboxApellidosUsuario;
         private Label lblApellidos;
-        private Label lblConfirmarContraseña;
-        private MaskedTextBox mtboxConfirmarContrasenia;
         private MaskedTextBox mtboxContrasenia;
         private TextBox tboxLoginUsuario;
+        private ComboBox cbxTipoUsuario;
+        private Label lblTipoUsuario;
+        private ComboBox comboBox1;
+        private Label lblEmpAddUsuario;
+        private CheckBox checkBox1;
     }
 }
