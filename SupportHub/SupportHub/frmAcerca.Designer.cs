@@ -37,11 +37,11 @@
             // rtbAcerca
             // 
             rtbAcerca.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            rtbAcerca.Location = new Point(27, 88);
+            rtbAcerca.Location = new Point(298, 88);
             rtbAcerca.Name = "rtbAcerca";
             rtbAcerca.ReadOnly = true;
             rtbAcerca.ScrollBars = RichTextBoxScrollBars.ForcedBoth;
-            rtbAcerca.Size = new Size(1088, 418);
+            rtbAcerca.Size = new Size(556, 418);
             rtbAcerca.TabIndex = 8;
             rtbAcerca.Text = "";
             rtbAcerca.TextChanged += rtbAcerca_TextChanged;
@@ -51,9 +51,9 @@
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.BackColor = Color.FromArgb(5, 23, 59);
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(27, -3);
+            pictureBox1.Location = new Point(298, -3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(1088, 95);
+            pictureBox1.Size = new Size(556, 95);
             pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;

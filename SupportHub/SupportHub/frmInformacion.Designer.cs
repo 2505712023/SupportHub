@@ -212,8 +212,10 @@
             // 
             // lblEditar
             // 
+            lblEditar.ActiveLinkColor = Color.FromArgb(148, 184, 216);
             lblEditar.AutoSize = true;
-            lblEditar.LinkColor = Color.Red;
+            lblEditar.DisabledLinkColor = Color.FromArgb(148, 184, 216);
+            lblEditar.LinkColor = Color.FromArgb(148, 184, 216);
             lblEditar.Location = new Point(175, 264);
             lblEditar.Name = "lblEditar";
             lblEditar.Size = new Size(50, 21);
