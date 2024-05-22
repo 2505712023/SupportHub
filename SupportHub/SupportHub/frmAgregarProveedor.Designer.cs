@@ -70,7 +70,7 @@
             gbAddProveedor.Size = new Size(561, 276);
             gbAddProveedor.TabIndex = 2;
             gbAddProveedor.TabStop = false;
-            gbAddProveedor.Text = "AGREGAR  O MODIFICAR PROVEEDOR";
+            gbAddProveedor.Text = "AGREGAR  PROVEEDOR";
             // 
             // label2
             // 
@@ -106,6 +106,7 @@
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(266, 29);
             txtDireccion.TabIndex = 8;
+            txtDireccion.KeyPress += txtDireccion_KeyPress;
             // 
             // txtTelefono
             // 
@@ -115,6 +116,7 @@
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(197, 29);
             txtTelefono.TabIndex = 12;
+            txtTelefono.KeyPress += txtTelefono_KeyPress;
             // 
             // btnCancela
             // 
@@ -158,6 +160,7 @@
             btnGuardarProveedor.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardarProveedor.UseVisualStyleBackColor = false;
             btnGuardarProveedor.Click += btnGuardarProveedor_Click;
+            btnGuardarProveedor.Enter += btnGuardarProveedor_Click;
             // 
             // txtCodProveedor
             // 
@@ -166,6 +169,7 @@
             txtCodProveedor.Name = "txtCodProveedor";
             txtCodProveedor.Size = new Size(266, 29);
             txtCodProveedor.TabIndex = 6;
+            txtCodProveedor.KeyPress += txtCodProveedor_KeyPress;
             // 
             // txtNombre
             // 
@@ -174,6 +178,7 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(266, 29);
             txtNombre.TabIndex = 7;
+            txtNombre.KeyPress += txtNombre_KeyPress;
             // 
             // lblNombre
             // 
@@ -193,6 +198,7 @@
             txtId.Size = new Size(197, 29);
             txtId.TabIndex = 14;
             txtId.Visible = false;
+            txtId.KeyPress += txtId_KeyPress;
             // 
             // pSuperiorAddProveedor
             // 

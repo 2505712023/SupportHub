@@ -7,14 +7,14 @@ namespace Presentacion
     public partial class frmProveedor : Form
     {
         ModeloProveedor proveedor = new();
-
-        private List<string> tipoEmpleado = new() { "Id proveedor", "Código proveedor" };
+        
+        private List<string> tipoProveedor = new() { "Código proveedor", "Nombre proveedor" };
 
         public frmProveedor()
         {
             InitializeComponent();
 
-            cbxTipoBusquedaProveedor.DataSource = tipoEmpleado;
+            cbxTipoBusquedaProveedor.DataSource = tipoProveedor;
         }
 
         private void frmProveedor_Load(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace Presentacion
 
         private void btnEliminarProveedor_Click(object sender, EventArgs e)
         {
-            if (CustomMessageBox.Advertencia("Eliminar empleado", "¿Seguro que desea eliminar empleado?") == DialogResult.Yes)
+            if (CustomMessageBox.Advertencia("Eliminar empleado", "¿Seguro que desea eliminar proveedor?") == DialogResult.Yes)
             {
                 if (dgvProveedor.SelectedRows.Count == 1)
                 {
@@ -113,6 +113,7 @@ namespace Presentacion
             dgvProveedor.Columns["nombreProveedor"].HeaderText = "Nombre";
             dgvProveedor.Columns["direccionProveedor"].HeaderText = "Dirección";
             dgvProveedor.Columns["telefonoProveedor"].HeaderText = "Teléfono";
+            dgvProveedor.Columns["idProveedor"].Visible = false;
             dgvProveedor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProveedor.Focus();
 
@@ -138,23 +139,16 @@ namespace Presentacion
             }
             else
             {
-                try
+                switch (cbxTipoBusquedaProveedor.Text)
                 {
-                    switch (cbxTipoBusquedaProveedor.Text)
-                    {
-                        case "Id proveedor":
-                            dgvProveedor.DataSource = proveedor.ObtenerProveedor(int.Parse(txtBuscarProveedor.Text), null);
-                            break;
-                        case "Código proveedor":
-                            dgvProveedor.DataSource = proveedor.ObtenerProveedor(null, txtBuscarProveedor.Text);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                catch (FormatException)
-                {
-                    CustomMessageBox.Error("Error en busqueda", "El Id del proveedor debe de ser un numero");
+                    case "Nombre proveedor":
+                        dgvProveedor.DataSource = proveedor.ObtenerProveedor(null, txtBuscarProveedor.Text);
+                        break;
+                    case "Código proveedor":
+                        dgvProveedor.DataSource = proveedor.ObtenerProveedor(txtBuscarProveedor.Text, null);
+                        break;
+                    default:
+                        break;
                 }
 
             }

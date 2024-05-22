@@ -29,9 +29,9 @@ namespace Dominio
             proveedor.ActualizarProveedor(idProveedor, codProveedor, nombreProveedor, direccion, telefono);
         }
 
-        public DataTable ObtenerProveedor(int? idProveedor, string? codProveedor)
+        public DataTable ObtenerProveedor(string? codProveedor, string? nombreProveedor)
         { 
-            return proveedor.ObtenerProveedor(idProveedor, codProveedor);
+            return proveedor.ObtenerProveedor(codProveedor, nombreProveedor);
         }
     }
 }

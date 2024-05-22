@@ -75,14 +75,14 @@ namespace DataAccess
             conn.Close();
         }
 
-        public DataTable ObtenerProveedor(int? idProveedor, string? codProveedor)
+        public DataTable ObtenerProveedor(string? codProveedor, string? nombreProveedor)
         {
             using SqlConnection conn = conexion.GetConnection();
 
             cmd.CommandText = "sp_obtener_proveedor";
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@idProveedor", idProveedor);
+            cmd.Parameters.AddWithValue("@nombreProveedor", nombreProveedor);
             cmd.Parameters.AddWithValue("@codProveedor", codProveedor);
             cmd.Connection = conn;
 
@@ -91,6 +91,8 @@ namespace DataAccess
             SqlDataAdapter adaptador = new(cmd);
             tabla.Clear();
             adaptador.Fill(tabla);
+
+            conn.Close();
 
             return tabla;
         }
