@@ -64,11 +64,15 @@ namespace Dominio
         public DataTable ObtenerRoles()
         { return userData.ObtenerRoles(); }
 
-        
-     
-    }
+        public void ActualizarUsuario(string LoginUsuario, string nombreUsuario, string apellidoUsuario, string contrasenia, int activo, string tipousuario) 
+        {
+            userData.ActualizarUsuario(LoginUsuario, nombreUsuario,apellidoUsuario,contrasenia,activo,tipousuario);
+        }
 
-     
+
+
+    }
+   
 
     
 

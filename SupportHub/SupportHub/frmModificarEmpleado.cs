@@ -168,5 +168,15 @@ namespace Presentacion
         {
 
         }
+
+        private void pSuperiorUpdEmpleado_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtNombreEmpleadoUpdate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

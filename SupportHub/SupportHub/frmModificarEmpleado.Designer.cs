@@ -63,17 +63,18 @@
             pSuperiorUpdEmpleado.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorUpdEmpleado.Dock = DockStyle.Top;
             pSuperiorUpdEmpleado.Location = new Point(0, 0);
-            pSuperiorUpdEmpleado.Margin = new Padding(3, 4, 3, 4);
+            pSuperiorUpdEmpleado.Margin = new Padding(4, 5, 4, 5);
             pSuperiorUpdEmpleado.Name = "pSuperiorUpdEmpleado";
-            pSuperiorUpdEmpleado.Size = new Size(669, 80);
+            pSuperiorUpdEmpleado.Size = new Size(836, 100);
             pSuperiorUpdEmpleado.TabIndex = 1;
+            pSuperiorUpdEmpleado.Paint += pSuperiorUpdEmpleado_Paint;
             // 
             // pboxLogo
             // 
             pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
-            pboxLogo.Location = new Point(23, 0);
-            pboxLogo.Margin = new Padding(3, 4, 3, 4);
+            pboxLogo.Location = new Point(29, 0);
+            pboxLogo.Margin = new Padding(4, 5, 4, 5);
             pboxLogo.Name = "pboxLogo";
             pboxLogo.Size = new Size(184, 60);
             pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
@@ -91,10 +92,10 @@
             btnCerrarModificarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarModificarEmpleado.IconSize = 20;
             btnCerrarModificarEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarModificarEmpleado.Location = new Point(633, 4);
-            btnCerrarModificarEmpleado.Margin = new Padding(3, 4, 3, 4);
+            btnCerrarModificarEmpleado.Location = new Point(791, 5);
+            btnCerrarModificarEmpleado.Margin = new Padding(4, 5, 4, 5);
             btnCerrarModificarEmpleado.Name = "btnCerrarModificarEmpleado";
-            btnCerrarModificarEmpleado.Size = new Size(32, 32);
+            btnCerrarModificarEmpleado.Size = new Size(40, 40);
             btnCerrarModificarEmpleado.TabIndex = 16;
             btnCerrarModificarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrarModificarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -112,10 +113,10 @@
             btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarAddEmpleado.IconSize = 20;
             btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(1509, 4);
-            btnCerrarAddEmpleado.Margin = new Padding(3, 4, 3, 4);
+            btnCerrarAddEmpleado.Location = new Point(1886, 5);
+            btnCerrarAddEmpleado.Margin = new Padding(4, 5, 4, 5);
             btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
-            btnCerrarAddEmpleado.Size = new Size(32, 32);
+            btnCerrarAddEmpleado.Size = new Size(40, 40);
             btnCerrarAddEmpleado.TabIndex = 15;
             btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -140,11 +141,11 @@
             gbUpdEmpleado.Controls.Add(lblApellidoEmpleadoUpdate);
             gbUpdEmpleado.Controls.Add(lblNombreEmpleadoUpdate);
             gbUpdEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            gbUpdEmpleado.Location = new Point(14, 88);
-            gbUpdEmpleado.Margin = new Padding(3, 4, 3, 4);
+            gbUpdEmpleado.Location = new Point(18, 110);
+            gbUpdEmpleado.Margin = new Padding(4, 5, 4, 5);
             gbUpdEmpleado.Name = "gbUpdEmpleado";
-            gbUpdEmpleado.Padding = new Padding(3, 4, 3, 4);
-            gbUpdEmpleado.Size = new Size(641, 368);
+            gbUpdEmpleado.Padding = new Padding(4, 5, 4, 5);
+            gbUpdEmpleado.Size = new Size(801, 460);
             gbUpdEmpleado.TabIndex = 2;
             gbUpdEmpleado.TabStop = false;
             gbUpdEmpleado.Text = "MODIFICAR EMPLEADO";
@@ -163,10 +164,10 @@
             btnGuardarUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardarUpdate.IconSize = 20;
             btnGuardarUpdate.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardarUpdate.Location = new Point(479, 283);
-            btnGuardarUpdate.Margin = new Padding(3, 4, 3, 4);
+            btnGuardarUpdate.Location = new Point(599, 354);
+            btnGuardarUpdate.Margin = new Padding(4, 5, 4, 5);
             btnGuardarUpdate.Name = "btnGuardarUpdate";
-            btnGuardarUpdate.Size = new Size(131, 51);
+            btnGuardarUpdate.Size = new Size(164, 64);
             btnGuardarUpdate.TabIndex = 13;
             btnGuardarUpdate.Text = "CANCELAR";
             btnGuardarUpdate.TextAlign = ContentAlignment.MiddleLeft;
@@ -186,10 +187,10 @@
             btnGuaardarUpdate.IconColor = Color.White;
             btnGuaardarUpdate.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuaardarUpdate.IconSize = 20;
-            btnGuaardarUpdate.Location = new Point(479, 212);
-            btnGuaardarUpdate.Margin = new Padding(3, 4, 3, 4);
+            btnGuaardarUpdate.Location = new Point(599, 265);
+            btnGuaardarUpdate.Margin = new Padding(4, 5, 4, 5);
             btnGuaardarUpdate.Name = "btnGuaardarUpdate";
-            btnGuaardarUpdate.Size = new Size(131, 51);
+            btnGuaardarUpdate.Size = new Size(164, 64);
             btnGuaardarUpdate.TabIndex = 12;
             btnGuaardarUpdate.Text = "GUARDAR";
             btnGuaardarUpdate.TextAlign = ContentAlignment.MiddleLeft;
@@ -200,11 +201,11 @@
             // txtTelefonoEmpleadoUpdate
             // 
             txtTelefonoEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
-            txtTelefonoEmpleadoUpdate.Location = new Point(26, 220);
-            txtTelefonoEmpleadoUpdate.Margin = new Padding(3, 4, 3, 4);
+            txtTelefonoEmpleadoUpdate.Location = new Point(32, 275);
+            txtTelefonoEmpleadoUpdate.Margin = new Padding(4, 5, 4, 5);
             txtTelefonoEmpleadoUpdate.Mask = "0000-0000";
             txtTelefonoEmpleadoUpdate.Name = "txtTelefonoEmpleadoUpdate";
-            txtTelefonoEmpleadoUpdate.Size = new Size(303, 34);
+            txtTelefonoEmpleadoUpdate.Size = new Size(378, 39);
             txtTelefonoEmpleadoUpdate.TabIndex = 8;
             // 
             // btnCancelaEmpleado
@@ -220,10 +221,10 @@
             btnCancelaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelaEmpleado.IconSize = 20;
             btnCancelaEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelaEmpleado.Location = new Point(1226, 317);
-            btnCancelaEmpleado.Margin = new Padding(3, 4, 3, 4);
+            btnCancelaEmpleado.Location = new Point(1532, 396);
+            btnCancelaEmpleado.Margin = new Padding(4, 5, 4, 5);
             btnCancelaEmpleado.Name = "btnCancelaEmpleado";
-            btnCancelaEmpleado.Size = new Size(131, 51);
+            btnCancelaEmpleado.Size = new Size(164, 64);
             btnCancelaEmpleado.TabIndex = 13;
             btnCancelaEmpleado.Text = "CANCELAR";
             btnCancelaEmpleado.TextAlign = ContentAlignment.MiddleLeft;
@@ -242,10 +243,10 @@
             btnGuardarEmpleado.IconColor = Color.White;
             btnGuardarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardarEmpleado.IconSize = 20;
-            btnGuardarEmpleado.Location = new Point(1075, 317);
-            btnGuardarEmpleado.Margin = new Padding(3, 4, 3, 4);
+            btnGuardarEmpleado.Location = new Point(1344, 396);
+            btnGuardarEmpleado.Margin = new Padding(4, 5, 4, 5);
             btnGuardarEmpleado.Name = "btnGuardarEmpleado";
-            btnGuardarEmpleado.Size = new Size(131, 51);
+            btnGuardarEmpleado.Size = new Size(164, 64);
             btnGuardarEmpleado.TabIndex = 12;
             btnGuardarEmpleado.Text = "GUARDAR";
             btnGuardarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
@@ -256,114 +257,121 @@
             // 
             cbxAreaEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             cbxAreaEmpleadoUpdate.FormattingEnabled = true;
-            cbxAreaEmpleadoUpdate.Location = new Point(375, 149);
-            cbxAreaEmpleadoUpdate.Margin = new Padding(3, 4, 3, 4);
+            cbxAreaEmpleadoUpdate.Location = new Point(469, 186);
+            cbxAreaEmpleadoUpdate.Margin = new Padding(4, 5, 4, 5);
             cbxAreaEmpleadoUpdate.Name = "cbxAreaEmpleadoUpdate";
-            cbxAreaEmpleadoUpdate.Size = new Size(235, 36);
+            cbxAreaEmpleadoUpdate.Size = new Size(293, 40);
             cbxAreaEmpleadoUpdate.TabIndex = 11;
             // 
             // cbxCargoEmpleadoUpdate
             // 
             cbxCargoEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             cbxCargoEmpleadoUpdate.FormattingEnabled = true;
-            cbxCargoEmpleadoUpdate.ItemHeight = 28;
-            cbxCargoEmpleadoUpdate.Location = new Point(375, 71);
-            cbxCargoEmpleadoUpdate.Margin = new Padding(3, 4, 3, 4);
+            cbxCargoEmpleadoUpdate.ItemHeight = 32;
+            cbxCargoEmpleadoUpdate.Location = new Point(469, 89);
+            cbxCargoEmpleadoUpdate.Margin = new Padding(4, 5, 4, 5);
             cbxCargoEmpleadoUpdate.Name = "cbxCargoEmpleadoUpdate";
-            cbxCargoEmpleadoUpdate.Size = new Size(235, 36);
+            cbxCargoEmpleadoUpdate.Size = new Size(293, 40);
             cbxCargoEmpleadoUpdate.TabIndex = 10;
             // 
             // txtEmailEmpleadoUpdate
             // 
             txtEmailEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
-            txtEmailEmpleadoUpdate.Location = new Point(26, 295);
-            txtEmailEmpleadoUpdate.Margin = new Padding(3, 4, 3, 4);
+            txtEmailEmpleadoUpdate.Location = new Point(32, 369);
+            txtEmailEmpleadoUpdate.Margin = new Padding(4, 5, 4, 5);
             txtEmailEmpleadoUpdate.Name = "txtEmailEmpleadoUpdate";
-            txtEmailEmpleadoUpdate.Size = new Size(303, 34);
+            txtEmailEmpleadoUpdate.Size = new Size(378, 39);
             txtEmailEmpleadoUpdate.TabIndex = 9;
             // 
             // txtApellidoEmpleadoUpdate
             // 
             txtApellidoEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
-            txtApellidoEmpleadoUpdate.Location = new Point(26, 145);
-            txtApellidoEmpleadoUpdate.Margin = new Padding(3, 4, 3, 4);
+            txtApellidoEmpleadoUpdate.Location = new Point(32, 181);
+            txtApellidoEmpleadoUpdate.Margin = new Padding(4, 5, 4, 5);
             txtApellidoEmpleadoUpdate.Name = "txtApellidoEmpleadoUpdate";
-            txtApellidoEmpleadoUpdate.Size = new Size(303, 34);
+            txtApellidoEmpleadoUpdate.Size = new Size(378, 39);
             txtApellidoEmpleadoUpdate.TabIndex = 7;
             // 
             // txtNombreEmpleadoUpdate
             // 
             txtNombreEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
-            txtNombreEmpleadoUpdate.Location = new Point(30, 71);
-            txtNombreEmpleadoUpdate.Margin = new Padding(3, 4, 3, 4);
+            txtNombreEmpleadoUpdate.Location = new Point(38, 89);
+            txtNombreEmpleadoUpdate.Margin = new Padding(4, 5, 4, 5);
             txtNombreEmpleadoUpdate.Name = "txtNombreEmpleadoUpdate";
-            txtNombreEmpleadoUpdate.Size = new Size(303, 34);
+            txtNombreEmpleadoUpdate.Size = new Size(378, 39);
             txtNombreEmpleadoUpdate.TabIndex = 6;
+            txtNombreEmpleadoUpdate.TextChanged += txtNombreEmpleadoUpdate_TextChanged;
             // 
             // lblAreaEmpleadoUpdate
             // 
             lblAreaEmpleadoUpdate.AutoSize = true;
-            lblAreaEmpleadoUpdate.Location = new Point(375, 117);
+            lblAreaEmpleadoUpdate.Location = new Point(469, 146);
+            lblAreaEmpleadoUpdate.Margin = new Padding(4, 0, 4, 0);
             lblAreaEmpleadoUpdate.Name = "lblAreaEmpleadoUpdate";
-            lblAreaEmpleadoUpdate.Size = new Size(61, 28);
+            lblAreaEmpleadoUpdate.Size = new Size(74, 32);
             lblAreaEmpleadoUpdate.TabIndex = 5;
             lblAreaEmpleadoUpdate.Text = "Área:";
             // 
             // lblCargoEmpleadoUpdate
             // 
             lblCargoEmpleadoUpdate.AutoSize = true;
-            lblCargoEmpleadoUpdate.Location = new Point(375, 39);
+            lblCargoEmpleadoUpdate.Location = new Point(469, 49);
+            lblCargoEmpleadoUpdate.Margin = new Padding(4, 0, 4, 0);
             lblCargoEmpleadoUpdate.Name = "lblCargoEmpleadoUpdate";
-            lblCargoEmpleadoUpdate.Size = new Size(72, 28);
+            lblCargoEmpleadoUpdate.Size = new Size(89, 32);
             lblCargoEmpleadoUpdate.TabIndex = 4;
             lblCargoEmpleadoUpdate.Text = "Cargo:";
             // 
             // lblEmailEmpleadoUpdate
             // 
             lblEmailEmpleadoUpdate.AutoSize = true;
-            lblEmailEmpleadoUpdate.Location = new Point(26, 263);
+            lblEmailEmpleadoUpdate.Location = new Point(32, 329);
+            lblEmailEmpleadoUpdate.Margin = new Padding(4, 0, 4, 0);
             lblEmailEmpleadoUpdate.Name = "lblEmailEmpleadoUpdate";
-            lblEmailEmpleadoUpdate.Size = new Size(69, 28);
+            lblEmailEmpleadoUpdate.Size = new Size(83, 32);
             lblEmailEmpleadoUpdate.TabIndex = 3;
             lblEmailEmpleadoUpdate.Text = "Email:";
             // 
             // lblTelefonoEmpleadoUpdate
             // 
             lblTelefonoEmpleadoUpdate.AutoSize = true;
-            lblTelefonoEmpleadoUpdate.Location = new Point(26, 188);
+            lblTelefonoEmpleadoUpdate.Location = new Point(32, 235);
+            lblTelefonoEmpleadoUpdate.Margin = new Padding(4, 0, 4, 0);
             lblTelefonoEmpleadoUpdate.Name = "lblTelefonoEmpleadoUpdate";
-            lblTelefonoEmpleadoUpdate.Size = new Size(99, 28);
+            lblTelefonoEmpleadoUpdate.Size = new Size(120, 32);
             lblTelefonoEmpleadoUpdate.TabIndex = 2;
             lblTelefonoEmpleadoUpdate.Text = "Teléfono:";
             // 
             // lblApellidoEmpleadoUpdate
             // 
             lblApellidoEmpleadoUpdate.AutoSize = true;
-            lblApellidoEmpleadoUpdate.Location = new Point(26, 113);
+            lblApellidoEmpleadoUpdate.Location = new Point(32, 141);
+            lblApellidoEmpleadoUpdate.Margin = new Padding(4, 0, 4, 0);
             lblApellidoEmpleadoUpdate.Name = "lblApellidoEmpleadoUpdate";
-            lblApellidoEmpleadoUpdate.Size = new Size(96, 28);
+            lblApellidoEmpleadoUpdate.Size = new Size(117, 32);
             lblApellidoEmpleadoUpdate.TabIndex = 1;
             lblApellidoEmpleadoUpdate.Text = "Apellido:";
             // 
             // lblNombreEmpleadoUpdate
             // 
             lblNombreEmpleadoUpdate.AutoSize = true;
-            lblNombreEmpleadoUpdate.Location = new Point(29, 39);
+            lblNombreEmpleadoUpdate.Location = new Point(36, 49);
+            lblNombreEmpleadoUpdate.Margin = new Padding(4, 0, 4, 0);
             lblNombreEmpleadoUpdate.Name = "lblNombreEmpleadoUpdate";
-            lblNombreEmpleadoUpdate.Size = new Size(94, 28);
+            lblNombreEmpleadoUpdate.Size = new Size(115, 32);
             lblNombreEmpleadoUpdate.TabIndex = 0;
             lblNombreEmpleadoUpdate.Text = "Nombre:";
             // 
             // frmModificarEmpleado
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(98, 122, 144);
-            ClientSize = new Size(669, 472);
+            ClientSize = new Size(836, 590);
             Controls.Add(gbUpdEmpleado);
             Controls.Add(pSuperiorUpdEmpleado);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "frmModificarEmpleado";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmModificarEmpleado";

@@ -200,8 +200,38 @@ namespace DataAccess
             }
         }
 
-        
-        
+        public void ActualizarUsuario(string LoginUsuario, string nombreUsuario, string apellidoUsuario, string contrasenia, int activo, string tipousuario)
+        {
+            string nombreProcedimiento1 = "sp_modificar_usuario";
+            string nombreProcedimiento2 = "sp_modificar_usuarioxrol";
+
+            using (var comando = new SqlCommand())
+            {
+                comando.CommandText = nombreProcedimiento1;
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@LoginUsuario", LoginUsuario);
+                comando.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                comando.Parameters.AddWithValue("@apellidoUsuario", apellidoUsuario);
+                comando.Parameters.AddWithValue("@claveUsuario",contrasenia );
+                comando.Parameters.AddWithValue("@activo", activo);
+                comando.Parameters.AddWithValue("@tipousuario", activo);
+
+               
+                comando.CommandText = nombreProcedimiento2;
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.AddWithValue("@idUsuarioXRol", LoginUsuario);
+
+
+                using (SqlConnection conn = GetConnection())
+                {
+                    comando.Connection = conn;
+                    conn.Open();
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+
     }
 
 
