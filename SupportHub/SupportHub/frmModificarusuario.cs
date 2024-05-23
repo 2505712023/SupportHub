@@ -63,6 +63,7 @@ namespace Presentacion
                 cbxTipoUsuario.Text = null;
                 cbxEmpModUsuario.Text = null;
             }
+        
         }
         public event ModificarDelegate UpdateEventHandler;
         public class ModificarEventArgs : EventArgs
@@ -73,10 +74,10 @@ namespace Presentacion
         {
             ModificarEventArgs args = new ModificarEventArgs();
             UpdateEventHandler.Invoke(this, args);
-        }
+        }*/
 
         private void btnGuardarUpdate_Click(object sender, EventArgs e)
-        {
+       {
             this.Close();
         }
 
@@ -127,7 +128,7 @@ namespace Presentacion
 
 
     }
-
+       
     private void tboxNombresUsuario_TextChanged (object sender, EventArgs e)
         {
 

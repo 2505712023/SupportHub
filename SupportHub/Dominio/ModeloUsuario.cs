@@ -69,7 +69,7 @@ namespace Dominio
             userData.ActualizarUsuario(LoginUsuario, nombreUsuario,apellidoUsuario,contrasenia,activo,tipousuario);
         }
 
-
+        US
 
     }
    
