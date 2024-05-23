@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
@@ -16,7 +18,7 @@ namespace Presentacion
     public partial class frmAgregarEquipo : Form
     {
         private bool esModificacion = false;
-        public frmAgregarEquipo()
+        public frmAgregarEquipo(frmEquipo equipo)
         {
             InitializeComponent();
             llenarProveedor();
@@ -25,6 +27,19 @@ namespace Presentacion
 
 
         }
+        public delegate void updateDelegate(object sender, UpdateEventArgs args);
+        public event updateDelegate UpdateEventHandler;
+
+        public class UpdateEventArgs : EventArgs
+        {
+            public string Data { get; set; }
+        }
+            protected void Agregar()
+            {
+                UpdateEventArgs args = new UpdateEventArgs(); 
+                UpdateEventHandler.Invoke(this, args);
+
+            }
 
         private void frmAgregarEquipo_Load(object sender, EventArgs e)
         {
@@ -37,6 +52,7 @@ namespace Presentacion
             comboBproveedor.DisplayMember = "Proveedor";
         }
 
+       
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             if (tboxTipoEquipo.Text == null)
@@ -83,6 +99,7 @@ namespace Presentacion
                         rtxtDescripcion.Text
                         );
                     CustomMessageBox.Exito("Registro Exitoso", $"Se guardó {registrosAgregados.ToString()} Equipo Correctamente");
+                    Agregar();
 
                 }
             }

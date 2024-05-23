@@ -76,13 +76,17 @@ namespace Presentacion
             }
         }
 
-        
+        private void AgreUpdateEventHandler(object sender, frmAgregarEquipo.UpdateEventArgs args)
+        {
+            actualizarTablaEquipos();
+        }
 
         private void btnAgregarEquipo_Click(object sender, EventArgs e)
         {
             dgvEquipo.Enabled = false;
-            frmAgregarEquipo formEquipo = new frmAgregarEquipo();
-            formEquipo.Show();
+            frmAgregarEquipo formEquipo = new frmAgregarEquipo(this);
+            formEquipo.UpdateEventHandler += AgreUpdateEventHandler;
+            formEquipo.ShowDialog();
         }
 
         private void btnModificarEquipo_Click(object sender, EventArgs e)
