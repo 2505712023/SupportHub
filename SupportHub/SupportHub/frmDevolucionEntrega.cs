@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Presentacion.CustomMessageBoxes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,7 +59,7 @@ namespace Presentacion
         private void btnGuardarDevolucion_Click(object sender, EventArgs e)
         {
             string asignarDevolucion = ModeloEntrega.asignarFechaDevolucion(dtpickerFechaDevolucion.Text, tboxCodigoEntrega.Text);
-            MessageBox.Show(asignarDevolucion, "Devolución exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CustomMessageBox.Exito("Devolución exitosa", asignarDevolucion);
             actualizardgvEntregas();
             habilitardgvEntregas();
             this.Close();
@@ -67,7 +68,7 @@ namespace Presentacion
         public void eliminarFechaDevolucion()
         {
             string asignarDevolucion = ModeloEntrega.asignarFechaDevolucion("ELIMINAR", tboxCodigoEntrega.Text);
-            MessageBox.Show("Se eliminó la fecha de devolución exitosamente", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            CustomMessageBox.Exito("Eliminación exitosa", "Se eliminó la fecha de devolución exitosamente");
             actualizardgvEntregas();
         }
 

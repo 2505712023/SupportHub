@@ -1,4 +1,5 @@
 ﻿using Dominio;
+using Presentacion.CustomMessageBoxes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -66,7 +67,7 @@ namespace Presentacion
                     Convert.ToInt32(cbxAreaEmpleadoUpdate.SelectedValue)
 
                 );
-                MessageBox.Show("El empleado se modificó correctamente", "Modificación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.Exito("Modificación exitosa", "El empleado se modificó correctamente.");
                 Actualizar();
                 txtNombreEmpleadoUpdate.Text = "";
                 txtApellidoEmpleadoUpdate.Text = "";
@@ -75,6 +76,7 @@ namespace Presentacion
                 cbxAreaEmpleadoUpdate.Text = null;
                 cbxCargoEmpleadoUpdate.Text = null;
             }
+            this.Close();
         }
 
         private void btnGuardarUpdate_Click(object sender, EventArgs e)
@@ -87,38 +89,38 @@ namespace Presentacion
 
             if (string.IsNullOrEmpty(txtNombreEmpleadoUpdate.Text) || !EsLetras(txtNombreEmpleadoUpdate.Text))
             {
-                MessageBox.Show("Ingrese un nombre válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato inválido", "Ingrese un nombre válido.");
                 return false;
             }
 
             // Validar apellido
             if (string.IsNullOrEmpty(txtApellidoEmpleadoUpdate.Text) || !EsLetras(txtApellidoEmpleadoUpdate.Text))
             {
-                MessageBox.Show("Ingrese un apellido válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato inválido", "Ingrese un apellido válido.");
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtTelefonoEmpleadoUpdate.Text) || !EsTelefono(txtTelefonoEmpleadoUpdate.Text))
             {
-                MessageBox.Show("Ingrese un número de teléfono válido (formato: 2222-0000).", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato inválido", "Ingrese un número de teléfono válido (formato: 2222-0000).");
                 return false;
             }
 
             if (string.IsNullOrWhiteSpace(txtEmailEmpleadoUpdate.Text) || !EsCorreo(txtEmailEmpleadoUpdate.Text))
             {
-                MessageBox.Show("Ingrese un correo electrónico válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato inválido", "Ingrese un correo electrónico válido.");
                 return false;
             }
 
             if (cbxCargoEmpleadoUpdate.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione un cargo.", "Dato faltante", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato faltante", "Seleccione un cargo.");
                 return false;
             }
 
             if (cbxAreaEmpleadoUpdate.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione un área.", "Dato faltante", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato faltante", "Seleccione un área.");
                 return false;
             }
 
@@ -162,6 +164,22 @@ namespace Presentacion
         private void btnCerrarModificarEmpleado_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+
+
+        private void frmModificarEmpleado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+
+                btnGuaardarUpdate_Click(sender, e);
+            }
+        }
+
+        private void frmModificarEmpleado_Load(object sender, EventArgs e)
+        {
+            txtNombreEmpleadoUpdate.Focus();
         }
     }
 }

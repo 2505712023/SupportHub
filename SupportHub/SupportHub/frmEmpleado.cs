@@ -12,13 +12,14 @@ using Dominio;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Linq.Expressions;
 using System.Data.SqlClient;
+using Presentacion.CustomMessageBoxes;
 namespace Presentacion
 {
     public partial class frmEmpleado : Form
     {
         ModeloEmpleado EmpObjeto = new ModeloEmpleado();
-        //private string codEmpleado = null;
         private List<string> tipoEmpleado;
+        private bool frmAgregarEmpleadoAbierto = false;
         public frmEmpleado()
         {
             InitializeComponent();
@@ -31,20 +32,45 @@ namespace Presentacion
             };
             cbxTipoBusquedaEmpleado.DataSource = tipoEmpleado;
         }
+
         private void AgregarUpdateEvenHandler(object sender, frmAgregarEmpleado.UpdateEventArgs args)
         {
             mostrarEmpleado();
         }
+
         private void ModificarUpdateEvenHandler(object sender, frmModificarEmpleado.ModificarEventArgs args)
         {
             mostrarEmpleado();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            
+            if (keyData == (Keys.Control | Keys.Shift | Keys.A))
+            {
+                btnAgregarEmpleado_Click(this, EventArgs.Empty);
+                return true; 
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.M))
+            {
+                btnModificaEmpleado_Click(this, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.E))
+            {
+                btnEliminarEmpleado_Click(this, EventArgs.Empty);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
             frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
             formEmpleado.UpdateEventHandler += AgregarUpdateEvenHandler;
-            formEmpleado.Show();
+            formEmpleado.ShowDialog();
+            frmAgregarEmpleadoAbierto = true;
         }
 
         private void frmEmpleado_Load(object sender, EventArgs e)
@@ -71,9 +97,9 @@ namespace Presentacion
                 btnEliminarEmpleado.Visible = false;
                 btnModificaEmpleado.Visible = false;
             }
-
             txtBuscarEmpleado.Focus();
         }
+
         private void cbxTipoBusquedaEmpleado_TextChanged(object sender, EventArgs e)
         {
             txtBuscarEmpleado.Focus();
@@ -121,8 +147,7 @@ namespace Presentacion
 
         private void btnEliminarEmpleado_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar empleado?", "Eliminar empleado", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (resultado == DialogResult.Yes)
+            if (CustomMessageBox.Advertencia("Eliminar empleado", "¿Seguro que desea eliminar empleado?") == DialogResult.Yes)
             {
                 if (dgvEmpleado.SelectedRows.Count == 1)
                 {
@@ -137,21 +162,21 @@ namespace Presentacion
                         hasError = true;
                         if (ex.Number == 547)
                         {
-                            MessageBox.Show("No se puede eliminar el empleado porque tiene entregas pendientes.", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            CustomMessageBox.Error("Error en eliminación", "No se puede eliminar el empleado porque tiene entregas pendientes.");
                         }
                         else
                         {
-                            MessageBox.Show($"Error al intentar eliminar el empleado: {ex.Message}", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            CustomMessageBox.Error("Error en eliminación", $"Error al intentar eliminar el empleado: {ex.Message}.");
                         }
                     }
                     catch (FormatException)
                     {
                         hasError = true;
-                        MessageBox.Show("El empleado tiene entregas o asignaciones pendientes", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        CustomMessageBox.Error("Error en eliminación", "El empleado tiene entregas o asignaciones pendientes.");
                     }
                     if (hasError == false)
                     {
-                        MessageBox.Show("Empleado eliminado correctamente", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CustomMessageBox.Exito("Eliminación exitosa", "Empleado eliminado correctamente.");
                         mostrarEmpleado();
                         txtBuscarEmpleado.Focus();
                         mostrarEmpleado();
@@ -161,15 +186,15 @@ namespace Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione solo una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.Error("Error en selección", "Seleccione solo una fila por favor.");
                 }
             }
             else
             {
-                MessageBox.Show("Operación de eliminación cancelada", "Operación cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CustomMessageBox.Error("Operación cancelada", "Operación de eliminación cancelada.");
             }
-
         }
+
         public void ajusteDataGrid()
         {
             dgvEmpleado.Columns["codEmpleado"].HeaderText = "Código";
@@ -222,12 +247,12 @@ namespace Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione solo una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.Error("Error en selección", "Seleccione solo una fila por favor.");
                 }
             }
             else
             {
-                MessageBox.Show("Seleccione una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Error en selección", "Seleccione solo una fila por favor.");
             }
         }
     }

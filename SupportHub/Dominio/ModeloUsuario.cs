@@ -32,10 +32,10 @@ namespace Dominio
                 return "Hubo un error al intentar actualizar tu perfil: " + ex.Message;
             }
         }
+
         public string LoginUsuario(string user, string pass)
-            {
-                return userData.Login(user, pass);
-            }
+        {
+            return userData.Login(user, pass);
+        }
     }
 }
-

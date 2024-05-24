@@ -1,5 +1,6 @@
 ﻿using Comun.Cache;
 using Dominio;
+using Presentacion.CustomMessageBoxes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Presentacion
         private List<string> tiposDeBusqueda;
         private bool formCargado = false;
         private string? codEntrega = string.Empty;
-
+      
         public frmEntrega()
         {
             InitializeComponent();
@@ -35,12 +36,12 @@ namespace Presentacion
             };
             cBoxTipoBusqueda.DataSource = tiposDeBusqueda;
         }
-
-        private void frmEntrega_Load(object sender, EventArgs e)
+       
+        public  void frmEntrega_Load(object sender, EventArgs e)
         {
-            prepararDgvEntregas();
-
             formCargado = true;
+            dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
+            prepararDgvEntregas();
 
             if (!CacheInicioUsuario.permisosUser.Contains("Agregar"))
             {
@@ -56,11 +57,10 @@ namespace Presentacion
                 btnEliminarEntrega.Visible = false;
             }
         }
-
+       
         private void prepararDgvEntregas()
         {
             cBoxTipoBusqueda.DropDownStyle = ComboBoxStyle.DropDownList;
-            dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
             dgvEntregas.Columns["idTipoEntrega"].Visible = false;
             dgvEntregas.Columns["idEquipo"].Visible = false;
             dgvEntregas.Columns["idEmpleadoEntrega"].Visible = false;
@@ -79,6 +79,7 @@ namespace Presentacion
                 }
             }
             dgvEntregas.ClearSelection();
+            txtBuscarEntrega.Focus();
         }
 
         private void txtBuscarEntrega_TextChanged(object sender, EventArgs e)
@@ -136,9 +137,7 @@ namespace Presentacion
 
         private void btnEliminarEntrega_Click(object sender, EventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar entregas?", "Eliminar entregas", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (resultado == DialogResult.Yes)
+            if (CustomMessageBox.Advertencia("Confirmar eliminación", "¿Seguro que desea eliminar entregas?") == DialogResult.Yes)
             {
                 if (dgvEntregas.SelectedRows.Count > 0)
                 {
@@ -152,33 +151,66 @@ namespace Presentacion
 
                     if (totalRegistrosEliminados > 1)
                     {
-                        MessageBox.Show("Se eliminaron " + totalRegistrosEliminados.ToString() + " entregas.","Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CustomMessageBox.Exito("Eliminación exitosa", "Se eliminaron " + totalRegistrosEliminados.ToString() + " entregas.");
                     }
                     else
                     {
-                        MessageBox.Show("Se eliminó " + totalRegistrosEliminados.ToString() + " entrega.", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CustomMessageBox.Exito("Eliminación exitosa", "Se eliminó " + totalRegistrosEliminados.ToString() + " entrega.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Debe seleccionar una o varias entregas para eliminarlas.", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.Error("Error en selección", "Debe seleccionar una o varias entregas para eliminarlas.");
                 }
                 actualizarTablaEntregas();
             }
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.A))
+            {
+                btnAgregarEntrega_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.M))
+            {
+                if (btnModificarEntrega.Enabled == true)
+                {
+                    btnModificarEntrega_Click(this, EventArgs.Empty);
+                }
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.E))
+            {
+                btnEliminarEntrega_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.G))
+            {
+                if (btnGenerarDevolucion.Enabled == true)
+                {
+                    btnGenerarDevolucion_Click(this, EventArgs.Empty);
+                }                
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void btnAgregarEntrega_Click(object sender, EventArgs e)
         {
             if (CacheInicioUsuario.idEmpleado == 0)
             {
-                MessageBox.Show("Su usuario debe tener un empleado asociado para poder agregar una entrega.", "Usuario Inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Usuario Inválido", "Su usuario debe tener un empleado asociado para poder agregar una entrega.");
             }
             else
             {
                 dgvEntregas.Enabled = false;
                 frmAgregarEntrega formEntrega = new frmAgregarEntrega();
                 SuscribirEventosAgregarEntrega(formEntrega);
-                formEntrega.Show();
+                formEntrega.ShowDialog();
             }
         }
 
@@ -209,11 +241,14 @@ namespace Presentacion
             if (btnGenerarDevolucion.Text == "DEVOLUCIÓN")
             {
                 dgvEntregas.Enabled = false;
-                devolucionEntrega.Show();
+                devolucionEntrega.ShowDialog();
             }
             else if (btnGenerarDevolucion.Text == "ELIMINAR DEVOLUCIÓN")
             {
-                devolucionEntrega.eliminarFechaDevolucion();
+                if (CustomMessageBox.Advertencia("Eliminar devolución", $"¿Está seguro que desea eliminar la fecha de devolución de la entrega {codEntrega}?") == DialogResult.Yes)
+                {
+                    devolucionEntrega.eliminarFechaDevolucion();
+                }
             }
         }
 
@@ -261,11 +296,12 @@ namespace Presentacion
                     }
                 }
             }
-            else if (formCargado && dgvEntregas.SelectedRows.Count > 1)
+            else if (formCargado && dgvEntregas.SelectedRows.Count != 1)
             {
                 btnGenerarDevolucion.Text = "DEVOLUCIÓN";
                 btnGenerarDevolucion.IconChar = FontAwesome.Sharp.IconChar.RotateBack;
                 btnGenerarDevolucion.Enabled = false;
+
                 btnModificarEntrega.Enabled = false;
             }
         }
@@ -288,7 +324,7 @@ namespace Presentacion
                 );
             dgvEntregas.Enabled = false;
             SuscribirEventosAgregarEntrega(modificarEntrega);
-            modificarEntrega.Show();
+            modificarEntrega.ShowDialog();
         }
     }
 }

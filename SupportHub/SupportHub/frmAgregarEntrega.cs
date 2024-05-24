@@ -1,5 +1,6 @@
 ﻿using Comun.Cache;
 using Dominio;
+using Presentacion.CustomMessageBoxes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Annotations;
 using System.Windows.Forms;
+using System.Xaml;
 
 namespace Presentacion
 {
@@ -60,6 +63,9 @@ namespace Presentacion
             this.cboxEquipo.SelectedValue = idEquipo;
             this.tboxCantidadEntrega.Text = cantidadEntrega.ToString();
             this.rtxtObservacionEntrega.Text = observacion;
+
+
+         
         }
 
         public class UpdateEventArgs : EventArgs
@@ -173,23 +179,23 @@ namespace Presentacion
         {
             if (cboxTipoEntrega.SelectedItem == null)
             {
-                MessageBox.Show("Debe seleccionar un tipo de entrega.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Error", "Debe seleccionar un tipo de entrega.");
             }
             else if (cboxEmpleadoRecibe.SelectedItem == null)
             {
-                MessageBox.Show("Debe seleccionar un empleado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Error", "Debe seleccionar un empleado.");
             }
             else if (cboxEquipo.SelectedItem == null)
             {
-                MessageBox.Show("Debe seleccionar un equipo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Error", "Debe seleccionar un equipo.");
             }
             else if (tboxCantidadEntrega.ForeColor == Color.Red)
             {
-                MessageBox.Show("La cantidad a entregar no puede ser mayor a la cantidad disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Error", "La cantidad a entregar no puede ser mayor a la cantidad disponible.");
             }
             else if (Convert.ToInt32(tboxCantidadEntrega.Text) <= 0 || string.IsNullOrEmpty(tboxCantidadEntrega.Text))
             {
-                MessageBox.Show("La cantidad a entregar debe ser mayor a cero.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Error", "La cantidad a entregar debe ser mayor a cero.");
             }
             else
             {
@@ -205,7 +211,7 @@ namespace Presentacion
                     rtxtObservacionEntrega.Text
                     );
 
-                    MessageBox.Show("Se agregó " + registrosAgregados.ToString() + " entrega correctamente.", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CustomMessageBox.Exito("Registro exitoso", "Se agregó " + registrosAgregados.ToString() + " entrega correctamente.");
 
                     actualizardgvEntregas();
                     cboxTipoEntrega.SelectedItem = 1;
@@ -228,7 +234,7 @@ namespace Presentacion
                         rtxtObservacionEntrega.Text
                     );
 
-                    MessageBox.Show("Se modificó " + registrosModificados.ToString() + " entrega correctamente.", "Modificación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CustomMessageBox.Exito("Modificación exitosa", "Se modificó " + registrosModificados.ToString() + " entrega correctamente.");
 
                     actualizardgvEntregas();
                     habilitardgvEntregas();
@@ -241,6 +247,15 @@ namespace Presentacion
         private void btnCerrarAddEmpleado_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void frmAgregarEntrega_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+
+                ibtnGuardarEntrega_Click(sender, e);
+            }
         }
     }
 }

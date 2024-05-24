@@ -64,14 +64,17 @@ namespace Dominio
         {
             return EntregaDato.obtenerEquipos();
         }
+
         public static int cantidadDisponibleEquipo(int idEquipo)
         {
             return EntregaDato.cantidadDisponibleEquipo(idEquipo);
         }
+
         public static DataTable obtenerTiposEntrega()
         {
             return EntregaDato.obtenerTiposEntrega();
         }
+
         public static string asignarFechaDevolucion(string fechaDevolucion, string codEntrega)
         {
             return EntregaDato.asignarFechaDevolucion(fechaDevolucion, codEntrega);

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarEntrega));
             pSuperiorAddEntrega = new Panel();
+            pboxLogo = new PictureBox();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbAddEntrega = new GroupBox();
             tboxEmpleadoEntrega = new TextBox();
@@ -53,10 +54,9 @@
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
             lblTipoDeEntrega = new Label();
-            pboxLogo = new PictureBox();
             pSuperiorAddEntrega.SuspendLayout();
-            gbAddEntrega.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
+            gbAddEntrega.SuspendLayout();
             SuspendLayout();
             // 
             // pSuperiorAddEntrega
@@ -69,6 +69,17 @@
             pSuperiorAddEntrega.Name = "pSuperiorAddEntrega";
             pSuperiorAddEntrega.Size = new Size(734, 60);
             pSuperiorAddEntrega.TabIndex = 1;
+            // 
+            // pboxLogo
+            // 
+            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
+            pboxLogo.Location = new Point(20, 0);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(184, 60);
+            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
+            pboxLogo.TabIndex = 17;
+            pboxLogo.TabStop = false;
             // 
             // btnCerrarAddEmpleado
             // 
@@ -84,7 +95,7 @@
             btnCerrarAddEmpleado.Location = new Point(694, 12);
             btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
             btnCerrarAddEmpleado.Size = new Size(28, 24);
-            btnCerrarAddEmpleado.TabIndex = 16;
+            btnCerrarAddEmpleado.TabIndex = 24;
             btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
@@ -131,7 +142,7 @@
             tboxEmpleadoEntrega.Name = "tboxEmpleadoEntrega";
             tboxEmpleadoEntrega.ReadOnly = true;
             tboxEmpleadoEntrega.Size = new Size(325, 29);
-            tboxEmpleadoEntrega.TabIndex = 32;
+            tboxEmpleadoEntrega.TabIndex = 16;
             // 
             // lblEmpleadoRecibe
             // 
@@ -160,7 +171,7 @@
             tboxCantidadEntrega.Name = "tboxCantidadEntrega";
             tboxCantidadEntrega.RightToLeft = RightToLeft.Yes;
             tboxCantidadEntrega.Size = new Size(98, 29);
-            tboxCantidadEntrega.TabIndex = 29;
+            tboxCantidadEntrega.TabIndex = 20;
             tboxCantidadEntrega.TextAlign = HorizontalAlignment.Center;
             tboxCantidadEntrega.ValidatingType = typeof(int);
             tboxCantidadEntrega.Leave += tboxCantidadEntrega_Leave;
@@ -182,7 +193,7 @@
             tboxCantidadDisponible.Name = "tboxCantidadDisponible";
             tboxCantidadDisponible.ReadOnly = true;
             tboxCantidadDisponible.Size = new Size(98, 29);
-            tboxCantidadDisponible.TabIndex = 27;
+            tboxCantidadDisponible.TabIndex = 19;
             tboxCantidadDisponible.TextAlign = HorizontalAlignment.Center;
             // 
             // lblCantidadDisponible
@@ -201,7 +212,7 @@
             cboxEquipo.Location = new Point(226, 183);
             cboxEquipo.Name = "cboxEquipo";
             cboxEquipo.Size = new Size(325, 29);
-            cboxEquipo.TabIndex = 25;
+            cboxEquipo.TabIndex = 18;
             cboxEquipo.Leave += cboxEquipo_Leave;
             // 
             // lblEquipo
@@ -220,7 +231,7 @@
             cboxEmpleadoRecibe.Location = new Point(226, 148);
             cboxEmpleadoRecibe.Name = "cboxEmpleadoRecibe";
             cboxEmpleadoRecibe.Size = new Size(325, 29);
-            cboxEmpleadoRecibe.TabIndex = 23;
+            cboxEmpleadoRecibe.TabIndex = 17;
             // 
             // labEmpleadoEntrega
             // 
@@ -266,7 +277,7 @@
             ibtnCancelarEntrega.Location = new Point(585, 102);
             ibtnCancelarEntrega.Name = "ibtnCancelarEntrega";
             ibtnCancelarEntrega.Size = new Size(100, 40);
-            ibtnCancelarEntrega.TabIndex = 18;
+            ibtnCancelarEntrega.TabIndex = 23;
             ibtnCancelarEntrega.Text = "CANCELAR";
             ibtnCancelarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
             ibtnCancelarEntrega.UseVisualStyleBackColor = false;
@@ -287,7 +298,7 @@
             ibtnGuardarEntrega.Location = new Point(585, 56);
             ibtnGuardarEntrega.Name = "ibtnGuardarEntrega";
             ibtnGuardarEntrega.Size = new Size(100, 40);
-            ibtnGuardarEntrega.TabIndex = 17;
+            ibtnGuardarEntrega.TabIndex = 22;
             ibtnGuardarEntrega.Text = "GUARDAR";
             ibtnGuardarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
             ibtnGuardarEntrega.UseVisualStyleBackColor = false;
@@ -373,17 +384,6 @@
             lblTipoDeEntrega.TabIndex = 4;
             lblTipoDeEntrega.Text = "Tipo de Entrega:";
             // 
-            // pboxLogo
-            // 
-            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
-            pboxLogo.Location = new Point(20, 0);
-            pboxLogo.Name = "pboxLogo";
-            pboxLogo.Size = new Size(184, 60);
-            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
-            pboxLogo.TabIndex = 17;
-            pboxLogo.TabStop = false;
-            // 
             // frmAgregarEntrega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -401,9 +401,9 @@
             Load += frmAgregarEntrega_Load;
             pSuperiorAddEntrega.ResumeLayout(false);
             pSuperiorAddEntrega.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             gbAddEntrega.ResumeLayout(false);
             gbAddEntrega.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             ResumeLayout(false);
         }
 
