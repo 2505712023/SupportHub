@@ -16,7 +16,6 @@ namespace Dominio
         DataTable tabla = new DataTable();
             tabla= empDato.obtenerEmpleado();
             return tabla;
-        
         }
 
         public DataTable ObtenerArea()

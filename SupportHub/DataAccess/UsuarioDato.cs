@@ -29,9 +29,7 @@ namespace DataAccess
         }
 
         public string Login(string user, string pass)
-
         {
-           
             try
             {
                 using (var connection = GetConnection())
@@ -109,5 +107,5 @@ namespace DataAccess
                 return "Error durante el inicio de sesión: " + ex.Message;
             }
         }
-        }
+    }
 }

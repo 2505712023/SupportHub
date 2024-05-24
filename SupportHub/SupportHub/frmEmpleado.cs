@@ -18,7 +18,6 @@ namespace Presentacion
     public partial class frmEmpleado : Form
     {
         ModeloEmpleado EmpObjeto = new ModeloEmpleado();
-        //private string codEmpleado = null;
         private List<string> tipoEmpleado;
         private bool frmAgregarEmpleadoAbierto = false;
         public frmEmpleado()
@@ -33,46 +32,45 @@ namespace Presentacion
             };
             cbxTipoBusquedaEmpleado.DataSource = tipoEmpleado;
         }
+
         private void AgregarUpdateEvenHandler(object sender, frmAgregarEmpleado.UpdateEventArgs args)
         {
             mostrarEmpleado();
         }
+
         private void ModificarUpdateEvenHandler(object sender, frmModificarEmpleado.ModificarEventArgs args)
         {
             mostrarEmpleado();
         }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             
             if (keyData == (Keys.Control | Keys.Shift | Keys.A))
             {
-             
                 btnAgregarEmpleado_Click(this, EventArgs.Empty);
                 return true; 
             }
 
             if (keyData == (Keys.Control | Keys.Shift | Keys.M))
             {
-
                 btnModificaEmpleado_Click(this, EventArgs.Empty);
                 return true;
             }
             if (keyData == (Keys.Control | Keys.Shift | Keys.E))
             {
-
                 btnEliminarEmpleado_Click(this, EventArgs.Empty);
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
         private void btnAgregarEmpleado_Click(object sender, EventArgs e)
         {
-        
-                frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
+            frmAgregarEmpleado formEmpleado = new frmAgregarEmpleado(this);
             formEmpleado.UpdateEventHandler += AgregarUpdateEvenHandler;
-                formEmpleado.ShowDialog();
-                frmAgregarEmpleadoAbierto = true;
-            
+            formEmpleado.ShowDialog();
+            frmAgregarEmpleadoAbierto = true;
         }
 
         private void frmEmpleado_Load(object sender, EventArgs e)
@@ -99,9 +97,9 @@ namespace Presentacion
                 btnEliminarEmpleado.Visible = false;
                 btnModificaEmpleado.Visible = false;
             }
-
             txtBuscarEmpleado.Focus();
         }
+
         private void cbxTipoBusquedaEmpleado_TextChanged(object sender, EventArgs e)
         {
             txtBuscarEmpleado.Focus();
@@ -195,8 +193,8 @@ namespace Presentacion
             {
                 CustomMessageBox.Error("Operación cancelada", "Operación de eliminación cancelada.");
             }
-
         }
+
         public void ajusteDataGrid()
         {
             dgvEmpleado.Columns["codEmpleado"].HeaderText = "Código";
@@ -227,10 +225,6 @@ namespace Presentacion
         {
             dgvEmpleado.DataSource = null;
         }
-
-
-      
-    
 
         private void btnModificaEmpleado_Click(object sender, EventArgs e)
         {
