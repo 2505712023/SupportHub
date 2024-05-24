@@ -130,16 +130,70 @@ namespace Presentacion
             frmAgregarUsuario agrusuario = new frmAgregarUsuario();
             agrusuario.ShowDialog();
         }
+        ModeloUsuario UsuarioObjeto = new ModeloUsuario();
+
 
         private void btnEliminarUsuario_Click_1(object sender, EventArgs e)
         {
+
+            DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar datos del usuario?", "Eliminar datos del usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (resultado == DialogResult.Yes)
+            {
+                if (dgvUsuario.SelectedRows.Count == 1)
+                {
+                    string loginUsuario = dgvUsuario.CurrentRow.Cells["loginUsuario"].Value.ToString();
+                    bool hasError = false;
+                    try
+                    {
+                        UsuarioObjeto.EliminarUsuario(loginUsuario);
+                    }
+                    catch (SqlException ex)
+                    {
+                        hasError = true;
+                        if (ex.Number == 547)
+                        {
+                            MessageBox.Show("No se puede eliminar el empleado porque tiene entregas pendientes.", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Error al intentar eliminar el empleado: {ex.Message}", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (FormatException)
+                    {
+                        hasError = true;
+                        MessageBox.Show("El empleado tiene entregas o asignaciones pendientes", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    if (hasError == false)
+                    {
+                        MessageBox.Show("Empleado eliminado correctamente", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        mostrarUsuario();
+                        txtBuscarUsuario.Focus();
+                        mostrarUsuario();
+                        ajusteDataGrid();
+                        dgvUsuario.ClearSelection();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione solo una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Operación de eliminación cancelada", "Operación cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
         private void dgvUsuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+    }
+
+    
 
         
     }
-}
+

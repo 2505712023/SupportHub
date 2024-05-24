@@ -54,10 +54,10 @@
             btnEliminarUsuario.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarUsuario.IconSize = 20;
-            btnEliminarUsuario.Location = new Point(1261, 365);
-            btnEliminarUsuario.Margin = new Padding(3, 5, 3, 5);
+            btnEliminarUsuario.Location = new Point(1576, 456);
+            btnEliminarUsuario.Margin = new Padding(4, 6, 4, 6);
             btnEliminarUsuario.Name = "btnEliminarUsuario";
-            btnEliminarUsuario.Size = new Size(203, 101);
+            btnEliminarUsuario.Size = new Size(254, 126);
             btnEliminarUsuario.TabIndex = 12;
             btnEliminarUsuario.Text = "ELIMINAR";
             btnEliminarUsuario.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -76,10 +76,10 @@
             btnModificaUsuario.IconColor = Color.FromArgb(31, 35, 40);
             btnModificaUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModificaUsuario.IconSize = 20;
-            btnModificaUsuario.Location = new Point(1261, 257);
-            btnModificaUsuario.Margin = new Padding(3, 5, 3, 5);
+            btnModificaUsuario.Location = new Point(1576, 321);
+            btnModificaUsuario.Margin = new Padding(4, 6, 4, 6);
             btnModificaUsuario.Name = "btnModificaUsuario";
-            btnModificaUsuario.Size = new Size(203, 97);
+            btnModificaUsuario.Size = new Size(254, 121);
             btnModificaUsuario.TabIndex = 11;
             btnModificaUsuario.Text = "MODIFICAR";
             btnModificaUsuario.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -98,10 +98,10 @@
             btnAgregarUsuario.IconColor = Color.FromArgb(31, 35, 40);
             btnAgregarUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarUsuario.IconSize = 20;
-            btnAgregarUsuario.Location = new Point(1261, 157);
-            btnAgregarUsuario.Margin = new Padding(3, 5, 3, 5);
+            btnAgregarUsuario.Location = new Point(1576, 196);
+            btnAgregarUsuario.Margin = new Padding(4, 6, 4, 6);
             btnAgregarUsuario.Name = "btnAgregarUsuario";
-            btnAgregarUsuario.Size = new Size(203, 89);
+            btnAgregarUsuario.Size = new Size(254, 111);
             btnAgregarUsuario.TabIndex = 10;
             btnAgregarUsuario.Text = "AGREGAR";
             btnAgregarUsuario.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -132,8 +132,8 @@
             dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvUsuario.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvUsuario.Location = new Point(14, 157);
-            dgvUsuario.Margin = new Padding(3, 5, 3, 5);
+            dgvUsuario.Location = new Point(18, 196);
+            dgvUsuario.Margin = new Padding(4, 6, 4, 6);
             dgvUsuario.Name = "dgvUsuario";
             dgvUsuario.ReadOnly = true;
             dgvUsuario.RowHeadersWidth = 51;
@@ -145,7 +145,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvUsuario.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvUsuario.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvUsuario.Size = new Size(1234, 741);
+            dgvUsuario.Size = new Size(1542, 832);
             dgvUsuario.TabIndex = 15;
             dgvUsuario.CellContentClick += dgvUsuario_CellContentClick;
             // 
@@ -155,11 +155,11 @@
             gbBuscarUsuario.Controls.Add(cbxTipoBusquedaUsuario);
             gbBuscarUsuario.Controls.Add(txtBuscarUsuario);
             gbBuscarUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            gbBuscarUsuario.Location = new Point(14, 17);
-            gbBuscarUsuario.Margin = new Padding(3, 5, 3, 5);
+            gbBuscarUsuario.Location = new Point(18, 21);
+            gbBuscarUsuario.Margin = new Padding(4, 6, 4, 6);
             gbBuscarUsuario.Name = "gbBuscarUsuario";
-            gbBuscarUsuario.Padding = new Padding(3, 5, 3, 5);
-            gbBuscarUsuario.Size = new Size(1234, 121);
+            gbBuscarUsuario.Padding = new Padding(4, 6, 4, 6);
+            gbBuscarUsuario.Size = new Size(1542, 151);
             gbBuscarUsuario.TabIndex = 14;
             gbBuscarUsuario.TabStop = false;
             gbBuscarUsuario.Text = "BUSCAR USUARIO::...";
@@ -169,10 +169,10 @@
             // 
             cbxTipoBusquedaUsuario.Font = new Font("Segoe UI", 9F);
             cbxTipoBusquedaUsuario.FormattingEnabled = true;
-            cbxTipoBusquedaUsuario.Location = new Point(8, 47);
-            cbxTipoBusquedaUsuario.Margin = new Padding(3, 5, 3, 5);
+            cbxTipoBusquedaUsuario.Location = new Point(10, 59);
+            cbxTipoBusquedaUsuario.Margin = new Padding(4, 6, 4, 6);
             cbxTipoBusquedaUsuario.Name = "cbxTipoBusquedaUsuario";
-            cbxTipoBusquedaUsuario.Size = new Size(180, 28);
+            cbxTipoBusquedaUsuario.Size = new Size(224, 33);
             cbxTipoBusquedaUsuario.TabIndex = 6;
             cbxTipoBusquedaUsuario.SelectedIndexChanged += cbxTipoBusquedaUsuario_SelectedIndexChanged;
             cbxTipoBusquedaUsuario.TextChanged += cbxTipoBusquedaUsuario_TextChanged;
@@ -181,25 +181,25 @@
             // 
             txtBuscarUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtBuscarUsuario.Font = new Font("Segoe UI", 9F);
-            txtBuscarUsuario.Location = new Point(198, 48);
-            txtBuscarUsuario.Margin = new Padding(3, 5, 3, 5);
+            txtBuscarUsuario.Location = new Point(248, 60);
+            txtBuscarUsuario.Margin = new Padding(4, 6, 4, 6);
             txtBuscarUsuario.Name = "txtBuscarUsuario";
-            txtBuscarUsuario.Size = new Size(1029, 27);
+            txtBuscarUsuario.Size = new Size(1285, 31);
             txtBuscarUsuario.TabIndex = 5;
             txtBuscarUsuario.TextChanged += txtBuscarUsuario_TextChanged;
             // 
             // frmUsuario
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
-            ClientSize = new Size(1478, 916);
+            ClientSize = new Size(1848, 1050);
             Controls.Add(dgvUsuario);
             Controls.Add(gbBuscarUsuario);
             Controls.Add(btnEliminarUsuario);
             Controls.Add(btnModificaUsuario);
             Controls.Add(btnAgregarUsuario);
-            Margin = new Padding(3, 4, 3, 4);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "frmUsuario";
             Text = "frmUsuario";
             Load += frmUsuario_Load;

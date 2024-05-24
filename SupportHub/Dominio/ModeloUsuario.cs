@@ -69,8 +69,13 @@ namespace Dominio
             userData.ActualizarUsuario(LoginUsuario, nombreUsuario,apellidoUsuario,contrasenia,activo,tipousuario);
         }
 
-        US
+      
+        public void EliminarUsuario( string loginUsuario)
+        {
+            userData.EliminarUsuario(loginUsuario);
+        }
 
+       
     }
    
 

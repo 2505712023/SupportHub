@@ -231,7 +231,15 @@ namespace DataAccess
             }
         }
 
+        public void EliminarUsuario(string codUsuario)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void EliminarUsuario(int idUsuario)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 
