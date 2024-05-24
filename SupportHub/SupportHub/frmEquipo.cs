@@ -16,9 +16,21 @@ namespace Presentacion
 {
     public partial class frmEquipo : Form
     {
+        private List<string> tipoBusquedaEquipo;
         public frmEquipo()
         {
             InitializeComponent();
+            tipoBusquedaEquipo = new List<string>()
+            {   
+                "Tipo Equipo",
+                "Marca Equipo",
+                "Modelo Equipo",
+                "Cantidad Equipo",
+                "Precio Equipo",
+                "Proveedor",
+                "Descripción Equipo"
+            };
+            cbxTipoBusquedaEquipo.DataSource = tipoBusquedaEquipo;
         }
 
         private void frmEquipo_Load(object sender, EventArgs e)
@@ -74,6 +86,15 @@ namespace Presentacion
                 dgvEquipo.DataSource = ModeloEquipo.obtenerTablaEquipos();
                 dgvEquipo.ClearSelection();
             }
+            else
+            {
+                switch (cbxTipoBusquedaEquipo.Text)
+                {
+                    case "Tipo Equipo":
+
+                        break;
+                }
+            }
         }
 
         private void AgreUpdateEventHandler(object sender, frmAgregarEquipo.UpdateEventArgs args)
@@ -92,6 +113,17 @@ namespace Presentacion
         private void btnModificarEquipo_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtBuscarEquipo_TextChanged(object sender, EventArgs e)
+        {
+            actualizarTablaEquipos();
+        }
+
+        private void cbxTipoBusquedaEquipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtBuscarEquipo.Focus();
+            actualizarTablaEquipos();
         }
     }
 }
