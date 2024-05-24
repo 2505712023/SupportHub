@@ -19,7 +19,7 @@ namespace Presentacion
         private List<string> tiposDeBusqueda;
         private bool formCargado = false;
         private string? codEntrega = string.Empty;
-
+      
         public frmEntrega()
         {
             InitializeComponent();
@@ -36,8 +36,8 @@ namespace Presentacion
             };
             cBoxTipoBusqueda.DataSource = tiposDeBusqueda;
         }
-
-        private void frmEntrega_Load(object sender, EventArgs e)
+       
+        public  void frmEntrega_Load(object sender, EventArgs e)
         {
             formCargado = true;
             prepararDgvEntregas();
@@ -56,7 +56,7 @@ namespace Presentacion
                 btnEliminarEntrega.Visible = false;
             }
         }
-
+       
         private void prepararDgvEntregas()
         {
             cBoxTipoBusqueda.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -79,6 +79,7 @@ namespace Presentacion
                 }
             }
             dgvEntregas.ClearSelection();
+            txtBuscarEntrega.Focus();
         }
 
         private void txtBuscarEntrega_TextChanged(object sender, EventArgs e)
@@ -164,6 +165,39 @@ namespace Presentacion
                 actualizarTablaEntregas();
             }
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.A))
+            {
+                btnAgregarEntrega_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.M))
+            {
+                if (btnModificarEntrega.Enabled == true)
+                {
+                    btnModificarEntrega_Click(this, EventArgs.Empty);
+                }
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.E))
+            {
+                btnEliminarEntrega_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.G))
+            {
+                if (btnGenerarDevolucion.Enabled == true)
+                {
+                    btnGenerarDevolucion_Click(this, EventArgs.Empty);
+                }                
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
 
         private void btnAgregarEntrega_Click(object sender, EventArgs e)
         {
@@ -176,7 +210,7 @@ namespace Presentacion
                 dgvEntregas.Enabled = false;
                 frmAgregarEntrega formEntrega = new frmAgregarEntrega();
                 SuscribirEventosAgregarEntrega(formEntrega);
-                formEntrega.Show();
+                formEntrega.ShowDialog();
             }
         }
 
@@ -207,7 +241,7 @@ namespace Presentacion
             if (btnGenerarDevolucion.Text == "DEVOLUCIÓN")
             {
                 dgvEntregas.Enabled = false;
-                devolucionEntrega.Show();
+                devolucionEntrega.ShowDialog();
             }
             else if (btnGenerarDevolucion.Text == "ELIMINAR DEVOLUCIÓN")
             {
@@ -290,7 +324,7 @@ namespace Presentacion
                 );
             dgvEntregas.Enabled = false;
             SuscribirEventosAgregarEntrega(modificarEntrega);
-            modificarEntrega.Show();
+            modificarEntrega.ShowDialog();
         }
     }
 }

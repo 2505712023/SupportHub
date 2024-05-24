@@ -20,30 +20,26 @@ namespace Presentacion
             InitializeComponent();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void frmInformacion_Load(object sender, EventArgs e)
         {
             cargarDatoUsuario();
             inicializarControlPass();
         }
+
         private void cargarDatoUsuario()
         {
             lblIdInfo.Text = CacheInicioUsuario.IdUser.ToString();
             lblUser.Text = CacheInicioUsuario.user;
             lblNombreInfo.Text = CacheInicioUsuario.nombreUser;
             lblApellidoInfor.Text = CacheInicioUsuario.apellidoUser;
-
             txtUsuario.Text = CacheInicioUsuario.user;
             txtNombreUsuario.Text = CacheInicioUsuario.nombreUser;
             txtApellidoUsuario.Text = CacheInicioUsuario.apellidoUser;
-            txtNuevaContra.Text = CacheInicioUsuario.password;
+            txtNuevaContra.Text = "";
             txtContraActual.Text = "";
-            txtConfirmarContra.Text = CacheInicioUsuario.password;
+            txtConfirmarContra.Text = "";
         }
+
         private void inicializarControlPass()
         {
 
@@ -126,15 +122,15 @@ namespace Presentacion
             {
                 CustomMessageBox.Error("Error", "La contraseña debe tener al menos 5 caracteres.");
             }
-
-
         }
+
         private void ResetearFormulario()
         {
             txtContraActual.Text = "";
             txtNuevaContra.Text = "";
             txtConfirmarContra.Text = "";
         }
+
         private void btnCancelaEmpleado_Click(object sender, EventArgs e)
         {
             pCambiarcontraseña.Visible=false;

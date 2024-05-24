@@ -46,7 +46,6 @@
             lblNombreEmpleado = new Label();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
-            pSuperiorAddEmpleado = new Panel();
             gbAddEmpleado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             pSuperiorAddEmpleado.SuspendLayout();
@@ -85,6 +84,7 @@
             txtTelefonoEmpleado.Name = "txtTelefonoEmpleado";
             txtTelefonoEmpleado.Size = new Size(266, 29);
             txtTelefonoEmpleado.TabIndex = 8;
+            txtTelefonoEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // btnCancelaEmpleado
             // 
@@ -137,6 +137,7 @@
             cbxAreaEmpleado.Name = "cbxAreaEmpleado";
             cbxAreaEmpleado.Size = new Size(206, 29);
             cbxAreaEmpleado.TabIndex = 11;
+            cbxAreaEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // cbxCargoEmpleado
             // 
@@ -146,6 +147,7 @@
             cbxCargoEmpleado.Name = "cbxCargoEmpleado";
             cbxCargoEmpleado.Size = new Size(206, 29);
             cbxCargoEmpleado.TabIndex = 10;
+            cbxCargoEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // txtEmailEmpleado
             // 
@@ -154,6 +156,7 @@
             txtEmailEmpleado.Name = "txtEmailEmpleado";
             txtEmailEmpleado.Size = new Size(266, 29);
             txtEmailEmpleado.TabIndex = 9;
+            txtEmailEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // txtApellidoEmpleado
             // 
@@ -162,6 +165,7 @@
             txtApellidoEmpleado.Name = "txtApellidoEmpleado";
             txtApellidoEmpleado.Size = new Size(266, 29);
             txtApellidoEmpleado.TabIndex = 7;
+            txtApellidoEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // txtNombreEmpleado
             // 
@@ -170,6 +174,7 @@
             txtNombreEmpleado.Name = "txtNombreEmpleado";
             txtNombreEmpleado.Size = new Size(266, 29);
             txtNombreEmpleado.TabIndex = 6;
+            txtNombreEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // lblAreaEmpleado
             // 
@@ -280,6 +285,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EMPLEADO ";
             Load += frmAgregarEmpleado_Load;
+            KeyPress += frmAgregarEmpleado_KeyPress;
             gbAddEmpleado.ResumeLayout(false);
             gbAddEmpleado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();

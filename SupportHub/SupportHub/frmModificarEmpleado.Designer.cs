@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmModificarEmpleado));
             pSuperiorUpdEmpleado = new Panel();
+            pboxLogo = new PictureBox();
             btnCerrarModificarEmpleado = new FontAwesome.Sharp.IconButton();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbUpdEmpleado = new GroupBox();
@@ -49,10 +50,9 @@
             lblTelefonoEmpleadoUpdate = new Label();
             lblApellidoEmpleadoUpdate = new Label();
             lblNombreEmpleadoUpdate = new Label();
-            pboxLogo = new PictureBox();
             pSuperiorUpdEmpleado.SuspendLayout();
-            gbUpdEmpleado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
+            gbUpdEmpleado.SuspendLayout();
             SuspendLayout();
             // 
             // pSuperiorUpdEmpleado
@@ -66,6 +66,17 @@
             pSuperiorUpdEmpleado.Name = "pSuperiorUpdEmpleado";
             pSuperiorUpdEmpleado.Size = new Size(585, 60);
             pSuperiorUpdEmpleado.TabIndex = 1;
+            // 
+            // pboxLogo
+            // 
+            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
+            pboxLogo.Location = new Point(20, 0);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(184, 60);
+            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
+            pboxLogo.TabIndex = 17;
+            pboxLogo.TabStop = false;
             // 
             // btnCerrarModificarEmpleado
             // 
@@ -185,6 +196,7 @@
             txtTelefonoEmpleadoUpdate.Name = "txtTelefonoEmpleadoUpdate";
             txtTelefonoEmpleadoUpdate.Size = new Size(266, 29);
             txtTelefonoEmpleadoUpdate.TabIndex = 8;
+            txtTelefonoEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // btnCancelaEmpleado
             // 
@@ -237,6 +249,7 @@
             cbxAreaEmpleadoUpdate.Name = "cbxAreaEmpleadoUpdate";
             cbxAreaEmpleadoUpdate.Size = new Size(206, 29);
             cbxAreaEmpleadoUpdate.TabIndex = 11;
+            cbxAreaEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // cbxCargoEmpleadoUpdate
             // 
@@ -247,6 +260,7 @@
             cbxCargoEmpleadoUpdate.Name = "cbxCargoEmpleadoUpdate";
             cbxCargoEmpleadoUpdate.Size = new Size(206, 29);
             cbxCargoEmpleadoUpdate.TabIndex = 10;
+            cbxCargoEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // txtEmailEmpleadoUpdate
             // 
@@ -255,6 +269,7 @@
             txtEmailEmpleadoUpdate.Name = "txtEmailEmpleadoUpdate";
             txtEmailEmpleadoUpdate.Size = new Size(266, 29);
             txtEmailEmpleadoUpdate.TabIndex = 9;
+            txtEmailEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // txtApellidoEmpleadoUpdate
             // 
@@ -263,6 +278,7 @@
             txtApellidoEmpleadoUpdate.Name = "txtApellidoEmpleadoUpdate";
             txtApellidoEmpleadoUpdate.Size = new Size(266, 29);
             txtApellidoEmpleadoUpdate.TabIndex = 7;
+            txtApellidoEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // txtNombreEmpleadoUpdate
             // 
@@ -271,6 +287,7 @@
             txtNombreEmpleadoUpdate.Name = "txtNombreEmpleadoUpdate";
             txtNombreEmpleadoUpdate.Size = new Size(266, 29);
             txtNombreEmpleadoUpdate.TabIndex = 6;
+            txtNombreEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // lblAreaEmpleadoUpdate
             // 
@@ -326,17 +343,6 @@
             lblNombreEmpleadoUpdate.TabIndex = 0;
             lblNombreEmpleadoUpdate.Text = "Nombre:";
             // 
-            // pboxLogo
-            // 
-            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
-            pboxLogo.Location = new Point(20, 0);
-            pboxLogo.Name = "pboxLogo";
-            pboxLogo.Size = new Size(184, 60);
-            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
-            pboxLogo.TabIndex = 17;
-            pboxLogo.TabStop = false;
-            // 
             // frmModificarEmpleado
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -349,11 +355,13 @@
             Name = "frmModificarEmpleado";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmModificarEmpleado";
+            Load += frmModificarEmpleado_Load;
+            KeyPress += frmModificarEmpleado_KeyPress;
             pSuperiorUpdEmpleado.ResumeLayout(false);
             pSuperiorUpdEmpleado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             gbUpdEmpleado.ResumeLayout(false);
             gbUpdEmpleado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             ResumeLayout(false);
         }
 
