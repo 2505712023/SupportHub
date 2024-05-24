@@ -197,15 +197,15 @@ namespace Presentacion
                 Document doc = new Document(PageSize.LETTER);
                 try
                 {
-                    PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(folderName + @"\PDF_SupportHub.pdf", FileMode.Create));
+                    PdfWriter writer = PdfWriter.GetInstance(doc, new FileStream(folderName + @"\Entrega_SupportHub_" + tboxCodigoEntrega.Text + @".pdf", FileMode.Create));
 
                     doc.AddTitle("PDF_SupportHub");
                     doc.AddCreator("SupporHub");
                     doc.Open();
 
                     iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
-                   // iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance("C:\\Users\\HP\\Desktop\\TAREA C #\\C#\\SupportHub-removebg-preview.jpg");
-                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance("Logo\\SupportHub-removebg-preview.jpg");
+                    // iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance("C:\\Users\\HP\\Desktop\\TAREA C #\\C#\\SupportHub-removebg-preview.jpg");
+                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(@"..\..\..\..\logo_para_reporte.jpg");
                     img.ScaleToFit(150f, 150f);
                     img.Alignment = iTextSharp.text.Image.ALIGN_CENTER;
                     doc.Add(img);
@@ -331,7 +331,7 @@ namespace Presentacion
 
 
                     MessageBox.Show("Documento creado");
-                    string fileName = "C:\\Users\\HP\\Desktop\\PDF_SupportHub.pdf";
+                    string fileName = folderName + @"\Entrega_SupportHub_" + tboxCodigoEntrega.Text + @".pdf";
                     try
                     {
                         System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
