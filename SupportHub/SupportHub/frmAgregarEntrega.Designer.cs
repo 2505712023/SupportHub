@@ -213,7 +213,6 @@
             cboxEquipo.Name = "cboxEquipo";
             cboxEquipo.Size = new Size(325, 29);
             cboxEquipo.TabIndex = 18;
-            cboxEquipo.KeyPress += frmAgregarEntrega_KeyPress;
             cboxEquipo.Leave += cboxEquipo_Leave;
             // 
             // lblEquipo
@@ -400,7 +399,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAgregarEntrega";
             Load += frmAgregarEntrega_Load;
-            KeyPress += frmAgregarEntrega_KeyPress;
             pSuperiorAddEntrega.ResumeLayout(false);
             pSuperiorAddEntrega.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();

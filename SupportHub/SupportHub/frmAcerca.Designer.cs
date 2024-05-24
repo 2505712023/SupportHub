@@ -44,7 +44,6 @@
             rtbAcerca.Size = new Size(556, 418);
             rtbAcerca.TabIndex = 8;
             rtbAcerca.Text = "";
-            rtbAcerca.TextChanged += rtbAcerca_TextChanged;
             // 
             // pictureBox1
             // 
@@ -68,7 +67,6 @@
             Controls.Add(rtbAcerca);
             Name = "frmAcerca";
             Text = "frmAcerca";
-            Load += frmAcerca_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
