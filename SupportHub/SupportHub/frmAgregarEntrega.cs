@@ -246,7 +246,6 @@ namespace Presentacion
 
         private void btnCerrarAddEmpleado_Click(object sender, EventArgs e)
         {
-            habilitardgvEntregas();
             this.Close();
         }
 
