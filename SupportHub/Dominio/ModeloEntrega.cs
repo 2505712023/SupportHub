@@ -55,6 +55,10 @@ namespace Dominio
         {
             return EntregaDato.obtenerEmpleados();
         }
+        public static string LlenarCodigoEntrega(string CodEntrega)
+        {
+            return EntregaDato.obtenerCodigoEntrega(CodEntrega);
+        }
 
         public static DataTable obtenerEquipos()
         {
@@ -71,6 +75,10 @@ namespace Dominio
         public static string asignarFechaDevolucion(string fechaDevolucion, string codEntrega)
         {
             return EntregaDato.asignarFechaDevolucion(fechaDevolucion, codEntrega);
+        }
+        public static DataTable SeleccionarEntregaID(String codEntrega)
+        {
+            return EntregaDato.SeleccionarEntregaID(codEntrega);
         }
     }
 }

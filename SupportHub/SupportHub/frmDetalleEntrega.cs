@@ -214,10 +214,12 @@ namespace Presentacion
             DataGridViewRow selectedRow = dgvEntregas.SelectedRows[0];
 
             frmMostrarEntregaDetalle MostrarEntrega = new frmMostrarEntregaDetalle(
-                    codEntrega: codEntrega,
+                    codEntrega: selectedRow.Cells["Código de Entrega"].Value.ToString(),
                     esModificacion: true,
                     cantidadEntregaAnterior: Convert.ToInt32(selectedRow.Cells["Cantidad Entregada"].Value.ToString()),
                     idTipoEntrega: Convert.ToInt32(selectedRow.Cells["idTipoEntrega"].Value.ToString()),
+                    marca: selectedRow.Cells["Marca"].Value.ToString(),
+                    modelo: selectedRow.Cells["Modelo"].Value.ToString(),
                     fechaEntrega: selectedRow.Cells["Fecha de Entrega"].Value.ToString(),
                     empleadoEntrega: selectedRow.Cells["Empleado Entregó"].Value.ToString(),
                     idEmpleadoRecibe: Convert.ToInt32(selectedRow.Cells["idEmpleadoRecibe"].Value.ToString()),

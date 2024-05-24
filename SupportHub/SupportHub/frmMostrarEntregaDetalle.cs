@@ -66,12 +66,14 @@ namespace Presentacion
                 bool esModificacion,
                 int cantidadEntregaAnterior,
                 int idTipoEntrega,
+                string marca,
+                string modelo,
                 string fechaEntrega,
                 string empleadoEntrega,
                 int idEmpleadoRecibe,
                 int idEquipo,
                 int cantidadEntrega,
-                string observacion = ""
+                string observacion
                 )
         {
             InitializeComponent();
@@ -82,7 +84,9 @@ namespace Presentacion
             llenarEmpleados();
             llenarEquipos();
 
-            this.codEntrega = codEntrega;
+            this.tboxModelo.Text = modelo;
+            this.tboxMarca.Text = marca;
+            this.tboxCodigoEntrega.Text = codEntrega;
             this.esModificacion = esModificacion;
             this.cantidadEntregaAnterior = cantidadEntregaAnterior;
             this.cboxTipoEntrega.SelectedValue = idTipoEntrega;
@@ -121,6 +125,11 @@ namespace Presentacion
             cboxEmpleadoRecibe.ValueMember = "idEmpleado";
             cboxEmpleadoRecibe.DisplayMember = "Empleado";
         }
+        private void MostrarDatosEntrega(string CodEntrega)
+        {
+            tboxCodigoEntrega.Text = ModeloEntrega.LlenarCodigoEntrega(CodEntrega);
+
+        }
 
         private void llenarEquipos()
         {
@@ -135,7 +144,11 @@ namespace Presentacion
             cboxTipoEntrega.ValueMember = "idTipoEntrega";
             cboxTipoEntrega.DisplayMember = "nombreTipoEntrega";
         }
-
+        private void MostrarEntregaCodigo(string codEntrega)
+        {
+            DataTable Entregas = new DataTable();
+            Entregas = ModeloEntrega.SeleccionarEntregaID(codEntrega);
+        }
         private void obtenerCantidadDisponible()
         {
             if (cboxEquipo.SelectedValue != null)
@@ -190,85 +203,147 @@ namespace Presentacion
                     doc.AddCreator("SupporHub");
                     doc.Open();
 
-                    iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 12, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
-                    doc.Add(new Paragraph("REPORTE DE ENTREGA EQUIPO", _standardFont));
-                    doc.Add(Chunk.NEWLINE);
-
-
-                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance("C:\\Users\\HP\\Desktop\\TAREA C #\\C#\\SupportHub-removebg-preview.png");
+                    iTextSharp.text.Font _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 14, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+                   // iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance("C:\\Users\\HP\\Desktop\\TAREA C #\\C#\\SupportHub-removebg-preview.jpg");
+                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance("Logo\\SupportHub-removebg-preview.jpg");
                     img.ScaleToFit(150f, 150f);
                     img.Alignment = iTextSharp.text.Image.ALIGN_CENTER;
                     doc.Add(img);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
 
-                    PdfPTable tblPrueba = new PdfPTable(3);
+                    _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 9, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                    Paragraph Direccion = new Paragraph("Torre Futura, 87 Avenida Norte y Calle El Mirador, \nColonia Escalón, Oficina 555 San Salvador, El Salvador.", _standardFont);
+                    Direccion.Alignment = Element.ALIGN_RIGHT;
+                    doc.Add(Direccion);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+
+                    _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
+                    doc.Add(new Paragraph("Codigo Entrega: " + tboxCodigoEntrega.Text, _standardFont));
+                    doc.Add(Chunk.NEWLINE);
+
+                    _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                    doc.Add(new Paragraph("IT Encargado: " + tboxEmpleadoEntrega.Text, _standardFont));
+                    doc.Add(Chunk.NEWLINE);
+
+                    _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                    doc.Add(new Paragraph("Usuario Entrega: " + cboxEmpleadoRecibe.Text.ToString(), _standardFont));
+                    doc.Add(Chunk.NEWLINE);
+
+                    PdfPTable tblPrueba = new PdfPTable(5);
                     tblPrueba.WidthPercentage = 85;
 
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
 
-                    PdfPCell clNombre = new PdfPCell(new Phrase("Empleado Entrega", _standardFont));
+                    PdfPCell clNombre = new PdfPCell(new Phrase("Codigo Equipo", _standardFont));
                     clNombre.BorderWidth = 0;
                     clNombre.BorderWidthBottom = 0.5f;
                     clNombre.BackgroundColor = BaseColor.LIGHT_GRAY;
 
-                    PdfPCell clApellido = new PdfPCell(new Phrase("Empledo Recibe", _standardFont));
+                    PdfPCell clApellido = new PdfPCell(new Phrase("Cantidad", _standardFont));
                     clApellido.BorderWidth = 0;
                     clApellido.BorderWidthBottom = 0.5f;
                     clApellido.BackgroundColor = BaseColor.LIGHT_GRAY;
 
-                    PdfPCell clPais = new PdfPCell(new Phrase("Fecha", _standardFont));
-                    clPais.BorderWidth = 0;
-                    clPais.BorderWidthBottom = 0.5f;
-                    clPais.BackgroundColor = BaseColor.LIGHT_GRAY;
+                    PdfPCell clMarca = new PdfPCell(new Phrase("Marca", _standardFont));
+                    clMarca.BorderWidth = 0;
+                    clMarca.BorderWidthBottom = 0.5f;
+                    clMarca.BackgroundColor = BaseColor.LIGHT_GRAY;
+
+                    PdfPCell clModelo = new PdfPCell(new Phrase("Modelo", _standardFont));
+                    clModelo.BorderWidth = 0;
+                    clModelo.BorderWidthBottom = 0.5f;
+                    clModelo.BackgroundColor = BaseColor.LIGHT_GRAY;
+
+                    PdfPCell clEquipo = new PdfPCell(new Phrase("Tipo \nEquipo", _standardFont));
+                    clEquipo.BorderWidth = 0;
+                    clEquipo.BorderWidthBottom = 0.5f;
+                    clEquipo.BackgroundColor = BaseColor.LIGHT_GRAY;
+
 
                     tblPrueba.AddCell(clNombre);
                     tblPrueba.AddCell(clApellido);
-                    tblPrueba.AddCell(clPais);
+                    tblPrueba.AddCell(clMarca);
+                    tblPrueba.AddCell(clModelo);
+                    tblPrueba.AddCell(clEquipo);
 
-                    clNombre = new PdfPCell(new Phrase(tboxEmpleadoEntrega.Text, _standardFont));
+                    clNombre = new PdfPCell(new Phrase(tboxCodigoEntrega.Text, _standardFont));
                     clNombre.BorderWidth = 0;
 
-                    clApellido = new PdfPCell(new Phrase(cboxEmpleadoRecibe.SelectedValue.ToString(), _standardFont));
+                    clApellido = new PdfPCell(new Phrase(tboxCantidadEntrega.Text, _standardFont));
                     clApellido.BorderWidth = 0;
 
-                    clPais = new PdfPCell(new Phrase(dtpickerFechaEntrega.Text, _standardFont));
-                    clPais.BorderWidth = 0;
+                    clMarca = new PdfPCell(new Phrase(tboxMarca.Text, _standardFont));
+                    clMarca.BorderWidth = 0;
+
+                    clModelo = new PdfPCell(new Phrase(tboxModelo.Text, _standardFont));
+                    clModelo.BorderWidth = 0;
+
+                    clEquipo = new PdfPCell(new Phrase(cboxEquipo.Text.ToString(), _standardFont));
+                    clEquipo.BorderWidth = 0;
 
                     tblPrueba.AddCell(clNombre);
                     tblPrueba.AddCell(clApellido);
-                    tblPrueba.AddCell(clPais);
+                    tblPrueba.AddCell(clMarca);
+                    tblPrueba.AddCell(clModelo);
+                    tblPrueba.AddCell(clEquipo);
 
                     doc.Add(tblPrueba);
                     doc.Add(Chunk.NEWLINE);
-
-
-                    _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
-
-                    PdfContentByte canvas = writer.DirectContent;
-                    ColumnText ct = new ColumnText(canvas);
-
-                    ct.SetSimpleColumn(150, 150, 35, 10);
-
-
-                    ct.AddElement(new Paragraph("Observaciones:", _standardFont));
-                    doc.Add(new Paragraph(rtxtObservacionEntrega.Text, _standardFont));
-                    ct.Go();
                     doc.Add(Chunk.NEWLINE);
                     doc.Add(Chunk.NEWLINE);
-                    _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
-                    doc.Add(new Paragraph("Id del equipo:", _standardFont));
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+
+
 
                     _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-                    doc.Add(new Paragraph(cboxEquipo.SelectedValue.ToString(), _standardFont));
+                    doc.Add(new Paragraph("Observaciones: " + rtxtObservacionEntrega.Text, _standardFont));
+                    doc.Add(new Paragraph("____________________________________________________________________________________________ " , _standardFont));
+                    doc.Add(new Paragraph("____________________________________________________________________________________________ " , _standardFont));
                     doc.Add(Chunk.NEWLINE);
-
-                    _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.BOLD, BaseColor.BLACK);
-                    doc.Add(new Paragraph("Codigo Entrega:", _standardFont));
-
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE); 
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(Chunk.NEWLINE);
                     _standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
-                    doc.Add(new Paragraph(codEntrega, _standardFont));
-                    doc.Add(Chunk.NEWLINE);
+                    doc.Add(new Paragraph("F.IT: _____________________________                                 F.Empleado: ___________________________", _standardFont));
+
+                    //_standardFont = new iTextSharp.text.Font(iTextSharp.text.Font.FontFamily.HELVETICA, 10, iTextSharp.text.Font.NORMAL, BaseColor.BLACK);
+                    //doc.Add(new Paragraph(codEntrega, _standardFont));
+                    //doc.Add(Chunk.NEWLINE);
 
 
                     MessageBox.Show("Documento creado");
+                    string fileName = "C:\\Users\\HP\\Desktop\\PDF_SupportHub.pdf";
+                    try
+                    {
+                        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo()
+                        {
+                            FileName = fileName,
+                            UseShellExecute = true
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("No se pudo abrir el archivo PDF. Error: " + ex.Message);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -279,6 +354,16 @@ namespace Presentacion
                     doc.Close();
                 }
             }
+        }
+
+        private void tboxEmpleadoEntrega_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rtxtObservacionEntrega_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
