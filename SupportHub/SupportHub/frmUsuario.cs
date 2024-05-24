@@ -106,8 +106,8 @@ namespace Presentacion
 
         private void btnModificaUsuario_Click(object sender, EventArgs e)
         {
-            frmModificarUsuario mdfusuario = new frmModificarUsuario();
-            mdfusuario.Show();
+            
+           
         }
 
         private void txtBuscarUsuario_TextChanged(object sender, EventArgs e)
