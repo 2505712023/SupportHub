@@ -40,6 +40,7 @@ namespace Presentacion
         public  void frmEntrega_Load(object sender, EventArgs e)
         {
             formCargado = true;
+            dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
             prepararDgvEntregas();
 
             if (!CacheInicioUsuario.permisosUser.Contains("Agregar"))
@@ -60,7 +61,6 @@ namespace Presentacion
         private void prepararDgvEntregas()
         {
             cBoxTipoBusqueda.DropDownStyle = ComboBoxStyle.DropDownList;
-            dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
             dgvEntregas.Columns["idTipoEntrega"].Visible = false;
             dgvEntregas.Columns["idEquipo"].Visible = false;
             dgvEntregas.Columns["idEmpleadoEntrega"].Visible = false;
