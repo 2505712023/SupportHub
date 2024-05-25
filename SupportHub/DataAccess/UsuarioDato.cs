@@ -10,7 +10,7 @@ using System.Reflection.Metadata;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
-using System.Windows;
+
 namespace DataAccess
 {
     public class UsuarioDato : ConexionSql
@@ -142,24 +142,35 @@ namespace DataAccess
             }
 
         }
-        public bool ValidarExisteLogin(string nombre)
+        public bool ValidarLogin(string login)
         {
             bool existe = false;
+            string query = "SELECT COUNT(1) FROM Usuarios WHERE LoginUsuario = @Login";
 
-            using (var conexion=GetConnection())
+            using (var conexion = GetConnection())
             {
-                string query = "SELECT COUNT(1) FROM usuarios WHERE nombreusuario = @Texto";
                 SqlCommand command = new SqlCommand(query, conexion);
-                command.Parameters.AddWithValue("@Texto",nombre);
-                conexion.Open();
-                int count = (int)command.ExecuteScalar();
-               
+                command.Parameters.AddWithValue("@Login", login);
+
+                try
+                {
+                    conexion.Open();
+                    int count = (int)command.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        existe = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+            
+                    throw new Exception("Error checking login existence", ex);
+                }
+                
             }
 
             return existe;
         }
-
-
 
 
         public DataTable filtrarTablaUsuario(string loginUsuario = "-1", string nombreUsuario = "-1", string apellidoUsuario = "-1")
@@ -310,7 +321,34 @@ namespace DataAccess
 
 
 
-
+        public int ObtenerUltimoId()
+        {
+            using (var conexion=GetConnection())
+            {
+                conexion.Open();
+                string query = "SELECT TOP 1 IdUsuario FROM Usuarios ORDER BY IdUsuario DESC";
+;
+                SqlCommand command = new SqlCommand(query, conexion);
+                int id= (int)command.ExecuteScalar();
+                return id;
+            }
+        }
+        
+        public void InsertarUsuarioxRol(int IdRol)
+        {
+           int IdUsuario = ObtenerUltimoId();
+            using (var conexion = GetConnection())
+            {
+                using (SqlCommand comando = new SqlCommand("sp_crear_usuarioxrol", conexion))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@idUsuario", IdUsuario);
+                    comando.Parameters.AddWithValue("@idRol", IdRol);
+                    conexion.Open();
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
 
 
 

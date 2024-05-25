@@ -34,6 +34,8 @@
             pboxLogo = new PictureBox();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbAddUsuario = new GroupBox();
+            cbxApellidosAddUsuario = new ComboBox();
+            lblApellidoAddUsuario = new Label();
             chbActivoUsuario = new CheckBox();
             cbxEmpAddUsuario = new ComboBox();
             lblEmpAddUsuario = new Label();
@@ -54,8 +56,6 @@
             ibtnGuardarEntrega = new FontAwesome.Sharp.IconButton();
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
-            lblApellidoAddUsuario = new Label();
-            cbxApellidosAddUsuario = new ComboBox();
             pSuperiorAddUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             gbAddUsuario.SuspendLayout();
@@ -163,11 +163,27 @@
             gbAddUsuario.Text = "AGREGAR USUARIO";
             gbAddUsuario.Enter += gbAddUsuario_Enter;
             // 
+            // cbxApellidosAddUsuario
+            // 
+            cbxApellidosAddUsuario.FormattingEnabled = true;
+            cbxApellidosAddUsuario.Location = new Point(597, 260);
+            cbxApellidosAddUsuario.Name = "cbxApellidosAddUsuario";
+            cbxApellidosAddUsuario.Size = new Size(260, 36);
+            cbxApellidosAddUsuario.TabIndex = 51;
+            cbxApellidosAddUsuario.SelectedIndexChanged += cbxApellidosAddUsuario_SelectedIndexChanged;
+            // 
+            // lblApellidoAddUsuario
+            // 
+            lblApellidoAddUsuario.AutoSize = true;
+            lblApellidoAddUsuario.Location = new Point(601, 210);
+            lblApellidoAddUsuario.Name = "lblApellidoAddUsuario";
+            lblApellidoAddUsuario.Size = new Size(239, 28);
+            lblApellidoAddUsuario.TabIndex = 50;
+            lblApellidoAddUsuario.Text = "Apellidos del empleado:";
+            // 
             // chbActivoUsuario
             // 
             chbActivoUsuario.AutoSize = true;
-            chbActivoUsuario.Checked = true;
-            chbActivoUsuario.CheckState = CheckState.Checked;
             chbActivoUsuario.Location = new Point(598, 327);
             chbActivoUsuario.Name = "chbActivoUsuario";
             chbActivoUsuario.Size = new Size(100, 32);
@@ -201,6 +217,7 @@
             cbxTipoUsuario.Name = "cbxTipoUsuario";
             cbxTipoUsuario.Size = new Size(215, 36);
             cbxTipoUsuario.TabIndex = 46;
+            cbxTipoUsuario.SelectedIndexChanged += cbxTipoUsuario_SelectedIndexChanged;
             // 
             // lblTipoUsuario
             // 
@@ -433,24 +450,6 @@
             btnGuardarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnGuardarEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardarEmpleado.UseVisualStyleBackColor = false;
-            // 
-            // lblApellidoAddUsuario
-            // 
-            lblApellidoAddUsuario.AutoSize = true;
-            lblApellidoAddUsuario.Location = new Point(601, 210);
-            lblApellidoAddUsuario.Name = "lblApellidoAddUsuario";
-            lblApellidoAddUsuario.Size = new Size(239, 28);
-            lblApellidoAddUsuario.TabIndex = 50;
-            lblApellidoAddUsuario.Text = "Apellidos del empleado:";
-            // 
-            // cbxApellidosAddUsuario
-            // 
-            cbxApellidosAddUsuario.FormattingEnabled = true;
-            cbxApellidosAddUsuario.Location = new Point(597, 260);
-            cbxApellidosAddUsuario.Name = "cbxApellidosAddUsuario";
-            cbxApellidosAddUsuario.Size = new Size(260, 36);
-            cbxApellidosAddUsuario.TabIndex = 51;
-            cbxApellidosAddUsuario.SelectedIndexChanged += cbxApellidosAddUsuario_SelectedIndexChanged;
             // 
             // frmAgregarUsuario
             // 

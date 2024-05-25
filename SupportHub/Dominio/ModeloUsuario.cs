@@ -78,13 +78,21 @@ namespace Dominio
             userData.InsertarUsuario(LoginUsuario, NombreUsuario, ApellidoUsuario, Contrasenia, ActivoUsuario);
         }
       
-        public void ValidarExisteLogin(string nombre)
+        public bool ValidarLogin(string login)
         {
-            userData.ValidarExisteLogin(nombre);
+            return !userData.ValidarLogin(login);
         }
         public void EliminarUsuario( string loginUsuario)
         {
             userData.EliminarUsuario(loginUsuario);
+        }
+        public string ObtenerIdUsuario(string IdLogin)
+        {
+            return ObtenerIdUsuario(IdLogin);
+        }
+        public void InsertarUsuarioxRol(int IdRol)
+        {
+            userData.InsertarUsuarioxRol(IdRol);
         }
     }
 }

@@ -37,24 +37,44 @@ namespace Presentacion
         {
 
         }
+       
+                
 
-        private void btnGuardar_Click(object sender, EventArgs e)
+    private void btnGuardar_Click(object sender, EventArgs e)
         {
 
             if (ValidarCampos())
             {
+
+                int TipoUsuario = 0;
+                if (cbxTipoUsuario.Text == "Administrador")
+                {
+                    TipoUsuario = 1;
+                }
+                if (cbxTipoUsuario.Text == "Técnico")
+                {
+                    TipoUsuario = 2;
+                }
+                if (cbxTipoUsuario.Text == "Común")
+                {
+                    TipoUsuario = 3;
+                }
+                
                 moduser.InsertarUsuario(
                 tboxLoginUsuario.Text,
                 tboxNombresUsuario.Text,
                 tboxApellidosUsuario.Text,
                 mtboxContrasenia.Text,
                 Activo);
+               
+
                 MessageBox.Show("El usuario se registró correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 tboxLoginUsuario.Text = "";
                 tboxNombresUsuario.Text = "";
                 tboxApellidosUsuario.Text = "";
                 mtboxContrasenia.Text = "";
+                moduser.InsertarUsuarioxRol(TipoUsuario);
             }
 
         }
@@ -133,11 +153,16 @@ namespace Presentacion
                 MessageBox.Show("ingrese una contreña valida, de al menos 5 caracteres", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            moduser.ValidarExisteLogin(tboxLoginUsuario.Text);
-
-            if(cbxApellidosAddUsuario.SelectedIndex.ToString()!=cbxEmpAddUsuario.SelectedIndex.ToString())
+           
+            if (!moduser.ValidarLogin(tboxLoginUsuario.Text))
             {
-                MessageBox.Show("Los apellidos no corresponden al nombre del empleado","Datos no compatibles",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("El login ya existe");
+                return false;
+            }
+
+            if (cbxApellidosAddUsuario.SelectedIndex.ToString() != cbxEmpAddUsuario.SelectedIndex.ToString())
+            {
+                MessageBox.Show("Los apellidos no corresponden al nombre del empleado", "Datos no compatibles", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -195,10 +220,13 @@ namespace Presentacion
                 Activo = 0;
             }
         }
-
+        public void IdUsuario()
+        {
+            moduser.ObtenerIdUsuario(tboxLoginUsuario.Text);
+        }
         private void cbxApellidosAddUsuario_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             if (string.IsNullOrEmpty(cbxApellidosAddUsuario.SelectedItem.ToString()))
             {
                 MessageBox.Show("No se ha selecionado un empleado", "Dato vacío", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -207,6 +235,12 @@ namespace Presentacion
             {
                 tboxApellidosUsuario.Text = cbxApellidosAddUsuario.Text;
             }
+        }
+      
+        private void cbxTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }
