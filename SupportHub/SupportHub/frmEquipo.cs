@@ -21,14 +21,11 @@ namespace Presentacion
         {
             InitializeComponent();
             tipoBusquedaEquipo = new List<string>()
-            {   
-                "Tipo Equipo",
-                "Marca Equipo",
-                "Modelo Equipo",
-                "Cantidad Equipo",
-                "Precio Equipo",
-                "Proveedor",
-                "Descripción Equipo"
+            {   "Codigo de Equipo",
+                "Tipo de Equipo",
+                "Marca de Equipo",
+                "Modelo de Equipo"
+
             };
             cbxTipoBusquedaEquipo.DataSource = tipoBusquedaEquipo;
         }
@@ -36,6 +33,7 @@ namespace Presentacion
         private void frmEquipo_Load(object sender, EventArgs e)
         {
             dgvEquipo.DataSource = EquipoDato.obtenerTablaEquipos();
+            prepararDgvEquipos();
             dgvEquipo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             if (!CacheInicioUsuario.permisosUser.Contains("Agregar"))
@@ -79,27 +77,47 @@ namespace Presentacion
 
             }
         }
+      
+        
         public void actualizarTablaEquipos()
         {
             if (string.IsNullOrEmpty(txtBuscarEquipo.Text))
             {
                 dgvEquipo.DataSource = ModeloEquipo.obtenerTablaEquipos();
-                dgvEquipo.ClearSelection();
+                prepararDgvEquipos();
             }
             else
             {
                 switch (cbxTipoBusquedaEquipo.Text)
                 {
-                    case "Tipo Equipo":
-
+                    case "Codigo de Equipo":
+                        dgvEquipo.DataSource = ModeloEquipo.filtrarTablaEquipo(codEquipo: txtBuscarEquipo.Text);
+                        break;
+                    case "Tipo de Equipo":
+                        dgvEquipo.DataSource = ModeloEquipo.filtrarTablaEquipo(TipoEquipo: txtBuscarEquipo.Text);
+                        break;
+                    case "Marca de Equipo":
+                        dgvEquipo.DataSource = ModeloEquipo.filtrarTablaEquipo(marcaEquipo: txtBuscarEquipo.Text);
+                        break;
+                    case "Modelo de Equipo":
+                        dgvEquipo.DataSource = ModeloEquipo.filtrarTablaEquipo(modeloEquipo: txtBuscarEquipo.Text);
+                        break;
+                    default:
                         break;
                 }
+                prepararDgvEquipos();
             }
+        }
+
+        private void prepararDgvEquipos()
+        {
+            dgvEquipo.Columns["idProveedor"].Visible = false;
+            dgvEquipo.ClearSelection();
         }
 
         private void AgreUpdateEventHandler(object sender, frmAgregarEquipo.UpdateEventArgs args)
         {
-            actualizarTablaEquipos();
+           actualizarTablaEquipos();
         }
 
         private void btnAgregarEquipo_Click(object sender, EventArgs e)
@@ -120,7 +138,7 @@ namespace Presentacion
             actualizarTablaEquipos();
         }
 
-        private void cbxTipoBusquedaEquipo_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbxTipoBusquedaEquipo_TextChanged(object sender, EventArgs e)
         {
             txtBuscarEquipo.Focus();
             actualizarTablaEquipos();

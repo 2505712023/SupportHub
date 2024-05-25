@@ -89,29 +89,24 @@ namespace DataAccess
                 return tablaProveedores;
             }
         }
-        
+
         public static DataTable filtrarTablaEquipo(
+           string codEquipo = "-1",
            string TipoEquipo = "-1",
            string marcaEquipo = "-1", 
-           string modeloEquipo = "-1", 
-           string cantidadEquipo = "-1", 
-           string precioEquipo = "-1",
-           string idProveedor = "-1", 
-           string descripcionEquipo = "-1" )
+           string modeloEquipo = "-1"
+          )
         {
             using (SqlConnection conect = conexion.GetConnection())
             {
 
-                comando.CommandText = "sp_obtener_equipos";
+                comando.CommandText = "sp_obtener_equipo";
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@codEquipo", codEquipo);
                 comando.Parameters.AddWithValue("@TipoEquipo", TipoEquipo);
                 comando.Parameters.AddWithValue("@marcaEquipo", marcaEquipo);
                 comando.Parameters.AddWithValue("@modeloEquipo", modeloEquipo);
-                comando.Parameters.AddWithValue("@cantidadEquipo", cantidadEquipo);
-                comando.Parameters.AddWithValue("@precioEquipo", precioEquipo);
-                comando.Parameters.AddWithValue("@idProveedor", idProveedor);
-                comando.Parameters.AddWithValue("@descripcionEquipo", descripcionEquipo);
                 comando.Connection = conect;
 
                 conect.Open();

@@ -29,22 +29,19 @@ namespace Dominio
             return EquipoDato.obtenerProveedor();
         }
         public static DataTable filtrarTablaEquipo(
-          string TipoEquipo = "-1",
-          string marcaEquipo = "-1",
-          string modeloEquipo = "-1",
-          string cantidadEquipo = "-1",
-          string precioEquipo = "-1",
-          string idProveedor = "-1",
-          string descripcionEquipo = "-1")
+         string codEquipo = "-1",
+           string TipoEquipo = "-1",
+           string marcaEquipo = "-1",
+           string modeloEquipo = "-1")
+
+
         {
             return EquipoDato.filtrarTablaEquipo(
+                codEquipo,
                 TipoEquipo,
                 marcaEquipo,
-                modeloEquipo,
-                cantidadEquipo,
-                precioEquipo,
-                idProveedor,
-                descripcionEquipo
+                modeloEquipo
+                
                 );
         }
     }

@@ -164,7 +164,7 @@
             cbxTipoBusquedaEquipo.Name = "cbxTipoBusquedaEquipo";
             cbxTipoBusquedaEquipo.Size = new Size(139, 23);
             cbxTipoBusquedaEquipo.TabIndex = 6;
-            cbxTipoBusquedaEquipo.SelectedIndexChanged += cbxTipoBusquedaEquipo_SelectedIndexChanged;
+            cbxTipoBusquedaEquipo.TextChanged += cbxTipoBusquedaEquipo_TextChanged;
             // 
             // txtBuscarEquipo
             // 
