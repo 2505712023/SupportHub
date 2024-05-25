@@ -8,6 +8,7 @@ using System.Data.Common;
 using System.Data.SqlClient;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,14 +19,36 @@ namespace Presentacion
     public partial class frmAgregarEquipo : Form
     {
         private bool esModificacion = false;
+        private string codEquipo = string.Empty;
         public frmAgregarEquipo(frmEquipo equipo)
         {
             InitializeComponent();
             llenarProveedor();
+        }
 
-
-
-
+        public frmAgregarEquipo(
+            string codEquipo,
+           string tipoEquipo,
+           string marcaEquipo,
+           string modeloEquipo,
+           int cantidadEquipo,
+           string precioEquipo,
+           int idProveedor,
+           string descripcion)
+        {
+            InitializeComponent();
+            llenarProveedor();
+            esModificacion = true;
+            this.codEquipo = codEquipo;
+            tboxTipoEquipo.Text = tipoEquipo;
+            tboxmarcaEquipo.Text = marcaEquipo;
+            tboxmodeloEquipo.Text = modeloEquipo;
+            tboxcantidadEquipo.Text = cantidadEquipo.ToString();
+            string temporal = "       " + precioEquipo.ToString();
+            temporal.Replace("$", "").Replace(",", "");
+            maskprecioEquipo.Text = temporal.Substring(temporal.Length - 10);
+            comboBproveedor.SelectedValue = idProveedor;
+            rtxtDescripcion.Text = descripcion;
         }
         public delegate void updateDelegate(object sender, UpdateEventArgs args);
         public event updateDelegate UpdateEventHandler;
@@ -34,12 +57,12 @@ namespace Presentacion
         {
             public string Data { get; set; }
         }
-            protected void Agregar()
-            {
-                UpdateEventArgs args = new UpdateEventArgs(); 
-                UpdateEventHandler.Invoke(this, args);
+        protected void Agregar()
+        {
+            UpdateEventArgs args = new UpdateEventArgs();
+            UpdateEventHandler.Invoke(this, args);
 
-            }
+        }
 
         private void frmAgregarEquipo_Load(object sender, EventArgs e)
         {
@@ -52,7 +75,7 @@ namespace Presentacion
             comboBproveedor.DisplayMember = "Proveedor";
         }
 
-       
+
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
             if (tboxTipoEquipo.Text == null)
@@ -86,8 +109,9 @@ namespace Presentacion
             {
                 CustomMessageBox.Error("Error", "Debe ingresar una descripción");
             }
-            else { 
-                 if (!esModificacion)
+            else
+            {
+                if (!esModificacion)
                 {
                     int registrosAgregados = ModeloEquipo.crearEquipo(
                         tboxTipoEquipo.Text,
@@ -102,10 +126,25 @@ namespace Presentacion
                     Agregar();
 
                 }
+                else if (esModificacion)
+                {
+                    int registrosModificados = ModeloEquipo.modificarEquipo(
+                       codEquipo,
+                       tboxTipoEquipo.Text,
+                       tboxmarcaEquipo.Text,
+                       tboxmodeloEquipo.Text,
+                       Convert.ToInt32(tboxcantidadEquipo.Text),
+                       Convert.ToDouble(maskprecioEquipo.Text.Replace("$", "")),
+                       Convert.ToInt32(comboBproveedor.SelectedValue),
+                       rtxtDescripcion.Text
+                       );
+                    CustomMessageBox.Exito("Modificación Exitosa", $"Se Modificó {registrosModificados} Equipo Correctamente");
+                    Agregar();
+                }
             }
 
-           
-            
+
+
 
         }
 
@@ -117,6 +156,11 @@ namespace Presentacion
         private void iconButton1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void gbAddEequipo_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -73,6 +73,32 @@ namespace DataAccess
             }
 
             }
+        public static int modificarEquipo(string codEquipo, string TipoEquipo, string marcaEquipo, string modeloEquipo, int cantidadEquipo, double precioEquipo, int idProveedor, string descripcionEquipo = "-1")
+        {
+            using (SqlConnection conect = conexion.GetConnection())
+            {
+                comando.CommandText = "sp_actualizar_equipo";
+                comando.CommandType = CommandType.StoredProcedure;
+                comando.Parameters.Clear();
+                comando.Parameters.AddWithValue("@codEquipo", codEquipo);
+                comando.Parameters.AddWithValue("@TipoEquipo", TipoEquipo);
+                comando.Parameters.AddWithValue("@marcaEquipo", marcaEquipo);
+                comando.Parameters.AddWithValue("@modeloEquipo", modeloEquipo);
+                comando.Parameters.AddWithValue("@cantidadEquipo", cantidadEquipo);
+                comando.Parameters.AddWithValue("@precioEquipo", precioEquipo);
+                comando.Parameters.AddWithValue("@idProveedor", idProveedor);
+                comando.Parameters.AddWithValue("@descripcionEquipo", descripcionEquipo);
+                comando.Connection = conect;
+
+                conect.Open();
+
+                int numRegistrosModificados = comando.ExecuteNonQuery();
+
+                return numRegistrosModificados;
+            }
+
+        }
+
         public static DataTable obtenerProveedor()
         {
             string querySelectProveedores = "select idProveedor as [idProveedor], nombreProveedor as [Proveedor] from Proveedores";

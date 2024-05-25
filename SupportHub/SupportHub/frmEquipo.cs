@@ -17,6 +17,7 @@ namespace Presentacion
     public partial class frmEquipo : Form
     {
         private List<string> tipoBusquedaEquipo;
+        private bool frmCargado = false;
         public frmEquipo()
         {
             InitializeComponent();
@@ -41,6 +42,8 @@ namespace Presentacion
                 btnAgregarEquipo.Visible = false;
             }
             dgvEquipo.Columns["Precio de Equipo"].DefaultCellStyle.Format = "C2";
+     
+            frmCargado = true;
         }
 
         private void btnEliminarEquipo_Click(object sender, EventArgs e)
@@ -77,8 +80,8 @@ namespace Presentacion
 
             }
         }
-      
-        
+
+
         public void actualizarTablaEquipos()
         {
             if (string.IsNullOrEmpty(txtBuscarEquipo.Text))
@@ -111,13 +114,14 @@ namespace Presentacion
 
         private void prepararDgvEquipos()
         {
+            dgvEquipo.Enabled = true;
             dgvEquipo.Columns["idProveedor"].Visible = false;
             dgvEquipo.ClearSelection();
         }
 
         private void AgreUpdateEventHandler(object sender, frmAgregarEquipo.UpdateEventArgs args)
         {
-           actualizarTablaEquipos();
+            actualizarTablaEquipos();
         }
 
         private void btnAgregarEquipo_Click(object sender, EventArgs e)
@@ -130,7 +134,20 @@ namespace Presentacion
 
         private void btnModificarEquipo_Click(object sender, EventArgs e)
         {
-
+            DataGridViewRow selectedRow = dgvEquipo.SelectedRows[0];
+            dgvEquipo.Enabled = false;
+            frmAgregarEquipo formEquipo = new frmAgregarEquipo(
+                codEquipo:selectedRow.Cells["Código de Equipo"].Value.ToString(),
+                tipoEquipo: selectedRow.Cells["Tipo de Equipo"].Value.ToString(),
+                marcaEquipo: selectedRow.Cells["Marca de Equipo"].Value.ToString(),
+                modeloEquipo: selectedRow.Cells["Modelo de Equipo"].Value.ToString(),
+                cantidadEquipo: Convert.ToInt32(selectedRow.Cells["Cantidad"].Value),
+                precioEquipo: selectedRow.Cells["Precio de Equipo"].Value.ToString(),
+                idProveedor: Convert.ToInt32(selectedRow.Cells["idProveedor"].Value),
+                descripcion: selectedRow.Cells["Descripción"].Value.ToString()
+                );
+            formEquipo.UpdateEventHandler += AgreUpdateEventHandler;
+            formEquipo.ShowDialog();
         }
 
         private void txtBuscarEquipo_TextChanged(object sender, EventArgs e)
@@ -142,6 +159,16 @@ namespace Presentacion
         {
             txtBuscarEquipo.Focus();
             actualizarTablaEquipos();
+        }
+
+        private void dgvEquipo_SelectionChanged(object sender, EventArgs e)
+        {
+            if (frmCargado && dgvEquipo.SelectedRows.Count == 1){
+                btnModificarEquipo.Enabled = true;
+            }
+            else if (frmCargado){
+                btnModificarEquipo.Enabled=false;
+            }
         }
     }
 }

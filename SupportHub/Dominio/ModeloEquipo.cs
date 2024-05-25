@@ -23,6 +23,11 @@ namespace Dominio
         {
             return EquipoDato.crearEquipo(TipoEquipo, marcaEquipo, modeloEquipo, cantidadEquipo, precioEquipo, idProveedor, descripcionEquipo);
         }
+        public static int modificarEquipo(string codEquipo, string TipoEquipo, string marcaEquipo, string modeloEquipo, int cantidadEquipo, double precioEquipo, int idProveedor, string descripcionEquipo)
+        {
+            return EquipoDato.modificarEquipo (codEquipo, TipoEquipo, marcaEquipo, modeloEquipo, cantidadEquipo, precioEquipo, idProveedor, descripcionEquipo);
+        }
+
 
         public static DataTable obtenerProveedor()
         {

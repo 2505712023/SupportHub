@@ -91,6 +91,7 @@
             gbAddEequipo.TabIndex = 4;
             gbAddEequipo.TabStop = false;
             gbAddEequipo.Text = "AGREGAR EQUIPO";
+            gbAddEequipo.Enter += gbAddEequipo_Enter;
             // 
             // comboBproveedor
             // 
@@ -98,15 +99,15 @@
             comboBproveedor.Location = new Point(226, 253);
             comboBproveedor.Name = "comboBproveedor";
             comboBproveedor.Size = new Size(209, 29);
-            comboBproveedor.TabIndex = 39;
+            comboBproveedor.TabIndex = 40;
             // 
             // maskprecioEquipo
             // 
             maskprecioEquipo.Location = new Point(226, 218);
-            maskprecioEquipo.Mask = "$######.##";
+            maskprecioEquipo.Mask = "$#####.##";
             maskprecioEquipo.Name = "maskprecioEquipo";
             maskprecioEquipo.Size = new Size(104, 29);
-            maskprecioEquipo.TabIndex = 38;
+            maskprecioEquipo.TabIndex = 39;
             maskprecioEquipo.TextAlign = HorizontalAlignment.Right;
             // 
             // tboxcantidadEquipo
@@ -116,7 +117,7 @@
             tboxcantidadEquipo.Location = new Point(226, 178);
             tboxcantidadEquipo.Name = "tboxcantidadEquipo";
             tboxcantidadEquipo.Size = new Size(209, 29);
-            tboxcantidadEquipo.TabIndex = 37;
+            tboxcantidadEquipo.TabIndex = 38;
             // 
             // tboxmodeloEquipo
             // 
@@ -125,7 +126,7 @@
             tboxmodeloEquipo.Location = new Point(226, 133);
             tboxmodeloEquipo.Name = "tboxmodeloEquipo";
             tboxmodeloEquipo.Size = new Size(209, 29);
-            tboxmodeloEquipo.TabIndex = 36;
+            tboxmodeloEquipo.TabIndex = 37;
             // 
             // tboxTipoEquipo
             // 
@@ -152,7 +153,7 @@
             BtnCancelar.Location = new Point(585, 102);
             BtnCancelar.Name = "BtnCancelar";
             BtnCancelar.Size = new Size(100, 40);
-            BtnCancelar.TabIndex = 34;
+            BtnCancelar.TabIndex = 43;
             BtnCancelar.Text = "CANCELAR";
             BtnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BtnCancelar.UseVisualStyleBackColor = false;
@@ -173,7 +174,7 @@
             BtnGuardar.Location = new Point(585, 56);
             BtnGuardar.Name = "BtnGuardar";
             BtnGuardar.Size = new Size(100, 40);
-            BtnGuardar.TabIndex = 33;
+            BtnGuardar.TabIndex = 42;
             BtnGuardar.Text = "GUARDAR";
             BtnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             BtnGuardar.UseVisualStyleBackColor = false;
@@ -186,7 +187,7 @@
             tboxmarcaEquipo.Location = new Point(226, 87);
             tboxmarcaEquipo.Name = "tboxmarcaEquipo";
             tboxmarcaEquipo.Size = new Size(209, 29);
-            tboxmarcaEquipo.TabIndex = 32;
+            tboxmarcaEquipo.TabIndex = 36;
             // 
             // lblmodeloEquipo
             // 
@@ -249,7 +250,7 @@
             rtxtDescripcion.Location = new Point(226, 288);
             rtxtDescripcion.Name = "rtxtDescripcion";
             rtxtDescripcion.Size = new Size(325, 62);
-            rtxtDescripcion.TabIndex = 21;
+            rtxtDescripcion.TabIndex = 41;
             rtxtDescripcion.Text = "";
             // 
             // lbldescripcionEquipo
@@ -381,7 +382,7 @@
             iconButton1.Location = new Point(694, 12);
             iconButton1.Name = "iconButton1";
             iconButton1.Size = new Size(28, 24);
-            iconButton1.TabIndex = 18;
+            iconButton1.TabIndex = 44;
             iconButton1.TextAlign = ContentAlignment.MiddleLeft;
             iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
             iconButton1.UseVisualStyleBackColor = true;

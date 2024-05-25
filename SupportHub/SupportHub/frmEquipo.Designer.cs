@@ -67,6 +67,7 @@
             // 
             btnModificarEquipo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnModificarEquipo.BackColor = Color.FromArgb(55, 166, 104);
+            btnModificarEquipo.Enabled = false;
             btnModificarEquipo.FlatAppearance.BorderSize = 0;
             btnModificarEquipo.FlatStyle = FlatStyle.Flat;
             btnModificarEquipo.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -142,6 +143,7 @@
             dgvEquipo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEquipo.Size = new Size(945, 417);
             dgvEquipo.TabIndex = 11;
+            dgvEquipo.SelectionChanged += dgvEquipo_SelectionChanged;
             // 
             // gbBusarEmpleado
             // 
