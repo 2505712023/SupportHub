@@ -10,6 +10,7 @@ using System.Reflection.Metadata;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
+using System.Windows;
 namespace DataAccess
 {
     public class UsuarioDato : ConexionSql
@@ -125,19 +126,39 @@ namespace DataAccess
                 using (var comando = new SqlCommand())
                 {
 
-                    comando.CommandText = nombreProcedimiento;
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Connection = conexion;
+                  
+                        comando.CommandText = nombreProcedimiento;
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Connection = conexion;
 
-                    conexion.Open();
+                        conexion.Open();
 
-                    SqlDataAdapter adaptador = new SqlDataAdapter(comando);
-                    adaptador.Fill(tabla);
+                        SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                        adaptador.Fill(tabla);
+                    
+                   
                 }
                 return tabla;
             }
 
         }
+        public bool ValidarExisteLogin(string nombre)
+        {
+            bool existe = false;
+
+            using (var conexion=GetConnection())
+            {
+                string query = "SELECT COUNT(1) FROM usuarios WHERE nombreusuario = @Texto";
+                SqlCommand command = new SqlCommand(query, conexion);
+                command.Parameters.AddWithValue("@Texto",nombre);
+                conexion.Open();
+                int count = (int)command.ExecuteScalar();
+               
+            }
+
+            return existe;
+        }
+
 
 
 
@@ -168,20 +189,43 @@ namespace DataAccess
             }
         }
 
-        public DataTable ObtenerEmpleado()
+        public DataTable ObtenerNombres()
         {
-            string querySelect = "SELECT nombreempleado,apellidoempleado FROM Empleados";
+            string querySelect = "SELECT nombreempleado frOM Empleados";
             using (var conexion = GetConnection())
             {
+                
                 conexion.Open();
                 SqlCommand cmd = new SqlCommand(querySelect, conexion);
                 SqlDataReader lector = cmd.ExecuteReader();
 
-                DataTable tablaAreas = new DataTable();
-                tablaAreas.Load(lector);
+                DataTable tablaempleado = new DataTable();
+                tablaempleado.Load(lector);
 
-                return tablaAreas;
+                return tablaempleado;
+               
+
             }
+               
+        }
+        public DataTable ObtenerApellidos()
+        {
+            string querySelect = "SELECT apellidoempleado frOM Empleados";
+            using (var conexion = GetConnection())
+            {
+
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand(querySelect, conexion);
+                SqlDataReader lector = cmd.ExecuteReader();
+
+                DataTable tablaempleado = new DataTable();
+                tablaempleado.Load(lector);
+
+                return tablaempleado;
+
+
+            }
+
         }
 
         public DataTable ObtenerRoles()
@@ -244,5 +288,31 @@ namespace DataAccess
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void InsertarUsuario(string LoginUsuario,string NombreUsuario,string ApellidoUsuario,string Contrasenia,int ActivoUsuario)
+        {
+            using (var conexion = GetConnection())
+            {
+                using (SqlCommand comando = new SqlCommand("sp_crear_usuario", conexion))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@loginusuario", LoginUsuario);
+                    comando.Parameters.AddWithValue("@nombreusuario", NombreUsuario);
+                    comando.Parameters.AddWithValue("@apellidousuario", ApellidoUsuario);
+                    comando.Parameters.AddWithValue("@claveusuario", Contrasenia);
+                    comando.Parameters.AddWithValue("@activousuario", ActivoUsuario);
+                    
+                    conexion.Open();
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
+
+
+
     }
 }

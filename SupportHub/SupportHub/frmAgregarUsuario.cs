@@ -41,14 +41,31 @@ namespace Presentacion
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
+            if (ValidarCampos())
+            {
+                moduser.InsertarUsuario(
+                tboxLoginUsuario.Text,
+                tboxNombresUsuario.Text,
+                tboxApellidosUsuario.Text,
+                mtboxContrasenia.Text,
+                Activo);
+                MessageBox.Show("El usuario se registró correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                tboxLoginUsuario.Text = "";
+                tboxNombresUsuario.Text = "";
+                tboxApellidosUsuario.Text = "";
+                mtboxContrasenia.Text = "";
+            }
+
         }
 
         private void frmAgregarUsuario_Load(object sender, EventArgs e)
         {
             tboxNombresUsuario.Enabled = false;
             tboxApellidosUsuario.Enabled = false;
-            LlenarComboBoxEmpleados();
+            LlenarComboBoxNombres();
             llenarComboboxTipoUsuario();
+            LlenarComboboxApellidos();
 
         }
 
@@ -61,13 +78,21 @@ namespace Presentacion
 
         }
 
-
-
-        private void LlenarComboBoxEmpleados()
+        public void LlenarComboboxApellidos()
         {
-            DataTable empleados = moduser.ObtenerEmpleados();
 
-            cbxEmpAddUsuario.DataSource = empleados;
+            DataTable apellidos = moduser.ObtenerApellidos();
+
+            cbxApellidosAddUsuario.DataSource = apellidos;
+            cbxApellidosAddUsuario.DisplayMember = "apellido Empleado";
+            cbxApellidosAddUsuario.ValueMember = "apellidoempleado";
+        }
+
+        private void LlenarComboBoxNombres()
+        {
+            DataTable nombres = moduser.Obtenernombres();
+
+            cbxEmpAddUsuario.DataSource = nombres;
             cbxEmpAddUsuario.DisplayMember = "nombre Empleado";
             cbxEmpAddUsuario.ValueMember = "nombreempleado";
         }
@@ -84,7 +109,14 @@ namespace Presentacion
 
         private void cbxEmpAddUsuario_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(cbxEmpAddUsuario.SelectedItem.ToString()))
+            {
+                MessageBox.Show("No se ha selecionado un empleado", "Dato vacío", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                tboxNombresUsuario.Text = cbxEmpAddUsuario.Text;
+            }
 
         }
         private bool ValidarCampos()
@@ -94,17 +126,20 @@ namespace Presentacion
                 MessageBox.Show("Ingrese un nombre válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
             int longitud = mtboxContrasenia.TextLength;
 
-            if (string.IsNullOrEmpty(mtboxContrasenia.Text) || longitud<5)
+            if (string.IsNullOrEmpty(mtboxContrasenia.Text) || longitud < 5)
             {
                 MessageBox.Show("ingrese una contreña valida, de al menos 5 caracteres", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            moduser.ValidarExisteLogin(tboxLoginUsuario.Text);
 
-
-          
+            if(cbxApellidosAddUsuario.SelectedIndex.ToString()!=cbxEmpAddUsuario.SelectedIndex.ToString())
+            {
+                MessageBox.Show("Los apellidos no corresponden al nombre del empleado","Datos no compatibles",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
 
             if (cbxTipoUsuario.SelectedIndex == -1)
             {
@@ -147,6 +182,31 @@ namespace Presentacion
         private void mtboxContrasenia_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
         {
 
+        }
+        private int Activo;
+        private void chbActivoUsuario_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chbActivoUsuario.Checked = true)
+            {
+                Activo = 1;
+            }
+            else
+            {
+                Activo = 0;
+            }
+        }
+
+        private void cbxApellidosAddUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            if (string.IsNullOrEmpty(cbxApellidosAddUsuario.SelectedItem.ToString()))
+            {
+                MessageBox.Show("No se ha selecionado un empleado", "Dato vacío", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                tboxApellidosUsuario.Text = cbxApellidosAddUsuario.Text;
+            }
         }
     }
 }

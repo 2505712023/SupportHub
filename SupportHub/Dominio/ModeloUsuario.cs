@@ -56,9 +56,13 @@ namespace Dominio
             return userData.filtrarTablaUsuario(loginUsuario, nombreUsuario, apellidoUsuario);
         }
 
-        public DataTable ObtenerEmpleados() 
+        public DataTable Obtenernombres()
         {
-        return userData.ObtenerEmpleado();
+        return userData.ObtenerNombres();
+        }
+        public DataTable ObtenerApellidos()
+        {
+            return userData.ObtenerApellidos();
         }
 
         public DataTable ObtenerRoles()
@@ -69,7 +73,15 @@ namespace Dominio
             userData.ActualizarUsuario(LoginUsuario, nombreUsuario,apellidoUsuario,contrasenia,activo,tipousuario);
         }
 
+        public void InsertarUsuario(string LoginUsuario, string NombreUsuario, string ApellidoUsuario, string Contrasenia, int ActivoUsuario)
+        {
+            userData.InsertarUsuario(LoginUsuario, NombreUsuario, ApellidoUsuario, Contrasenia, ActivoUsuario);
+        }
       
+        public void ValidarExisteLogin(string nombre)
+        {
+            userData.ValidarExisteLogin(nombre);
+        }
         public void EliminarUsuario( string loginUsuario)
         {
             userData.EliminarUsuario(loginUsuario);
