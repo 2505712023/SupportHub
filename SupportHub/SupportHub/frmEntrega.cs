@@ -326,6 +326,7 @@ namespace Presentacion
                     esModificacion: true,
                     codEntrega: codEntrega,
                     cantidadEntregaAnterior: Convert.ToInt32(selectedRow.Cells["Cantidad Entregada"].Value.ToString()),
+                    idEquipoAnterior: Convert.ToInt32(selectedRow.Cells["idEquipo"].Value.ToString()),
                     idTipoEntrega: Convert.ToInt32(selectedRow.Cells["idTipoEntrega"].Value.ToString()),
                     fechaEntrega: selectedRow.Cells["Fecha de Entrega"].Value.ToString(),
                     empleadoEntrega: selectedRow.Cells["Empleado Entregó"].Value.ToString(),
