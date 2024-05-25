@@ -139,7 +139,7 @@
             // ibtnImprimir
             // 
             ibtnImprimir.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ibtnImprimir.BackColor = Color.PaleGreen;
+            ibtnImprimir.BackColor = Color.FromArgb(63, 175, 75);
             ibtnImprimir.Cursor = Cursors.Hand;
             ibtnImprimir.FlatAppearance.BorderSize = 0;
             ibtnImprimir.FlatStyle = FlatStyle.Flat;
