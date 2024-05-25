@@ -95,6 +95,7 @@
             // linkEditar
             // 
             linkEditar.AutoSize = true;
+            linkEditar.Cursor = Cursors.Hand;
             linkEditar.Location = new Point(210, 389);
             linkEditar.Name = "linkEditar";
             linkEditar.Size = new Size(154, 28);
@@ -228,6 +229,7 @@
             // 
             btnCancelaEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnCancelaEmpleado.BackColor = Color.FromArgb(5, 23, 59);
+            btnCancelaEmpleado.Cursor = Cursors.Hand;
             btnCancelaEmpleado.FlatAppearance.BorderSize = 0;
             btnCancelaEmpleado.FlatStyle = FlatStyle.Flat;
             btnCancelaEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -251,6 +253,7 @@
             // 
             btnGuardarContraseña.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnGuardarContraseña.BackColor = Color.White;
+            btnGuardarContraseña.Cursor = Cursors.Hand;
             btnGuardarContraseña.FlatAppearance.BorderSize = 0;
             btnGuardarContraseña.FlatStyle = FlatStyle.Flat;
             btnGuardarContraseña.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -271,6 +274,7 @@
             // 
             // txtContraActual
             // 
+            txtContraActual.Cursor = Cursors.IBeam;
             txtContraActual.Location = new Point(33, 400);
             txtContraActual.Name = "txtContraActual";
             txtContraActual.Size = new Size(256, 29);
@@ -278,6 +282,7 @@
             // 
             // txtConfirmarContra
             // 
+            txtConfirmarContra.Cursor = Cursors.IBeam;
             txtConfirmarContra.Location = new Point(31, 344);
             txtConfirmarContra.Name = "txtConfirmarContra";
             txtConfirmarContra.Size = new Size(256, 29);
@@ -285,6 +290,7 @@
             // 
             // txtNuevaContra
             // 
+            txtNuevaContra.Cursor = Cursors.IBeam;
             txtNuevaContra.Location = new Point(31, 288);
             txtNuevaContra.Name = "txtNuevaContra";
             txtNuevaContra.Size = new Size(256, 29);
@@ -292,6 +298,7 @@
             // 
             // txtApellidoUsuario
             // 
+            txtApellidoUsuario.Cursor = Cursors.IBeam;
             txtApellidoUsuario.Enabled = false;
             txtApellidoUsuario.Location = new Point(33, 211);
             txtApellidoUsuario.Name = "txtApellidoUsuario";
@@ -301,6 +308,7 @@
             // 
             // txtNombreUsuario
             // 
+            txtNombreUsuario.Cursor = Cursors.IBeam;
             txtNombreUsuario.Enabled = false;
             txtNombreUsuario.Location = new Point(31, 155);
             txtNombreUsuario.Name = "txtNombreUsuario";
@@ -310,6 +318,7 @@
             // 
             // txtUsuario
             // 
+            txtUsuario.Cursor = Cursors.IBeam;
             txtUsuario.Enabled = false;
             txtUsuario.Location = new Point(31, 98);
             txtUsuario.Name = "txtUsuario";

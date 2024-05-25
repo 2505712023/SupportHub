@@ -44,11 +44,12 @@
             lblTelefonoEmpleado = new Label();
             lblApellidoEmpleado = new Label();
             lblNombreEmpleado = new Label();
-            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
+            pSuperiorAddEmpleado = new Panel();
             pboxLogo = new PictureBox();
+            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbAddEmpleado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             pSuperiorAddEmpleado.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             SuspendLayout();
             // 
             // gbAddEmpleado
@@ -78,6 +79,7 @@
             // 
             // txtTelefonoEmpleado
             // 
+            txtTelefonoEmpleado.Cursor = Cursors.IBeam;
             txtTelefonoEmpleado.Font = new Font("Segoe UI", 12F);
             txtTelefonoEmpleado.Location = new Point(26, 168);
             txtTelefonoEmpleado.Mask = "0000-0000";
@@ -89,6 +91,7 @@
             // btnCancelaEmpleado
             // 
             btnCancelaEmpleado.BackColor = Color.White;
+            btnCancelaEmpleado.Cursor = Cursors.Hand;
             btnCancelaEmpleado.FlatAppearance.BorderSize = 0;
             btnCancelaEmpleado.FlatStyle = FlatStyle.Flat;
             btnCancelaEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -111,6 +114,7 @@
             // btnGuardarEmpleado
             // 
             btnGuardarEmpleado.BackColor = Color.FromArgb(5, 23, 59);
+            btnGuardarEmpleado.Cursor = Cursors.Hand;
             btnGuardarEmpleado.FlatAppearance.BorderSize = 0;
             btnGuardarEmpleado.FlatStyle = FlatStyle.Flat;
             btnGuardarEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -131,6 +135,7 @@
             // 
             // cbxAreaEmpleado
             // 
+            cbxAreaEmpleado.Cursor = Cursors.Hand;
             cbxAreaEmpleado.Font = new Font("Segoe UI", 12F);
             cbxAreaEmpleado.FormattingEnabled = true;
             cbxAreaEmpleado.Location = new Point(328, 112);
@@ -141,6 +146,7 @@
             // 
             // cbxCargoEmpleado
             // 
+            cbxCargoEmpleado.Cursor = Cursors.Hand;
             cbxCargoEmpleado.Font = new Font("Segoe UI", 12F);
             cbxCargoEmpleado.FormattingEnabled = true;
             cbxCargoEmpleado.Location = new Point(328, 53);
@@ -151,6 +157,7 @@
             // 
             // txtEmailEmpleado
             // 
+            txtEmailEmpleado.Cursor = Cursors.IBeam;
             txtEmailEmpleado.Font = new Font("Segoe UI", 12F);
             txtEmailEmpleado.Location = new Point(26, 222);
             txtEmailEmpleado.Name = "txtEmailEmpleado";
@@ -160,6 +167,7 @@
             // 
             // txtApellidoEmpleado
             // 
+            txtApellidoEmpleado.Cursor = Cursors.IBeam;
             txtApellidoEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtApellidoEmpleado.Location = new Point(26, 112);
             txtApellidoEmpleado.Name = "txtApellidoEmpleado";
@@ -169,6 +177,7 @@
             // 
             // txtNombreEmpleado
             // 
+            txtNombreEmpleado.Cursor = Cursors.IBeam;
             txtNombreEmpleado.Font = new Font("Segoe UI", 12F);
             txtNombreEmpleado.Location = new Point(26, 53);
             txtNombreEmpleado.Name = "txtNombreEmpleado";
@@ -230,25 +239,16 @@
             lblNombreEmpleado.TabIndex = 0;
             lblNombreEmpleado.Text = "Nombre:";
             // 
-            // btnCerrarAddEmpleado
+            // pSuperiorAddEmpleado
             // 
-            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
-            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
-            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
-            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
-            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
-            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnCerrarAddEmpleado.IconSize = 20;
-            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(554, 3);
-            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
-            btnCerrarAddEmpleado.Size = new Size(28, 24);
-            btnCerrarAddEmpleado.TabIndex = 15;
-            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
-            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
+            pSuperiorAddEmpleado.BackColor = Color.FromArgb(5, 23, 59);
+            pSuperiorAddEmpleado.Controls.Add(pboxLogo);
+            pSuperiorAddEmpleado.Controls.Add(btnCerrarAddEmpleado);
+            pSuperiorAddEmpleado.Dock = DockStyle.Top;
+            pSuperiorAddEmpleado.Location = new Point(0, 0);
+            pSuperiorAddEmpleado.Name = "pSuperiorAddEmpleado";
+            pSuperiorAddEmpleado.Size = new Size(585, 60);
+            pSuperiorAddEmpleado.TabIndex = 0;
             // 
             // pboxLogo
             // 
@@ -261,16 +261,26 @@
             pboxLogo.TabIndex = 16;
             pboxLogo.TabStop = false;
             // 
-            // pSuperiorAddEmpleado
+            // btnCerrarAddEmpleado
             // 
-            pSuperiorAddEmpleado.BackColor = Color.FromArgb(5, 23, 59);
-            pSuperiorAddEmpleado.Controls.Add(pboxLogo);
-            pSuperiorAddEmpleado.Controls.Add(btnCerrarAddEmpleado);
-            pSuperiorAddEmpleado.Dock = DockStyle.Top;
-            pSuperiorAddEmpleado.Location = new Point(0, 0);
-            pSuperiorAddEmpleado.Name = "pSuperiorAddEmpleado";
-            pSuperiorAddEmpleado.Size = new Size(585, 60);
-            pSuperiorAddEmpleado.TabIndex = 0;
+            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarAddEmpleado.Cursor = Cursors.Hand;
+            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
+            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
+            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
+            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
+            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnCerrarAddEmpleado.IconSize = 20;
+            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.Location = new Point(545, 12);
+            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
+            btnCerrarAddEmpleado.Size = new Size(28, 24);
+            btnCerrarAddEmpleado.TabIndex = 15;
+            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
+            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
             // 
             // frmAgregarEmpleado
             // 
@@ -288,9 +298,9 @@
             KeyPress += frmAgregarEmpleado_KeyPress;
             gbAddEmpleado.ResumeLayout(false);
             gbAddEmpleado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             pSuperiorAddEmpleado.ResumeLayout(false);
             pSuperiorAddEmpleado.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             ResumeLayout(false);
         }
 

@@ -1,6 +1,7 @@
 ﻿using Comun.Cache;
 using Dominio;
 using Presentacion.CustomMessageBoxes;
+using Presentacion.ReportesPDF;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,9 +18,10 @@ namespace Presentacion
 {
     public partial class frmAgregarEntrega : Form
     {
-        private bool esModificacion = false;
+        private bool esModificacion = false, esImpresion = false;
         private int cantidadEntregaAnterior = 0;
         private string codEntrega = string.Empty;
+        private string tipoEquipo = string.Empty, modeloEquipo = string.Empty, marcaEquipo = string.Empty;
 
         public frmAgregarEntrega()
         {
@@ -33,8 +35,8 @@ namespace Presentacion
         }
 
         public frmAgregarEntrega(
-                string codEntrega,
                 bool esModificacion,
+                string codEntrega,
                 int cantidadEntregaAnterior,
                 int idTipoEntrega,
                 string fechaEntrega,
@@ -63,9 +65,43 @@ namespace Presentacion
             this.cboxEquipo.SelectedValue = idEquipo;
             this.tboxCantidadEntrega.Text = cantidadEntrega.ToString();
             this.rtxtObservacionEntrega.Text = observacion;
+        }
 
+        public frmAgregarEntrega(
+                bool esImpresion,
+                string codEntrega,
+                int idTipoEntrega,
+                string empleadoEntrega,
+                int idEmpleadoRecibe,
+                int cantidadEntrega,
+                int idEquipo,
+                string tipoEquipo,
+                string marcaEquipo,
+                string modeloEquipo,
+                string observacionEntrega,
+                string fechaEntrega
+                )
+        {
+            InitializeComponent();
+            dtpickerFechaEntrega.Format = DateTimePickerFormat.Custom;
+            dtpickerFechaEntrega.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            dtpickerFechaEntrega.ShowUpDown = false;
+            llenarTiposEntrega();
+            llenarEmpleados();
+            llenarEquipos();
 
-         
+            this.codEntrega = codEntrega;
+            this.esImpresion = esImpresion;
+            this.cboxTipoEntrega.SelectedValue = idTipoEntrega;
+            this.dtpickerFechaEntrega.Text = fechaEntrega;
+            this.tboxEmpleadoEntrega.Text = empleadoEntrega;
+            this.cboxEmpleadoRecibe.SelectedValue = idEmpleadoRecibe;
+            this.cboxEquipo.SelectedValue = idEquipo;
+            this.tboxCantidadEntrega.Text = cantidadEntrega.ToString();
+            this.rtxtObservacionEntrega.Text = observacionEntrega;
+            this.tipoEquipo = tipoEquipo;
+            this.marcaEquipo = marcaEquipo;
+            this.modeloEquipo = modeloEquipo;
         }
 
         public class UpdateEventArgs : EventArgs
@@ -91,7 +127,7 @@ namespace Presentacion
 
         private void frmAgregarEntrega_Load(object sender, EventArgs e)
         {
-            if (!esModificacion)
+            if (!esModificacion && !esImpresion)
             {
                 dtpickerFechaEntrega.Value = DateTime.Now;
                 cboxTipoEntrega.SelectedItem = 0;
@@ -99,11 +135,27 @@ namespace Presentacion
                 cboxEquipo.SelectedItem = null;
                 tboxCantidadDisponible.Text = "0";
                 tboxEmpleadoEntrega.Text = CacheInicioUsuario.empleado;
+                ibtnImprimir.Visible = false;
             }
-            else
+            else if (esModificacion && !esImpresion)
             {
                 gbAddEntrega.Text = "MODIFICAR ENTREGA: " + codEntrega;
+                ibtnImprimir.Visible = false;
                 obtenerCantidadDisponible();
+            }
+            else if (esImpresion && !esModificacion)
+            {
+                gbAddEntrega.Text = "IMPRIMIR ENTREGA: " + codEntrega;
+                tboxCantidadDisponible.Text = string.Empty;
+                cboxTipoEntrega.Enabled = false;
+                dtpickerFechaEntrega.Enabled = false;
+                tboxEmpleadoEntrega.Enabled = false;
+                cboxEmpleadoRecibe.Enabled = false;
+                cboxEquipo.Enabled = false;
+                tboxCantidadEntrega.Enabled = false;
+                rtxtObservacionEntrega.Enabled = false;
+                ibtnGuardarEntrega.Visible = false;
+                ibtnImprimir.Focus();
             }
         }
 
@@ -240,22 +292,38 @@ namespace Presentacion
                     habilitardgvEntregas();
                     this.Close();
                 }
-
             }
-        }
-
-        private void btnCerrarAddEmpleado_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void frmAgregarEntrega_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-
                 ibtnGuardarEntrega_Click(sender, e);
             }
+        }
+
+        private void ibtnImprimir_Click(object sender, EventArgs e)
+        {
+            ReporteDetalleEntrega.GenerarReporte
+                (
+                codEntrega: this.codEntrega,
+                empleadoEntrega: this.tboxEmpleadoEntrega.Text,
+                empleadoRecibe: this.cboxEmpleadoRecibe.Text,
+                cantidadEntrega: this.tboxCantidadEntrega.Text,
+                tipoEquipo: this.tipoEquipo,
+                marcaEquipo: this.marcaEquipo,
+                modeloEquipo: this.modeloEquipo,
+                observacionEntrega: this.rtxtObservacionEntrega.Text
+                );
+            habilitardgvEntregas();
+            this.Close();
+        }
+
+        private void btnCerrarAgregarEntrega_Click(object sender, EventArgs e)
+        {
+            habilitardgvEntregas();
+            this.Close();
         }
     }
 }

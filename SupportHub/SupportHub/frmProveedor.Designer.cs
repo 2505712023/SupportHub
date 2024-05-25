@@ -95,6 +95,7 @@
             // 
             // cbxTipoBusquedaProveedor
             // 
+            cbxTipoBusquedaProveedor.Cursor = Cursors.Hand;
             cbxTipoBusquedaProveedor.Font = new Font("Segoe UI", 9F);
             cbxTipoBusquedaProveedor.FormattingEnabled = true;
             cbxTipoBusquedaProveedor.Location = new Point(6, 26);
@@ -105,6 +106,7 @@
             // txtBuscarProveedor
             // 
             txtBuscarProveedor.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtBuscarProveedor.Cursor = Cursors.IBeam;
             txtBuscarProveedor.Font = new Font("Segoe UI", 9F);
             txtBuscarProveedor.Location = new Point(137, 26);
             txtBuscarProveedor.Name = "txtBuscarProveedor";
@@ -116,6 +118,7 @@
             // 
             btnAgregarProveedor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAgregarProveedor.BackColor = Color.FromArgb(89, 134, 213);
+            btnAgregarProveedor.Cursor = Cursors.Hand;
             btnAgregarProveedor.FlatAppearance.BorderSize = 0;
             btnAgregarProveedor.FlatStyle = FlatStyle.Flat;
             btnAgregarProveedor.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -137,6 +140,7 @@
             // 
             btnModificaProveedor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnModificaProveedor.BackColor = Color.FromArgb(55, 166, 104);
+            btnModificaProveedor.Cursor = Cursors.Hand;
             btnModificaProveedor.FlatAppearance.BorderSize = 0;
             btnModificaProveedor.FlatStyle = FlatStyle.Flat;
             btnModificaProveedor.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -158,6 +162,7 @@
             // 
             btnEliminarProveedor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnEliminarProveedor.BackColor = Color.FromArgb(184, 82, 82);
+            btnEliminarProveedor.Cursor = Cursors.Hand;
             btnEliminarProveedor.FlatAppearance.BorderSize = 0;
             btnEliminarProveedor.FlatStyle = FlatStyle.Flat;
             btnEliminarProveedor.Font = new Font("Segoe UI", 12F, FontStyle.Bold);

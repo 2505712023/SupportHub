@@ -199,13 +199,6 @@ namespace Presentacion
             lblIconoFrmActual.Text = "EQUIPO";
         }
 
-        private void btnDetalleEntrega_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color5);
-            OpenChildForm(new frmDetalleEntrega());
-            lblIconoFrmActual.Text = "DETALLE ENTREGA";
-        }
-
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color6);

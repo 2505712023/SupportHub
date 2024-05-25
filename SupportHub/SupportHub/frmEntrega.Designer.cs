@@ -28,14 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             btnEliminarEntrega = new FontAwesome.Sharp.IconButton();
             btnModificarEntrega = new FontAwesome.Sharp.IconButton();
             btnAgregarEntrega = new FontAwesome.Sharp.IconButton();
@@ -44,6 +40,7 @@
             cBoxTipoBusqueda = new ComboBox();
             txtBuscarEntrega = new TextBox();
             btnGenerarDevolucion = new FontAwesome.Sharp.IconButton();
+            btnImprimirEntrega = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvEntregas).BeginInit();
             gbBusarEmpleado.SuspendLayout();
             SuspendLayout();
@@ -52,6 +49,7 @@
             // 
             btnEliminarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnEliminarEntrega.BackColor = Color.FromArgb(184, 82, 82);
+            btnEliminarEntrega.Cursor = Cursors.Hand;
             btnEliminarEntrega.FlatAppearance.BorderSize = 0;
             btnEliminarEntrega.FlatStyle = FlatStyle.Flat;
             btnEliminarEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -60,7 +58,7 @@
             btnEliminarEntrega.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarEntrega.IconSize = 20;
-            btnEliminarEntrega.Location = new Point(711, 266);
+            btnEliminarEntrega.Location = new Point(711, 329);
             btnEliminarEntrega.Name = "btnEliminarEntrega";
             btnEliminarEntrega.Size = new Size(156, 57);
             btnEliminarEntrega.TabIndex = 5;
@@ -74,6 +72,7 @@
             // 
             btnModificarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnModificarEntrega.BackColor = Color.FromArgb(55, 166, 104);
+            btnModificarEntrega.Cursor = Cursors.Hand;
             btnModificarEntrega.FlatAppearance.BorderSize = 0;
             btnModificarEntrega.FlatStyle = FlatStyle.Flat;
             btnModificarEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -96,6 +95,7 @@
             // 
             btnAgregarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAgregarEntrega.BackColor = Color.FromArgb(89, 134, 213);
+            btnAgregarEntrega.Cursor = Cursors.Hand;
             btnAgregarEntrega.FlatAppearance.BorderSize = 0;
             btnAgregarEntrega.FlatStyle = FlatStyle.Flat;
             btnAgregarEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -122,72 +122,39 @@
             dgvEntregas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dgvEntregas.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dgvEntregas.BackgroundColor = Color.FromArgb(148, 184, 216);
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvEntregas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvEntregas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvEntregas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvEntregas.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvEntregas.Location = new Point(6, 67);
-            dgvEntregas.Name = "dgvEntregas";
-            dgvEntregas.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvEntregas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.SelectionBackColor = Color.Silver;
-            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvEntregas.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgvEntregas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dgvEntregas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dgvEntregas.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = SystemColors.Window;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle10.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dgvEntregas.DefaultCellStyle = dataGridViewCellStyle10;
             dgvEntregas.Location = new Point(12, 86);
             dgvEntregas.Name = "dgvEntregas";
             dgvEntregas.ReadOnly = true;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = SystemColors.ControlDark;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvEntregas.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.SelectionBackColor = Color.Silver;
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dgvEntregas.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = SystemColors.ControlDark;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle11.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.True;
+            dgvEntregas.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle12.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle12.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dgvEntregas.RowsDefaultCellStyle = dataGridViewCellStyle12;
             dgvEntregas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEntregas.Size = new Size(693, 417);
             dgvEntregas.TabIndex = 11;
@@ -210,6 +177,7 @@
             // 
             cBoxTipoBusqueda.AutoCompleteMode = AutoCompleteMode.Append;
             cBoxTipoBusqueda.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cBoxTipoBusqueda.Cursor = Cursors.Hand;
             cBoxTipoBusqueda.Font = new Font("Segoe UI", 9F);
             cBoxTipoBusqueda.FormattingEnabled = true;
             cBoxTipoBusqueda.Location = new Point(6, 26);
@@ -221,6 +189,7 @@
             // txtBuscarEntrega
             // 
             txtBuscarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtBuscarEntrega.Cursor = Cursors.IBeam;
             txtBuscarEntrega.Font = new Font("Segoe UI", 9F);
             txtBuscarEntrega.Location = new Point(134, 26);
             txtBuscarEntrega.Name = "txtBuscarEntrega";
@@ -232,6 +201,7 @@
             // 
             btnGenerarDevolucion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnGenerarDevolucion.BackColor = Color.FromArgb(77, 77, 77);
+            btnGenerarDevolucion.Cursor = Cursors.Hand;
             btnGenerarDevolucion.FlatAppearance.BorderSize = 0;
             btnGenerarDevolucion.FlatStyle = FlatStyle.Flat;
             btnGenerarDevolucion.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -249,12 +219,35 @@
             btnGenerarDevolucion.UseVisualStyleBackColor = false;
             btnGenerarDevolucion.Click += btnGenerarDevolucion_Click;
             // 
+            // btnImprimirEntrega
+            // 
+            btnImprimirEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnImprimirEntrega.BackColor = Color.PaleGreen;
+            btnImprimirEntrega.Cursor = Cursors.Hand;
+            btnImprimirEntrega.FlatAppearance.BorderSize = 0;
+            btnImprimirEntrega.FlatStyle = FlatStyle.Flat;
+            btnImprimirEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnImprimirEntrega.ForeColor = Color.FromArgb(31, 35, 40);
+            btnImprimirEntrega.IconChar = FontAwesome.Sharp.IconChar.FileContract;
+            btnImprimirEntrega.IconColor = Color.FromArgb(31, 35, 40);
+            btnImprimirEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnImprimirEntrega.IconSize = 20;
+            btnImprimirEntrega.Location = new Point(711, 266);
+            btnImprimirEntrega.Name = "btnImprimirEntrega";
+            btnImprimirEntrega.Size = new Size(156, 57);
+            btnImprimirEntrega.TabIndex = 12;
+            btnImprimirEntrega.Text = "IMPRIMIR";
+            btnImprimirEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnImprimirEntrega.UseVisualStyleBackColor = false;
+            btnImprimirEntrega.Click += btnImprimirEntrega_Click;
+            // 
             // frmEntrega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
             ClientSize = new Size(879, 515);
+            Controls.Add(btnImprimirEntrega);
             Controls.Add(btnGenerarDevolucion);
             Controls.Add(btnEliminarEntrega);
             Controls.Add(btnModificarEntrega);
@@ -280,5 +273,6 @@
         private TextBox txtBuscarEntrega;
         private ComboBox cBoxTipoBusqueda;
         private FontAwesome.Sharp.IconButton btnGenerarDevolucion;
+        private FontAwesome.Sharp.IconButton btnImprimirEntrega;
     }
 }

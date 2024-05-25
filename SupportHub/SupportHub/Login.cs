@@ -77,10 +77,10 @@ namespace SupportHub
             {
                 
                 DataAccess.UsuarioDato usuarioDato = new DataAccess.UsuarioDato();
-                    string user = txtUsuario.Text;
-                    string pass = txtContraseña.Text;
+                string user = txtUsuario.Text;
+                string pass = txtContraseña.Text;
+                string mensaje = usuarioDato.Login(user, pass);
 
-                   string mensaje = usuarioDato.Login(user, pass);
                 if (mensaje == "Inicio de sesión exitoso")
                 {
                     this.Hide();
@@ -111,8 +111,8 @@ namespace SupportHub
                     }
                 }
             
+            }
         }
-}
 
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {

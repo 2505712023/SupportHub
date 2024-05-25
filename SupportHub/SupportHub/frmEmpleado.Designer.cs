@@ -57,6 +57,7 @@
             // 
             // cbxTipoBusquedaEmpleado
             // 
+            cbxTipoBusquedaEmpleado.Cursor = Cursors.Hand;
             cbxTipoBusquedaEmpleado.Font = new Font("Segoe UI", 9F);
             cbxTipoBusquedaEmpleado.FormattingEnabled = true;
             cbxTipoBusquedaEmpleado.Location = new Point(6, 26);
@@ -68,6 +69,7 @@
             // txtBuscarEmpleado
             // 
             txtBuscarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtBuscarEmpleado.Cursor = Cursors.IBeam;
             txtBuscarEmpleado.Font = new Font("Segoe UI", 9F);
             txtBuscarEmpleado.Location = new Point(151, 26);
             txtBuscarEmpleado.Name = "txtBuscarEmpleado";
@@ -117,6 +119,7 @@
             // 
             btnAgregarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAgregarEmpleado.BackColor = Color.FromArgb(89, 134, 213);
+            btnAgregarEmpleado.Cursor = Cursors.Hand;
             btnAgregarEmpleado.FlatAppearance.BorderSize = 0;
             btnAgregarEmpleado.FlatStyle = FlatStyle.Flat;
             btnAgregarEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -138,6 +141,7 @@
             // 
             btnModificaEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnModificaEmpleado.BackColor = Color.FromArgb(55, 166, 104);
+            btnModificaEmpleado.Cursor = Cursors.Hand;
             btnModificaEmpleado.FlatAppearance.BorderSize = 0;
             btnModificaEmpleado.FlatStyle = FlatStyle.Flat;
             btnModificaEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -159,6 +163,7 @@
             // 
             btnEliminarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnEliminarEmpleado.BackColor = Color.FromArgb(184, 82, 82);
+            btnEliminarEmpleado.Cursor = Cursors.Hand;
             btnEliminarEmpleado.FlatAppearance.BorderSize = 0;
             btnEliminarEmpleado.FlatStyle = FlatStyle.Flat;
             btnEliminarEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);

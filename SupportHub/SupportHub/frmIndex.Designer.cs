@@ -33,7 +33,6 @@
             pIzquierdoIndex = new Panel();
             btnCerrarSeccion = new FontAwesome.Sharp.IconButton();
             btnUsuarios = new FontAwesome.Sharp.IconButton();
-            btnDetalleEntrega = new FontAwesome.Sharp.IconButton();
             btnEquipo = new FontAwesome.Sharp.IconButton();
             btnProveedor = new FontAwesome.Sharp.IconButton();
             btnEntrega = new FontAwesome.Sharp.IconButton();
@@ -72,7 +71,6 @@
             pIzquierdoIndex.BackColor = Color.FromArgb(5, 23, 59);
             pIzquierdoIndex.Controls.Add(btnCerrarSeccion);
             pIzquierdoIndex.Controls.Add(btnUsuarios);
-            pIzquierdoIndex.Controls.Add(btnDetalleEntrega);
             pIzquierdoIndex.Controls.Add(btnEquipo);
             pIzquierdoIndex.Controls.Add(btnProveedor);
             pIzquierdoIndex.Controls.Add(btnEntrega);
@@ -113,7 +111,7 @@
             btnUsuarios.IconColor = SystemColors.Window;
             btnUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUsuarios.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUsuarios.Location = new Point(0, 440);
+            btnUsuarios.Location = new Point(0, 380);
             btnUsuarios.Name = "btnUsuarios";
             btnUsuarios.Size = new Size(233, 60);
             btnUsuarios.TabIndex = 6;
@@ -122,26 +120,6 @@
             btnUsuarios.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnUsuarios.UseVisualStyleBackColor = true;
             btnUsuarios.Click += btnUsuarios_Click;
-            // 
-            // btnDetalleEntrega
-            // 
-            btnDetalleEntrega.Dock = DockStyle.Top;
-            btnDetalleEntrega.FlatAppearance.BorderSize = 0;
-            btnDetalleEntrega.FlatStyle = FlatStyle.Flat;
-            btnDetalleEntrega.ForeColor = SystemColors.ControlLightLight;
-            btnDetalleEntrega.IconChar = FontAwesome.Sharp.IconChar.FileContract;
-            btnDetalleEntrega.IconColor = SystemColors.Window;
-            btnDetalleEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDetalleEntrega.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDetalleEntrega.Location = new Point(0, 380);
-            btnDetalleEntrega.Name = "btnDetalleEntrega";
-            btnDetalleEntrega.Size = new Size(233, 60);
-            btnDetalleEntrega.TabIndex = 5;
-            btnDetalleEntrega.Text = "DETALLE ENTREGA";
-            btnDetalleEntrega.TextAlign = ContentAlignment.MiddleLeft;
-            btnDetalleEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnDetalleEntrega.UseVisualStyleBackColor = true;
-            btnDetalleEntrega.Click += btnDetalleEntrega_Click;
             // 
             // btnEquipo
             // 
@@ -384,7 +362,6 @@
             pDesktop.Name = "pDesktop";
             pDesktop.Size = new Size(956, 600);
             pDesktop.TabIndex = 3;
-
             // 
             // pDerechoIndex
             // 
@@ -530,7 +507,6 @@
         private Panel pIzquierdoIndex;
         private FontAwesome.Sharp.IconButton btnEmpleado;
         private Panel pLogoIndex;
-        private FontAwesome.Sharp.IconButton btnDetalleEntrega;
         private FontAwesome.Sharp.IconButton btnEquipo;
         private FontAwesome.Sharp.IconButton btnProveedor;
         private FontAwesome.Sharp.IconButton btnEntrega;
