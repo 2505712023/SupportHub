@@ -33,7 +33,7 @@ namespace Presentacion
                 return true;
             }
 
-          
+
             if (keyData == (Keys.Control | Keys.Shift | Keys.Y))
             {
 
@@ -149,7 +149,7 @@ namespace Presentacion
             btnIconoFrmActual.IconColor = Color.FromArgb(128, 0, 128);
             lblIconoFrmActual.Text = "HOME";
         }
-        
+
         private void OpenChildForm(Form childForm)
         {
             //open only form
@@ -278,7 +278,7 @@ namespace Presentacion
         {
             if (CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
             {
-                
+
             }
             else if (CacheInicioUsuario.permisosUser.Contains("Agregar") &&
                      CacheInicioUsuario.permisosUser.Contains("Modificar") &&
@@ -304,6 +304,36 @@ namespace Presentacion
                 this.Close();
             }
 
+        }
+
+        private void btnMiximizar_MouseHover(object sender, EventArgs e)
+        {
+            btnMiximizar.BackColor = Color.FromArgb(171, 235, 235);
+        }
+
+        private void btnMiximizar_MouseLeave(object sender, EventArgs e)
+        {
+            btnMiximizar.BackColor = Color.FromArgb(5, 23, 59);
+        }
+
+        private void btnMaximizar_MouseHover(object sender, EventArgs e)
+        {
+            btnMaximizar.BackColor = Color.FromArgb(171, 235, 235);
+        }
+
+        private void btnMaximizar_MouseLeave(object sender, EventArgs e)
+        {
+            btnMaximizar.BackColor = Color.FromArgb(5, 23, 59);
+        }
+
+        private void btnCerrar_MouseHover(object sender, EventArgs e)
+        {
+            btnCerrar.BackColor = Color.FromArgb(171, 235, 235);
+        }
+
+        private void btnCerrar_MouseLeave(object sender, EventArgs e)
+        {
+            btnCerrar.BackColor = Color.FromArgb(5, 23, 59);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Presentacion
     public partial class frmAgregarEntrega : Form
     {
         private bool esModificacion = false, esImpresion = false;
-        private int cantidadEntregaAnterior = 0;
+        private int cantidadEntregaAnterior = 0, idEquipoAnterior = 0;
         private string codEntrega = string.Empty;
         private string tipoEquipo = string.Empty, modeloEquipo = string.Empty, marcaEquipo = string.Empty;
 
@@ -38,6 +38,7 @@ namespace Presentacion
                 bool esModificacion,
                 string codEntrega,
                 int cantidadEntregaAnterior,
+                int idEquipoAnterior,
                 int idTipoEntrega,
                 string fechaEntrega,
                 string empleadoEntrega,
@@ -58,6 +59,7 @@ namespace Presentacion
             this.codEntrega = codEntrega;
             this.esModificacion = esModificacion;
             this.cantidadEntregaAnterior = cantidadEntregaAnterior;
+            this.idEquipoAnterior = idEquipoAnterior;
             this.cboxTipoEntrega.SelectedValue = idTipoEntrega;
             this.dtpickerFechaEntrega.Text = fechaEntrega;
             this.tboxEmpleadoEntrega.Text = empleadoEntrega;
@@ -188,10 +190,15 @@ namespace Presentacion
 
         private void obtenerCantidadDisponible()
         {
-            if (cboxEquipo.SelectedValue != null)
+            if (Convert.ToInt32(cboxEquipo.SelectedValue) == idEquipoAnterior)
             {
                 int cantidadDisponible = ModeloEntrega.cantidadDisponibleEquipo(Convert.ToInt32(cboxEquipo.SelectedValue));
                 tboxCantidadDisponible.Text = (cantidadDisponible + cantidadEntregaAnterior).ToString();
+            }
+            else if(cboxEquipo.SelectedValue != null)
+            {
+                int cantidadDisponible = ModeloEntrega.cantidadDisponibleEquipo(Convert.ToInt32(cboxEquipo.SelectedValue));
+                tboxCantidadDisponible.Text = (cantidadDisponible).ToString();
             }
             else
             {
@@ -229,15 +236,15 @@ namespace Presentacion
 
         private void ibtnGuardarEntrega_Click(object sender, EventArgs e)
         {
-            if (cboxTipoEntrega.SelectedItem == null)
+            if (cboxTipoEntrega.SelectedIndex == -1)
             {
                 CustomMessageBox.Error("Error", "Debe seleccionar un tipo de entrega.");
             }
-            else if (cboxEmpleadoRecibe.SelectedItem == null)
+            else if (cboxEmpleadoRecibe.SelectedIndex == -1)
             {
                 CustomMessageBox.Error("Error", "Debe seleccionar un empleado.");
             }
-            else if (cboxEquipo.SelectedItem == null)
+            else if (cboxEquipo.SelectedIndex == -1)
             {
                 CustomMessageBox.Error("Error", "Debe seleccionar un equipo.");
             }
