@@ -81,6 +81,7 @@
             // btnCerrarModificarEmpleado
             // 
             btnCerrarModificarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarModificarEmpleado.Cursor = Cursors.Hand;
             btnCerrarModificarEmpleado.FlatAppearance.BorderSize = 0;
             btnCerrarModificarEmpleado.FlatStyle = FlatStyle.Flat;
             btnCerrarModificarEmpleado.ForeColor = SystemColors.ControlLightLight;
@@ -89,7 +90,7 @@
             btnCerrarModificarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarModificarEmpleado.IconSize = 20;
             btnCerrarModificarEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarModificarEmpleado.Location = new Point(554, 3);
+            btnCerrarModificarEmpleado.Location = new Point(545, 12);
             btnCerrarModificarEmpleado.Name = "btnCerrarModificarEmpleado";
             btnCerrarModificarEmpleado.Size = new Size(28, 24);
             btnCerrarModificarEmpleado.TabIndex = 16;
@@ -147,6 +148,7 @@
             // 
             btnGuardarUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnGuardarUpdate.BackColor = Color.White;
+            btnGuardarUpdate.Cursor = Cursors.Hand;
             btnGuardarUpdate.FlatAppearance.BorderSize = 0;
             btnGuardarUpdate.FlatStyle = FlatStyle.Flat;
             btnGuardarUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -170,6 +172,7 @@
             // 
             btnGuaardarUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnGuaardarUpdate.BackColor = Color.FromArgb(5, 23, 59);
+            btnGuaardarUpdate.Cursor = Cursors.Hand;
             btnGuaardarUpdate.FlatAppearance.BorderSize = 0;
             btnGuaardarUpdate.FlatStyle = FlatStyle.Flat;
             btnGuaardarUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -190,6 +193,7 @@
             // 
             // txtTelefonoEmpleadoUpdate
             // 
+            txtTelefonoEmpleadoUpdate.Cursor = Cursors.IBeam;
             txtTelefonoEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             txtTelefonoEmpleadoUpdate.Location = new Point(23, 165);
             txtTelefonoEmpleadoUpdate.Mask = "0000-0000";
@@ -243,6 +247,7 @@
             // 
             // cbxAreaEmpleadoUpdate
             // 
+            cbxAreaEmpleadoUpdate.Cursor = Cursors.Hand;
             cbxAreaEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             cbxAreaEmpleadoUpdate.FormattingEnabled = true;
             cbxAreaEmpleadoUpdate.Location = new Point(328, 112);
@@ -253,6 +258,7 @@
             // 
             // cbxCargoEmpleadoUpdate
             // 
+            cbxCargoEmpleadoUpdate.Cursor = Cursors.Hand;
             cbxCargoEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             cbxCargoEmpleadoUpdate.FormattingEnabled = true;
             cbxCargoEmpleadoUpdate.ItemHeight = 21;
@@ -264,6 +270,7 @@
             // 
             // txtEmailEmpleadoUpdate
             // 
+            txtEmailEmpleadoUpdate.Cursor = Cursors.IBeam;
             txtEmailEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             txtEmailEmpleadoUpdate.Location = new Point(23, 221);
             txtEmailEmpleadoUpdate.Name = "txtEmailEmpleadoUpdate";
@@ -273,6 +280,7 @@
             // 
             // txtApellidoEmpleadoUpdate
             // 
+            txtApellidoEmpleadoUpdate.Cursor = Cursors.IBeam;
             txtApellidoEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             txtApellidoEmpleadoUpdate.Location = new Point(23, 109);
             txtApellidoEmpleadoUpdate.Name = "txtApellidoEmpleadoUpdate";
@@ -282,6 +290,7 @@
             // 
             // txtNombreEmpleadoUpdate
             // 
+            txtNombreEmpleadoUpdate.Cursor = Cursors.IBeam;
             txtNombreEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             txtNombreEmpleadoUpdate.Location = new Point(26, 53);
             txtNombreEmpleadoUpdate.Name = "txtNombreEmpleadoUpdate";

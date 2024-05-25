@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDevolucionEntrega));
             pSuperiorAddEntrega = new Panel();
+            pboxLogo = new PictureBox();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbAddEntrega = new GroupBox();
             btnCancelarDevolucion = new FontAwesome.Sharp.IconButton();
@@ -42,10 +43,9 @@
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
             lblCodigoEntrega = new Label();
-            pboxLogo = new PictureBox();
             pSuperiorAddEntrega.SuspendLayout();
-            gbAddEntrega.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
+            gbAddEntrega.SuspendLayout();
             SuspendLayout();
             // 
             // pSuperiorAddEntrega
@@ -59,9 +59,21 @@
             pSuperiorAddEntrega.Size = new Size(442, 60);
             pSuperiorAddEntrega.TabIndex = 2;
             // 
+            // pboxLogo
+            // 
+            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
+            pboxLogo.Location = new Point(20, 0);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(184, 60);
+            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
+            pboxLogo.TabIndex = 18;
+            pboxLogo.TabStop = false;
+            // 
             // btnCerrarAddEmpleado
             // 
             btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarAddEmpleado.Cursor = Cursors.Hand;
             btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
             btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
             btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
@@ -104,6 +116,7 @@
             // 
             btnCancelarDevolucion.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnCancelarDevolucion.BackColor = Color.White;
+            btnCancelarDevolucion.Cursor = Cursors.Hand;
             btnCancelarDevolucion.FlatAppearance.BorderSize = 0;
             btnCancelarDevolucion.FlatStyle = FlatStyle.Flat;
             btnCancelarDevolucion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -126,6 +139,7 @@
             // 
             btnGuardarDevolucion.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnGuardarDevolucion.BackColor = Color.FromArgb(5, 23, 59);
+            btnGuardarDevolucion.Cursor = Cursors.Hand;
             btnGuardarDevolucion.FlatAppearance.BorderSize = 0;
             btnGuardarDevolucion.FlatStyle = FlatStyle.Flat;
             btnGuardarDevolucion.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -266,17 +280,6 @@
             lblCodigoEntrega.TabIndex = 4;
             lblCodigoEntrega.Text = "Código Entrega:";
             // 
-            // pboxLogo
-            // 
-            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
-            pboxLogo.Location = new Point(20, 0);
-            pboxLogo.Name = "pboxLogo";
-            pboxLogo.Size = new Size(184, 60);
-            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
-            pboxLogo.TabIndex = 18;
-            pboxLogo.TabStop = false;
-            // 
             // frmDevolucionEntrega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -294,9 +297,9 @@
             Load += frmDevolucionEntrega_Load;
             pSuperiorAddEntrega.ResumeLayout(false);
             pSuperiorAddEntrega.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             gbAddEntrega.ResumeLayout(false);
             gbAddEntrega.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             ResumeLayout(false);
         }
 

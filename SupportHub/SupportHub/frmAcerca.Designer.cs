@@ -67,6 +67,7 @@
             Controls.Add(rtbAcerca);
             Name = "frmAcerca";
             Text = "frmAcerca";
+            Load += frmAcerca_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }

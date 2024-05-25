@@ -19,10 +19,7 @@ namespace Presentacion
         public frmAgregarEmpleado(frmEmpleado formEmpleado)
         {
             InitializeComponent();
-        
-
         }
-
 
         public delegate void UpdateDelagate(object sender, UpdateEventArgs arg);
         public event UpdateDelagate UpdateEventHandler;
@@ -51,7 +48,6 @@ namespace Presentacion
             LlenarComboBoxCargos();
             cbxAreaEmpleado.Text = null;
             cbxCargoEmpleado.Text = null;
-            
         }
 
         private void LlenarComboBoxAreas()
@@ -168,13 +164,11 @@ namespace Presentacion
         {
             this.Close();
         }
-
       
         private void frmAgregarEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-
                 btnGuardarEmpleado_Click(sender, e);
             }
         }

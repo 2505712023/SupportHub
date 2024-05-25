@@ -101,6 +101,7 @@
             // 
             // txtDireccion
             // 
+            txtDireccion.Cursor = Cursors.IBeam;
             txtDireccion.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtDireccion.Location = new Point(26, 172);
             txtDireccion.Name = "txtDireccion";
@@ -110,6 +111,7 @@
             // 
             // txtTelefono
             // 
+            txtTelefono.Cursor = Cursors.IBeam;
             txtTelefono.Font = new Font("Segoe UI", 12F);
             txtTelefono.Location = new Point(337, 53);
             txtTelefono.Mask = "0000-0000";
@@ -121,6 +123,7 @@
             // btnCancela
             // 
             btnCancela.BackColor = Color.White;
+            btnCancela.Cursor = Cursors.Hand;
             btnCancela.FlatAppearance.BorderSize = 0;
             btnCancela.FlatStyle = FlatStyle.Flat;
             btnCancela.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -143,6 +146,7 @@
             // btnGuardarProveedor
             // 
             btnGuardarProveedor.BackColor = Color.FromArgb(5, 23, 59);
+            btnGuardarProveedor.Cursor = Cursors.Hand;
             btnGuardarProveedor.FlatAppearance.BorderSize = 0;
             btnGuardarProveedor.FlatStyle = FlatStyle.Flat;
             btnGuardarProveedor.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -164,6 +168,7 @@
             // 
             // txtCodProveedor
             // 
+            txtCodProveedor.Cursor = Cursors.IBeam;
             txtCodProveedor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCodProveedor.Location = new Point(26, 53);
             txtCodProveedor.Name = "txtCodProveedor";
@@ -173,6 +178,7 @@
             // 
             // txtNombre
             // 
+            txtNombre.Cursor = Cursors.IBeam;
             txtNombre.Font = new Font("Segoe UI", 12F);
             txtNombre.Location = new Point(26, 112);
             txtNombre.Name = "txtNombre";
@@ -191,6 +197,7 @@
             // 
             // txtId
             // 
+            txtId.Cursor = Cursors.IBeam;
             txtId.Font = new Font("Segoe UI", 12F);
             txtId.Location = new Point(337, 112);
             txtId.Name = "txtId";
@@ -215,6 +222,7 @@
             // iconButton1
             // 
             iconButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            iconButton1.Cursor = Cursors.Hand;
             iconButton1.FlatAppearance.BorderSize = 0;
             iconButton1.FlatStyle = FlatStyle.Flat;
             iconButton1.ForeColor = SystemColors.ControlLightLight;
@@ -223,7 +231,7 @@
             iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
             iconButton1.IconSize = 20;
             iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(554, 3);
+            iconButton1.Location = new Point(545, 12);
             iconButton1.Name = "iconButton1";
             iconButton1.Size = new Size(28, 24);
             iconButton1.TabIndex = 19;
