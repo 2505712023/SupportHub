@@ -231,18 +231,18 @@ namespace DataAccess
             }
         }
 
-        public void EliminarUsuario(string codUsuario)
+        public void EliminarUsuario(string loginUsuario)
         {
-            throw new NotImplementedException();
-        }
-
-        public void EliminarUsuario(int idUsuario)
-        {
-            throw new NotImplementedException();
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                string query = "sp_borrar_usuario";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@loginUsuario", loginUsuario);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
-
-
-
 }
-

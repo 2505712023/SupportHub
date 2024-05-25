@@ -141,7 +141,7 @@ namespace Presentacion
             {
                 if (dgvUsuario.SelectedRows.Count == 1)
                 {
-                    string loginUsuario = dgvUsuario.CurrentRow.Cells["loginUsuario"].Value.ToString();
+                    string loginUsuario = dgvUsuario.CurrentRow.Cells["Nombre de usuario"].Value.ToString();
                     bool hasError = false;
                     try
                     {

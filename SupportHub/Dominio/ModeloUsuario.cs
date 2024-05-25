@@ -74,11 +74,5 @@ namespace Dominio
         {
             userData.EliminarUsuario(loginUsuario);
         }
-
-       
     }
-   
-
-    
-
 }
