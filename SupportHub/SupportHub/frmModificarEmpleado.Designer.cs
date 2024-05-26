@@ -67,7 +67,6 @@
             pSuperiorUpdEmpleado.Name = "pSuperiorUpdEmpleado";
             pSuperiorUpdEmpleado.Size = new Size(836, 100);
             pSuperiorUpdEmpleado.TabIndex = 1;
-            pSuperiorUpdEmpleado.Paint += pSuperiorUpdEmpleado_Paint;
             // 
             // pboxLogo
             // 
@@ -160,7 +159,6 @@
             gbUpdEmpleado.TabIndex = 2;
             gbUpdEmpleado.TabStop = false;
             gbUpdEmpleado.Text = "MODIFICAR EMPLEADO";
-            gbUpdEmpleado.Enter += gbUpdEmpleado_Enter;
             // 
             // btnGuardarUpdate
             // 

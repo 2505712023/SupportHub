@@ -52,22 +52,25 @@ namespace Dominio
             return tabla;
         }
 
-        public DataTable filtrarTablaUsuario(string loginUsuario = "-1", string nombreUsuario = "-1", string apellidoUsuario = "-1")
+        public DataTable filtrarTablaUsuario(string loginUsuario = "-1", string nombresUsuario = "-1", string apellidosUsuario = "-1")
         {
-            return userData.filtrarTablaUsuario(loginUsuario, nombreUsuario, apellidoUsuario);
+            return userData.filtrarTablaUsuario(loginUsuario, nombresUsuario, apellidosUsuario);
         }
 
-        public DataTable Obtenernombres()
+        public string ObtenerNombreEmpleado(int idEmpleado)
         {
-        return userData.ObtenerNombres();
+            return userData.ObtenerNombreEmpleado(idEmpleado);
         }
-        public DataTable ObtenerApellidos()
+
+        public string ObtenerApellidoEmpleado(int idEmpleado)
         {
-            return userData.ObtenerApellidos();
+            return userData.ObtenerApellidoEmpleado(idEmpleado);
         }
 
         public DataTable ObtenerRoles()
-        { return userData.ObtenerRoles(); }
+        {
+            return userData.ObtenerRoles();
+        }
 
         public void ActualizarUsuario(string LoginUsuario, string nombreUsuario, string apellidoUsuario, string contrasenia, int activo, string tipousuario)
         {
@@ -83,17 +86,30 @@ namespace Dominio
         {
             return !userData.ValidarLogin(login);
         }
+
         public void EliminarUsuario( string loginUsuario)
         {
             userData.EliminarUsuario(loginUsuario);
         }
-        public string ObtenerIdUsuario(string IdLogin)
+
+        public int ObtenerIdUsuario(string loginUsuario)
         {
-            return ObtenerIdUsuario(IdLogin);
+            return userData.ObtenerIdUsuario(loginUsuario);
         }
-        public void InsertarUsuarioxRol(int IdRol)
+
+        public void InsertarUsuarioxRol(int idRol, string loginUsuario)
         {
-            userData.InsertarUsuarioxRol(IdRol);
+            userData.InsertarUsuarioxRol(idRol, loginUsuario);
+        }
+
+        public DataTable ObtenerEmpleados(int? idEmpleado)
+        {
+            return userData.ObtenerEmpleados(idEmpleado);
+        }
+
+        public bool ValidarRolActivoXUsuario(string loginUsuario, int idRol)
+        {
+            return userData.ValidarRolActivoXUsuario(loginUsuario, idRol);
         }
     }
 }

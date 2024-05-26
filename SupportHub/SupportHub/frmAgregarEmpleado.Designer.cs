@@ -70,25 +70,21 @@
             gbAddEmpleado.Controls.Add(lblApellidoEmpleado);
             gbAddEmpleado.Controls.Add(lblNombreEmpleado);
             gbAddEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            gbAddEmpleado.Location = new Point(14, 88);
-            gbAddEmpleado.Margin = new Padding(3, 4, 3, 4);
+            gbAddEmpleado.Location = new Point(12, 66);
             gbAddEmpleado.Name = "gbAddEmpleado";
-            gbAddEmpleado.Padding = new Padding(3, 4, 3, 4);
-            gbAddEmpleado.Size = new Size(641, 368);
+            gbAddEmpleado.Size = new Size(561, 276);
             gbAddEmpleado.TabIndex = 1;
             gbAddEmpleado.TabStop = false;
             gbAddEmpleado.Text = "AGREGAR EMPLEADO";
-            gbAddEmpleado.Enter += gbAddEmpleado_Enter;
             // 
             // txtTelefonoEmpleado
             // 
             txtTelefonoEmpleado.Cursor = Cursors.IBeam;
             txtTelefonoEmpleado.Font = new Font("Segoe UI", 12F);
-            txtTelefonoEmpleado.Location = new Point(30, 224);
-            txtTelefonoEmpleado.Margin = new Padding(3, 4, 3, 4);
+            txtTelefonoEmpleado.Location = new Point(26, 168);
             txtTelefonoEmpleado.Mask = "0000-0000";
             txtTelefonoEmpleado.Name = "txtTelefonoEmpleado";
-            txtTelefonoEmpleado.Size = new Size(303, 34);
+            txtTelefonoEmpleado.Size = new Size(266, 29);
             txtTelefonoEmpleado.TabIndex = 8;
             txtTelefonoEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
@@ -105,10 +101,9 @@
             btnCancelaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelaEmpleado.IconSize = 20;
             btnCancelaEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelaEmpleado.Location = new Point(479, 288);
-            btnCancelaEmpleado.Margin = new Padding(3, 4, 3, 4);
+            btnCancelaEmpleado.Location = new Point(419, 216);
             btnCancelaEmpleado.Name = "btnCancelaEmpleado";
-            btnCancelaEmpleado.Size = new Size(131, 47);
+            btnCancelaEmpleado.Size = new Size(115, 35);
             btnCancelaEmpleado.TabIndex = 13;
             btnCancelaEmpleado.Text = "CANCELAR";
             btnCancelaEmpleado.TextAlign = ContentAlignment.MiddleLeft;
@@ -128,10 +123,9 @@
             btnGuardarEmpleado.IconColor = Color.White;
             btnGuardarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardarEmpleado.IconSize = 20;
-            btnGuardarEmpleado.Location = new Point(479, 217);
-            btnGuardarEmpleado.Margin = new Padding(3, 4, 3, 4);
+            btnGuardarEmpleado.Location = new Point(419, 163);
             btnGuardarEmpleado.Name = "btnGuardarEmpleado";
-            btnGuardarEmpleado.Size = new Size(131, 51);
+            btnGuardarEmpleado.Size = new Size(115, 38);
             btnGuardarEmpleado.TabIndex = 12;
             btnGuardarEmpleado.Text = "GUARDAR";
             btnGuardarEmpleado.TextAlign = ContentAlignment.MiddleLeft;
@@ -144,12 +138,10 @@
             cbxAreaEmpleado.Cursor = Cursors.Hand;
             cbxAreaEmpleado.Font = new Font("Segoe UI", 12F);
             cbxAreaEmpleado.FormattingEnabled = true;
-            cbxAreaEmpleado.Location = new Point(375, 149);
-            cbxAreaEmpleado.Margin = new Padding(3, 4, 3, 4);
+            cbxAreaEmpleado.Location = new Point(328, 112);
             cbxAreaEmpleado.Name = "cbxAreaEmpleado";
-            cbxAreaEmpleado.Size = new Size(235, 36);
+            cbxAreaEmpleado.Size = new Size(206, 29);
             cbxAreaEmpleado.TabIndex = 11;
-            cbxAreaEmpleado.SelectedIndexChanged += cbxAreaEmpleado_SelectedIndexChanged;
             cbxAreaEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // cbxCargoEmpleado
@@ -157,22 +149,19 @@
             cbxCargoEmpleado.Cursor = Cursors.Hand;
             cbxCargoEmpleado.Font = new Font("Segoe UI", 12F);
             cbxCargoEmpleado.FormattingEnabled = true;
-            cbxCargoEmpleado.Location = new Point(375, 71);
-            cbxCargoEmpleado.Margin = new Padding(3, 4, 3, 4);
+            cbxCargoEmpleado.Location = new Point(328, 53);
             cbxCargoEmpleado.Name = "cbxCargoEmpleado";
-            cbxCargoEmpleado.Size = new Size(235, 36);
+            cbxCargoEmpleado.Size = new Size(206, 29);
             cbxCargoEmpleado.TabIndex = 10;
-            cbxCargoEmpleado.SelectedIndexChanged += cbxCargoEmpleado_SelectedIndexChanged;
             cbxCargoEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // txtEmailEmpleado
             // 
             txtEmailEmpleado.Cursor = Cursors.IBeam;
             txtEmailEmpleado.Font = new Font("Segoe UI", 12F);
-            txtEmailEmpleado.Location = new Point(30, 296);
-            txtEmailEmpleado.Margin = new Padding(3, 4, 3, 4);
+            txtEmailEmpleado.Location = new Point(26, 222);
             txtEmailEmpleado.Name = "txtEmailEmpleado";
-            txtEmailEmpleado.Size = new Size(303, 34);
+            txtEmailEmpleado.Size = new Size(266, 29);
             txtEmailEmpleado.TabIndex = 9;
             txtEmailEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
@@ -180,10 +169,9 @@
             // 
             txtApellidoEmpleado.Cursor = Cursors.IBeam;
             txtApellidoEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtApellidoEmpleado.Location = new Point(30, 149);
-            txtApellidoEmpleado.Margin = new Padding(3, 4, 3, 4);
+            txtApellidoEmpleado.Location = new Point(26, 112);
             txtApellidoEmpleado.Name = "txtApellidoEmpleado";
-            txtApellidoEmpleado.Size = new Size(303, 34);
+            txtApellidoEmpleado.Size = new Size(266, 29);
             txtApellidoEmpleado.TabIndex = 7;
             txtApellidoEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
@@ -191,64 +179,63 @@
             // 
             txtNombreEmpleado.Cursor = Cursors.IBeam;
             txtNombreEmpleado.Font = new Font("Segoe UI", 12F);
-            txtNombreEmpleado.Location = new Point(30, 71);
-            txtNombreEmpleado.Margin = new Padding(3, 4, 3, 4);
+            txtNombreEmpleado.Location = new Point(26, 53);
             txtNombreEmpleado.Name = "txtNombreEmpleado";
-            txtNombreEmpleado.Size = new Size(303, 34);
+            txtNombreEmpleado.Size = new Size(266, 29);
             txtNombreEmpleado.TabIndex = 6;
             txtNombreEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // lblAreaEmpleado
             // 
             lblAreaEmpleado.AutoSize = true;
-            lblAreaEmpleado.Location = new Point(375, 117);
+            lblAreaEmpleado.Location = new Point(328, 88);
             lblAreaEmpleado.Name = "lblAreaEmpleado";
-            lblAreaEmpleado.Size = new Size(61, 28);
+            lblAreaEmpleado.Size = new Size(49, 21);
             lblAreaEmpleado.TabIndex = 5;
             lblAreaEmpleado.Text = "Área:";
             // 
             // lblCargoEmpleado
             // 
             lblCargoEmpleado.AutoSize = true;
-            lblCargoEmpleado.Location = new Point(375, 39);
+            lblCargoEmpleado.Location = new Point(328, 29);
             lblCargoEmpleado.Name = "lblCargoEmpleado";
-            lblCargoEmpleado.Size = new Size(72, 28);
+            lblCargoEmpleado.Size = new Size(59, 21);
             lblCargoEmpleado.TabIndex = 4;
             lblCargoEmpleado.Text = "Cargo:";
             // 
             // lblEmailEmpleado
             // 
             lblEmailEmpleado.AutoSize = true;
-            lblEmailEmpleado.Location = new Point(30, 267);
+            lblEmailEmpleado.Location = new Point(26, 200);
             lblEmailEmpleado.Name = "lblEmailEmpleado";
-            lblEmailEmpleado.Size = new Size(69, 28);
+            lblEmailEmpleado.Size = new Size(57, 21);
             lblEmailEmpleado.TabIndex = 3;
             lblEmailEmpleado.Text = "Email:";
             // 
             // lblTelefonoEmpleado
             // 
             lblTelefonoEmpleado.AutoSize = true;
-            lblTelefonoEmpleado.Location = new Point(30, 192);
+            lblTelefonoEmpleado.Location = new Point(26, 144);
             lblTelefonoEmpleado.Name = "lblTelefonoEmpleado";
-            lblTelefonoEmpleado.Size = new Size(99, 28);
+            lblTelefonoEmpleado.Size = new Size(81, 21);
             lblTelefonoEmpleado.TabIndex = 2;
             lblTelefonoEmpleado.Text = "Teléfono:";
             // 
             // lblApellidoEmpleado
             // 
             lblApellidoEmpleado.AutoSize = true;
-            lblApellidoEmpleado.Location = new Point(30, 117);
+            lblApellidoEmpleado.Location = new Point(26, 88);
             lblApellidoEmpleado.Name = "lblApellidoEmpleado";
-            lblApellidoEmpleado.Size = new Size(96, 28);
+            lblApellidoEmpleado.Size = new Size(79, 21);
             lblApellidoEmpleado.TabIndex = 1;
             lblApellidoEmpleado.Text = "Apellido:";
             // 
             // lblNombreEmpleado
             // 
             lblNombreEmpleado.AutoSize = true;
-            lblNombreEmpleado.Location = new Point(30, 39);
+            lblNombreEmpleado.Location = new Point(26, 29);
             lblNombreEmpleado.Name = "lblNombreEmpleado";
-            lblNombreEmpleado.Size = new Size(94, 28);
+            lblNombreEmpleado.Size = new Size(77, 21);
             lblNombreEmpleado.TabIndex = 0;
             lblNombreEmpleado.Text = "Nombre:";
             // 
@@ -259,6 +246,7 @@
             pSuperiorAddEmpleado.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorAddEmpleado.Dock = DockStyle.Top;
             pSuperiorAddEmpleado.Location = new Point(0, 0);
+            pSuperiorAddEmpleado.Margin = new Padding(3, 2, 3, 2);
             pSuperiorAddEmpleado.Name = "pSuperiorAddEmpleado";
             pSuperiorAddEmpleado.Size = new Size(585, 60);
             pSuperiorAddEmpleado.TabIndex = 0;
@@ -267,9 +255,10 @@
             // 
             pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
-            pboxLogo.Location = new Point(20, 0);
+            pboxLogo.Location = new Point(18, 0);
+            pboxLogo.Margin = new Padding(3, 2, 3, 2);
             pboxLogo.Name = "pboxLogo";
-            pboxLogo.Size = new Size(184, 60);
+            pboxLogo.Size = new Size(184, 75);
             pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
             pboxLogo.TabIndex = 16;
             pboxLogo.TabStop = false;
@@ -286,9 +275,10 @@
             btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarAddEmpleado.IconSize = 20;
             btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(545, 12);
+            btnCerrarAddEmpleado.Location = new Point(550, 9);
+            btnCerrarAddEmpleado.Margin = new Padding(3, 2, 3, 2);
             btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
-            btnCerrarAddEmpleado.Size = new Size(28, 24);
+            btnCerrarAddEmpleado.Size = new Size(24, 18);
             btnCerrarAddEmpleado.TabIndex = 15;
             btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -297,14 +287,13 @@
             // 
             // frmAgregarEmpleado
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(98, 122, 144);
-            ClientSize = new Size(669, 472);
+            ClientSize = new Size(585, 354);
             Controls.Add(gbAddEmpleado);
             Controls.Add(pSuperiorAddEmpleado);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmAgregarEmpleado";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EMPLEADO ";

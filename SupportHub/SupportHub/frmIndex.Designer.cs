@@ -78,9 +78,8 @@
             pIzquierdoIndex.Controls.Add(pLogoIndex);
             pIzquierdoIndex.Dock = DockStyle.Left;
             pIzquierdoIndex.Location = new Point(0, 0);
-            pIzquierdoIndex.Margin = new Padding(3, 4, 3, 4);
             pIzquierdoIndex.Name = "pIzquierdoIndex";
-            pIzquierdoIndex.Size = new Size(266, 913);
+            pIzquierdoIndex.Size = new Size(233, 685);
             pIzquierdoIndex.TabIndex = 0;
             // 
             // btnCerrarSeccion
@@ -94,10 +93,9 @@
             btnCerrarSeccion.IconColor = SystemColors.Window;
             btnCerrarSeccion.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCerrarSeccion.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarSeccion.Location = new Point(0, 833);
-            btnCerrarSeccion.Margin = new Padding(3, 4, 3, 4);
+            btnCerrarSeccion.Location = new Point(0, 625);
             btnCerrarSeccion.Name = "btnCerrarSeccion";
-            btnCerrarSeccion.Size = new Size(266, 80);
+            btnCerrarSeccion.Size = new Size(233, 60);
             btnCerrarSeccion.TabIndex = 7;
             btnCerrarSeccion.Text = "CERRAR SESIÓN ";
             btnCerrarSeccion.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -116,8 +114,9 @@
             btnUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUsuarios.ImageAlign = ContentAlignment.MiddleLeft;
             btnUsuarios.Location = new Point(0, 380);
+            btnUsuarios.Margin = new Padding(3, 2, 3, 2);
             btnUsuarios.Name = "btnUsuarios";
-            btnUsuarios.Size = new Size(266, 80);
+            btnUsuarios.Size = new Size(233, 60);
             btnUsuarios.TabIndex = 6;
             btnUsuarios.Text = "USUARIO";
             btnUsuarios.TextAlign = ContentAlignment.MiddleLeft;
@@ -136,10 +135,9 @@
             btnEquipo.IconColor = SystemColors.Window;
             btnEquipo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEquipo.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEquipo.Location = new Point(0, 427);
-            btnEquipo.Margin = new Padding(3, 4, 3, 4);
+            btnEquipo.Location = new Point(0, 320);
             btnEquipo.Name = "btnEquipo";
-            btnEquipo.Size = new Size(266, 80);
+            btnEquipo.Size = new Size(233, 60);
             btnEquipo.TabIndex = 4;
             btnEquipo.Text = "EQUIPO";
             btnEquipo.TextAlign = ContentAlignment.MiddleLeft;
@@ -158,10 +156,9 @@
             btnProveedor.IconColor = SystemColors.Window;
             btnProveedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnProveedor.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProveedor.Location = new Point(0, 347);
-            btnProveedor.Margin = new Padding(3, 4, 3, 4);
+            btnProveedor.Location = new Point(0, 260);
             btnProveedor.Name = "btnProveedor";
-            btnProveedor.Size = new Size(266, 80);
+            btnProveedor.Size = new Size(233, 60);
             btnProveedor.TabIndex = 3;
             btnProveedor.Text = "PROVEEDOR";
             btnProveedor.TextAlign = ContentAlignment.MiddleLeft;
@@ -180,10 +177,9 @@
             btnEntrega.IconColor = SystemColors.Window;
             btnEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEntrega.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEntrega.Location = new Point(0, 267);
-            btnEntrega.Margin = new Padding(3, 4, 3, 4);
+            btnEntrega.Location = new Point(0, 200);
             btnEntrega.Name = "btnEntrega";
-            btnEntrega.Size = new Size(266, 80);
+            btnEntrega.Size = new Size(233, 60);
             btnEntrega.TabIndex = 2;
             btnEntrega.Text = "ENTREGA";
             btnEntrega.TextAlign = ContentAlignment.MiddleLeft;
@@ -202,10 +198,9 @@
             btnEmpleado.IconColor = SystemColors.Window;
             btnEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEmpleado.Location = new Point(0, 187);
-            btnEmpleado.Margin = new Padding(3, 4, 3, 4);
+            btnEmpleado.Location = new Point(0, 140);
             btnEmpleado.Name = "btnEmpleado";
-            btnEmpleado.Size = new Size(266, 80);
+            btnEmpleado.Size = new Size(233, 60);
             btnEmpleado.TabIndex = 1;
             btnEmpleado.Text = "EMPLEADO";
             btnEmpleado.TextAlign = ContentAlignment.MiddleLeft;
@@ -218,19 +213,19 @@
             pLogoIndex.Controls.Add(btnHome);
             pLogoIndex.Dock = DockStyle.Top;
             pLogoIndex.Location = new Point(0, 0);
-            pLogoIndex.Margin = new Padding(3, 4, 3, 4);
             pLogoIndex.Name = "pLogoIndex";
-            pLogoIndex.Padding = new Padding(11, 0, 23, 0);
-            pLogoIndex.Size = new Size(266, 187);
+            pLogoIndex.Padding = new Padding(10, 0, 20, 0);
+            pLogoIndex.Size = new Size(233, 140);
             pLogoIndex.TabIndex = 0;
             // 
             // btnHome
             // 
             btnHome.Cursor = Cursors.Hand;
             btnHome.Image = (Image)resources.GetObject("btnHome.Image");
-            btnHome.Location = new Point(11, 0);
+            btnHome.Location = new Point(0, 5);
+            btnHome.Margin = new Padding(3, 2, 3, 2);
             btnHome.Name = "btnHome";
-            btnHome.Size = new Size(233, 134);
+            btnHome.Size = new Size(259, 135);
             btnHome.SizeMode = PictureBoxSizeMode.CenterImage;
             btnHome.TabIndex = 0;
             btnHome.TabStop = false;
@@ -246,10 +241,9 @@
             pBarraTitulo.Controls.Add(lblIconoFrmActual);
             pBarraTitulo.Controls.Add(btnIconoFrmActual);
             pBarraTitulo.Dock = DockStyle.Top;
-            pBarraTitulo.Location = new Point(266, 0);
-            pBarraTitulo.Margin = new Padding(3, 4, 3, 4);
+            pBarraTitulo.Location = new Point(233, 0);
             pBarraTitulo.Name = "pBarraTitulo";
-            pBarraTitulo.Size = new Size(1093, 100);
+            pBarraTitulo.Size = new Size(956, 75);
             pBarraTitulo.TabIndex = 1;
             pBarraTitulo.MouseDown += pBarraTitulo_MouseDown;
             // 
@@ -265,10 +259,9 @@
             subMenu.IconFont = FontAwesome.Sharp.IconFont.Solid;
             subMenu.IconSize = 20;
             subMenu.ImageAlign = ContentAlignment.MiddleLeft;
-            subMenu.Location = new Point(1047, 60);
-            subMenu.Margin = new Padding(3, 4, 3, 4);
+            subMenu.Location = new Point(916, 45);
             subMenu.Name = "subMenu";
-            subMenu.Size = new Size(32, 32);
+            subMenu.Size = new Size(28, 24);
             subMenu.TabIndex = 5;
             subMenu.TextAlign = ContentAlignment.MiddleLeft;
             subMenu.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -287,10 +280,9 @@
             btnMiximizar.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnMiximizar.IconSize = 20;
             btnMiximizar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMiximizar.Location = new Point(982, 0);
-            btnMiximizar.Margin = new Padding(3, 4, 3, 4);
+            btnMiximizar.Location = new Point(859, 0);
             btnMiximizar.Name = "btnMiximizar";
-            btnMiximizar.Size = new Size(30, 36);
+            btnMiximizar.Size = new Size(26, 27);
             btnMiximizar.TabIndex = 4;
             btnMiximizar.TextAlign = ContentAlignment.MiddleLeft;
             btnMiximizar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -310,10 +302,9 @@
             btnMaximizar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnMaximizar.IconSize = 20;
             btnMaximizar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnMaximizar.Location = new Point(1018, 4);
-            btnMaximizar.Margin = new Padding(3, 4, 3, 4);
+            btnMaximizar.Location = new Point(891, 3);
             btnMaximizar.Name = "btnMaximizar";
-            btnMaximizar.Size = new Size(32, 32);
+            btnMaximizar.Size = new Size(28, 24);
             btnMaximizar.TabIndex = 3;
             btnMaximizar.TextAlign = ContentAlignment.MiddleLeft;
             btnMaximizar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -333,10 +324,9 @@
             btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrar.IconSize = 20;
             btnCerrar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrar.Location = new Point(1057, 4);
-            btnCerrar.Margin = new Padding(3, 4, 3, 4);
+            btnCerrar.Location = new Point(925, 3);
             btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(32, 32);
+            btnCerrar.Size = new Size(28, 24);
             btnCerrar.TabIndex = 2;
             btnCerrar.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -349,9 +339,9 @@
             // 
             lblIconoFrmActual.AutoSize = true;
             lblIconoFrmActual.ForeColor = SystemColors.Window;
-            lblIconoFrmActual.Location = new Point(73, 37);
+            lblIconoFrmActual.Location = new Point(64, 28);
             lblIconoFrmActual.Name = "lblIconoFrmActual";
-            lblIconoFrmActual.Size = new Size(52, 20);
+            lblIconoFrmActual.Size = new Size(42, 15);
             lblIconoFrmActual.TabIndex = 1;
             lblIconoFrmActual.Text = "HOME";
             // 
@@ -362,11 +352,10 @@
             btnIconoFrmActual.IconChar = FontAwesome.Sharp.IconChar.HouseChimneyWindow;
             btnIconoFrmActual.IconColor = Color.Purple;
             btnIconoFrmActual.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnIconoFrmActual.IconSize = 59;
-            btnIconoFrmActual.Location = new Point(7, 16);
-            btnIconoFrmActual.Margin = new Padding(3, 4, 3, 4);
+            btnIconoFrmActual.IconSize = 49;
+            btnIconoFrmActual.Location = new Point(6, 12);
             btnIconoFrmActual.Name = "btnIconoFrmActual";
-            btnIconoFrmActual.Size = new Size(59, 65);
+            btnIconoFrmActual.Size = new Size(52, 49);
             btnIconoFrmActual.TabIndex = 0;
             btnIconoFrmActual.TabStop = false;
             // 
@@ -374,10 +363,9 @@
             // 
             pSombra.BackColor = Color.FromArgb(5, 23, 59);
             pSombra.Dock = DockStyle.Top;
-            pSombra.Location = new Point(266, 100);
-            pSombra.Margin = new Padding(3, 4, 3, 4);
+            pSombra.Location = new Point(233, 75);
             pSombra.Name = "pSombra";
-            pSombra.Size = new Size(1093, 13);
+            pSombra.Size = new Size(956, 10);
             pSombra.TabIndex = 2;
             // 
             // pDesktop
@@ -387,20 +375,18 @@
             pDesktop.Controls.Add(lblFecha);
             pDesktop.Controls.Add(lblHora);
             pDesktop.Dock = DockStyle.Fill;
-            pDesktop.Location = new Point(266, 113);
-            pDesktop.Margin = new Padding(3, 4, 3, 4);
+            pDesktop.Location = new Point(233, 85);
             pDesktop.Name = "pDesktop";
-            pDesktop.Size = new Size(1093, 800);
+            pDesktop.Size = new Size(956, 600);
             pDesktop.TabIndex = 3;
             // 
             // pDerechoIndex
             // 
             pDerechoIndex.Controls.Add(pSubMenu);
             pDerechoIndex.Dock = DockStyle.Right;
-            pDerechoIndex.Location = new Point(1093, 0);
-            pDerechoIndex.Margin = new Padding(3, 4, 3, 4);
+            pDerechoIndex.Location = new Point(956, 0);
             pDerechoIndex.Name = "pDerechoIndex";
-            pDerechoIndex.Size = new Size(0, 800);
+            pDerechoIndex.Size = new Size(0, 600);
             pDerechoIndex.TabIndex = 5;
             // 
             // pSubMenu
@@ -411,14 +397,14 @@
             pSubMenu.Controls.Add(btnAcerca);
             pSubMenu.Dock = DockStyle.Top;
             pSubMenu.Location = new Point(0, 0);
-            pSubMenu.Margin = new Padding(3, 4, 3, 4);
             pSubMenu.Name = "pSubMenu";
-            pSubMenu.Size = new Size(0, 233);
+            pSubMenu.Size = new Size(0, 175);
             pSubMenu.TabIndex = 0;
             // 
             // btnInfo
             // 
             btnInfo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnInfo.Cursor = Cursors.Hand;
             btnInfo.FlatAppearance.BorderSize = 0;
             btnInfo.FlatStyle = FlatStyle.Flat;
             btnInfo.ForeColor = Color.FromArgb(31, 35, 40);
@@ -427,21 +413,20 @@
             btnInfo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnInfo.IconSize = 20;
             btnInfo.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInfo.Location = new Point(-155, 8);
-            btnInfo.Margin = new Padding(3, 4, 3, 4);
+            btnInfo.Location = new Point(-136, 6);
             btnInfo.Name = "btnInfo";
-            btnInfo.Size = new Size(146, 65);
+            btnInfo.Size = new Size(128, 49);
             btnInfo.TabIndex = 2;
             btnInfo.Text = "INFORMACIÓN";
             btnInfo.TextAlign = ContentAlignment.MiddleLeft;
             btnInfo.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnInfo.UseVisualStyleBackColor = true;
-            btnInfo.Cursor = Cursors.Hand;
             btnInfo.Click += btnInfo_Click;
             // 
             // btnSalir
             // 
             btnSalir.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSalir.Cursor = Cursors.Hand;
             btnSalir.FlatAppearance.BorderSize = 0;
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.ForeColor = Color.FromArgb(31, 35, 40);
@@ -450,21 +435,20 @@
             btnSalir.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnSalir.IconSize = 20;
             btnSalir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSalir.Location = new Point(-155, 147);
-            btnSalir.Margin = new Padding(3, 4, 3, 4);
+            btnSalir.Location = new Point(-136, 110);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(146, 65);
+            btnSalir.Size = new Size(128, 49);
             btnSalir.TabIndex = 4;
             btnSalir.Text = "SALIR";
             btnSalir.TextAlign = ContentAlignment.MiddleLeft;
             btnSalir.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSalir.UseVisualStyleBackColor = true;
-            btnSalir.Cursor = Cursors.Hand;
             btnSalir.Click += btnSalir_Click;
             // 
             // btnAcerca
             // 
             btnAcerca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAcerca.Cursor = Cursors.Hand;
             btnAcerca.FlatAppearance.BorderSize = 0;
             btnAcerca.FlatStyle = FlatStyle.Flat;
             btnAcerca.ForeColor = Color.FromArgb(31, 35, 40);
@@ -473,16 +457,14 @@
             btnAcerca.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAcerca.IconSize = 20;
             btnAcerca.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAcerca.Location = new Point(-150, 73);
-            btnAcerca.Margin = new Padding(3, 4, 3, 4);
+            btnAcerca.Location = new Point(-131, 55);
             btnAcerca.Name = "btnAcerca";
-            btnAcerca.Size = new Size(146, 65);
+            btnAcerca.Size = new Size(128, 49);
             btnAcerca.TabIndex = 3;
             btnAcerca.Text = "ACERCA DE";
             btnAcerca.TextAlign = ContentAlignment.MiddleLeft;
             btnAcerca.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAcerca.UseVisualStyleBackColor = true;
-            btnAcerca.Cursor = Cursors.Hand;
             btnAcerca.Click += btnAcerca_Click;
             // 
             // lblFecha
@@ -491,9 +473,9 @@
             lblFecha.AutoSize = true;
             lblFecha.Font = new Font("Century Gothic", 25F);
             lblFecha.ForeColor = Color.FromArgb(31, 35, 40);
-            lblFecha.Location = new Point(283, 395);
+            lblFecha.Location = new Point(248, 296);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(157, 51);
+            lblFecha.Size = new Size(125, 40);
             lblFecha.TabIndex = 2;
             lblFecha.Text = "FECHA";
             // 
@@ -503,9 +485,9 @@
             lblHora.AutoSize = true;
             lblHora.Font = new Font("Century Gothic", 100F);
             lblHora.ForeColor = Color.FromArgb(31, 35, 40);
-            lblHora.Location = new Point(245, 153);
+            lblHora.Location = new Point(214, 115);
             lblHora.Name = "lblHora";
-            lblHora.Size = new Size(568, 201);
+            lblHora.Size = new Size(457, 161);
             lblHora.TabIndex = 1;
             lblHora.Text = "HORA";
             // 
@@ -515,15 +497,14 @@
             // 
             // frmIndex
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1359, 913);
+            ClientSize = new Size(1189, 685);
             Controls.Add(pDesktop);
             Controls.Add(pSombra);
             Controls.Add(pBarraTitulo);
             Controls.Add(pIzquierdoIndex);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmIndex";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SuppportHub";

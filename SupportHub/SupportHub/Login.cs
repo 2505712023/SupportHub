@@ -84,8 +84,8 @@ namespace SupportHub
                 if (mensaje == "Inicio de sesión exitoso")
                 {
                     this.Hide();
-                    frmCarga formLogin = new frmCarga();
-                    formLogin.ShowDialog();
+                    //frmCarga formLogin = new frmCarga();
+                    //formLogin.ShowDialog();
                     frmIndex inicio = new frmIndex();
                     inicio.Show();
                     inicio.FormClosed += CerrarSeccion;

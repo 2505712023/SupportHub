@@ -29,18 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarUsuario));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             pSuperiorAddUsuario = new Panel();
             btnCerrar = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbAddUsuario = new GroupBox();
-            cbxApellidosAddUsuario = new ComboBox();
-            lblApellidoAddUsuario = new Label();
+            dgvRoles = new DataGridView();
             chbActivoUsuario = new CheckBox();
             cbxEmpAddUsuario = new ComboBox();
             lblEmpAddUsuario = new Label();
-            cbxTipoUsuario = new ComboBox();
-            lblTipoUsuario = new Label();
+            lblRoles = new Label();
             mtboxContrasenia = new MaskedTextBox();
             tboxLoginUsuario = new TextBox();
             lblContraseña = new Label();
@@ -59,6 +58,7 @@
             pSuperiorAddUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
             gbAddUsuario.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvRoles).BeginInit();
             SuspendLayout();
             // 
             // pSuperiorAddUsuario
@@ -70,7 +70,7 @@
             pSuperiorAddUsuario.Dock = DockStyle.Top;
             pSuperiorAddUsuario.Location = new Point(0, 0);
             pSuperiorAddUsuario.Name = "pSuperiorAddUsuario";
-            pSuperiorAddUsuario.Size = new Size(926, 60);
+            pSuperiorAddUsuario.Size = new Size(758, 60);
             pSuperiorAddUsuario.TabIndex = 2;
             // 
             // btnCerrar
@@ -84,7 +84,7 @@
             btnCerrar.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrar.IconSize = 20;
             btnCerrar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrar.Location = new Point(886, 12);
+            btnCerrar.Location = new Point(721, 12);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(28, 24);
             btnCerrar.TabIndex = 18;
@@ -115,7 +115,7 @@
             btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarAddEmpleado.IconSize = 20;
             btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(1420, 12);
+            btnCerrarAddEmpleado.Location = new Point(1255, 12);
             btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
             btnCerrarAddEmpleado.Size = new Size(28, 24);
             btnCerrarAddEmpleado.TabIndex = 16;
@@ -126,13 +126,11 @@
             // gbAddUsuario
             // 
             gbAddUsuario.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            gbAddUsuario.Controls.Add(cbxApellidosAddUsuario);
-            gbAddUsuario.Controls.Add(lblApellidoAddUsuario);
+            gbAddUsuario.Controls.Add(dgvRoles);
             gbAddUsuario.Controls.Add(chbActivoUsuario);
             gbAddUsuario.Controls.Add(cbxEmpAddUsuario);
             gbAddUsuario.Controls.Add(lblEmpAddUsuario);
-            gbAddUsuario.Controls.Add(cbxTipoUsuario);
-            gbAddUsuario.Controls.Add(lblTipoUsuario);
+            gbAddUsuario.Controls.Add(lblRoles);
             gbAddUsuario.Controls.Add(mtboxContrasenia);
             gbAddUsuario.Controls.Add(tboxLoginUsuario);
             gbAddUsuario.Controls.Add(lblContraseña);
@@ -151,35 +149,33 @@
             gbAddUsuario.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             gbAddUsuario.Location = new Point(12, 66);
             gbAddUsuario.Name = "gbAddUsuario";
-            gbAddUsuario.Size = new Size(902, 384);
+            gbAddUsuario.Size = new Size(734, 362);
             gbAddUsuario.TabIndex = 3;
             gbAddUsuario.TabStop = false;
             gbAddUsuario.Text = "AGREGAR USUARIO";
-            gbAddUsuario.Enter += gbAddUsuario_Enter;
             // 
-            // cbxApellidosAddUsuario
+            // dgvRoles
             // 
-            cbxApellidosAddUsuario.FormattingEnabled = true;
-            cbxApellidosAddUsuario.Location = new Point(522, 195);
-            cbxApellidosAddUsuario.Margin = new Padding(3, 2, 3, 2);
-            cbxApellidosAddUsuario.Name = "cbxApellidosAddUsuario";
-            cbxApellidosAddUsuario.Size = new Size(228, 29);
-            cbxApellidosAddUsuario.TabIndex = 51;
-            cbxApellidosAddUsuario.SelectedIndexChanged += cbxApellidosAddUsuario_SelectedIndexChanged;
-            // 
-            // lblApellidoAddUsuario
-            // 
-            lblApellidoAddUsuario.AutoSize = true;
-            lblApellidoAddUsuario.Location = new Point(526, 158);
-            lblApellidoAddUsuario.Name = "lblApellidoAddUsuario";
-            lblApellidoAddUsuario.Size = new Size(195, 21);
-            lblApellidoAddUsuario.TabIndex = 50;
-            lblApellidoAddUsuario.Text = "Apellidos del empleado:";
+            dgvRoles.BackgroundColor = Color.FromArgb(98, 122, 144);
+            dgvRoles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvRoles.DefaultCellStyle = dataGridViewCellStyle1;
+            dgvRoles.Location = new Point(344, 58);
+            dgvRoles.Name = "dgvRoles";
+            dgvRoles.Size = new Size(357, 141);
+            dgvRoles.TabIndex = 50;
             // 
             // chbActivoUsuario
             // 
             chbActivoUsuario.AutoSize = true;
-            chbActivoUsuario.Location = new Point(526, 248);
+            chbActivoUsuario.CheckAlign = ContentAlignment.MiddleRight;
+            chbActivoUsuario.Location = new Point(25, 269);
             chbActivoUsuario.Margin = new Padding(3, 2, 3, 2);
             chbActivoUsuario.Name = "chbActivoUsuario";
             chbActivoUsuario.Size = new Size(82, 25);
@@ -190,50 +186,41 @@
             // 
             // cbxEmpAddUsuario
             // 
+            cbxEmpAddUsuario.Font = new Font("Segoe UI", 12F);
             cbxEmpAddUsuario.FormattingEnabled = true;
-            cbxEmpAddUsuario.Location = new Point(519, 114);
+            cbxEmpAddUsuario.Location = new Point(344, 226);
             cbxEmpAddUsuario.Margin = new Padding(3, 2, 3, 2);
             cbxEmpAddUsuario.Name = "cbxEmpAddUsuario";
-            cbxEmpAddUsuario.Size = new Size(232, 29);
+            cbxEmpAddUsuario.Size = new Size(357, 29);
             cbxEmpAddUsuario.TabIndex = 48;
             cbxEmpAddUsuario.SelectedIndexChanged += cbxEmpAddUsuario_SelectedIndexChanged;
             // 
             // lblEmpAddUsuario
             // 
             lblEmpAddUsuario.AutoSize = true;
-            lblEmpAddUsuario.Location = new Point(519, 90);
+            lblEmpAddUsuario.Location = new Point(344, 202);
             lblEmpAddUsuario.Name = "lblEmpAddUsuario";
-            lblEmpAddUsuario.Size = new Size(186, 21);
+            lblEmpAddUsuario.Size = new Size(91, 21);
             lblEmpAddUsuario.TabIndex = 47;
-            lblEmpAddUsuario.Text = "Nombre del empleado:";
+            lblEmpAddUsuario.Text = "Empleado:";
             // 
-            // cbxTipoUsuario
+            // lblRoles
             // 
-            cbxTipoUsuario.FormattingEnabled = true;
-            cbxTipoUsuario.Location = new Point(519, 58);
-            cbxTipoUsuario.Margin = new Padding(3, 2, 3, 2);
-            cbxTipoUsuario.Name = "cbxTipoUsuario";
-            cbxTipoUsuario.Size = new Size(189, 29);
-            cbxTipoUsuario.TabIndex = 46;
-            cbxTipoUsuario.SelectedIndexChanged += cbxTipoUsuario_SelectedIndexChanged;
-            // 
-            // lblTipoUsuario
-            // 
-            lblTipoUsuario.AutoSize = true;
-            lblTipoUsuario.Location = new Point(519, 34);
-            lblTipoUsuario.Name = "lblTipoUsuario";
-            lblTipoUsuario.Size = new Size(132, 21);
-            lblTipoUsuario.TabIndex = 45;
-            lblTipoUsuario.Text = "Tipo de usuario:";
+            lblRoles.AutoSize = true;
+            lblRoles.Location = new Point(344, 34);
+            lblRoles.Name = "lblRoles";
+            lblRoles.Size = new Size(139, 21);
+            lblRoles.TabIndex = 45;
+            lblRoles.Text = "Roles de usuario:";
             // 
             // mtboxContrasenia
             // 
+            mtboxContrasenia.Font = new Font("Segoe UI", 12F);
             mtboxContrasenia.Location = new Point(25, 226);
             mtboxContrasenia.Name = "mtboxContrasenia";
             mtboxContrasenia.PasswordChar = '●';
-            mtboxContrasenia.Size = new Size(325, 29);
+            mtboxContrasenia.Size = new Size(268, 29);
             mtboxContrasenia.TabIndex = 43;
-            mtboxContrasenia.MaskInputRejected += mtboxContrasenia_MaskInputRejected;
             // 
             // tboxLoginUsuario
             // 
@@ -241,7 +228,7 @@
             tboxLoginUsuario.ForeColor = Color.Black;
             tboxLoginUsuario.Location = new Point(25, 58);
             tboxLoginUsuario.Name = "tboxLoginUsuario";
-            tboxLoginUsuario.Size = new Size(325, 29);
+            tboxLoginUsuario.Size = new Size(268, 29);
             tboxLoginUsuario.TabIndex = 42;
             // 
             // lblContraseña
@@ -260,9 +247,8 @@
             tboxApellidosUsuario.ForeColor = Color.Black;
             tboxApellidosUsuario.Location = new Point(25, 170);
             tboxApellidosUsuario.Name = "tboxApellidosUsuario";
-            tboxApellidosUsuario.Size = new Size(325, 29);
+            tboxApellidosUsuario.Size = new Size(268, 29);
             tboxApellidosUsuario.TabIndex = 38;
-            tboxApellidosUsuario.TextChanged += tboxApellidosUsuario_TextChanged;
             // 
             // lblApellidos
             // 
@@ -280,9 +266,8 @@
             tboxNombresUsuario.ForeColor = Color.Black;
             tboxNombresUsuario.Location = new Point(25, 114);
             tboxNombresUsuario.Name = "tboxNombresUsuario";
-            tboxNombresUsuario.Size = new Size(325, 29);
+            tboxNombresUsuario.Size = new Size(268, 29);
             tboxNombresUsuario.TabIndex = 36;
-            tboxNombresUsuario.TextChanged += tboxNombresUsuario_TextChanged;
             // 
             // lblNombre
             // 
@@ -306,7 +291,7 @@
             btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelar.IconSize = 20;
             btnCancelar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelar.Location = new Point(779, 321);
+            btnCancelar.Location = new Point(601, 305);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(100, 40);
             btnCancelar.TabIndex = 34;
@@ -327,9 +312,9 @@
             btnGuardar.IconColor = Color.White;
             btnGuardar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardar.IconSize = 20;
-            btnGuardar.Location = new Point(779, 275);
+            btnGuardar.Location = new Point(495, 305);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(100, 40);
+            btnGuardar.Size = new Size(100, 41);
             btnGuardar.TabIndex = 33;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -368,7 +353,7 @@
             ibtnCancelarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnCancelarEntrega.IconSize = 20;
             ibtnCancelarEntrega.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnCancelarEntrega.Location = new Point(1287, 102);
+            ibtnCancelarEntrega.Location = new Point(1083, 102);
             ibtnCancelarEntrega.Name = "ibtnCancelarEntrega";
             ibtnCancelarEntrega.Size = new Size(100, 40);
             ibtnCancelarEntrega.TabIndex = 18;
@@ -388,7 +373,7 @@
             ibtnGuardarEntrega.IconColor = Color.White;
             ibtnGuardarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnGuardarEntrega.IconSize = 20;
-            ibtnGuardarEntrega.Location = new Point(1287, 56);
+            ibtnGuardarEntrega.Location = new Point(1083, 56);
             ibtnGuardarEntrega.Name = "ibtnGuardarEntrega";
             ibtnGuardarEntrega.Size = new Size(100, 40);
             ibtnGuardarEntrega.TabIndex = 17;
@@ -409,7 +394,7 @@
             btnCancelaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelaEmpleado.IconSize = 20;
             btnCancelaEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancelaEmpleado.Location = new Point(1924, 238);
+            btnCancelaEmpleado.Location = new Point(1720, 238);
             btnCancelaEmpleado.Name = "btnCancelaEmpleado";
             btnCancelaEmpleado.Size = new Size(115, 38);
             btnCancelaEmpleado.TabIndex = 13;
@@ -430,7 +415,7 @@
             btnGuardarEmpleado.IconColor = Color.White;
             btnGuardarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardarEmpleado.IconSize = 20;
-            btnGuardarEmpleado.Location = new Point(1792, 238);
+            btnGuardarEmpleado.Location = new Point(1588, 238);
             btnGuardarEmpleado.Name = "btnGuardarEmpleado";
             btnGuardarEmpleado.Size = new Size(115, 38);
             btnGuardarEmpleado.TabIndex = 12;
@@ -444,7 +429,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(98, 122, 144);
-            ClientSize = new Size(926, 462);
+            ClientSize = new Size(758, 440);
             Controls.Add(gbAddUsuario);
             Controls.Add(pSuperiorAddUsuario);
             FormBorderStyle = FormBorderStyle.None;
@@ -458,6 +443,7 @@
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             gbAddUsuario.ResumeLayout(false);
             gbAddUsuario.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvRoles).EndInit();
             ResumeLayout(false);
         }
 
@@ -498,12 +484,10 @@
         public Label lblApellidos;
         public MaskedTextBox mtboxContrasenia;
         public TextBox tboxLoginUsuario;
-        public ComboBox cbxTipoUsuario;
-        public Label lblTipoUsuario;
+        public Label lblRoles;
         public ComboBox cbxEmpAddUsuario;
         public Label lblEmpAddUsuario;
         public CheckBox chbActivoUsuario;
-        public ComboBox cbxApellidosAddUsuario;
-        public Label lblApellidoAddUsuario;
+        private DataGridView dgvRoles;
     }
 }

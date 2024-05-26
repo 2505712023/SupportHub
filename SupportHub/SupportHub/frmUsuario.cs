@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using Dominio;
 using Comun.Cache;
+using Presentacion.CustomMessageBoxes;
 
 
 namespace Presentacion
@@ -17,17 +18,18 @@ namespace Presentacion
     public partial class frmUsuario : Form
     {
         ModeloUsuario ModUser = new ModeloUsuario();
-        private List<string> tipoUsuario;
+        private List<string> tipoBusquedaUsuario;
+        private bool formCargado = false;
         public frmUsuario()
         {
             InitializeComponent();
-            tipoUsuario = new List<string>()
+            tipoBusquedaUsuario = new List<string>()
             {
-            "Nombre de usuario",
-            "Nombre del empleado",
-            "Apellidos del empleado"
+            "Login de Usuario",
+            "Nombres del Usuario",
+            "Apellidos del Usuario"
             };
-            cbxTipoBusquedaUsuario.DataSource = tipoUsuario;
+            cbxTipoBusquedaUsuario.DataSource = tipoBusquedaUsuario;
         }
 
         private void mostrarUsuario()
@@ -47,14 +49,14 @@ namespace Presentacion
             {
                 switch (cbxTipoBusquedaUsuario.Text)
                 {
-                    case "Nombre de usuario":
+                    case "Login de Usuario":
                         dgvUsuario.DataSource = ModUser.filtrarTablaUsuario(loginUsuario: txtBuscarUsuario.Text);
                         break;
-                    case "Nombre del empleado":
-                        dgvUsuario.DataSource = ModUser.filtrarTablaUsuario(nombreUsuario: txtBuscarUsuario.Text);
+                    case "Nombres del Usuario":
+                        dgvUsuario.DataSource = ModUser.filtrarTablaUsuario(nombresUsuario: txtBuscarUsuario.Text);
                         break;
-                    case "Apellidos del empleado":
-                        dgvUsuario.DataSource = ModUser.filtrarTablaUsuario(apellidoUsuario: txtBuscarUsuario.Text);
+                    case "Apellidos del Usuario":
+                        dgvUsuario.DataSource = ModUser.filtrarTablaUsuario(apellidosUsuario: txtBuscarUsuario.Text);
                         break;
                     default:
                         break;
@@ -64,15 +66,8 @@ namespace Presentacion
         }
         public void ajusteDataGrid()
         {
-
             dgvUsuario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-            if (!CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
-            {
-                btnAgregarUsuario.Visible = false;
-                btnEliminarUsuario.Visible = false;
-                btnModificaUsuario.Visible = false;
-            }
+            dgvUsuario.Columns["idEmpleado"].Visible = false;
         }
 
         private void frmUsuario_Load(object sender, EventArgs e)
@@ -101,72 +96,52 @@ namespace Presentacion
             }
 
             txtBuscarUsuario.Focus();
-
+            formCargado = true;
         }
 
         private void btnModificaUsuario_Click(object sender, EventArgs e)
         {
-            if (dgvUsuario.SelectedRows.Count == 1)
-            {
-               
-                string loginUsuario = dgvUsuario.CurrentRow.Cells[0].Value.ToString();
-                string nombreUsuario = dgvUsuario.CurrentRow.Cells[1].Value.ToString();
-                string apellidoUsuario = dgvUsuario.CurrentRow.Cells[2].Value.ToString();
-            
-     
-              
-                frmAgregarUsuario frm = new frmAgregarUsuario(this);
-                frm.UpdateEventHandler += AgregarUpdateEvenHandler;
-                frm.llenarComboboxTipoUsuario();
-                frm.LlenarComboBoxNombres();
-                frm.LlenarComboboxApellidos();
-                frm.CargarDatosUsuario(loginUsuario, nombreUsuario, apellidoUsuario);
-                frm.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Seleccione solo una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
+            DataGridViewRow selectedRow = dgvUsuario.SelectedRows[0];
+            frmAgregarUsuario formUsuario = new(
+                loginUsuario: selectedRow.Cells["Login de Usuario"].Value.ToString(),
+                idEmpleado: Convert.ToInt32(selectedRow.Cells["idEmpleado"].Value.ToString())
+                );
+            formUsuario.UpdateEventHandler += AgregarUpdateEvenHandler;
+            formUsuario.ShowDialog();
         }
 
         private void txtBuscarUsuario_TextChanged(object sender, EventArgs e)
         {
             actualizarTablaUsuario();
         }
+
         private void cbxTipoBusquedaUsuario_TextChanged(object sender, EventArgs e)
         {
             txtBuscarUsuario.Focus();
             actualizarTablaUsuario();
-
         }
-        private void cbxTipoBusquedaUsuario_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
         private void AgregarUpdateEvenHandler(object sender, frmAgregarUsuario.UpdateEventArgs args)
         {
             mostrarUsuario();
         }
+
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
             frmAgregarUsuario agrusuario = new frmAgregarUsuario(this);
             agrusuario.UpdateEventHandler += AgregarUpdateEvenHandler;
             agrusuario.ShowDialog();
         }
-        ModeloUsuario UsuarioObjeto = new ModeloUsuario();
 
+        ModeloUsuario UsuarioObjeto = new ModeloUsuario();
 
         private void btnEliminarUsuario_Click_1(object sender, EventArgs e)
         {
-
-            DialogResult resultado = MessageBox.Show("¿Seguro que desea eliminar datos del usuario?", "Eliminar datos del usuario", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (resultado == DialogResult.Yes)
+            if (CustomMessageBox.Advertencia("Eliminar usuario", "¿Seguro que desea eliminar usuario?") == DialogResult.Yes)
             {
                 if (dgvUsuario.SelectedRows.Count == 1)
                 {
-                    string loginUsuario = dgvUsuario.CurrentRow.Cells["Nombre de usuario"].Value.ToString();
+                    string loginUsuario = dgvUsuario.CurrentRow.Cells["Login de Usuario"].Value.ToString();
                     bool hasError = false;
                     try
                     {
@@ -177,21 +152,21 @@ namespace Presentacion
                         hasError = true;
                         if (ex.Number == 547)
                         {
-                            MessageBox.Show("No se puede eliminar el empleado porque tiene entregas pendientes.", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            CustomMessageBox.Error("Error en eliminación", "No se puede eliminar el empleado porque tiene entregas pendientes.");
                         }
                         else
                         {
-                            MessageBox.Show($"Error al intentar eliminar el empleado: {ex.Message}", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            CustomMessageBox.Error("Error en eliminación", $"Error al intentar eliminar el empleado: {ex.Message}.");
                         }
                     }
                     catch (FormatException)
                     {
                         hasError = true;
-                        MessageBox.Show("El empleado tiene entregas o asignaciones pendientes", "Error en eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        CustomMessageBox.Error("Error en eliminación", "El empleado tiene entregas o asignaciones pendientes.");
                     }
                     if (hasError == false)
                     {
-                        MessageBox.Show("Empleado eliminado correctamente", "Eliminación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CustomMessageBox.Exito("Eliminación exitosa", "Empleado eliminado correctamente.");
                         mostrarUsuario();
                         txtBuscarUsuario.Focus();
                         mostrarUsuario();
@@ -201,24 +176,25 @@ namespace Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Seleccione solo una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CustomMessageBox.Error("Error en selección", "Seleccione solo una fila por favor.");
                 }
             }
             else
             {
-                MessageBox.Show("Operación de eliminación cancelada", "Operación cancelada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                CustomMessageBox.Error("Operación cancelada", "Operación de eliminación cancelada");
             }
-
         }
 
-        private void dgvUsuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvUsuario_SelectionChanged(object sender, EventArgs e)
         {
-
+            if (formCargado && dgvUsuario.SelectedRows.Count == 1)
+            {
+                btnModificaUsuario.Enabled = true;
+            }
+            else if (formCargado)
+            {
+                btnModificaUsuario.Enabled = false;
+            }
         }
     }
-
-    
-
-        
-    }
-
+}

@@ -114,7 +114,6 @@ namespace DataAccess
         private DataTable tabla = new DataTable();
         public DataTable obtenerUsuario()
         {
-
             string nombreProcedimiento = "sp_obtener_usuarios";
 
             using (var conexion = GetConnection())
@@ -122,23 +121,19 @@ namespace DataAccess
 
                 using (var comando = new SqlCommand())
                 {
+                    comando.CommandText = nombreProcedimiento;
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Connection = conexion;
 
-                  
-                        comando.CommandText = nombreProcedimiento;
-                        comando.CommandType = CommandType.StoredProcedure;
-                        comando.Connection = conexion;
+                    conexion.Open();
 
-                        conexion.Open();
-
-                        SqlDataAdapter adaptador = new SqlDataAdapter(comando);
-                        adaptador.Fill(tabla);
-                    
-                   
+                    SqlDataAdapter adaptador = new SqlDataAdapter(comando);
+                    adaptador.Fill(tabla);
                 }
                 return tabla;
             }
-
         }
+
         public bool ValidarLogin(string login)
         {
             bool existe = false;
@@ -170,19 +165,18 @@ namespace DataAccess
         }
 
 
-        public DataTable filtrarTablaUsuario(string loginUsuario = "-1", string nombreUsuario = "-1", string apellidoUsuario = "-1")
+        public DataTable filtrarTablaUsuario(string loginUsuario = "-1", string nombresUsuario = "-1", string apellidosUsuario = "-1")
         {
-
             using (var conexion = GetConnection())
             {
                 using (var cmd = new SqlCommand())
                 {
-                    cmd.CommandText = "SP_obtener_busqueda_Usuario";
+                    cmd.CommandText = "sp_obtener_busqueda_Usuario";
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@nombrelogiUsuario", loginUsuario);
-                    cmd.Parameters.AddWithValue("@nombreusuario", nombreUsuario);
-                    cmd.Parameters.AddWithValue("@apellidousuario", apellidoUsuario);
+                    cmd.Parameters.AddWithValue("@loginUsuario", loginUsuario);
+                    cmd.Parameters.AddWithValue("@nombresUsuario", nombresUsuario);
+                    cmd.Parameters.AddWithValue("@apellidosUsuario", apellidosUsuario);
                     cmd.Connection = conexion;
 
                     conexion.Open();
@@ -191,90 +185,99 @@ namespace DataAccess
                     tabla.Clear();
                     adaptador.Fill(tabla);
                 }
-
-
                 return tabla;
             }
         }
 
-        public DataTable ObtenerNombres()
+        public DataTable ObtenerEmpleados(int? idEmpleado)
         {
-            string querySelect = "SELECT * frOM Empleados";
+            string querySelect = "sp_obtener_empleados_sin_usuario";
             using (var conexion = GetConnection())
             {
-                
                 conexion.Open();
                 SqlCommand cmd = new SqlCommand(querySelect, conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idEmpleado", idEmpleado);
                 SqlDataReader lector = cmd.ExecuteReader();
 
-                DataTable tablaempleado = new DataTable();
-                tablaempleado.Load(lector);
+                DataTable tablaEmpleado = new DataTable();
+                tablaEmpleado.Load(lector);
 
-                return tablaempleado;
-               
-
+                return tablaEmpleado;
             }
-               
         }
-        public DataTable ObtenerApellidos()
+
+        public string ObtenerNombreEmpleado(int idEmpleado)
         {
-            string querySelect = "SELECT apellidoempleado frOM Empleados";
-            using (var conexion = GetConnection())
+            string query = $"select nombreEmpleado from empleados where idEmpleado = '{idEmpleado}'";
+            string nombre = string.Empty;
+            using (SqlConnection conn = GetConnection())
             {
-
-                conexion.Open();
-                SqlCommand cmd = new SqlCommand(querySelect, conexion);
+                conn.Open();
+                SqlCommand cmd = new(query, conn);
                 SqlDataReader lector = cmd.ExecuteReader();
-
-                DataTable tablaempleado = new DataTable();
-                tablaempleado.Load(lector);
-
-                return tablaempleado;
-
-
+                while (lector.Read())
+                {
+                    nombre = lector.GetString(0);
+                }
+                return nombre;
             }
+        }
 
+        public string ObtenerApellidoEmpleado(int idEmpleado)
+        {
+            string query = $"select apellidoEmpleado from empleados where idEmpleado = '{idEmpleado}'";
+            string apellido = string.Empty;
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new(query, conn);
+                SqlDataReader lector = cmd.ExecuteReader();
+                while (lector.Read())
+                {
+                    apellido = lector.GetString(0);
+                }
+                return apellido;
+            }
         }
 
         public DataTable ObtenerRoles()
         {
-            string querySelect = "select nombreRol from Roles";
+            string query = "sp_obtener_roles";
             using (var conexion = GetConnection())
             {
                 conexion.Open();
-                SqlCommand cmd = new SqlCommand(querySelect, conexion);
-                SqlDataReader lector = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(query, conexion);
+                SqlDataAdapter adaptador = new(cmd);
+                DataTable tablaRoles = new DataTable();
 
-                DataTable tablaAreas = new DataTable();
-                tablaAreas.Load(lector);
+                adaptador.Fill(tablaRoles) ;
 
-                return tablaAreas;
+                return tablaRoles;
             }
         }
 
         public void ActualizarUsuario(string LoginUsuario, string nombreUsuario, string apellidoUsuario, string contrasenia, int activo, string tipousuario)
         {
-            string nombreProcedimiento1 = "sp_modificar_usuario";
-            string nombreProcedimiento2 = "sp_modificar_usuarioxrol";
+            string query_usuario = "sp_modificar_usuario";
+            string query_usuario_rol = "sp_modificar_usuarioxrol";
 
             using (var conexion = GetConnection())
             {
                 conexion.Open();
 
-
-                using (var comando = new SqlCommand(nombreProcedimiento1, conexion))
+                using (var comando = new SqlCommand(query_usuario, conexion))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@LoginUsuario", LoginUsuario);
-                    comando.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
-                    comando.Parameters.AddWithValue("@apellidoUsuario", apellidoUsuario);
+                    comando.Parameters.AddWithValue("@loginUsuario", LoginUsuario);
+                    comando.Parameters.AddWithValue("@nombresUsuario", nombreUsuario);
+                    comando.Parameters.AddWithValue("@apellidosUsuario", apellidoUsuario);
                     comando.Parameters.AddWithValue("@contrasenia", contrasenia);
 
                     comando.ExecuteNonQuery();
                 }
-
              
-                using (var comando = new SqlCommand(nombreProcedimiento2, conexion))
+                using (var comando = new SqlCommand(query_usuario_rol, conexion))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.Parameters.AddWithValue("@LoginUsuario", LoginUsuario);
@@ -307,10 +310,10 @@ namespace DataAccess
                 {
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.Parameters.AddWithValue("@loginusuario", LoginUsuario);
-                    comando.Parameters.AddWithValue("@nombreusuario", NombreUsuario);
-                    comando.Parameters.AddWithValue("@apellidousuario", ApellidoUsuario);
-                    comando.Parameters.AddWithValue("@claveusuario", Contrasenia);
-                    comando.Parameters.AddWithValue("@activousuario", ActivoUsuario);
+                    comando.Parameters.AddWithValue("@nombresUsuario", NombreUsuario);
+                    comando.Parameters.AddWithValue("@apellidosUsuario", ApellidoUsuario);
+                    comando.Parameters.AddWithValue("@claveUsuario", Contrasenia);
+                    comando.Parameters.AddWithValue("@activoUsuario", ActivoUsuario);
                     comando.Parameters.AddWithValue("@idEmpleado", idEmpleado);
                     conexion.Open();
                     comando.ExecuteNonQuery();
@@ -318,34 +321,60 @@ namespace DataAccess
             }
         }
 
-
-
-        public int ObtenerUltimoId()
+        public int ObtenerIdUsuario(string loginUsuario)
         {
-            using (var conexion=GetConnection())
+            using (var conexion = GetConnection())
             {
                 conexion.Open();
-                string query = "SELECT TOP 1 IdUsuario FROM Usuarios ORDER BY IdUsuario DESC";
-;
+                string query = $"SELECT idUsuario FROM Usuarios where loginUsuario = '{loginUsuario}'";
                 SqlCommand command = new SqlCommand(query, conexion);
-                int id= (int)command.ExecuteScalar();
+                SqlDataReader reader = command.ExecuteReader();
+
+                int id = 0;
+                while (reader.Read())
+                {
+                    id = reader.GetInt32(0);
+                }
+
                 return id;
             }
         }
         
-        public void InsertarUsuarioxRol(int IdRol)
+        public void InsertarUsuarioxRol(int idRol, string loginUsuario)
         {
-           int IdUsuario = ObtenerUltimoId();
+            int idUsuario = ObtenerIdUsuario(loginUsuario);
             using (var conexion = GetConnection())
             {
                 using (SqlCommand comando = new SqlCommand("sp_crear_usuarioxrol", conexion))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@idUsuario", IdUsuario);
-                    comando.Parameters.AddWithValue("@idRol", IdRol);
+                    comando.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    comando.Parameters.AddWithValue("@idRol", idRol);
                     conexion.Open();
                     comando.ExecuteNonQuery();
                 }
+            }
+        }
+
+        public bool ValidarRolActivoXUsuario(string loginUsuario, int idRol)
+        {
+            string query = "sp_verificar_rol_activo_usuario";
+            using (SqlConnection conn = GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@loginUsuario", loginUsuario);
+                cmd.Parameters.AddWithValue("@idRol", idRol);
+                SqlDataReader lector = cmd.ExecuteReader();
+                
+                bool resultado = false;
+                while (lector.Read())
+                {
+                    resultado = lector.GetBoolean(0);
+                }
+
+                return resultado;
             }
         }
     }
