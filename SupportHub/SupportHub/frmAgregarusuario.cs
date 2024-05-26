@@ -18,9 +18,23 @@ namespace Presentacion
     public partial class frmAgregarUsuario : Form
     {
         ModeloUsuario moduser = new ModeloUsuario();
-        public frmAgregarUsuario()
+        public frmAgregarUsuario(frmUsuario agrusuario)
         {
             InitializeComponent();
+        }
+        public delegate void UpdateDelagate(object sender, UpdateEventArgs arg);
+        public event UpdateDelagate UpdateEventHandler;
+
+        public class UpdateEventArgs : EventArgs
+        {
+            public string Data { get; set; }
+
+        }
+        protected void Agregar()
+        {
+
+            UpdateEventArgs args = new UpdateEventArgs();
+            UpdateEventHandler.Invoke(this, args);
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -37,10 +51,10 @@ namespace Presentacion
         {
 
         }
-       
-                
 
-    private void btnGuardar_Click(object sender, EventArgs e)
+
+        public event EventHandler UsuarioGuardado;
+        private void btnGuardar_Click(object sender, EventArgs e)
         {
 
             if (ValidarCampos())
@@ -59,34 +73,72 @@ namespace Presentacion
                 {
                     TipoUsuario = 3;
                 }
-                
+
+
+                if (tboxNombresUsuario.Text == ""  )
+                {
+                    MessageBox.Show("Nombre No debe estar vacio");
+
+                }
+                else if (tboxApellidosUsuario.Text == "") {
+
+                    MessageBox.Show("Apellido No  debe estar vacio");
+
+                }
+                else {   
+
                 moduser.InsertarUsuario(
                 tboxLoginUsuario.Text,
                 tboxNombresUsuario.Text,
                 tboxApellidosUsuario.Text,
                 mtboxContrasenia.Text,
-                Activo);
+                Activo,
+                Convert.ToInt32(cbxEmpAddUsuario.SelectedValue));
                
 
                 MessageBox.Show("El usuario se registró correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Agregar();
 
                 tboxLoginUsuario.Text = "";
                 tboxNombresUsuario.Text = "";
                 tboxApellidosUsuario.Text = "";
                 mtboxContrasenia.Text = "";
+             
                 moduser.InsertarUsuarioxRol(TipoUsuario);
+
+                    cbxEmpAddUsuario.SelectedIndex = -1;
+                    cbxApellidosAddUsuario.SelectedIndex = -1;
+                    chbActivoUsuario.Checked = false;
+                }
             }
 
         }
 
+
+            public void CargarDatosUsuario(string loginUsuario, string nombreUsuario, string apellidoUsuario)
+            {
+                tboxLoginUsuario.Text = loginUsuario;
+                tboxNombresUsuario.Text = nombreUsuario;
+                tboxApellidosUsuario.Text = apellidoUsuario;
+               
+            }
+        
+
+
         private void frmAgregarUsuario_Load(object sender, EventArgs e)
         {
+          
             tboxNombresUsuario.Enabled = false;
             tboxApellidosUsuario.Enabled = false;
+            tboxLoginUsuario.Text = "";
+            chbActivoUsuario.Checked=false;
             LlenarComboBoxNombres();
             llenarComboboxTipoUsuario();
             LlenarComboboxApellidos();
-
+            cbxEmpAddUsuario.SelectedIndex = -1;
+            cbxApellidosAddUsuario.SelectedIndex = -1;
+            tboxNombresUsuario.Text = "";
+            tboxApellidosUsuario.Text = "";
         }
 
         public void llenarComboboxTipoUsuario()
@@ -108,13 +160,13 @@ namespace Presentacion
             cbxApellidosAddUsuario.ValueMember = "apellidoempleado";
         }
 
-        private void LlenarComboBoxNombres()
+        public void LlenarComboBoxNombres()
         {
             DataTable nombres = moduser.Obtenernombres();
 
             cbxEmpAddUsuario.DataSource = nombres;
-            cbxEmpAddUsuario.DisplayMember = "nombre Empleado";
-            cbxEmpAddUsuario.ValueMember = "nombreempleado";
+            cbxEmpAddUsuario.DisplayMember = "nombreEmpleado";
+            cbxEmpAddUsuario.ValueMember = "idEmpleado";
         }
 
         private void tboxNombresUsuario_TextChanged(object sender, EventArgs e)
@@ -129,14 +181,17 @@ namespace Presentacion
 
         private void cbxEmpAddUsuario_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(cbxEmpAddUsuario.SelectedItem.ToString()))
+            var selectedItem = cbxEmpAddUsuario.SelectedItem;
+
+            if (selectedItem == null || string.IsNullOrEmpty(selectedItem.ToString()))
             {
-                MessageBox.Show("No se ha selecionado un empleado", "Dato vacío", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
             }
             else
             {
                 tboxNombresUsuario.Text = cbxEmpAddUsuario.Text;
             }
+
 
         }
         private bool ValidarCampos()
@@ -211,14 +266,8 @@ namespace Presentacion
         private int Activo;
         private void chbActivoUsuario_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbActivoUsuario.Checked = true)
-            {
-                Activo = 1;
-            }
-            else
-            {
-                Activo = 0;
-            }
+         
+            Activo = chbActivoUsuario.Checked ? 1 : 0;
         }
         public void IdUsuario()
         {
@@ -227,9 +276,11 @@ namespace Presentacion
         private void cbxApellidosAddUsuario_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(cbxApellidosAddUsuario.SelectedItem.ToString()))
+           
+
+            if (cbxApellidosAddUsuario.SelectedItem == null || string.IsNullOrEmpty(cbxApellidosAddUsuario.SelectedItem.ToString()))
             {
-                MessageBox.Show("No se ha selecionado un empleado", "Dato vacío", MessageBoxButtons.OK, MessageBoxIcon.Information);
+             
             }
             else
             {

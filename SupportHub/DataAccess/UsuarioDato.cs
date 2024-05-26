@@ -202,7 +202,7 @@ namespace DataAccess
 
         public DataTable ObtenerNombres()
         {
-            string querySelect = "SELECT nombreempleado frOM Empleados";
+            string querySelect = "SELECT * frOM Empleados";
             using (var conexion = GetConnection())
             {
                 
@@ -260,27 +260,29 @@ namespace DataAccess
             string nombreProcedimiento1 = "sp_modificar_usuario";
             string nombreProcedimiento2 = "sp_modificar_usuarioxrol";
 
-            using (var comando = new SqlCommand())
+            using (var conexion = GetConnection())
             {
-                comando.CommandText = nombreProcedimiento1;
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@LoginUsuario", LoginUsuario);
-                comando.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
-                comando.Parameters.AddWithValue("@apellidoUsuario", apellidoUsuario);
-                comando.Parameters.AddWithValue("@claveUsuario",contrasenia );
-                comando.Parameters.AddWithValue("@activo", activo);
-                comando.Parameters.AddWithValue("@tipousuario", activo);
-
-               
-                comando.CommandText = nombreProcedimiento2;
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.AddWithValue("@idUsuarioXRol", LoginUsuario);
+                conexion.Open();
 
 
-                using (SqlConnection conn = GetConnection())
+                using (var comando = new SqlCommand(nombreProcedimiento1, conexion))
                 {
-                    comando.Connection = conn;
-                    conn.Open();
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@LoginUsuario", LoginUsuario);
+                    comando.Parameters.AddWithValue("@nombreUsuario", nombreUsuario);
+                    comando.Parameters.AddWithValue("@apellidoUsuario", apellidoUsuario);
+                    comando.Parameters.AddWithValue("@contrasenia", contrasenia);
+
+                    comando.ExecuteNonQuery();
+                }
+
+             
+                using (var comando = new SqlCommand(nombreProcedimiento2, conexion))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@LoginUsuario", LoginUsuario);
+                    comando.Parameters.AddWithValue("@tipousuario", tipousuario);
+
                     comando.ExecuteNonQuery();
                 }
             }
@@ -300,7 +302,7 @@ namespace DataAccess
             }
         }
 
-        public void InsertarUsuario(string LoginUsuario,string NombreUsuario,string ApellidoUsuario,string Contrasenia,int ActivoUsuario)
+        public void InsertarUsuario(string LoginUsuario,string NombreUsuario,string ApellidoUsuario,string Contrasenia,int ActivoUsuario,int idEmpleado)
         {
             using (var conexion = GetConnection())
             {
@@ -312,7 +314,7 @@ namespace DataAccess
                     comando.Parameters.AddWithValue("@apellidousuario", ApellidoUsuario);
                     comando.Parameters.AddWithValue("@claveusuario", Contrasenia);
                     comando.Parameters.AddWithValue("@activousuario", ActivoUsuario);
-                    
+                    comando.Parameters.AddWithValue("@idEmpleado", idEmpleado);
                     conexion.Open();
                     comando.ExecuteNonQuery();
                 }

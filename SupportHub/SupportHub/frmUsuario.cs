@@ -106,8 +106,29 @@ namespace Presentacion
 
         private void btnModificaUsuario_Click(object sender, EventArgs e)
         {
+            if (dgvUsuario.SelectedRows.Count == 1)
+            {
+               
+                string loginUsuario = dgvUsuario.CurrentRow.Cells[0].Value.ToString();
+                string nombreUsuario = dgvUsuario.CurrentRow.Cells[1].Value.ToString();
+                string apellidoUsuario = dgvUsuario.CurrentRow.Cells[2].Value.ToString();
             
-           
+     
+              
+                frmAgregarUsuario frm = new frmAgregarUsuario(this);
+                frm.UpdateEventHandler += AgregarUpdateEvenHandler;
+                frm.llenarComboboxTipoUsuario();
+                frm.LlenarComboBoxNombres();
+                frm.LlenarComboboxApellidos();
+                frm.CargarDatosUsuario(loginUsuario, nombreUsuario, apellidoUsuario);
+                frm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione solo una fila por favor", "Error en selección", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
 
         private void txtBuscarUsuario_TextChanged(object sender, EventArgs e)
@@ -124,10 +145,14 @@ namespace Presentacion
         {
 
         }
-
+        private void AgregarUpdateEvenHandler(object sender, frmAgregarUsuario.UpdateEventArgs args)
+        {
+            mostrarUsuario();
+        }
         private void btnAgregarUsuario_Click(object sender, EventArgs e)
         {
-            frmAgregarUsuario agrusuario = new frmAgregarUsuario();
+            frmAgregarUsuario agrusuario = new frmAgregarUsuario(this);
+            agrusuario.UpdateEventHandler += AgregarUpdateEvenHandler;
             agrusuario.ShowDialog();
         }
         ModeloUsuario UsuarioObjeto = new ModeloUsuario();

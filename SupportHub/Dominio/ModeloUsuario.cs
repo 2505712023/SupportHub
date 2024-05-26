@@ -68,14 +68,14 @@ namespace Dominio
         public DataTable ObtenerRoles()
         { return userData.ObtenerRoles(); }
 
-        public void ActualizarUsuario(string LoginUsuario, string nombreUsuario, string apellidoUsuario, string contrasenia, int activo, string tipousuario) 
+        public void ActualizarUsuario(string LoginUsuario, string nombreUsuario, string apellidoUsuario, string contrasenia, int activo, string tipousuario)
         {
-            userData.ActualizarUsuario(LoginUsuario, nombreUsuario,apellidoUsuario,contrasenia,activo,tipousuario);
+            userData.ActualizarUsuario(LoginUsuario, nombreUsuario, apellidoUsuario, contrasenia, activo, tipousuario);
         }
 
-        public void InsertarUsuario(string LoginUsuario, string NombreUsuario, string ApellidoUsuario, string Contrasenia, int ActivoUsuario)
+        public void InsertarUsuario(string LoginUsuario, string NombreUsuario, string ApellidoUsuario, string Contrasenia, int ActivoUsuario, int idEmpleado)
         {
-            userData.InsertarUsuario(LoginUsuario, NombreUsuario, ApellidoUsuario, Contrasenia, ActivoUsuario);
+            userData.InsertarUsuario(LoginUsuario, NombreUsuario, ApellidoUsuario, Contrasenia, ActivoUsuario, idEmpleado);
         }
       
         public bool ValidarLogin(string login)

@@ -217,5 +217,6 @@
         private GroupBox gbBuscarUsuario;
         private ComboBox cbxTipoBusquedaUsuario;
         private TextBox txtBuscarUsuario;
+       
     }
 }
