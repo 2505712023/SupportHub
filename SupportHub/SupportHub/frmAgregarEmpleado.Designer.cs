@@ -246,6 +246,7 @@
             pSuperiorAddEmpleado.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorAddEmpleado.Dock = DockStyle.Top;
             pSuperiorAddEmpleado.Location = new Point(0, 0);
+            pSuperiorAddEmpleado.Margin = new Padding(3, 2, 3, 2);
             pSuperiorAddEmpleado.Name = "pSuperiorAddEmpleado";
             pSuperiorAddEmpleado.Size = new Size(585, 60);
             pSuperiorAddEmpleado.TabIndex = 0;
@@ -254,9 +255,10 @@
             // 
             pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
-            pboxLogo.Location = new Point(20, 0);
+            pboxLogo.Location = new Point(18, 0);
+            pboxLogo.Margin = new Padding(3, 2, 3, 2);
             pboxLogo.Name = "pboxLogo";
-            pboxLogo.Size = new Size(184, 60);
+            pboxLogo.Size = new Size(184, 75);
             pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
             pboxLogo.TabIndex = 16;
             pboxLogo.TabStop = false;
@@ -273,9 +275,10 @@
             btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarAddEmpleado.IconSize = 20;
             btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(545, 12);
+            btnCerrarAddEmpleado.Location = new Point(550, 9);
+            btnCerrarAddEmpleado.Margin = new Padding(3, 2, 3, 2);
             btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
-            btnCerrarAddEmpleado.Size = new Size(28, 24);
+            btnCerrarAddEmpleado.Size = new Size(24, 18);
             btnCerrarAddEmpleado.TabIndex = 15;
             btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -308,7 +311,6 @@
         private GroupBox gbAddEmpleado;
         private Label lblAreaEmpleado;
         private Label lblCargoEmpleado;
-        private Label lblEmailEmpleado;
         private Label lblTelefonoEmpleado;
         private Label lblApellidoEmpleado;
         private Label lblNombreEmpleado;
@@ -322,6 +324,7 @@
         private MaskedTextBox txtTelefonoEmpleado;
         private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
         private PictureBox pboxLogo;
+        private Label lblEmailEmpleado;
         private Panel pSuperiorAddEmpleado;
     }
 }

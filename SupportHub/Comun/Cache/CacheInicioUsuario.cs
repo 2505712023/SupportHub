@@ -14,7 +14,7 @@ namespace Comun.Cache
         public static string? user { get; set;}   
         public static string? nombreUser { get; set; }
         public static string? apellidoUser { get; set; }
-        public static string? rolUser { get; set; }
+        public static ArrayList? rolesUser { get; set; }
         public static ArrayList? permisosUser { get; set; }
         public static string? empleado { get; set; }
         public static int idEmpleado { get; set; }

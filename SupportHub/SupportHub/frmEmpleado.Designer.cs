@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             gbBusarEmpleado = new GroupBox();
             cbxTipoBusquedaEmpleado = new ComboBox();
             txtBuscarEmpleado = new TextBox();
@@ -50,7 +50,8 @@
             gbBusarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             gbBusarEmpleado.Location = new Point(12, 12);
             gbBusarEmpleado.Name = "gbBusarEmpleado";
-            gbBusarEmpleado.Size = new Size(688, 68);
+            gbBusarEmpleado.Padding = new Padding(3, 2, 3, 2);
+            gbBusarEmpleado.Size = new Size(693, 68);
             gbBusarEmpleado.TabIndex = 0;
             gbBusarEmpleado.TabStop = false;
             gbBusarEmpleado.Text = "BUSCAR EMPLEADO::...";
@@ -64,16 +65,17 @@
             cbxTipoBusquedaEmpleado.Name = "cbxTipoBusquedaEmpleado";
             cbxTipoBusquedaEmpleado.Size = new Size(139, 23);
             cbxTipoBusquedaEmpleado.TabIndex = 6;
+            cbxTipoBusquedaEmpleado.SelectedIndexChanged += cbxTipoBusquedaEmpleado_SelectedIndexChanged;
             cbxTipoBusquedaEmpleado.TextChanged += cbxTipoBusquedaEmpleado_TextChanged;
             // 
             // txtBuscarEmpleado
             // 
-            txtBuscarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtBuscarEmpleado.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             txtBuscarEmpleado.Cursor = Cursors.IBeam;
             txtBuscarEmpleado.Font = new Font("Segoe UI", 9F);
             txtBuscarEmpleado.Location = new Point(151, 26);
             txtBuscarEmpleado.Name = "txtBuscarEmpleado";
-            txtBuscarEmpleado.Size = new Size(531, 23);
+            txtBuscarEmpleado.Size = new Size(536, 23);
             txtBuscarEmpleado.TabIndex = 5;
             txtBuscarEmpleado.TextChanged += txtBuscarEmpleado_TextChanged;
             // 
@@ -84,36 +86,38 @@
             dgvEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvEmpleado.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             dgvEmpleado.BackgroundColor = Color.FromArgb(148, 184, 216);
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Gray;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvEmpleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle7.ForeColor = Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = Color.Gray;
+            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvEmpleado.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvEmpleado.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Silver;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvEmpleado.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvEmpleado.DefaultCellStyle = dataGridViewCellStyle8;
             dgvEmpleado.Location = new Point(12, 86);
             dgvEmpleado.Name = "dgvEmpleado";
             dgvEmpleado.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Silver;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvEmpleado.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dgvEmpleado.RowHeadersWidth = 51;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvEmpleado.RowsDefaultCellStyle = dataGridViewCellStyle9;
             dgvEmpleado.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEmpleado.Size = new Size(688, 417);
+            dgvEmpleado.Size = new Size(693, 417);
             dgvEmpleado.TabIndex = 1;
+            dgvEmpleado.CellContentClick += dgvEmpleado_CellContentClick;
             // 
             // btnAgregarEmpleado
             // 
@@ -128,7 +132,8 @@
             btnAgregarEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnAgregarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarEmpleado.IconSize = 20;
-            btnAgregarEmpleado.Location = new Point(706, 86);
+            btnAgregarEmpleado.Location = new Point(711, 86);
+            btnAgregarEmpleado.Margin = new Padding(3, 2, 3, 2);
             btnAgregarEmpleado.Name = "btnAgregarEmpleado";
             btnAgregarEmpleado.Size = new Size(156, 50);
             btnAgregarEmpleado.TabIndex = 7;
@@ -150,7 +155,8 @@
             btnModificaEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnModificaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModificaEmpleado.IconSize = 20;
-            btnModificaEmpleado.Location = new Point(706, 142);
+            btnModificaEmpleado.Location = new Point(711, 140);
+            btnModificaEmpleado.Margin = new Padding(3, 2, 3, 2);
             btnModificaEmpleado.Name = "btnModificaEmpleado";
             btnModificaEmpleado.Size = new Size(156, 55);
             btnModificaEmpleado.TabIndex = 8;
@@ -172,7 +178,8 @@
             btnEliminarEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarEmpleado.IconSize = 20;
-            btnEliminarEmpleado.Location = new Point(706, 203);
+            btnEliminarEmpleado.Location = new Point(711, 199);
+            btnEliminarEmpleado.Margin = new Padding(3, 2, 3, 2);
             btnEliminarEmpleado.Name = "btnEliminarEmpleado";
             btnEliminarEmpleado.Size = new Size(156, 57);
             btnEliminarEmpleado.TabIndex = 9;
@@ -186,7 +193,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
-            ClientSize = new Size(874, 515);
+            ClientSize = new Size(879, 515);
             Controls.Add(btnEliminarEmpleado);
             Controls.Add(btnModificaEmpleado);
             Controls.Add(btnAgregarEmpleado);

@@ -114,6 +114,7 @@
             btnUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUsuarios.ImageAlign = ContentAlignment.MiddleLeft;
             btnUsuarios.Location = new Point(0, 380);
+            btnUsuarios.Margin = new Padding(3, 2, 3, 2);
             btnUsuarios.Name = "btnUsuarios";
             btnUsuarios.Size = new Size(233, 60);
             btnUsuarios.TabIndex = 6;
@@ -221,9 +222,10 @@
             // 
             btnHome.Cursor = Cursors.Hand;
             btnHome.Image = (Image)resources.GetObject("btnHome.Image");
-            btnHome.Location = new Point(11, 0);
+            btnHome.Location = new Point(0, 5);
+            btnHome.Margin = new Padding(3, 2, 3, 2);
             btnHome.Name = "btnHome";
-            btnHome.Size = new Size(233, 134);
+            btnHome.Size = new Size(259, 135);
             btnHome.SizeMode = PictureBoxSizeMode.CenterImage;
             btnHome.TabIndex = 0;
             btnHome.TabStop = false;
@@ -402,6 +404,7 @@
             // btnInfo
             // 
             btnInfo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnInfo.Cursor = Cursors.Hand;
             btnInfo.FlatAppearance.BorderSize = 0;
             btnInfo.FlatStyle = FlatStyle.Flat;
             btnInfo.ForeColor = Color.FromArgb(31, 35, 40);
@@ -418,12 +421,12 @@
             btnInfo.TextAlign = ContentAlignment.MiddleLeft;
             btnInfo.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnInfo.UseVisualStyleBackColor = true;
-            btnInfo.Cursor = Cursors.Hand;
             btnInfo.Click += btnInfo_Click;
             // 
             // btnSalir
             // 
             btnSalir.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSalir.Cursor = Cursors.Hand;
             btnSalir.FlatAppearance.BorderSize = 0;
             btnSalir.FlatStyle = FlatStyle.Flat;
             btnSalir.ForeColor = Color.FromArgb(31, 35, 40);
@@ -440,12 +443,12 @@
             btnSalir.TextAlign = ContentAlignment.MiddleLeft;
             btnSalir.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSalir.UseVisualStyleBackColor = true;
-            btnSalir.Cursor = Cursors.Hand;
             btnSalir.Click += btnSalir_Click;
             // 
             // btnAcerca
             // 
             btnAcerca.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnAcerca.Cursor = Cursors.Hand;
             btnAcerca.FlatAppearance.BorderSize = 0;
             btnAcerca.FlatStyle = FlatStyle.Flat;
             btnAcerca.ForeColor = Color.FromArgb(31, 35, 40);
@@ -462,7 +465,6 @@
             btnAcerca.TextAlign = ContentAlignment.MiddleLeft;
             btnAcerca.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAcerca.UseVisualStyleBackColor = true;
-            btnAcerca.Cursor = Cursors.Hand;
             btnAcerca.Click += btnAcerca_Click;
             // 
             // lblFecha

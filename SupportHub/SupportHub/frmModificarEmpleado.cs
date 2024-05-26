@@ -166,8 +166,6 @@ namespace Presentacion
             this.Close();
         }
 
-
-
         private void frmModificarEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
