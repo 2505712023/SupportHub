@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Dominio;
+using Presentacion.CustomMessageBoxes;
 namespace Presentacion
 {
     public partial class frmAgregarEmpleado : Form
@@ -18,8 +19,8 @@ namespace Presentacion
         public frmAgregarEmpleado(frmEmpleado formEmpleado)
         {
             InitializeComponent();
-
         }
+
         public delegate void UpdateDelagate(object sender, UpdateEventArgs arg);
         public event UpdateDelagate UpdateEventHandler;
 
@@ -42,6 +43,7 @@ namespace Presentacion
 
         private void frmAgregarEmpleado_Load(object sender, EventArgs e)
         {
+           
             LlenarComboBoxAreas();
             LlenarComboBoxCargos();
             cbxAreaEmpleado.Text = null;
@@ -81,7 +83,7 @@ namespace Presentacion
                     Convert.ToInt32(cbxCargoEmpleado.SelectedValue),
                     Convert.ToInt32(cbxAreaEmpleado.SelectedValue)
                 );
-                MessageBox.Show("El empleado se registró correctamente", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                CustomMessageBox.Exito("Registro exitoso", "El empleado se registró correctamente.");
                 Agregar();
 
                 txtNombreEmpleado.Text = "";
@@ -97,37 +99,37 @@ namespace Presentacion
         {
             if (string.IsNullOrEmpty(txtNombreEmpleado.Text) || !EsLetras(txtNombreEmpleado.Text))
             {
-                MessageBox.Show("Ingrese un nombre válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato inválido", "Ingrese un nombre válido.");
                 return false;
             }
 
             if (string.IsNullOrEmpty(txtApellidoEmpleado.Text) || !EsLetras(txtApellidoEmpleado.Text))
             {
-                MessageBox.Show("Ingrese un apellido válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato inválido", "Ingrese un apellido válido.");
                 return false;
             }
 
             if (string.IsNullOrEmpty(txtTelefonoEmpleado.Text) || !EsTelefono(txtTelefonoEmpleado.Text))
             {
-                MessageBox.Show("Ingrese un número de teléfono válido (formato: 2222-0000).", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato inválido", "Ingrese un número de teléfono válido (formato: 2222-0000).");
                 return false;
             }
 
             if (string.IsNullOrEmpty(txtEmailEmpleado.Text) || !EsCorreo(txtEmailEmpleado.Text))
             {
-                MessageBox.Show("Ingrese un correo electrónico válido.", "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato inválido", "Ingrese un correo electrónico válido.");
                 return false;
             }
 
             if (cbxCargoEmpleado.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione un cargo.", "Dato faltante", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato faltante", "Seleccione un cargo.");
                 return false;
             }
 
             if (cbxAreaEmpleado.SelectedIndex == -1)
             {
-                MessageBox.Show("Seleccione un área.", "Dato faltante", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                CustomMessageBox.Error("Dato faltante", "Seleccione un área.");
                 return false;
             }
 
@@ -162,25 +164,13 @@ namespace Presentacion
         {
             this.Close();
         }
-
-        private void pSuperiorAddEmpleado_Paint(object sender, PaintEventArgs e)
+      
+        private void frmAgregarEmpleado_KeyPress(object sender, KeyPressEventArgs e)
         {
-
-        }
-
-        private void cbxAreaEmpleado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbAddEmpleado_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbxCargoEmpleado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnGuardarEmpleado_Click(sender, e);
+            }
         }
     }
 }

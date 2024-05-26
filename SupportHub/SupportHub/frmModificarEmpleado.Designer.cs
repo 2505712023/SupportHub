@@ -81,9 +81,21 @@
             pboxLogo.TabIndex = 17;
             pboxLogo.TabStop = false;
             // 
+            // pboxLogo
+            // 
+            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
+            pboxLogo.Location = new Point(20, 0);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(184, 60);
+            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
+            pboxLogo.TabIndex = 17;
+            pboxLogo.TabStop = false;
+            // 
             // btnCerrarModificarEmpleado
             // 
             btnCerrarModificarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarModificarEmpleado.Cursor = Cursors.Hand;
             btnCerrarModificarEmpleado.FlatAppearance.BorderSize = 0;
             btnCerrarModificarEmpleado.FlatStyle = FlatStyle.Flat;
             btnCerrarModificarEmpleado.ForeColor = SystemColors.ControlLightLight;
@@ -92,8 +104,7 @@
             btnCerrarModificarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarModificarEmpleado.IconSize = 20;
             btnCerrarModificarEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarModificarEmpleado.Location = new Point(791, 5);
-            btnCerrarModificarEmpleado.Margin = new Padding(4, 5, 4, 5);
+            btnCerrarModificarEmpleado.Location = new Point(545, 12);
             btnCerrarModificarEmpleado.Name = "btnCerrarModificarEmpleado";
             btnCerrarModificarEmpleado.Size = new Size(40, 40);
             btnCerrarModificarEmpleado.TabIndex = 16;
@@ -155,6 +166,7 @@
             // 
             btnGuardarUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnGuardarUpdate.BackColor = Color.White;
+            btnGuardarUpdate.Cursor = Cursors.Hand;
             btnGuardarUpdate.FlatAppearance.BorderSize = 0;
             btnGuardarUpdate.FlatStyle = FlatStyle.Flat;
             btnGuardarUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -179,6 +191,7 @@
             // 
             btnGuaardarUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnGuaardarUpdate.BackColor = Color.FromArgb(5, 23, 59);
+            btnGuaardarUpdate.Cursor = Cursors.Hand;
             btnGuaardarUpdate.FlatAppearance.BorderSize = 0;
             btnGuaardarUpdate.FlatStyle = FlatStyle.Flat;
             btnGuaardarUpdate.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -200,6 +213,7 @@
             // 
             // txtTelefonoEmpleadoUpdate
             // 
+            txtTelefonoEmpleadoUpdate.Cursor = Cursors.IBeam;
             txtTelefonoEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             txtTelefonoEmpleadoUpdate.Location = new Point(32, 275);
             txtTelefonoEmpleadoUpdate.Margin = new Padding(4, 5, 4, 5);
@@ -207,6 +221,7 @@
             txtTelefonoEmpleadoUpdate.Name = "txtTelefonoEmpleadoUpdate";
             txtTelefonoEmpleadoUpdate.Size = new Size(378, 39);
             txtTelefonoEmpleadoUpdate.TabIndex = 8;
+            txtTelefonoEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // btnCancelaEmpleado
             // 
@@ -255,6 +270,7 @@
             // 
             // cbxAreaEmpleadoUpdate
             // 
+            cbxAreaEmpleadoUpdate.Cursor = Cursors.Hand;
             cbxAreaEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             cbxAreaEmpleadoUpdate.FormattingEnabled = true;
             cbxAreaEmpleadoUpdate.Location = new Point(469, 186);
@@ -262,9 +278,11 @@
             cbxAreaEmpleadoUpdate.Name = "cbxAreaEmpleadoUpdate";
             cbxAreaEmpleadoUpdate.Size = new Size(293, 40);
             cbxAreaEmpleadoUpdate.TabIndex = 11;
+            cbxAreaEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // cbxCargoEmpleadoUpdate
             // 
+            cbxCargoEmpleadoUpdate.Cursor = Cursors.Hand;
             cbxCargoEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             cbxCargoEmpleadoUpdate.FormattingEnabled = true;
             cbxCargoEmpleadoUpdate.ItemHeight = 32;
@@ -273,34 +291,40 @@
             cbxCargoEmpleadoUpdate.Name = "cbxCargoEmpleadoUpdate";
             cbxCargoEmpleadoUpdate.Size = new Size(293, 40);
             cbxCargoEmpleadoUpdate.TabIndex = 10;
+            cbxCargoEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // txtEmailEmpleadoUpdate
             // 
+            txtEmailEmpleadoUpdate.Cursor = Cursors.IBeam;
             txtEmailEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             txtEmailEmpleadoUpdate.Location = new Point(32, 369);
             txtEmailEmpleadoUpdate.Margin = new Padding(4, 5, 4, 5);
             txtEmailEmpleadoUpdate.Name = "txtEmailEmpleadoUpdate";
             txtEmailEmpleadoUpdate.Size = new Size(378, 39);
             txtEmailEmpleadoUpdate.TabIndex = 9;
+            txtEmailEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // txtApellidoEmpleadoUpdate
             // 
+            txtApellidoEmpleadoUpdate.Cursor = Cursors.IBeam;
             txtApellidoEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             txtApellidoEmpleadoUpdate.Location = new Point(32, 181);
             txtApellidoEmpleadoUpdate.Margin = new Padding(4, 5, 4, 5);
             txtApellidoEmpleadoUpdate.Name = "txtApellidoEmpleadoUpdate";
             txtApellidoEmpleadoUpdate.Size = new Size(378, 39);
             txtApellidoEmpleadoUpdate.TabIndex = 7;
+            txtApellidoEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // txtNombreEmpleadoUpdate
             // 
+            txtNombreEmpleadoUpdate.Cursor = Cursors.IBeam;
             txtNombreEmpleadoUpdate.Font = new Font("Segoe UI", 12F);
             txtNombreEmpleadoUpdate.Location = new Point(38, 89);
             txtNombreEmpleadoUpdate.Margin = new Padding(4, 5, 4, 5);
             txtNombreEmpleadoUpdate.Name = "txtNombreEmpleadoUpdate";
             txtNombreEmpleadoUpdate.Size = new Size(378, 39);
             txtNombreEmpleadoUpdate.TabIndex = 6;
-            txtNombreEmpleadoUpdate.TextChanged += txtNombreEmpleadoUpdate_TextChanged;
+            txtNombreEmpleadoUpdate.KeyPress += frmModificarEmpleado_KeyPress;
             // 
             // lblAreaEmpleadoUpdate
             // 
@@ -375,6 +399,8 @@
             Name = "frmModificarEmpleado";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmModificarEmpleado";
+            Load += frmModificarEmpleado_Load;
+            KeyPress += frmModificarEmpleado_KeyPress;
             pSuperiorUpdEmpleado.ResumeLayout(false);
             pSuperiorUpdEmpleado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();

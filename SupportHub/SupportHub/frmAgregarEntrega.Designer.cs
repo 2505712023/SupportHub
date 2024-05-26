@@ -30,8 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarEntrega));
             pSuperiorAddEntrega = new Panel();
-            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
+            pboxLogo = new PictureBox();
+            btnCerrarAgregarEntrega = new FontAwesome.Sharp.IconButton();
             gbAddEntrega = new GroupBox();
+            ibtnImprimir = new FontAwesome.Sharp.IconButton();
             tboxEmpleadoEntrega = new TextBox();
             lblEmpleadoRecibe = new Label();
             lblErrorCantidad = new Label();
@@ -53,46 +55,58 @@
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
             lblTipoDeEntrega = new Label();
-            pboxLogo = new PictureBox();
             pSuperiorAddEntrega.SuspendLayout();
-            gbAddEntrega.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
+            gbAddEntrega.SuspendLayout();
             SuspendLayout();
             // 
             // pSuperiorAddEntrega
             // 
             pSuperiorAddEntrega.BackColor = Color.FromArgb(5, 23, 59);
             pSuperiorAddEntrega.Controls.Add(pboxLogo);
-            pSuperiorAddEntrega.Controls.Add(btnCerrarAddEmpleado);
+            pSuperiorAddEntrega.Controls.Add(btnCerrarAgregarEntrega);
             pSuperiorAddEntrega.Dock = DockStyle.Top;
             pSuperiorAddEntrega.Location = new Point(0, 0);
             pSuperiorAddEntrega.Name = "pSuperiorAddEntrega";
             pSuperiorAddEntrega.Size = new Size(734, 60);
             pSuperiorAddEntrega.TabIndex = 1;
             // 
-            // btnCerrarAddEmpleado
+            // pboxLogo
             // 
-            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
-            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
-            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
-            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
-            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
-            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnCerrarAddEmpleado.IconSize = 20;
-            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(694, 12);
-            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
-            btnCerrarAddEmpleado.Size = new Size(28, 24);
-            btnCerrarAddEmpleado.TabIndex = 16;
-            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
-            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
+            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
+            pboxLogo.Location = new Point(20, 0);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(184, 60);
+            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
+            pboxLogo.TabIndex = 17;
+            pboxLogo.TabStop = false;
+            // 
+            // btnCerrarAgregarEntrega
+            // 
+            btnCerrarAgregarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarAgregarEntrega.Cursor = Cursors.Hand;
+            btnCerrarAgregarEntrega.FlatAppearance.BorderSize = 0;
+            btnCerrarAgregarEntrega.FlatStyle = FlatStyle.Flat;
+            btnCerrarAgregarEntrega.ForeColor = SystemColors.ControlLightLight;
+            btnCerrarAgregarEntrega.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnCerrarAgregarEntrega.IconColor = SystemColors.Window;
+            btnCerrarAgregarEntrega.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnCerrarAgregarEntrega.IconSize = 20;
+            btnCerrarAgregarEntrega.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAgregarEntrega.Location = new Point(694, 12);
+            btnCerrarAgregarEntrega.Name = "btnCerrarAgregarEntrega";
+            btnCerrarAgregarEntrega.Size = new Size(28, 24);
+            btnCerrarAgregarEntrega.TabIndex = 24;
+            btnCerrarAgregarEntrega.TextAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAgregarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCerrarAgregarEntrega.UseVisualStyleBackColor = true;
+            btnCerrarAgregarEntrega.Click += btnCerrarAgregarEntrega_Click;
             // 
             // gbAddEntrega
             // 
             gbAddEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gbAddEntrega.Controls.Add(ibtnImprimir);
             gbAddEntrega.Controls.Add(tboxEmpleadoEntrega);
             gbAddEntrega.Controls.Add(lblEmpleadoRecibe);
             gbAddEntrega.Controls.Add(lblErrorCantidad);
@@ -122,6 +136,29 @@
             gbAddEntrega.TabStop = false;
             gbAddEntrega.Text = "AGREGAR ENTREGA";
             // 
+            // ibtnImprimir
+            // 
+            ibtnImprimir.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ibtnImprimir.BackColor = Color.FromArgb(63, 175, 75);
+            ibtnImprimir.Cursor = Cursors.Hand;
+            ibtnImprimir.FlatAppearance.BorderSize = 0;
+            ibtnImprimir.FlatStyle = FlatStyle.Flat;
+            ibtnImprimir.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ibtnImprimir.ForeColor = Color.FromArgb(5, 23, 59);
+            ibtnImprimir.IconChar = FontAwesome.Sharp.IconChar.Print;
+            ibtnImprimir.IconColor = Color.FromArgb(5, 23, 59);
+            ibtnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            ibtnImprimir.IconSize = 20;
+            ibtnImprimir.ImageAlign = ContentAlignment.MiddleLeft;
+            ibtnImprimir.Location = new Point(585, 151);
+            ibtnImprimir.Name = "ibtnImprimir";
+            ibtnImprimir.Size = new Size(100, 40);
+            ibtnImprimir.TabIndex = 22;
+            ibtnImprimir.Text = "IMPRIMIR";
+            ibtnImprimir.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ibtnImprimir.UseVisualStyleBackColor = false;
+            ibtnImprimir.Click += ibtnImprimir_Click;
+            // 
             // tboxEmpleadoEntrega
             // 
             tboxEmpleadoEntrega.Enabled = false;
@@ -131,7 +168,7 @@
             tboxEmpleadoEntrega.Name = "tboxEmpleadoEntrega";
             tboxEmpleadoEntrega.ReadOnly = true;
             tboxEmpleadoEntrega.Size = new Size(325, 29);
-            tboxEmpleadoEntrega.TabIndex = 32;
+            tboxEmpleadoEntrega.TabIndex = 16;
             // 
             // lblEmpleadoRecibe
             // 
@@ -154,13 +191,14 @@
             // 
             // tboxCantidadEntrega
             // 
+            tboxCantidadEntrega.Cursor = Cursors.IBeam;
             tboxCantidadEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             tboxCantidadEntrega.Location = new Point(226, 253);
             tboxCantidadEntrega.Mask = "999999";
             tboxCantidadEntrega.Name = "tboxCantidadEntrega";
             tboxCantidadEntrega.RightToLeft = RightToLeft.Yes;
             tboxCantidadEntrega.Size = new Size(98, 29);
-            tboxCantidadEntrega.TabIndex = 29;
+            tboxCantidadEntrega.TabIndex = 20;
             tboxCantidadEntrega.TextAlign = HorizontalAlignment.Center;
             tboxCantidadEntrega.ValidatingType = typeof(int);
             tboxCantidadEntrega.Leave += tboxCantidadEntrega_Leave;
@@ -182,7 +220,7 @@
             tboxCantidadDisponible.Name = "tboxCantidadDisponible";
             tboxCantidadDisponible.ReadOnly = true;
             tboxCantidadDisponible.Size = new Size(98, 29);
-            tboxCantidadDisponible.TabIndex = 27;
+            tboxCantidadDisponible.TabIndex = 19;
             tboxCantidadDisponible.TextAlign = HorizontalAlignment.Center;
             // 
             // lblCantidadDisponible
@@ -196,12 +234,13 @@
             // 
             // cboxEquipo
             // 
+            cboxEquipo.Cursor = Cursors.Hand;
             cboxEquipo.Font = new Font("Segoe UI", 12F);
             cboxEquipo.FormattingEnabled = true;
             cboxEquipo.Location = new Point(226, 183);
             cboxEquipo.Name = "cboxEquipo";
             cboxEquipo.Size = new Size(325, 29);
-            cboxEquipo.TabIndex = 25;
+            cboxEquipo.TabIndex = 18;
             cboxEquipo.Leave += cboxEquipo_Leave;
             // 
             // lblEquipo
@@ -215,12 +254,13 @@
             // 
             // cboxEmpleadoRecibe
             // 
+            cboxEmpleadoRecibe.Cursor = Cursors.Hand;
             cboxEmpleadoRecibe.Font = new Font("Segoe UI", 12F);
             cboxEmpleadoRecibe.FormattingEnabled = true;
             cboxEmpleadoRecibe.Location = new Point(226, 148);
             cboxEmpleadoRecibe.Name = "cboxEmpleadoRecibe";
             cboxEmpleadoRecibe.Size = new Size(325, 29);
-            cboxEmpleadoRecibe.TabIndex = 23;
+            cboxEmpleadoRecibe.TabIndex = 17;
             // 
             // labEmpleadoEntrega
             // 
@@ -233,10 +273,11 @@
             // 
             // rtxtObservacionEntrega
             // 
+            rtxtObservacionEntrega.Cursor = Cursors.IBeam;
             rtxtObservacionEntrega.Font = new Font("Segoe UI", 12F);
             rtxtObservacionEntrega.Location = new Point(226, 288);
             rtxtObservacionEntrega.Name = "rtxtObservacionEntrega";
-            rtxtObservacionEntrega.Size = new Size(325, 62);
+            rtxtObservacionEntrega.Size = new Size(325, 75);
             rtxtObservacionEntrega.TabIndex = 21;
             rtxtObservacionEntrega.Text = "";
             // 
@@ -254,6 +295,7 @@
             // 
             ibtnCancelarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ibtnCancelarEntrega.BackColor = Color.White;
+            ibtnCancelarEntrega.Cursor = Cursors.Hand;
             ibtnCancelarEntrega.FlatAppearance.BorderSize = 0;
             ibtnCancelarEntrega.FlatStyle = FlatStyle.Flat;
             ibtnCancelarEntrega.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -266,7 +308,7 @@
             ibtnCancelarEntrega.Location = new Point(585, 102);
             ibtnCancelarEntrega.Name = "ibtnCancelarEntrega";
             ibtnCancelarEntrega.Size = new Size(100, 40);
-            ibtnCancelarEntrega.TabIndex = 18;
+            ibtnCancelarEntrega.TabIndex = 23;
             ibtnCancelarEntrega.Text = "CANCELAR";
             ibtnCancelarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
             ibtnCancelarEntrega.UseVisualStyleBackColor = false;
@@ -276,6 +318,7 @@
             // 
             ibtnGuardarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ibtnGuardarEntrega.BackColor = Color.FromArgb(5, 23, 59);
+            ibtnGuardarEntrega.Cursor = Cursors.Hand;
             ibtnGuardarEntrega.FlatAppearance.BorderSize = 0;
             ibtnGuardarEntrega.FlatStyle = FlatStyle.Flat;
             ibtnGuardarEntrega.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -287,7 +330,7 @@
             ibtnGuardarEntrega.Location = new Point(585, 56);
             ibtnGuardarEntrega.Name = "ibtnGuardarEntrega";
             ibtnGuardarEntrega.Size = new Size(100, 40);
-            ibtnGuardarEntrega.TabIndex = 17;
+            ibtnGuardarEntrega.TabIndex = 22;
             ibtnGuardarEntrega.Text = "GUARDAR";
             ibtnGuardarEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
             ibtnGuardarEntrega.UseVisualStyleBackColor = false;
@@ -314,6 +357,7 @@
             // 
             // cboxTipoEntrega
             // 
+            cboxTipoEntrega.Cursor = Cursors.Hand;
             cboxTipoEntrega.Font = new Font("Segoe UI", 12F);
             cboxTipoEntrega.FormattingEnabled = true;
             cboxTipoEntrega.Location = new Point(226, 43);
@@ -373,17 +417,6 @@
             lblTipoDeEntrega.TabIndex = 4;
             lblTipoDeEntrega.Text = "Tipo de Entrega:";
             // 
-            // pboxLogo
-            // 
-            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
-            pboxLogo.Location = new Point(20, 0);
-            pboxLogo.Name = "pboxLogo";
-            pboxLogo.Size = new Size(184, 60);
-            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
-            pboxLogo.TabIndex = 17;
-            pboxLogo.TabStop = false;
-            // 
             // frmAgregarEntrega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -401,9 +434,9 @@
             Load += frmAgregarEntrega_Load;
             pSuperiorAddEntrega.ResumeLayout(false);
             pSuperiorAddEntrega.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             gbAddEntrega.ResumeLayout(false);
             gbAddEntrega.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
             ResumeLayout(false);
         }
 
@@ -443,7 +476,8 @@
         private Label lblErrorCantidad;
         private TextBox tboxEmpleadoEntrega;
         private Label lblEmpleadoRecibe;
-        private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
+        private FontAwesome.Sharp.IconButton btnCerrarAgregarEntrega;
         private PictureBox pboxLogo;
+        private FontAwesome.Sharp.IconButton ibtnImprimir;
     }
 }

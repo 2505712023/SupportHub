@@ -40,6 +40,7 @@
             cBoxTipoBusqueda = new ComboBox();
             txtBuscarEntrega = new TextBox();
             btnGenerarDevolucion = new FontAwesome.Sharp.IconButton();
+            btnImprimirEntrega = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvEntregas).BeginInit();
             gbBusarEmpleado.SuspendLayout();
             SuspendLayout();
@@ -48,6 +49,7 @@
             // 
             btnEliminarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnEliminarEntrega.BackColor = Color.FromArgb(184, 82, 82);
+            btnEliminarEntrega.Cursor = Cursors.Hand;
             btnEliminarEntrega.FlatAppearance.BorderSize = 0;
             btnEliminarEntrega.FlatStyle = FlatStyle.Flat;
             btnEliminarEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -56,7 +58,7 @@
             btnEliminarEntrega.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarEntrega.IconSize = 20;
-            btnEliminarEntrega.Location = new Point(963, 298);
+            btnEliminarEntrega.Location = new Point(711, 329);
             btnEliminarEntrega.Name = "btnEliminarEntrega";
             btnEliminarEntrega.Size = new Size(156, 57);
             btnEliminarEntrega.TabIndex = 5;
@@ -70,6 +72,7 @@
             // 
             btnModificarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnModificarEntrega.BackColor = Color.FromArgb(55, 166, 104);
+            btnModificarEntrega.Cursor = Cursors.Hand;
             btnModificarEntrega.FlatAppearance.BorderSize = 0;
             btnModificarEntrega.FlatStyle = FlatStyle.Flat;
             btnModificarEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -78,7 +81,7 @@
             btnModificarEntrega.IconColor = Color.FromArgb(31, 35, 40);
             btnModificarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModificarEntrega.IconSize = 20;
-            btnModificarEntrega.Location = new Point(963, 174);
+            btnModificarEntrega.Location = new Point(711, 142);
             btnModificarEntrega.Name = "btnModificarEntrega";
             btnModificarEntrega.Size = new Size(156, 55);
             btnModificarEntrega.TabIndex = 3;
@@ -92,6 +95,7 @@
             // 
             btnAgregarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAgregarEntrega.BackColor = Color.FromArgb(89, 134, 213);
+            btnAgregarEntrega.Cursor = Cursors.Hand;
             btnAgregarEntrega.FlatAppearance.BorderSize = 0;
             btnAgregarEntrega.FlatStyle = FlatStyle.Flat;
             btnAgregarEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -100,7 +104,7 @@
             btnAgregarEntrega.IconColor = Color.FromArgb(31, 35, 40);
             btnAgregarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarEntrega.IconSize = 20;
-            btnAgregarEntrega.Location = new Point(963, 118);
+            btnAgregarEntrega.Location = new Point(711, 86);
             btnAgregarEntrega.Name = "btnAgregarEntrega";
             btnAgregarEntrega.RightToLeft = RightToLeft.No;
             btnAgregarEntrega.Size = new Size(156, 50);
@@ -152,7 +156,7 @@
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             dgvEntregas.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvEntregas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEntregas.Size = new Size(945, 417);
+            dgvEntregas.Size = new Size(693, 417);
             dgvEntregas.TabIndex = 11;
             dgvEntregas.SelectionChanged += dgvEntregas_SelectionChanged;
             // 
@@ -164,7 +168,7 @@
             gbBusarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             gbBusarEmpleado.Location = new Point(12, 12);
             gbBusarEmpleado.Name = "gbBusarEmpleado";
-            gbBusarEmpleado.Size = new Size(945, 68);
+            gbBusarEmpleado.Size = new Size(693, 68);
             gbBusarEmpleado.TabIndex = 10;
             gbBusarEmpleado.TabStop = false;
             gbBusarEmpleado.Text = "BUSCAR ENTREGA::...";
@@ -173,6 +177,7 @@
             // 
             cBoxTipoBusqueda.AutoCompleteMode = AutoCompleteMode.Append;
             cBoxTipoBusqueda.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cBoxTipoBusqueda.Cursor = Cursors.Hand;
             cBoxTipoBusqueda.Font = new Font("Segoe UI", 9F);
             cBoxTipoBusqueda.FormattingEnabled = true;
             cBoxTipoBusqueda.Location = new Point(6, 26);
@@ -184,26 +189,28 @@
             // txtBuscarEntrega
             // 
             txtBuscarEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtBuscarEntrega.Cursor = Cursors.IBeam;
             txtBuscarEntrega.Font = new Font("Segoe UI", 9F);
             txtBuscarEntrega.Location = new Point(134, 26);
             txtBuscarEntrega.Name = "txtBuscarEntrega";
-            txtBuscarEntrega.Size = new Size(805, 23);
+            txtBuscarEntrega.Size = new Size(553, 23);
             txtBuscarEntrega.TabIndex = 1;
             txtBuscarEntrega.TextChanged += txtBuscarEntrega_TextChanged;
             // 
             // btnGenerarDevolucion
             // 
             btnGenerarDevolucion.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnGenerarDevolucion.BackColor = Color.FromArgb(237, 157, 36);
+            btnGenerarDevolucion.BackColor = Color.FromArgb(77, 77, 77);
+            btnGenerarDevolucion.Cursor = Cursors.Hand;
             btnGenerarDevolucion.FlatAppearance.BorderSize = 0;
             btnGenerarDevolucion.FlatStyle = FlatStyle.Flat;
             btnGenerarDevolucion.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            btnGenerarDevolucion.ForeColor = Color.FromArgb(31, 35, 40);
+            btnGenerarDevolucion.ForeColor = Color.White;
             btnGenerarDevolucion.IconChar = FontAwesome.Sharp.IconChar.RotateBack;
-            btnGenerarDevolucion.IconColor = Color.FromArgb(31, 35, 40);
+            btnGenerarDevolucion.IconColor = Color.White;
             btnGenerarDevolucion.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGenerarDevolucion.IconSize = 20;
-            btnGenerarDevolucion.Location = new Point(963, 235);
+            btnGenerarDevolucion.Location = new Point(711, 203);
             btnGenerarDevolucion.Name = "btnGenerarDevolucion";
             btnGenerarDevolucion.Size = new Size(156, 57);
             btnGenerarDevolucion.TabIndex = 4;
@@ -212,12 +219,35 @@
             btnGenerarDevolucion.UseVisualStyleBackColor = false;
             btnGenerarDevolucion.Click += btnGenerarDevolucion_Click;
             // 
+            // btnImprimirEntrega
+            // 
+            btnImprimirEntrega.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnImprimirEntrega.BackColor = Color.FromArgb(63, 175, 75);
+            btnImprimirEntrega.Cursor = Cursors.Hand;
+            btnImprimirEntrega.FlatAppearance.BorderSize = 0;
+            btnImprimirEntrega.FlatStyle = FlatStyle.Flat;
+            btnImprimirEntrega.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnImprimirEntrega.ForeColor = Color.FromArgb(31, 35, 40);
+            btnImprimirEntrega.IconChar = FontAwesome.Sharp.IconChar.FileContract;
+            btnImprimirEntrega.IconColor = Color.FromArgb(31, 35, 40);
+            btnImprimirEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnImprimirEntrega.IconSize = 20;
+            btnImprimirEntrega.Location = new Point(711, 266);
+            btnImprimirEntrega.Name = "btnImprimirEntrega";
+            btnImprimirEntrega.Size = new Size(156, 57);
+            btnImprimirEntrega.TabIndex = 12;
+            btnImprimirEntrega.Text = "IMPRIMIR";
+            btnImprimirEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnImprimirEntrega.UseVisualStyleBackColor = false;
+            btnImprimirEntrega.Click += btnImprimirEntrega_Click;
+            // 
             // frmEntrega
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
-            ClientSize = new Size(1131, 515);
+            ClientSize = new Size(879, 515);
+            Controls.Add(btnImprimirEntrega);
             Controls.Add(btnGenerarDevolucion);
             Controls.Add(btnEliminarEntrega);
             Controls.Add(btnModificarEntrega);
@@ -243,5 +273,6 @@
         private TextBox txtBuscarEntrega;
         private ComboBox cBoxTipoBusqueda;
         private FontAwesome.Sharp.IconButton btnGenerarDevolucion;
+        private FontAwesome.Sharp.IconButton btnImprimirEntrega;
     }
 }

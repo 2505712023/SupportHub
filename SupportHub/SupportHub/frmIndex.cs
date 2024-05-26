@@ -14,6 +14,7 @@ using Color = System.Drawing.Color;
 using Microsoft.VisualBasic;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using Comun.Cache;
+using Presentacion.CustomMessageBoxes;
 
 namespace Presentacion
 {
@@ -22,7 +23,44 @@ namespace Presentacion
         private IconButton? currentBtn;
         private Panel leftBorderBtn;
         private Form? currentChildForm;
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
 
+            if (keyData == (Keys.Control | Keys.Shift | Keys.H))
+            {
+
+                btnHome_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.Y))
+            {
+
+                btnCerrarSeccion_Click(this, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.Z))
+            {
+
+                btnCerrar_Click(this, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.G))
+            {
+
+                btnAcerca_Click(this, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.I))
+            {
+
+                btnInfo_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         public frmIndex()
         {
             InitializeComponent();
@@ -131,6 +169,8 @@ namespace Presentacion
             lblIconoFrmActual.Text = childForm.Text;
         }
 
+
+
         private void btnEmpleado_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
@@ -157,13 +197,6 @@ namespace Presentacion
             ActivateButton(sender, RGBColors.color4);
             OpenChildForm(new frmEquipo());
             lblIconoFrmActual.Text = "EQUIPO";
-        }
-
-        private void btnDetalleEntrega_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color5);
-            OpenChildForm(new frmDetalleEntrega());
-            lblIconoFrmActual.Text = "DETALLE ENTREGA";
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
@@ -223,14 +256,14 @@ namespace Presentacion
 
         private void btnAcerca_Click(object sender, EventArgs e)
         {
-            pSubMenu.Visible = false;
+            hideSubMenu();
             OpenChildForm(new frmAcerca());
             lblIconoFrmActual.Text = "ACERCA DE";
         }
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
-            pSubMenu.Visible = false;
+            hideSubMenu();
             OpenChildForm(new frmInformacion());
             lblIconoFrmActual.Text = "INFORMACIÓN";
         }
@@ -266,17 +299,41 @@ namespace Presentacion
         {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("es");
 
-            DialogResult resultado = MessageBox.Show("¿Está seguro que desea cerrar la aplicación?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (resultado == DialogResult.Yes)
+            if (CustomMessageBox.Advertencia("Cerrar sesión", "¿Está seguro que desea cerrar la aplicación?") == DialogResult.Yes)
             {
                 this.Close();
             }
 
         }
 
-        private void pDesktop_Paint(object sender, PaintEventArgs e)
+        private void btnMiximizar_MouseHover(object sender, EventArgs e)
         {
+            btnMiximizar.BackColor = Color.FromArgb(171, 235, 235);
+        }
 
+        private void btnMiximizar_MouseLeave(object sender, EventArgs e)
+        {
+            btnMiximizar.BackColor = Color.FromArgb(5, 23, 59);
+        }
+
+        private void btnMaximizar_MouseHover(object sender, EventArgs e)
+        {
+            btnMaximizar.BackColor = Color.FromArgb(171, 235, 235);
+        }
+
+        private void btnMaximizar_MouseLeave(object sender, EventArgs e)
+        {
+            btnMaximizar.BackColor = Color.FromArgb(5, 23, 59);
+        }
+
+        private void btnCerrar_MouseHover(object sender, EventArgs e)
+        {
+            btnCerrar.BackColor = Color.FromArgb(171, 235, 235);
+        }
+
+        private void btnCerrar_MouseLeave(object sender, EventArgs e)
+        {
+            btnCerrar.BackColor = Color.FromArgb(5, 23, 59);
         }
     }
 }

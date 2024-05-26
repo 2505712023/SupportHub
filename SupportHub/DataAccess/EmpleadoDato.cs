@@ -32,6 +32,7 @@ namespace DataAccess
                 return tabla;
             }
         }
+
         public DataTable ObtenerAreas()
         {
             string querySelect = "SELECT * FROM Areas";

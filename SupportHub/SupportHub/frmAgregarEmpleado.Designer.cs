@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAgregarEmpleado));
-            pSuperiorAddEmpleado = new Panel();
-            pboxLogo = new PictureBox();
-            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbAddEmpleado = new GroupBox();
             txtTelefonoEmpleado = new MaskedTextBox();
             btnCancelaEmpleado = new FontAwesome.Sharp.IconButton();
@@ -47,56 +44,13 @@
             lblTelefonoEmpleado = new Label();
             lblApellidoEmpleado = new Label();
             lblNombreEmpleado = new Label();
+            pSuperiorAddEmpleado = new Panel();
+            pboxLogo = new PictureBox();
+            btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
+            gbAddEmpleado.SuspendLayout();
             pSuperiorAddEmpleado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).BeginInit();
-            gbAddEmpleado.SuspendLayout();
             SuspendLayout();
-            // 
-            // pSuperiorAddEmpleado
-            // 
-            pSuperiorAddEmpleado.BackColor = Color.FromArgb(5, 23, 59);
-            pSuperiorAddEmpleado.Controls.Add(pboxLogo);
-            pSuperiorAddEmpleado.Controls.Add(btnCerrarAddEmpleado);
-            pSuperiorAddEmpleado.Dock = DockStyle.Top;
-            pSuperiorAddEmpleado.Location = new Point(0, 0);
-            pSuperiorAddEmpleado.Margin = new Padding(3, 4, 3, 4);
-            pSuperiorAddEmpleado.Name = "pSuperiorAddEmpleado";
-            pSuperiorAddEmpleado.Size = new Size(669, 80);
-            pSuperiorAddEmpleado.TabIndex = 0;
-            pSuperiorAddEmpleado.Paint += pSuperiorAddEmpleado_Paint;
-            // 
-            // pboxLogo
-            // 
-            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
-            pboxLogo.Location = new Point(23, 0);
-            pboxLogo.Margin = new Padding(3, 4, 3, 4);
-            pboxLogo.Name = "pboxLogo";
-            pboxLogo.Size = new Size(184, 60);
-            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
-            pboxLogo.TabIndex = 16;
-            pboxLogo.TabStop = false;
-            // 
-            // btnCerrarAddEmpleado
-            // 
-            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
-            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
-            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
-            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
-            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
-            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            btnCerrarAddEmpleado.IconSize = 20;
-            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.Location = new Point(633, 4);
-            btnCerrarAddEmpleado.Margin = new Padding(3, 4, 3, 4);
-            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
-            btnCerrarAddEmpleado.Size = new Size(32, 32);
-            btnCerrarAddEmpleado.TabIndex = 15;
-            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
-            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
-            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
             // 
             // gbAddEmpleado
             // 
@@ -128,6 +82,7 @@
             // 
             // txtTelefonoEmpleado
             // 
+            txtTelefonoEmpleado.Cursor = Cursors.IBeam;
             txtTelefonoEmpleado.Font = new Font("Segoe UI", 12F);
             txtTelefonoEmpleado.Location = new Point(30, 224);
             txtTelefonoEmpleado.Margin = new Padding(3, 4, 3, 4);
@@ -135,10 +90,12 @@
             txtTelefonoEmpleado.Name = "txtTelefonoEmpleado";
             txtTelefonoEmpleado.Size = new Size(303, 34);
             txtTelefonoEmpleado.TabIndex = 8;
+            txtTelefonoEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // btnCancelaEmpleado
             // 
             btnCancelaEmpleado.BackColor = Color.White;
+            btnCancelaEmpleado.Cursor = Cursors.Hand;
             btnCancelaEmpleado.FlatAppearance.BorderSize = 0;
             btnCancelaEmpleado.FlatStyle = FlatStyle.Flat;
             btnCancelaEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -162,6 +119,7 @@
             // btnGuardarEmpleado
             // 
             btnGuardarEmpleado.BackColor = Color.FromArgb(5, 23, 59);
+            btnGuardarEmpleado.Cursor = Cursors.Hand;
             btnGuardarEmpleado.FlatAppearance.BorderSize = 0;
             btnGuardarEmpleado.FlatStyle = FlatStyle.Flat;
             btnGuardarEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -183,6 +141,7 @@
             // 
             // cbxAreaEmpleado
             // 
+            cbxAreaEmpleado.Cursor = Cursors.Hand;
             cbxAreaEmpleado.Font = new Font("Segoe UI", 12F);
             cbxAreaEmpleado.FormattingEnabled = true;
             cbxAreaEmpleado.Location = new Point(375, 149);
@@ -191,9 +150,11 @@
             cbxAreaEmpleado.Size = new Size(235, 36);
             cbxAreaEmpleado.TabIndex = 11;
             cbxAreaEmpleado.SelectedIndexChanged += cbxAreaEmpleado_SelectedIndexChanged;
+            cbxAreaEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // cbxCargoEmpleado
             // 
+            cbxCargoEmpleado.Cursor = Cursors.Hand;
             cbxCargoEmpleado.Font = new Font("Segoe UI", 12F);
             cbxCargoEmpleado.FormattingEnabled = true;
             cbxCargoEmpleado.Location = new Point(375, 71);
@@ -202,33 +163,40 @@
             cbxCargoEmpleado.Size = new Size(235, 36);
             cbxCargoEmpleado.TabIndex = 10;
             cbxCargoEmpleado.SelectedIndexChanged += cbxCargoEmpleado_SelectedIndexChanged;
+            cbxCargoEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // txtEmailEmpleado
             // 
+            txtEmailEmpleado.Cursor = Cursors.IBeam;
             txtEmailEmpleado.Font = new Font("Segoe UI", 12F);
             txtEmailEmpleado.Location = new Point(30, 296);
             txtEmailEmpleado.Margin = new Padding(3, 4, 3, 4);
             txtEmailEmpleado.Name = "txtEmailEmpleado";
             txtEmailEmpleado.Size = new Size(303, 34);
             txtEmailEmpleado.TabIndex = 9;
+            txtEmailEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // txtApellidoEmpleado
             // 
+            txtApellidoEmpleado.Cursor = Cursors.IBeam;
             txtApellidoEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtApellidoEmpleado.Location = new Point(30, 149);
             txtApellidoEmpleado.Margin = new Padding(3, 4, 3, 4);
             txtApellidoEmpleado.Name = "txtApellidoEmpleado";
             txtApellidoEmpleado.Size = new Size(303, 34);
             txtApellidoEmpleado.TabIndex = 7;
+            txtApellidoEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // txtNombreEmpleado
             // 
+            txtNombreEmpleado.Cursor = Cursors.IBeam;
             txtNombreEmpleado.Font = new Font("Segoe UI", 12F);
             txtNombreEmpleado.Location = new Point(30, 71);
             txtNombreEmpleado.Margin = new Padding(3, 4, 3, 4);
             txtNombreEmpleado.Name = "txtNombreEmpleado";
             txtNombreEmpleado.Size = new Size(303, 34);
             txtNombreEmpleado.TabIndex = 6;
+            txtNombreEmpleado.KeyPress += frmAgregarEmpleado_KeyPress;
             // 
             // lblAreaEmpleado
             // 
@@ -284,6 +252,49 @@
             lblNombreEmpleado.TabIndex = 0;
             lblNombreEmpleado.Text = "Nombre:";
             // 
+            // pSuperiorAddEmpleado
+            // 
+            pSuperiorAddEmpleado.BackColor = Color.FromArgb(5, 23, 59);
+            pSuperiorAddEmpleado.Controls.Add(pboxLogo);
+            pSuperiorAddEmpleado.Controls.Add(btnCerrarAddEmpleado);
+            pSuperiorAddEmpleado.Dock = DockStyle.Top;
+            pSuperiorAddEmpleado.Location = new Point(0, 0);
+            pSuperiorAddEmpleado.Name = "pSuperiorAddEmpleado";
+            pSuperiorAddEmpleado.Size = new Size(585, 60);
+            pSuperiorAddEmpleado.TabIndex = 0;
+            // 
+            // pboxLogo
+            // 
+            pboxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            pboxLogo.Image = (Image)resources.GetObject("pboxLogo.Image");
+            pboxLogo.Location = new Point(20, 0);
+            pboxLogo.Name = "pboxLogo";
+            pboxLogo.Size = new Size(184, 60);
+            pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
+            pboxLogo.TabIndex = 16;
+            pboxLogo.TabStop = false;
+            // 
+            // btnCerrarAddEmpleado
+            // 
+            btnCerrarAddEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCerrarAddEmpleado.Cursor = Cursors.Hand;
+            btnCerrarAddEmpleado.FlatAppearance.BorderSize = 0;
+            btnCerrarAddEmpleado.FlatStyle = FlatStyle.Flat;
+            btnCerrarAddEmpleado.ForeColor = SystemColors.ControlLightLight;
+            btnCerrarAddEmpleado.IconChar = FontAwesome.Sharp.IconChar.X;
+            btnCerrarAddEmpleado.IconColor = SystemColors.Window;
+            btnCerrarAddEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            btnCerrarAddEmpleado.IconSize = 20;
+            btnCerrarAddEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.Location = new Point(545, 12);
+            btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
+            btnCerrarAddEmpleado.Size = new Size(28, 24);
+            btnCerrarAddEmpleado.TabIndex = 15;
+            btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
+            btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
+            btnCerrarAddEmpleado.Click += btnCerrarAddEmpleado_Click;
+            // 
             // frmAgregarEmpleado
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -298,17 +309,16 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "EMPLEADO ";
             Load += frmAgregarEmpleado_Load;
+            KeyPress += frmAgregarEmpleado_KeyPress;
+            gbAddEmpleado.ResumeLayout(false);
+            gbAddEmpleado.PerformLayout();
             pSuperiorAddEmpleado.ResumeLayout(false);
             pSuperiorAddEmpleado.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();
-            gbAddEmpleado.ResumeLayout(false);
-            gbAddEmpleado.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel pSuperiorAddEmpleado;
         private GroupBox gbAddEmpleado;
         private Label lblAreaEmpleado;
         private Label lblCargoEmpleado;
@@ -326,5 +336,6 @@
         private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
         private PictureBox pboxLogo;
         private Label lblEmailEmpleado;
+        private Panel pSuperiorAddEmpleado;
     }
 }
