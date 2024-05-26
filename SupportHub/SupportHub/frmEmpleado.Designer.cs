@@ -50,13 +50,14 @@
             gbBusarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             gbBusarEmpleado.Location = new Point(12, 12);
             gbBusarEmpleado.Name = "gbBusarEmpleado";
-            gbBusarEmpleado.Size = new Size(945, 68);
+            gbBusarEmpleado.Size = new Size(688, 68);
             gbBusarEmpleado.TabIndex = 0;
             gbBusarEmpleado.TabStop = false;
             gbBusarEmpleado.Text = "BUSCAR EMPLEADO::...";
             // 
             // cbxTipoBusquedaEmpleado
             // 
+            cbxTipoBusquedaEmpleado.Cursor = Cursors.Hand;
             cbxTipoBusquedaEmpleado.Font = new Font("Segoe UI", 9F);
             cbxTipoBusquedaEmpleado.FormattingEnabled = true;
             cbxTipoBusquedaEmpleado.Location = new Point(6, 26);
@@ -68,10 +69,11 @@
             // txtBuscarEmpleado
             // 
             txtBuscarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtBuscarEmpleado.Cursor = Cursors.IBeam;
             txtBuscarEmpleado.Font = new Font("Segoe UI", 9F);
             txtBuscarEmpleado.Location = new Point(151, 26);
             txtBuscarEmpleado.Name = "txtBuscarEmpleado";
-            txtBuscarEmpleado.Size = new Size(788, 23);
+            txtBuscarEmpleado.Size = new Size(531, 23);
             txtBuscarEmpleado.TabIndex = 5;
             txtBuscarEmpleado.TextChanged += txtBuscarEmpleado_TextChanged;
             // 
@@ -110,13 +112,14 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dgvEmpleado.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvEmpleado.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEmpleado.Size = new Size(945, 417);
+            dgvEmpleado.Size = new Size(688, 417);
             dgvEmpleado.TabIndex = 1;
             // 
             // btnAgregarEmpleado
             // 
             btnAgregarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAgregarEmpleado.BackColor = Color.FromArgb(89, 134, 213);
+            btnAgregarEmpleado.Cursor = Cursors.Hand;
             btnAgregarEmpleado.FlatAppearance.BorderSize = 0;
             btnAgregarEmpleado.FlatStyle = FlatStyle.Flat;
             btnAgregarEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -125,7 +128,7 @@
             btnAgregarEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnAgregarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarEmpleado.IconSize = 20;
-            btnAgregarEmpleado.Location = new Point(963, 118);
+            btnAgregarEmpleado.Location = new Point(706, 86);
             btnAgregarEmpleado.Name = "btnAgregarEmpleado";
             btnAgregarEmpleado.Size = new Size(156, 50);
             btnAgregarEmpleado.TabIndex = 7;
@@ -138,6 +141,7 @@
             // 
             btnModificaEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnModificaEmpleado.BackColor = Color.FromArgb(55, 166, 104);
+            btnModificaEmpleado.Cursor = Cursors.Hand;
             btnModificaEmpleado.FlatAppearance.BorderSize = 0;
             btnModificaEmpleado.FlatStyle = FlatStyle.Flat;
             btnModificaEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -146,7 +150,7 @@
             btnModificaEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnModificaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModificaEmpleado.IconSize = 20;
-            btnModificaEmpleado.Location = new Point(963, 174);
+            btnModificaEmpleado.Location = new Point(706, 142);
             btnModificaEmpleado.Name = "btnModificaEmpleado";
             btnModificaEmpleado.Size = new Size(156, 55);
             btnModificaEmpleado.TabIndex = 8;
@@ -159,6 +163,7 @@
             // 
             btnEliminarEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnEliminarEmpleado.BackColor = Color.FromArgb(184, 82, 82);
+            btnEliminarEmpleado.Cursor = Cursors.Hand;
             btnEliminarEmpleado.FlatAppearance.BorderSize = 0;
             btnEliminarEmpleado.FlatStyle = FlatStyle.Flat;
             btnEliminarEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -167,7 +172,7 @@
             btnEliminarEmpleado.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarEmpleado.IconSize = 20;
-            btnEliminarEmpleado.Location = new Point(963, 235);
+            btnEliminarEmpleado.Location = new Point(706, 203);
             btnEliminarEmpleado.Name = "btnEliminarEmpleado";
             btnEliminarEmpleado.Size = new Size(156, 57);
             btnEliminarEmpleado.TabIndex = 9;
@@ -181,7 +186,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
-            ClientSize = new Size(1131, 515);
+            ClientSize = new Size(874, 515);
             Controls.Add(btnEliminarEmpleado);
             Controls.Add(btnModificaEmpleado);
             Controls.Add(btnAgregarEmpleado);

@@ -109,6 +109,7 @@
             // 
             txtUsuario.BackColor = Color.FromArgb(148, 184, 216);
             txtUsuario.BorderStyle = BorderStyle.None;
+            txtUsuario.Cursor = Cursors.IBeam;
             txtUsuario.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtUsuario.ForeColor = Color.FromArgb(31, 35, 40);
             txtUsuario.Location = new Point(288, 86);
@@ -124,6 +125,7 @@
             // 
             txtContraseña.BackColor = Color.FromArgb(148, 184, 216);
             txtContraseña.BorderStyle = BorderStyle.None;
+            txtContraseña.Cursor = Cursors.IBeam;
             txtContraseña.Font = new Font("Century Gothic", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtContraseña.ForeColor = Color.FromArgb(31, 35, 40);
             txtContraseña.Location = new Point(288, 176);
@@ -138,6 +140,7 @@
             // btnAcceder
             // 
             btnAcceder.BackColor = Color.FromArgb(89, 134, 213);
+            btnAcceder.Cursor = Cursors.Hand;
             btnAcceder.FlatAppearance.BorderSize = 0;
             btnAcceder.FlatAppearance.MouseDownBackColor = Color.FromArgb(89, 134, 213);
             btnAcceder.FlatAppearance.MouseOverBackColor = Color.FromArgb(3, 29, 52);
@@ -155,13 +158,14 @@
             // btnCerrarLogin
             // 
             btnCerrarLogin.BackColor = Color.FromArgb(148, 184, 216);
+            btnCerrarLogin.Cursor = Cursors.Hand;
             btnCerrarLogin.FlatAppearance.BorderSize = 0;
             btnCerrarLogin.FlatStyle = FlatStyle.Flat;
             btnCerrarLogin.IconChar = FontAwesome.Sharp.IconChar.X;
             btnCerrarLogin.IconColor = Color.FromArgb(31, 35, 40);
             btnCerrarLogin.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarLogin.IconSize = 20;
-            btnCerrarLogin.Location = new Point(749, 3);
+            btnCerrarLogin.Location = new Point(739, 12);
             btnCerrarLogin.Name = "btnCerrarLogin";
             btnCerrarLogin.Size = new Size(29, 23);
             btnCerrarLogin.TabIndex = 4;

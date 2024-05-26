@@ -95,6 +95,7 @@
             // linkEditar
             // 
             linkEditar.AutoSize = true;
+            linkEditar.Cursor = Cursors.Hand;
             linkEditar.Location = new Point(210, 389);
             linkEditar.Name = "linkEditar";
             linkEditar.Size = new Size(154, 28);
@@ -212,8 +213,10 @@
             // 
             // lblEditar
             // 
+            lblEditar.ActiveLinkColor = Color.FromArgb(148, 184, 216);
             lblEditar.AutoSize = true;
-            lblEditar.LinkColor = Color.Red;
+            lblEditar.DisabledLinkColor = Color.FromArgb(148, 184, 216);
+            lblEditar.LinkColor = Color.FromArgb(148, 184, 216);
             lblEditar.Location = new Point(175, 264);
             lblEditar.Name = "lblEditar";
             lblEditar.Size = new Size(50, 21);
@@ -225,13 +228,14 @@
             // btnCancelaEmpleado
             // 
             btnCancelaEmpleado.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnCancelaEmpleado.BackColor = Color.White;
+            btnCancelaEmpleado.BackColor = Color.FromArgb(5, 23, 59);
+            btnCancelaEmpleado.Cursor = Cursors.Hand;
             btnCancelaEmpleado.FlatAppearance.BorderSize = 0;
             btnCancelaEmpleado.FlatStyle = FlatStyle.Flat;
             btnCancelaEmpleado.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancelaEmpleado.ForeColor = Color.FromArgb(5, 23, 59);
+            btnCancelaEmpleado.ForeColor = Color.White;
             btnCancelaEmpleado.IconChar = FontAwesome.Sharp.IconChar.CheckSquare;
-            btnCancelaEmpleado.IconColor = Color.FromArgb(5, 23, 59);
+            btnCancelaEmpleado.IconColor = Color.White;
             btnCancelaEmpleado.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelaEmpleado.IconSize = 20;
             btnCancelaEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
@@ -248,13 +252,14 @@
             // btnGuardarContraseña
             // 
             btnGuardarContraseña.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnGuardarContraseña.BackColor = Color.FromArgb(5, 23, 59);
+            btnGuardarContraseña.BackColor = Color.White;
+            btnGuardarContraseña.Cursor = Cursors.Hand;
             btnGuardarContraseña.FlatAppearance.BorderSize = 0;
             btnGuardarContraseña.FlatStyle = FlatStyle.Flat;
             btnGuardarContraseña.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGuardarContraseña.ForeColor = Color.White;
+            btnGuardarContraseña.ForeColor = Color.FromArgb(5, 23, 59);
             btnGuardarContraseña.IconChar = FontAwesome.Sharp.IconChar.Save;
-            btnGuardarContraseña.IconColor = Color.White;
+            btnGuardarContraseña.IconColor = Color.FromArgb(5, 23, 59);
             btnGuardarContraseña.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnGuardarContraseña.IconSize = 20;
             btnGuardarContraseña.Location = new Point(41, 456);
@@ -269,6 +274,7 @@
             // 
             // txtContraActual
             // 
+            txtContraActual.Cursor = Cursors.IBeam;
             txtContraActual.Location = new Point(33, 400);
             txtContraActual.Name = "txtContraActual";
             txtContraActual.Size = new Size(256, 29);
@@ -276,6 +282,7 @@
             // 
             // txtConfirmarContra
             // 
+            txtConfirmarContra.Cursor = Cursors.IBeam;
             txtConfirmarContra.Location = new Point(31, 344);
             txtConfirmarContra.Name = "txtConfirmarContra";
             txtConfirmarContra.Size = new Size(256, 29);
@@ -283,6 +290,7 @@
             // 
             // txtNuevaContra
             // 
+            txtNuevaContra.Cursor = Cursors.IBeam;
             txtNuevaContra.Location = new Point(31, 288);
             txtNuevaContra.Name = "txtNuevaContra";
             txtNuevaContra.Size = new Size(256, 29);
@@ -290,6 +298,7 @@
             // 
             // txtApellidoUsuario
             // 
+            txtApellidoUsuario.Cursor = Cursors.IBeam;
             txtApellidoUsuario.Enabled = false;
             txtApellidoUsuario.Location = new Point(33, 211);
             txtApellidoUsuario.Name = "txtApellidoUsuario";
@@ -299,6 +308,7 @@
             // 
             // txtNombreUsuario
             // 
+            txtNombreUsuario.Cursor = Cursors.IBeam;
             txtNombreUsuario.Enabled = false;
             txtNombreUsuario.Location = new Point(31, 155);
             txtNombreUsuario.Name = "txtNombreUsuario";
@@ -308,6 +318,7 @@
             // 
             // txtUsuario
             // 
+            txtUsuario.Cursor = Cursors.IBeam;
             txtUsuario.Enabled = false;
             txtUsuario.Location = new Point(31, 98);
             txtUsuario.Name = "txtUsuario";

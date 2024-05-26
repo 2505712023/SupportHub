@@ -37,9 +37,10 @@ namespace Presentacion
             cBoxTipoBusqueda.DataSource = tiposDeBusqueda;
         }
 
-        private void frmEntrega_Load(object sender, EventArgs e)
+        public void frmEntrega_Load(object sender, EventArgs e)
         {
             formCargado = true;
+            dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
             prepararDgvEntregas();
 
             if (!CacheInicioUsuario.permisosUser.Contains("Agregar"))
@@ -60,7 +61,6 @@ namespace Presentacion
         private void prepararDgvEntregas()
         {
             cBoxTipoBusqueda.DropDownStyle = ComboBoxStyle.DropDownList;
-            dgvEntregas.DataSource = ModeloEntrega.mostrarEntregas();
             dgvEntregas.Columns["idTipoEntrega"].Visible = false;
             dgvEntregas.Columns["idEquipo"].Visible = false;
             dgvEntregas.Columns["idEmpleadoEntrega"].Visible = false;
@@ -79,6 +79,7 @@ namespace Presentacion
                 }
             }
             dgvEntregas.ClearSelection();
+            txtBuscarEntrega.Focus();
         }
 
         private void txtBuscarEntrega_TextChanged(object sender, EventArgs e)
@@ -164,6 +165,50 @@ namespace Presentacion
                 actualizarTablaEntregas();
             }
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.A))
+            {
+                btnAgregarEntrega_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.M))
+            {
+                if (btnModificarEntrega.Enabled == true)
+                {
+                    btnModificarEntrega_Click(this, EventArgs.Empty);
+                }
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.E))
+            {
+                btnEliminarEntrega_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.G))
+            {
+                if (btnGenerarDevolucion.Enabled == true)
+                {
+                    btnGenerarDevolucion_Click(this, EventArgs.Empty);
+                }
+                return true;
+            }
+
+            if(keyData == (Keys.Control | Keys.Shift | Keys.P))
+            {
+                if (btnImprimirEntrega.Enabled == true)
+                {
+                    btnImprimirEntrega_Click(this, EventArgs.Empty);
+                }
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
 
         private void btnAgregarEntrega_Click(object sender, EventArgs e)
         {
@@ -176,7 +221,7 @@ namespace Presentacion
                 dgvEntregas.Enabled = false;
                 frmAgregarEntrega formEntrega = new frmAgregarEntrega();
                 SuscribirEventosAgregarEntrega(formEntrega);
-                formEntrega.Show();
+                formEntrega.ShowDialog();
             }
         }
 
@@ -207,7 +252,7 @@ namespace Presentacion
             if (btnGenerarDevolucion.Text == "DEVOLUCIÓN")
             {
                 dgvEntregas.Enabled = false;
-                devolucionEntrega.Show();
+                devolucionEntrega.ShowDialog();
             }
             else if (btnGenerarDevolucion.Text == "ELIMINAR DEVOLUCIÓN")
             {
@@ -243,6 +288,7 @@ namespace Presentacion
             {
                 DataGridViewSelectedRowCollection selectedRow = dgvEntregas.SelectedRows;
                 btnModificarEntrega.Enabled = true;
+                btnImprimirEntrega.Enabled = true;
 
                 foreach (DataGridViewRow row in selectedRow)
                 {
@@ -267,7 +313,7 @@ namespace Presentacion
                 btnGenerarDevolucion.Text = "DEVOLUCIÓN";
                 btnGenerarDevolucion.IconChar = FontAwesome.Sharp.IconChar.RotateBack;
                 btnGenerarDevolucion.Enabled = false;
-
+                btnImprimirEntrega.Enabled = false;
                 btnModificarEntrega.Enabled = false;
             }
         }
@@ -277,9 +323,10 @@ namespace Presentacion
             DataGridViewRow selectedRow = dgvEntregas.SelectedRows[0];
 
             frmAgregarEntrega modificarEntrega = new frmAgregarEntrega(
-                    codEntrega: codEntrega,
                     esModificacion: true,
+                    codEntrega: codEntrega,
                     cantidadEntregaAnterior: Convert.ToInt32(selectedRow.Cells["Cantidad Entregada"].Value.ToString()),
+                    idEquipoAnterior: Convert.ToInt32(selectedRow.Cells["idEquipo"].Value.ToString()),
                     idTipoEntrega: Convert.ToInt32(selectedRow.Cells["idTipoEntrega"].Value.ToString()),
                     fechaEntrega: selectedRow.Cells["Fecha de Entrega"].Value.ToString(),
                     empleadoEntrega: selectedRow.Cells["Empleado Entregó"].Value.ToString(),
@@ -290,7 +337,30 @@ namespace Presentacion
                 );
             dgvEntregas.Enabled = false;
             SuscribirEventosAgregarEntrega(modificarEntrega);
-            modificarEntrega.Show();
+            modificarEntrega.ShowDialog();
+        }
+
+        private void btnImprimirEntrega_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = dgvEntregas.SelectedRows[0];
+
+            frmAgregarEntrega imprimirEntrega = new frmAgregarEntrega(
+                    esImpresion: true,
+                    codEntrega: codEntrega,
+                    idTipoEntrega: Convert.ToInt32(selectedRow.Cells["idTipoEntrega"].Value.ToString()),
+                    empleadoEntrega: selectedRow.Cells["Empleado Entregó"].Value.ToString(),
+                    idEmpleadoRecibe: Convert.ToInt32(selectedRow.Cells["idEmpleadoRecibe"].Value.ToString()),
+                    cantidadEntrega: Convert.ToInt32(selectedRow.Cells["Cantidad Entregada"].Value.ToString()),
+                    idEquipo: Convert.ToInt32(selectedRow.Cells["idEquipo"].Value.ToString()),
+                    tipoEquipo: selectedRow.Cells["Tipo de Equipo"].Value.ToString(),
+                    modeloEquipo: selectedRow.Cells["Marca"].Value.ToString(),
+                    marcaEquipo: selectedRow.Cells["Modelo"].Value.ToString(),
+                    observacionEntrega: selectedRow.Cells["Observación"].Value.ToString(),
+                    fechaEntrega: selectedRow.Cells["Fecha de Entrega"].Value.ToString()
+                );
+            dgvEntregas.Enabled = false;
+            SuscribirEventosAgregarEntrega(imprimirEntrega);
+            imprimirEntrega.ShowDialog();
         }
     }
 }

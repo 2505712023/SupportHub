@@ -33,7 +33,6 @@
             pIzquierdoIndex = new Panel();
             btnCerrarSeccion = new FontAwesome.Sharp.IconButton();
             btnUsuarios = new FontAwesome.Sharp.IconButton();
-            btnDetalleEntrega = new FontAwesome.Sharp.IconButton();
             btnEquipo = new FontAwesome.Sharp.IconButton();
             btnProveedor = new FontAwesome.Sharp.IconButton();
             btnEntrega = new FontAwesome.Sharp.IconButton();
@@ -72,7 +71,6 @@
             pIzquierdoIndex.BackColor = Color.FromArgb(5, 23, 59);
             pIzquierdoIndex.Controls.Add(btnCerrarSeccion);
             pIzquierdoIndex.Controls.Add(btnUsuarios);
-            pIzquierdoIndex.Controls.Add(btnDetalleEntrega);
             pIzquierdoIndex.Controls.Add(btnEquipo);
             pIzquierdoIndex.Controls.Add(btnProveedor);
             pIzquierdoIndex.Controls.Add(btnEntrega);
@@ -86,6 +84,7 @@
             // 
             // btnCerrarSeccion
             // 
+            btnCerrarSeccion.Cursor = Cursors.Hand;
             btnCerrarSeccion.Dock = DockStyle.Bottom;
             btnCerrarSeccion.FlatAppearance.BorderSize = 0;
             btnCerrarSeccion.FlatStyle = FlatStyle.Flat;
@@ -105,6 +104,7 @@
             // 
             // btnUsuarios
             // 
+            btnUsuarios.Cursor = Cursors.Hand;
             btnUsuarios.Dock = DockStyle.Top;
             btnUsuarios.FlatAppearance.BorderSize = 0;
             btnUsuarios.FlatStyle = FlatStyle.Flat;
@@ -113,7 +113,7 @@
             btnUsuarios.IconColor = SystemColors.Window;
             btnUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnUsuarios.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUsuarios.Location = new Point(0, 440);
+            btnUsuarios.Location = new Point(0, 380);
             btnUsuarios.Name = "btnUsuarios";
             btnUsuarios.Size = new Size(233, 60);
             btnUsuarios.TabIndex = 6;
@@ -123,28 +123,9 @@
             btnUsuarios.UseVisualStyleBackColor = true;
             btnUsuarios.Click += btnUsuarios_Click;
             // 
-            // btnDetalleEntrega
-            // 
-            btnDetalleEntrega.Dock = DockStyle.Top;
-            btnDetalleEntrega.FlatAppearance.BorderSize = 0;
-            btnDetalleEntrega.FlatStyle = FlatStyle.Flat;
-            btnDetalleEntrega.ForeColor = SystemColors.ControlLightLight;
-            btnDetalleEntrega.IconChar = FontAwesome.Sharp.IconChar.FileContract;
-            btnDetalleEntrega.IconColor = SystemColors.Window;
-            btnDetalleEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDetalleEntrega.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDetalleEntrega.Location = new Point(0, 380);
-            btnDetalleEntrega.Name = "btnDetalleEntrega";
-            btnDetalleEntrega.Size = new Size(233, 60);
-            btnDetalleEntrega.TabIndex = 5;
-            btnDetalleEntrega.Text = "DETALLE ENTREGA";
-            btnDetalleEntrega.TextAlign = ContentAlignment.MiddleLeft;
-            btnDetalleEntrega.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnDetalleEntrega.UseVisualStyleBackColor = true;
-            btnDetalleEntrega.Click += btnDetalleEntrega_Click;
-            // 
             // btnEquipo
             // 
+            btnEquipo.Cursor = Cursors.Hand;
             btnEquipo.Dock = DockStyle.Top;
             btnEquipo.FlatAppearance.BorderSize = 0;
             btnEquipo.FlatStyle = FlatStyle.Flat;
@@ -165,6 +146,7 @@
             // 
             // btnProveedor
             // 
+            btnProveedor.Cursor = Cursors.Hand;
             btnProveedor.Dock = DockStyle.Top;
             btnProveedor.FlatAppearance.BorderSize = 0;
             btnProveedor.FlatStyle = FlatStyle.Flat;
@@ -185,6 +167,7 @@
             // 
             // btnEntrega
             // 
+            btnEntrega.Cursor = Cursors.Hand;
             btnEntrega.Dock = DockStyle.Top;
             btnEntrega.FlatAppearance.BorderSize = 0;
             btnEntrega.FlatStyle = FlatStyle.Flat;
@@ -205,6 +188,7 @@
             // 
             // btnEmpleado
             // 
+            btnEmpleado.Cursor = Cursors.Hand;
             btnEmpleado.Dock = DockStyle.Top;
             btnEmpleado.FlatAppearance.BorderSize = 0;
             btnEmpleado.FlatStyle = FlatStyle.Flat;
@@ -235,10 +219,11 @@
             // 
             // btnHome
             // 
+            btnHome.Cursor = Cursors.Hand;
             btnHome.Image = (Image)resources.GetObject("btnHome.Image");
-            btnHome.Location = new Point(3, 0);
+            btnHome.Location = new Point(11, 0);
             btnHome.Name = "btnHome";
-            btnHome.Size = new Size(255, 134);
+            btnHome.Size = new Size(233, 134);
             btnHome.SizeMode = PictureBoxSizeMode.CenterImage;
             btnHome.TabIndex = 0;
             btnHome.TabStop = false;
@@ -263,6 +248,7 @@
             // subMenu
             // 
             subMenu.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            subMenu.Cursor = Cursors.Hand;
             subMenu.FlatAppearance.BorderSize = 0;
             subMenu.FlatStyle = FlatStyle.Flat;
             subMenu.ForeColor = SystemColors.ControlLightLight;
@@ -283,6 +269,7 @@
             // btnMiximizar
             // 
             btnMiximizar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnMiximizar.BackColor = Color.FromArgb(5, 23, 59);
             btnMiximizar.FlatAppearance.BorderSize = 0;
             btnMiximizar.FlatStyle = FlatStyle.Flat;
             btnMiximizar.ForeColor = SystemColors.ControlLightLight;
@@ -297,8 +284,10 @@
             btnMiximizar.TabIndex = 4;
             btnMiximizar.TextAlign = ContentAlignment.MiddleLeft;
             btnMiximizar.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnMiximizar.UseVisualStyleBackColor = true;
+            btnMiximizar.UseVisualStyleBackColor = false;
             btnMiximizar.Click += btnMiximizar_Click;
+            btnMiximizar.MouseLeave += btnMiximizar_MouseLeave;
+            btnMiximizar.MouseHover += btnMiximizar_MouseHover;
             // 
             // btnMaximizar
             // 
@@ -319,6 +308,8 @@
             btnMaximizar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnMaximizar.UseVisualStyleBackColor = true;
             btnMaximizar.Click += btnMaximizar_Click;
+            btnMaximizar.MouseLeave += btnMaximizar_MouseLeave;
+            btnMaximizar.MouseHover += btnMaximizar_MouseHover;
             // 
             // btnCerrar
             // 
@@ -339,6 +330,8 @@
             btnCerrar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCerrar.UseVisualStyleBackColor = true;
             btnCerrar.Click += btnCerrar_Click;
+            btnCerrar.MouseLeave += btnCerrar_MouseLeave;
+            btnCerrar.MouseHover += btnCerrar_MouseHover;
             // 
             // lblIconoFrmActual
             // 
@@ -384,7 +377,6 @@
             pDesktop.Name = "pDesktop";
             pDesktop.Size = new Size(956, 600);
             pDesktop.TabIndex = 3;
-
             // 
             // pDerechoIndex
             // 
@@ -426,6 +418,7 @@
             btnInfo.TextAlign = ContentAlignment.MiddleLeft;
             btnInfo.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnInfo.UseVisualStyleBackColor = true;
+            btnInfo.Cursor = Cursors.Hand;
             btnInfo.Click += btnInfo_Click;
             // 
             // btnSalir
@@ -447,6 +440,7 @@
             btnSalir.TextAlign = ContentAlignment.MiddleLeft;
             btnSalir.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Cursor = Cursors.Hand;
             btnSalir.Click += btnSalir_Click;
             // 
             // btnAcerca
@@ -468,6 +462,7 @@
             btnAcerca.TextAlign = ContentAlignment.MiddleLeft;
             btnAcerca.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnAcerca.UseVisualStyleBackColor = true;
+            btnAcerca.Cursor = Cursors.Hand;
             btnAcerca.Click += btnAcerca_Click;
             // 
             // lblFecha
@@ -530,7 +525,6 @@
         private Panel pIzquierdoIndex;
         private FontAwesome.Sharp.IconButton btnEmpleado;
         private Panel pLogoIndex;
-        private FontAwesome.Sharp.IconButton btnDetalleEntrega;
         private FontAwesome.Sharp.IconButton btnEquipo;
         private FontAwesome.Sharp.IconButton btnProveedor;
         private FontAwesome.Sharp.IconButton btnEntrega;

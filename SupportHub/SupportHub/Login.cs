@@ -73,43 +73,44 @@ namespace SupportHub
 
         private void btnAcceder_Click(object sender, EventArgs e)
         {
-
             if (txtUsuario.Text != "USUARIO" && txtContraseña.Text != "CONTRASEÑA" && txtUsuario.Text != "" && txtContraseña.Text != "")
             {
                 
                 DataAccess.UsuarioDato usuarioDato = new DataAccess.UsuarioDato();
-                
                 string user = txtUsuario.Text;
                 string pass = txtContraseña.Text;
-
                 string mensaje = usuarioDato.Login(user, pass);
-          
+
                 if (mensaje == "Inicio de sesión exitoso")
                 {
-                   
                     this.Hide();
-                    //frmCarga formLogin = new frmCarga();
-                    //formLogin.ShowDialog();
+                    frmCarga formLogin = new frmCarga();
+                    formLogin.ShowDialog();
                     frmIndex inicio = new frmIndex();
                     inicio.Show();
                     inicio.FormClosed += CerrarSeccion;
                 }
+               
                 else
                 {
-               
-                    if (mensaje == "Usuario o contraseña incorrecto")
+                    pictureError.Visible = true;
+                    lblMensajeError.Text = mensaje;
+                    lblMensajeError.Visible = true;
+                    txtUsuario.Focus();
+
+                    if (mensaje == "Usuario o contraseña incorrecto" || mensaje == "El usuario está inactivo")
                     {
-                        pictureError.Visible = true;
-                        lblMensajeError.Text = mensaje;
-                        lblMensajeError.Visible = true;
-                        txtUsuario.Focus();
+                        
                     }
                     else
                     {
-                        CustomMessageBox.Error("Error de conexión", "El sistema no tiene conexión con el servidor. Favor notifique el impase al administrador.");
+                        pictureError.Visible = false;
+                        lblMensajeError.Visible = false;
+                        CustomMessageBox.Error("Error de conexión", "El sistema no tiene conexión con el servidor. Favor notifique el impase al administrador."); 
                         txtUsuario.Focus();
                     }
                 }
+            
             }
         }
 

@@ -50,5 +50,10 @@ namespace Presentacion.CustomMessageBoxes
             confirmacion = false;
             this.Close();
         }
+
+        private void AdvertenciaMessageBox_Load(object sender, EventArgs e)
+        {
+            iconButtonX.Focus();
+        }
     }
 }
