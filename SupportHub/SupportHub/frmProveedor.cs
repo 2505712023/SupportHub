@@ -6,9 +6,14 @@ namespace Presentacion
 {
     public partial class frmProveedor : Form
     {
+        private bool formCargado = false;
         ModeloProveedor proveedor = new();
-        
-        private List<string> tipoProveedor = new() { "Código proveedor", "Nombre proveedor" };
+
+        private List<string> tipoProveedor = new()
+        {   
+            "Código Proveedor",
+            "Nombre Proveedor"
+        };
 
         public frmProveedor()
         {
@@ -41,6 +46,8 @@ namespace Presentacion
                 btnEliminarProveedor.Visible = false;
                 btnModificaProveedor.Visible = false;
             }
+            dgvProveedor.ClearSelection();
+            formCargado = true;
         }
 
         private void btnAgregarProveedor_Click(object sender, EventArgs e)
@@ -108,21 +115,13 @@ namespace Presentacion
 
         public void AjustarGridView()
         {
-            dgvProveedor.Columns["idProveedor"].HeaderText = "Id Proveedor";
             dgvProveedor.Columns["codProveedor"].HeaderText = "Código";
             dgvProveedor.Columns["nombreProveedor"].HeaderText = "Nombre";
             dgvProveedor.Columns["direccionProveedor"].HeaderText = "Dirección";
             dgvProveedor.Columns["telefonoProveedor"].HeaderText = "Teléfono";
             dgvProveedor.Columns["idProveedor"].Visible = false;
             dgvProveedor.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvProveedor.Focus();
-
-            if (CacheInicioUsuario.permisosUser != null && !CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
-            {
-                btnAgregarProveedor.Visible = false;
-                btnModificaProveedor.Visible = false;
-                btnEliminarProveedor.Visible = false;
-            }
+            dgvProveedor.ClearSelection();
         }
 
         private void txtBuscarProveedor_TextChanged(object sender, EventArgs e)
@@ -135,24 +134,37 @@ namespace Presentacion
             if (string.IsNullOrEmpty(txtBuscarProveedor.Text))
             {
                 MostrarProveedor();
-                dgvProveedor.ClearSelection();
             }
             else
             {
                 switch (cbxTipoBusquedaProveedor.Text)
                 {
-                    case "Nombre proveedor":
-                        dgvProveedor.DataSource = proveedor.ObtenerProveedor(null, txtBuscarProveedor.Text);
+                    case "Nombre Proveedor":
+                        dgvProveedor.DataSource = proveedor.ObtenerProveedor(nombreProveedor: txtBuscarProveedor.Text);
                         break;
-                    case "Código proveedor":
-                        dgvProveedor.DataSource = proveedor.ObtenerProveedor(txtBuscarProveedor.Text, null);
+                    case "Código Proveedor":
+                        dgvProveedor.DataSource = proveedor.ObtenerProveedor(codProveedor: txtBuscarProveedor.Text);
                         break;
                     default:
                         break;
                 }
-
             }
-            dgvProveedor.ClearSelection();
+            AjustarGridView();
+        }
+
+        private void dgvProveedor_SelectionChanged(object sender, EventArgs e)
+        {
+            if (formCargado)
+            {
+                if(dgvProveedor.SelectedRows.Count == 1)
+                {
+                    btnModificaProveedor.Enabled = true;
+                }
+                else if (dgvProveedor.SelectedRows.Count != 1)
+                {
+                    btnModificaProveedor.Enabled = false;
+                }
+            }
         }
     }
 }

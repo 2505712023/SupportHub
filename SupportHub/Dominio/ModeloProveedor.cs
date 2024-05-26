@@ -9,9 +9,7 @@ namespace Dominio
 
         public DataTable MostrarProveedores()
         {
-            DataTable dataTable = new();
-            dataTable = proveedor.ObtenerProveedores();
-            return dataTable;
+            return proveedor.ObtenerProveedores();
         }
 
         public void EliminarProveedor(int idProveedor)
@@ -29,7 +27,7 @@ namespace Dominio
             proveedor.ActualizarProveedor(idProveedor, codProveedor, nombreProveedor, direccion, telefono);
         }
 
-        public DataTable ObtenerProveedor(string? codProveedor, string? nombreProveedor)
+        public DataTable ObtenerProveedor(string codProveedor = "-1", string nombreProveedor = "-1")
         { 
             return proveedor.ObtenerProveedor(codProveedor, nombreProveedor);
         }

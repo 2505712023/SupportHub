@@ -75,7 +75,7 @@ namespace DataAccess
             conn.Close();
         }
 
-        public DataTable ObtenerProveedor(string? codProveedor, string? nombreProveedor)
+        public DataTable ObtenerProveedor(string codProveedor = "-1", string nombreProveedor = "-1")
         {
             using SqlConnection conn = conexion.GetConnection();
 
