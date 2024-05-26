@@ -79,6 +79,7 @@
             dgvProveedor.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProveedor.Size = new Size(721, 417);
             dgvProveedor.TabIndex = 2;
+            dgvProveedor.SelectionChanged += dgvProveedor_SelectionChanged;
             // 
             // gbBuscarProveedor
             // 
@@ -141,6 +142,7 @@
             btnModificaProveedor.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnModificaProveedor.BackColor = Color.FromArgb(55, 166, 104);
             btnModificaProveedor.Cursor = Cursors.Hand;
+            btnModificaProveedor.Enabled = false;
             btnModificaProveedor.FlatAppearance.BorderSize = 0;
             btnModificaProveedor.FlatStyle = FlatStyle.Flat;
             btnModificaProveedor.Font = new Font("Segoe UI", 12F, FontStyle.Bold);

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             btnEliminarEquipo = new FontAwesome.Sharp.IconButton();
             btnModificarEquipo = new FontAwesome.Sharp.IconButton();
             btnAgregarEquipo = new FontAwesome.Sharp.IconButton();
@@ -53,7 +54,7 @@
             btnEliminarEquipo.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarEquipo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarEquipo.IconSize = 20;
-            btnEliminarEquipo.Location = new Point(963, 203);
+            btnEliminarEquipo.Location = new Point(739, 203);
             btnEliminarEquipo.Name = "btnEliminarEquipo";
             btnEliminarEquipo.Size = new Size(156, 57);
             btnEliminarEquipo.TabIndex = 14;
@@ -76,7 +77,7 @@
             btnModificarEquipo.IconColor = Color.FromArgb(31, 35, 40);
             btnModificarEquipo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModificarEquipo.IconSize = 20;
-            btnModificarEquipo.Location = new Point(963, 142);
+            btnModificarEquipo.Location = new Point(739, 142);
             btnModificarEquipo.Name = "btnModificarEquipo";
             btnModificarEquipo.Size = new Size(156, 55);
             btnModificarEquipo.TabIndex = 13;
@@ -98,7 +99,7 @@
             btnAgregarEquipo.IconColor = Color.FromArgb(31, 35, 40);
             btnAgregarEquipo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarEquipo.IconSize = 20;
-            btnAgregarEquipo.Location = new Point(963, 86);
+            btnAgregarEquipo.Location = new Point(739, 86);
             btnAgregarEquipo.Name = "btnAgregarEquipo";
             btnAgregarEquipo.Size = new Size(156, 50);
             btnAgregarEquipo.TabIndex = 12;
@@ -122,14 +123,19 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvEquipo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvEquipo.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            dgvEquipo.DefaultCellStyle.SelectionBackColor = Color.Silver;
-            dgvEquipo.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvEquipo.DefaultCellStyle = dataGridViewCellStyle2;
             dgvEquipo.Location = new Point(12, 86);
             dgvEquipo.Name = "dgvEquipo";
             dgvEquipo.ReadOnly = true;
             dgvEquipo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvEquipo.Size = new Size(945, 417);
+            dgvEquipo.Size = new Size(721, 417);
             dgvEquipo.TabIndex = 11;
             dgvEquipo.SelectionChanged += dgvEquipo_SelectionChanged;
             // 
@@ -141,7 +147,7 @@
             gbBusarEmpleado.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             gbBusarEmpleado.Location = new Point(12, 12);
             gbBusarEmpleado.Name = "gbBusarEmpleado";
-            gbBusarEmpleado.Size = new Size(945, 68);
+            gbBusarEmpleado.Size = new Size(721, 68);
             gbBusarEmpleado.TabIndex = 10;
             gbBusarEmpleado.TabStop = false;
             gbBusarEmpleado.Text = "BUSCAR EQUIPO::...";
@@ -163,7 +169,7 @@
             txtBuscarEquipo.Font = new Font("Segoe UI", 9F);
             txtBuscarEquipo.Location = new Point(151, 26);
             txtBuscarEquipo.Name = "txtBuscarEquipo";
-            txtBuscarEquipo.Size = new Size(788, 23);
+            txtBuscarEquipo.Size = new Size(564, 23);
             txtBuscarEquipo.TabIndex = 5;
             txtBuscarEquipo.TextChanged += txtBuscarEquipo_TextChanged;
             // 
@@ -172,7 +178,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(148, 184, 216);
-            ClientSize = new Size(1131, 515);
+            ClientSize = new Size(907, 515);
             Controls.Add(btnEliminarEquipo);
             Controls.Add(btnModificarEquipo);
             Controls.Add(btnAgregarEquipo);
