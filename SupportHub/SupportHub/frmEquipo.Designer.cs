@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             btnEliminarEquipo = new FontAwesome.Sharp.IconButton();
             btnModificarEquipo = new FontAwesome.Sharp.IconButton();
             btnAgregarEquipo = new FontAwesome.Sharp.IconButton();
@@ -46,6 +44,7 @@
             // 
             btnEliminarEquipo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnEliminarEquipo.BackColor = Color.FromArgb(184, 82, 82);
+            btnEliminarEquipo.Cursor = Cursors.Hand;
             btnEliminarEquipo.FlatAppearance.BorderSize = 0;
             btnEliminarEquipo.FlatStyle = FlatStyle.Flat;
             btnEliminarEquipo.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -54,7 +53,7 @@
             btnEliminarEquipo.IconColor = Color.FromArgb(31, 35, 40);
             btnEliminarEquipo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarEquipo.IconSize = 20;
-            btnEliminarEquipo.Location = new Point(963, 235);
+            btnEliminarEquipo.Location = new Point(963, 203);
             btnEliminarEquipo.Name = "btnEliminarEquipo";
             btnEliminarEquipo.Size = new Size(156, 57);
             btnEliminarEquipo.TabIndex = 14;
@@ -67,6 +66,7 @@
             // 
             btnModificarEquipo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnModificarEquipo.BackColor = Color.FromArgb(55, 166, 104);
+            btnModificarEquipo.Cursor = Cursors.Hand;
             btnModificarEquipo.Enabled = false;
             btnModificarEquipo.FlatAppearance.BorderSize = 0;
             btnModificarEquipo.FlatStyle = FlatStyle.Flat;
@@ -76,7 +76,7 @@
             btnModificarEquipo.IconColor = Color.FromArgb(31, 35, 40);
             btnModificarEquipo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnModificarEquipo.IconSize = 20;
-            btnModificarEquipo.Location = new Point(963, 174);
+            btnModificarEquipo.Location = new Point(963, 142);
             btnModificarEquipo.Name = "btnModificarEquipo";
             btnModificarEquipo.Size = new Size(156, 55);
             btnModificarEquipo.TabIndex = 13;
@@ -89,6 +89,7 @@
             // 
             btnAgregarEquipo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnAgregarEquipo.BackColor = Color.FromArgb(89, 134, 213);
+            btnAgregarEquipo.Cursor = Cursors.Hand;
             btnAgregarEquipo.FlatAppearance.BorderSize = 0;
             btnAgregarEquipo.FlatStyle = FlatStyle.Flat;
             btnAgregarEquipo.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
@@ -97,7 +98,7 @@
             btnAgregarEquipo.IconColor = Color.FromArgb(31, 35, 40);
             btnAgregarEquipo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarEquipo.IconSize = 20;
-            btnAgregarEquipo.Location = new Point(963, 118);
+            btnAgregarEquipo.Location = new Point(963, 86);
             btnAgregarEquipo.Name = "btnAgregarEquipo";
             btnAgregarEquipo.Size = new Size(156, 50);
             btnAgregarEquipo.TabIndex = 12;
@@ -115,31 +116,18 @@
             dgvEquipo.BackgroundColor = Color.FromArgb(148, 184, 216);
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Gray;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvEquipo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvEquipo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Silver;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvEquipo.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvEquipo.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgvEquipo.DefaultCellStyle.SelectionBackColor = Color.Silver;
+            dgvEquipo.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgvEquipo.Location = new Point(12, 86);
             dgvEquipo.Name = "dgvEquipo";
             dgvEquipo.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.Silver;
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvEquipo.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvEquipo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEquipo.Size = new Size(945, 417);
             dgvEquipo.TabIndex = 11;
@@ -160,6 +148,7 @@
             // 
             // cbxTipoBusquedaEquipo
             // 
+            cbxTipoBusquedaEquipo.Cursor = Cursors.Hand;
             cbxTipoBusquedaEquipo.Font = new Font("Segoe UI", 9F);
             cbxTipoBusquedaEquipo.FormattingEnabled = true;
             cbxTipoBusquedaEquipo.Location = new Point(6, 26);

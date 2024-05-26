@@ -52,7 +52,7 @@
             btnGuardarEmpleado = new FontAwesome.Sharp.IconButton();
             lblTipoDeEquipo = new Label();
             pSuperiorAddEntrega = new Panel();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            ibtnCerrar = new FontAwesome.Sharp.IconButton();
             pboxLogo = new PictureBox();
             btnCerrarAddEmpleado = new FontAwesome.Sharp.IconButton();
             gbAddEequipo.SuspendLayout();
@@ -87,23 +87,24 @@
             gbAddEequipo.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             gbAddEequipo.Location = new Point(12, 72);
             gbAddEequipo.Name = "gbAddEequipo";
-            gbAddEequipo.Size = new Size(710, 388);
+            gbAddEequipo.Size = new Size(710, 360);
             gbAddEequipo.TabIndex = 4;
             gbAddEequipo.TabStop = false;
             gbAddEequipo.Text = "AGREGAR EQUIPO";
-            gbAddEequipo.Enter += gbAddEequipo_Enter;
             // 
             // comboBproveedor
             // 
+            comboBproveedor.Font = new Font("Segoe UI", 12F);
             comboBproveedor.FormattingEnabled = true;
-            comboBproveedor.Location = new Point(226, 253);
+            comboBproveedor.Location = new Point(226, 218);
             comboBproveedor.Name = "comboBproveedor";
             comboBproveedor.Size = new Size(209, 29);
             comboBproveedor.TabIndex = 40;
             // 
             // maskprecioEquipo
             // 
-            maskprecioEquipo.Location = new Point(226, 218);
+            maskprecioEquipo.Font = new Font("Segoe UI", 12F);
+            maskprecioEquipo.Location = new Point(226, 183);
             maskprecioEquipo.Mask = "$#####.##";
             maskprecioEquipo.Name = "maskprecioEquipo";
             maskprecioEquipo.Size = new Size(104, 29);
@@ -114,7 +115,7 @@
             // 
             tboxcantidadEquipo.Font = new Font("Segoe UI", 12F);
             tboxcantidadEquipo.ForeColor = Color.Black;
-            tboxcantidadEquipo.Location = new Point(226, 178);
+            tboxcantidadEquipo.Location = new Point(226, 148);
             tboxcantidadEquipo.Name = "tboxcantidadEquipo";
             tboxcantidadEquipo.Size = new Size(209, 29);
             tboxcantidadEquipo.TabIndex = 38;
@@ -123,7 +124,7 @@
             // 
             tboxmodeloEquipo.Font = new Font("Segoe UI", 12F);
             tboxmodeloEquipo.ForeColor = Color.Black;
-            tboxmodeloEquipo.Location = new Point(226, 133);
+            tboxmodeloEquipo.Location = new Point(226, 113);
             tboxmodeloEquipo.Name = "tboxmodeloEquipo";
             tboxmodeloEquipo.Size = new Size(209, 29);
             tboxmodeloEquipo.TabIndex = 37;
@@ -184,7 +185,7 @@
             // 
             tboxmarcaEquipo.Font = new Font("Segoe UI", 12F);
             tboxmarcaEquipo.ForeColor = Color.Black;
-            tboxmarcaEquipo.Location = new Point(226, 87);
+            tboxmarcaEquipo.Location = new Point(226, 78);
             tboxmarcaEquipo.Name = "tboxmarcaEquipo";
             tboxmarcaEquipo.Size = new Size(209, 29);
             tboxmarcaEquipo.TabIndex = 36;
@@ -192,7 +193,7 @@
             // lblmodeloEquipo
             // 
             lblmodeloEquipo.AutoSize = true;
-            lblmodeloEquipo.Location = new Point(62, 136);
+            lblmodeloEquipo.Location = new Point(57, 116);
             lblmodeloEquipo.Name = "lblmodeloEquipo";
             lblmodeloEquipo.Size = new Size(159, 21);
             lblmodeloEquipo.TabIndex = 31;
@@ -203,7 +204,7 @@
             lblErrorCantidad.AutoSize = true;
             lblErrorCantidad.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             lblErrorCantidad.ForeColor = Color.Red;
-            lblErrorCantidad.Location = new Point(330, 259);
+            lblErrorCantidad.Location = new Point(330, 224);
             lblErrorCantidad.Name = "lblErrorCantidad";
             lblErrorCantidad.Size = new Size(0, 19);
             lblErrorCantidad.TabIndex = 30;
@@ -211,7 +212,7 @@
             // lblpro
             // 
             lblpro.AutoSize = true;
-            lblpro.Location = new Point(122, 259);
+            lblpro.Location = new Point(122, 224);
             lblpro.Name = "lblpro";
             lblpro.Size = new Size(94, 21);
             lblpro.TabIndex = 28;
@@ -220,7 +221,7 @@
             // lblCantidadDisponible
             // 
             lblCantidadDisponible.AutoSize = true;
-            lblCantidadDisponible.Location = new Point(154, 226);
+            lblCantidadDisponible.Location = new Point(154, 191);
             lblCantidadDisponible.Name = "lblCantidadDisponible";
             lblCantidadDisponible.Size = new Size(62, 21);
             lblCantidadDisponible.TabIndex = 26;
@@ -229,7 +230,7 @@
             // lblEquipo
             // 
             lblEquipo.AutoSize = true;
-            lblEquipo.Location = new Point(45, 178);
+            lblEquipo.Location = new Point(45, 148);
             lblEquipo.Name = "lblEquipo";
             lblEquipo.Size = new Size(171, 21);
             lblEquipo.TabIndex = 24;
@@ -238,7 +239,7 @@
             // labmarcaEquipo
             // 
             labmarcaEquipo.AutoSize = true;
-            labmarcaEquipo.Location = new Point(69, 90);
+            labmarcaEquipo.Location = new Point(69, 81);
             labmarcaEquipo.Name = "labmarcaEquipo";
             labmarcaEquipo.Size = new Size(147, 21);
             labmarcaEquipo.TabIndex = 22;
@@ -247,9 +248,9 @@
             // rtxtDescripcion
             // 
             rtxtDescripcion.Font = new Font("Segoe UI", 12F);
-            rtxtDescripcion.Location = new Point(226, 288);
+            rtxtDescripcion.Location = new Point(226, 253);
             rtxtDescripcion.Name = "rtxtDescripcion";
-            rtxtDescripcion.Size = new Size(325, 62);
+            rtxtDescripcion.Size = new Size(325, 77);
             rtxtDescripcion.TabIndex = 41;
             rtxtDescripcion.Text = "";
             // 
@@ -257,7 +258,7 @@
             // 
             lbldescripcionEquipo.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             lbldescripcionEquipo.AutoSize = true;
-            lbldescripcionEquipo.Location = new Point(116, 291);
+            lbldescripcionEquipo.Location = new Point(116, 256);
             lbldescripcionEquipo.Name = "lbldescripcionEquipo";
             lbldescripcionEquipo.Size = new Size(104, 21);
             lbldescripcionEquipo.TabIndex = 19;
@@ -359,7 +360,7 @@
             // pSuperiorAddEntrega
             // 
             pSuperiorAddEntrega.BackColor = Color.FromArgb(5, 23, 59);
-            pSuperiorAddEntrega.Controls.Add(iconButton1);
+            pSuperiorAddEntrega.Controls.Add(ibtnCerrar);
             pSuperiorAddEntrega.Controls.Add(pboxLogo);
             pSuperiorAddEntrega.Controls.Add(btnCerrarAddEmpleado);
             pSuperiorAddEntrega.Dock = DockStyle.Top;
@@ -368,25 +369,25 @@
             pSuperiorAddEntrega.Size = new Size(734, 60);
             pSuperiorAddEntrega.TabIndex = 3;
             // 
-            // iconButton1
+            // ibtnCerrar
             // 
-            iconButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            iconButton1.FlatAppearance.BorderSize = 0;
-            iconButton1.FlatStyle = FlatStyle.Flat;
-            iconButton1.ForeColor = SystemColors.ControlLightLight;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.X;
-            iconButton1.IconColor = SystemColors.Window;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            iconButton1.IconSize = 20;
-            iconButton1.ImageAlign = ContentAlignment.MiddleLeft;
-            iconButton1.Location = new Point(694, 12);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(28, 24);
-            iconButton1.TabIndex = 44;
-            iconButton1.TextAlign = ContentAlignment.MiddleLeft;
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = true;
-            iconButton1.Click += iconButton1_Click;
+            ibtnCerrar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ibtnCerrar.FlatAppearance.BorderSize = 0;
+            ibtnCerrar.FlatStyle = FlatStyle.Flat;
+            ibtnCerrar.ForeColor = SystemColors.ControlLightLight;
+            ibtnCerrar.IconChar = FontAwesome.Sharp.IconChar.X;
+            ibtnCerrar.IconColor = SystemColors.Window;
+            ibtnCerrar.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            ibtnCerrar.IconSize = 20;
+            ibtnCerrar.ImageAlign = ContentAlignment.MiddleLeft;
+            ibtnCerrar.Location = new Point(694, 12);
+            ibtnCerrar.Name = "ibtnCerrar";
+            ibtnCerrar.Size = new Size(28, 24);
+            ibtnCerrar.TabIndex = 44;
+            ibtnCerrar.TextAlign = ContentAlignment.MiddleLeft;
+            ibtnCerrar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            ibtnCerrar.UseVisualStyleBackColor = true;
+            ibtnCerrar.Click += ibtnCerrar_Click;
             // 
             // pboxLogo
             // 
@@ -423,7 +424,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(98, 122, 144);
-            ClientSize = new Size(734, 466);
+            ClientSize = new Size(734, 444);
             Controls.Add(gbAddEequipo);
             Controls.Add(pSuperiorAddEntrega);
             FormBorderStyle = FormBorderStyle.None;
@@ -459,7 +460,7 @@
         private Panel pSuperiorAddEntrega;
         private PictureBox pboxLogo;
         private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton ibtnCerrar;
         private FontAwesome.Sharp.IconButton BtnGuardar;
         private FontAwesome.Sharp.IconButton BtnCancelar;
         private TextBox tboxTipoEquipo;

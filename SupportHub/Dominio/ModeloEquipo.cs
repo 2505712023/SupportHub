@@ -14,6 +14,7 @@ namespace Dominio
         {
             return EquipoDato.obtenerTablaEquipos();
         }
+
         public static int EliminarEquipo(string? codEquipo)
         {
             return EquipoDato.EliminarEquipo(codEquipo);
@@ -23,31 +24,20 @@ namespace Dominio
         {
             return EquipoDato.crearEquipo(TipoEquipo, marcaEquipo, modeloEquipo, cantidadEquipo, precioEquipo, idProveedor, descripcionEquipo);
         }
+
         public static int modificarEquipo(string codEquipo, string TipoEquipo, string marcaEquipo, string modeloEquipo, int cantidadEquipo, double precioEquipo, int idProveedor, string descripcionEquipo)
         {
             return EquipoDato.modificarEquipo (codEquipo, TipoEquipo, marcaEquipo, modeloEquipo, cantidadEquipo, precioEquipo, idProveedor, descripcionEquipo);
         }
 
-
         public static DataTable obtenerProveedor()
         {
             return EquipoDato.obtenerProveedor();
         }
-        public static DataTable filtrarTablaEquipo(
-         string codEquipo = "-1",
-           string TipoEquipo = "-1",
-           string marcaEquipo = "-1",
-           string modeloEquipo = "-1")
 
-
+        public static DataTable filtrarTablaEquipo(string codEquipo = "-1", string tipoEquipo = "-1", string marcaEquipo = "-1", string modeloEquipo = "-1")
         {
-            return EquipoDato.filtrarTablaEquipo(
-                codEquipo,
-                TipoEquipo,
-                marcaEquipo,
-                modeloEquipo
-                
-                );
+            return EquipoDato.filtrarTablaEquipo(codEquipo, tipoEquipo, marcaEquipo, modeloEquipo);
         }
     }
 }

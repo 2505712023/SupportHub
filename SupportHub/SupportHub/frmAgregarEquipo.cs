@@ -20,6 +20,7 @@ namespace Presentacion
     {
         private bool esModificacion = false;
         private string codEquipo = string.Empty;
+
         public frmAgregarEquipo(frmEquipo equipo)
         {
             InitializeComponent();
@@ -39,6 +40,7 @@ namespace Presentacion
             InitializeComponent();
             llenarProveedor();
             esModificacion = true;
+            gbAddEequipo.Text = "MODIFICAR EQUIPO: " + codEquipo;
             this.codEquipo = codEquipo;
             tboxTipoEquipo.Text = tipoEquipo;
             tboxmarcaEquipo.Text = marcaEquipo;
@@ -50,6 +52,7 @@ namespace Presentacion
             comboBproveedor.SelectedValue = idProveedor;
             rtxtDescripcion.Text = descripcion;
         }
+
         public delegate void updateDelegate(object sender, UpdateEventArgs args);
         public event updateDelegate UpdateEventHandler;
 
@@ -57,17 +60,18 @@ namespace Presentacion
         {
             public string Data { get; set; }
         }
-        protected void Agregar()
+
+        protected void actualizarDgvEquipos()
         {
             UpdateEventArgs args = new UpdateEventArgs();
             UpdateEventHandler.Invoke(this, args);
-
         }
 
         private void frmAgregarEquipo_Load(object sender, EventArgs e)
         {
             llenarProveedor();
         }
+
         private void llenarProveedor()
         {
             comboBproveedor.DataSource = ModeloEquipo.obtenerProveedor();
@@ -75,39 +79,35 @@ namespace Presentacion
             comboBproveedor.DisplayMember = "Proveedor";
         }
 
-
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            if (tboxTipoEquipo.Text == null)
+            if (string.IsNullOrEmpty(tboxTipoEquipo.Text))
             {
-                CustomMessageBox.Error("Error", "Debe ingresar un tipo de Equipo");
-
+                CustomMessageBox.Error("Error", "Debe ingresar un tipo de Equipo.");
             }
-            else if (tboxmarcaEquipo.Text == null)
+            else if (string.IsNullOrEmpty(tboxmarcaEquipo.Text))
             {
                 CustomMessageBox.Error("Error", "Debe ingresar una marca de Equipo");
-
             }
-            else if (tboxmodeloEquipo.Text == null)
+            else if (string.IsNullOrEmpty(tboxmodeloEquipo.Text))
             {
-                CustomMessageBox.Error("Error", "Debe ingresar una modelo de Equipo");
+                CustomMessageBox.Error("Error", "Debe ingresar una modelo de Equipo.");
             }
-            else if (Convert.ToInt32(tboxcantidadEquipo.Text) == 0 || string.IsNullOrEmpty(tboxcantidadEquipo.Text))
+            else if (Convert.ToInt32(tboxcantidadEquipo.Text) >= 0 || string.IsNullOrEmpty(tboxcantidadEquipo.Text))
             {
-
                 CustomMessageBox.Error("Error", "La cantidad de equipos debe ser mayor a cero.");
             }
-            else if (maskprecioEquipo.Text == null)
+            else if (string.IsNullOrEmpty(maskprecioEquipo.Text))
             {
-                CustomMessageBox.Error("Error", "Debe ingresar un precio de Equipo");
+                CustomMessageBox.Error("Error", "Debe ingresar un precio de Equipo.");
             }
-            else if (comboBproveedor.SelectedItem == null)
+            else if (comboBproveedor.SelectedIndex == -1)
             {
-                CustomMessageBox.Error("Error", "Debe seleccionar un proveedor");
+                CustomMessageBox.Error("Error", "Debe seleccionar un proveedor.");
             }
-            else if (rtxtDescripcion.Text == null)
+            else if (string.IsNullOrEmpty(rtxtDescripcion.Text))
             {
-                CustomMessageBox.Error("Error", "Debe ingresar una descripción");
+                CustomMessageBox.Error("Error", "Debe ingresar una descripción.");
             }
             else
             {
@@ -123,8 +123,7 @@ namespace Presentacion
                         rtxtDescripcion.Text
                         );
                     CustomMessageBox.Exito("Registro Exitoso", $"Se guardó {registrosAgregados.ToString()} Equipo Correctamente");
-                    Agregar();
-
+                    actualizarDgvEquipos();
                 }
                 else if (esModificacion)
                 {
@@ -139,13 +138,10 @@ namespace Presentacion
                        rtxtDescripcion.Text
                        );
                     CustomMessageBox.Exito("Modificación Exitosa", $"Se Modificó {registrosModificados} Equipo Correctamente");
-                    Agregar();
+                    actualizarDgvEquipos();
+                    this.Close();
                 }
             }
-
-
-
-
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -153,16 +149,9 @@ namespace Presentacion
             this.Close();
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
+        private void ibtnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        private void gbAddEequipo_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
-
-
 }

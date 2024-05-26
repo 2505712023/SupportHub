@@ -30,14 +30,13 @@ namespace DataAccess
                 adaptador.Fill(tabla);
 
                 return tabla;
-
             }
-
         }
         
         public static int EliminarEquipo (string? codEquipo)
         {
-            using (SqlConnection conect = conexion.GetConnection()) { 
+            using (SqlConnection conect = conexion.GetConnection())
+            { 
                 comando.CommandText = "sp_borrar_equipo";
                 comando.CommandType = CommandType.StoredProcedure;
                 comando.Parameters.Clear();
@@ -49,6 +48,7 @@ namespace DataAccess
                 return numRegistroEliminados;
             }
         }
+
         public static int crearEquipo(string TipoEquipo, string marcaEquipo, string modeloEquipo, int cantidadEquipo,double precioEquipo, int idProveedor, string descripcionEquipo = "-1")
         {
             using (SqlConnection conect = conexion.GetConnection())
@@ -71,8 +71,8 @@ namespace DataAccess
 
                 return numRegistrosAgregados;
             }
+        }
 
-            }
         public static int modificarEquipo(string codEquipo, string TipoEquipo, string marcaEquipo, string modeloEquipo, int cantidadEquipo, double precioEquipo, int idProveedor, string descripcionEquipo = "-1")
         {
             using (SqlConnection conect = conexion.GetConnection())
@@ -96,7 +96,6 @@ namespace DataAccess
 
                 return numRegistrosModificados;
             }
-
         }
 
         public static DataTable obtenerProveedor()
@@ -117,10 +116,10 @@ namespace DataAccess
         }
 
         public static DataTable filtrarTablaEquipo(
-           string codEquipo = "-1",
-           string TipoEquipo = "-1",
-           string marcaEquipo = "-1", 
-           string modeloEquipo = "-1"
+               string codEquipo = "-1",
+               string TipoEquipo = "-1",
+               string marcaEquipo = "-1", 
+               string modeloEquipo = "-1"
           )
         {
             using (SqlConnection conect = conexion.GetConnection())
@@ -143,8 +142,6 @@ namespace DataAccess
 
                 return tabla;
             }
-
         }
     }
-    }
-
+}
