@@ -72,9 +72,9 @@ namespace Dominio
             return userData.ObtenerRoles();
         }
 
-        public void ActualizarUsuario(string LoginUsuario, string nombreUsuario, string apellidoUsuario, string contrasenia, int activo, string tipousuario)
+        public void ActualizarUsuario(string loginUsuario, string? contraseniaUsuario, string nombresUsuario, string apellidosUsuario, int activoUsuario, int idEmpleado)
         {
-            userData.ActualizarUsuario(LoginUsuario, nombreUsuario, apellidoUsuario, contrasenia, activo, tipousuario);
+            userData.ActualizarUsuario(loginUsuario, contraseniaUsuario, nombresUsuario, apellidosUsuario, activoUsuario, idEmpleado);
         }
 
         public void InsertarUsuario(string LoginUsuario, string NombreUsuario, string ApellidoUsuario, string Contrasenia, int ActivoUsuario, int idEmpleado)
@@ -110,6 +110,11 @@ namespace Dominio
         public bool ValidarRolActivoXUsuario(string loginUsuario, int idRol)
         {
             return userData.ValidarRolActivoXUsuario(loginUsuario, idRol);
+        }
+
+        public void EliminarUsuarioxRol(int idRol, string loginUsuario)
+        {
+            userData.EliminarUsuarioxRol(idRol, loginUsuario);
         }
     }
 }

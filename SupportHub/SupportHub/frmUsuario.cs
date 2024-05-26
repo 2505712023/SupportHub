@@ -68,6 +68,8 @@ namespace Presentacion
         {
             dgvUsuario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvUsuario.Columns["idEmpleado"].Visible = false;
+            dgvUsuario.Columns["Código del Empleado"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvUsuario.Columns["Activo?"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void frmUsuario_Load(object sender, EventArgs e)
@@ -102,9 +104,12 @@ namespace Presentacion
         private void btnModificaUsuario_Click(object sender, EventArgs e)
         {
             DataGridViewRow selectedRow = dgvUsuario.SelectedRows[0];
+            int activoUsuario = Convert.ToBoolean(selectedRow.Cells["Activo?"].Value) ? 1 : 0;
+
             frmAgregarUsuario formUsuario = new(
                 loginUsuario: selectedRow.Cells["Login de Usuario"].Value.ToString(),
-                idEmpleado: Convert.ToInt32(selectedRow.Cells["idEmpleado"].Value.ToString())
+                idEmpleado: Convert.ToInt32(selectedRow.Cells["idEmpleado"].Value.ToString()),
+                activoUsuario: activoUsuario
                 );
             formUsuario.UpdateEventHandler += AgregarUpdateEvenHandler;
             formUsuario.ShowDialog();

@@ -10,6 +10,7 @@ using System.Reflection.Metadata;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace DataAccess
 {
@@ -64,30 +65,59 @@ namespace DataAccess
                                     CacheInicioUsuario.user = reader.GetString(reader.GetOrdinal("loginUsuario"));
                                     CacheInicioUsuario.nombreUser = reader.GetString(reader.GetOrdinal("nombreUsuario"));
                                     CacheInicioUsuario.apellidoUser = reader.GetString(reader.GetOrdinal("apellidoUsuario"));
-                                    CacheInicioUsuario.rolUser = reader.GetString(reader.GetOrdinal("nombreRol"));
                                     CacheInicioUsuario.empleado = reader.GetString(reader.GetOrdinal("Empleado"));
                                     CacheInicioUsuario.idEmpleado = reader.GetInt32(reader.GetOrdinal("idEmpleado"));
                                 }
                                 reader.Close();
 
+                                // Obtener roles del usuario
+                                using (var comandRoles = new SqlCommand())
+                                {
+                                    comandRoles.Connection = connection;
+                                    comandRoles.CommandText = "select r.nombreRol " +
+                                                                "from Roles r " +
+                                                                "inner join UsuariosXRoles uxr on uxr.idRol = r.idRol " +
+                                                                "inner join Usuarios u on u.idUsuario = uxr.idUsuario " +
+                                                                "where u.loginUsuario = @loginUsuario";
+                                    comandRoles.Parameters.AddWithValue("@loginUsuario", CacheInicioUsuario.nombreUser);
+                                    comandRoles.CommandType = CommandType.Text;
+
+                                    using (SqlDataReader readerRoles = comandRoles.ExecuteReader())
+                                    {
+                                        CacheInicioUsuario.rolesUser = new ArrayList();
+                                        while (readerRoles.Read())
+                                        {
+                                            CacheInicioUsuario.rolesUser.Add(readerRoles.GetString(readerRoles.GetOrdinal("nombreRol")));
+                                        }
+                                    }
+                                }
+
                                 // Obtener permisos del usuario
                                 using (var commandPermisos = new SqlCommand())
                                 {
-                                    commandPermisos.Connection = connection;
-                                    commandPermisos.CommandText = "select p.nombrePermiso " +
-                                                                  "from PermisosXRoles pr " +
-                                                                  "inner join Permisos p on p.idPermiso = pr.idPermiso " +
-                                                                  "inner join Roles r on r.idRol = pr.idRol " +
-                                                                  "where r.nombreRol = @NombreRol";
-                                    commandPermisos.Parameters.AddWithValue("@NombreRol", CacheInicioUsuario.rolUser);
-                                    commandPermisos.CommandType = CommandType.Text;
-
-                                    using (SqlDataReader readerPermisos = commandPermisos.ExecuteReader())
+                                    CacheInicioUsuario.permisosUser = new ArrayList();
+                                    foreach (string rol in CacheInicioUsuario.rolesUser)
                                     {
-                                        CacheInicioUsuario.permisosUser = new ArrayList();
-                                        while (readerPermisos.Read())
+                                        commandPermisos.Connection = connection;
+                                        commandPermisos.CommandText = "select p.nombrePermiso " +
+                                                                      "from PermisosXRoles pr " +
+                                                                      "inner join Permisos p on p.idPermiso = pr.idPermiso " +
+                                                                      "inner join Roles r on r.idRol = pr.idRol " +
+                                                                      "where r.nombreRol = @NombreRol";
+                                        commandPermisos.Parameters.Clear();
+                                        commandPermisos.Parameters.AddWithValue("@NombreRol", rol);
+                                        commandPermisos.CommandType = CommandType.Text;
+
+                                        using (SqlDataReader readerPermisos = commandPermisos.ExecuteReader())
                                         {
-                                            CacheInicioUsuario.permisosUser.Add(readerPermisos.GetString(readerPermisos.GetOrdinal("nombrePermiso")));
+                                            while (readerPermisos.Read())
+                                            {
+                                                string permiso = readerPermisos.GetString(readerPermisos.GetOrdinal("nombrePermiso"));
+                                                if (!CacheInicioUsuario.permisosUser.Contains(permiso))
+                                                {
+                                                    CacheInicioUsuario.permisosUser.Add(permiso);
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -257,10 +287,9 @@ namespace DataAccess
             }
         }
 
-        public void ActualizarUsuario(string LoginUsuario, string nombreUsuario, string apellidoUsuario, string contrasenia, int activo, string tipousuario)
+        public void ActualizarUsuario(string loginUsuario, string? contraseniaUsuario, string nombresUsuario, string apellidosUsuario, int activoUsuario, int idEmpleado)
         {
             string query_usuario = "sp_modificar_usuario";
-            string query_usuario_rol = "sp_modificar_usuarioxrol";
 
             using (var conexion = GetConnection())
             {
@@ -269,19 +298,12 @@ namespace DataAccess
                 using (var comando = new SqlCommand(query_usuario, conexion))
                 {
                     comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@loginUsuario", LoginUsuario);
-                    comando.Parameters.AddWithValue("@nombresUsuario", nombreUsuario);
-                    comando.Parameters.AddWithValue("@apellidosUsuario", apellidoUsuario);
-                    comando.Parameters.AddWithValue("@contrasenia", contrasenia);
-
-                    comando.ExecuteNonQuery();
-                }
-             
-                using (var comando = new SqlCommand(query_usuario_rol, conexion))
-                {
-                    comando.CommandType = CommandType.StoredProcedure;
-                    comando.Parameters.AddWithValue("@LoginUsuario", LoginUsuario);
-                    comando.Parameters.AddWithValue("@tipousuario", tipousuario);
+                    comando.Parameters.AddWithValue("@loginUsuario", loginUsuario);
+                    comando.Parameters.AddWithValue("@claveUsuario", contraseniaUsuario);
+                    comando.Parameters.AddWithValue("@nombresUsuario", nombresUsuario);
+                    comando.Parameters.AddWithValue("@apellidosUsuario", apellidosUsuario);
+                    comando.Parameters.AddWithValue("@activoUsuario", activoUsuario);
+                    comando.Parameters.AddWithValue("@idEmpleado", idEmpleado);
 
                     comando.ExecuteNonQuery();
                 }
@@ -356,15 +378,32 @@ namespace DataAccess
             }
         }
 
+        public void EliminarUsuarioxRol(int idRol, string loginUsuario)
+        {
+            int idUsuario = ObtenerIdUsuario(loginUsuario);
+            using (var conexion = GetConnection())
+            {
+                using (SqlCommand comando = new SqlCommand("sp_borrar_usuarioxrol", conexion))
+                {
+                    comando.CommandType = CommandType.StoredProcedure;
+                    comando.Parameters.AddWithValue("@idUsuario", idUsuario);
+                    comando.Parameters.AddWithValue("@idRol", idRol);
+                    conexion.Open();
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
+
         public bool ValidarRolActivoXUsuario(string loginUsuario, int idRol)
         {
+            int idUsuario = ObtenerIdUsuario(loginUsuario);
             string query = "sp_verificar_rol_activo_usuario";
             using (SqlConnection conn = GetConnection())
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@loginUsuario", loginUsuario);
+                cmd.Parameters.AddWithValue("@idUsuario", idUsuario);
                 cmd.Parameters.AddWithValue("@idRol", idRol);
                 SqlDataReader lector = cmd.ExecuteReader();
                 
