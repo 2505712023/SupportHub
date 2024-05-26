@@ -79,7 +79,7 @@ namespace DataAccess
                                                                 "inner join UsuariosXRoles uxr on uxr.idRol = r.idRol " +
                                                                 "inner join Usuarios u on u.idUsuario = uxr.idUsuario " +
                                                                 "where u.loginUsuario = @loginUsuario";
-                                    comandRoles.Parameters.AddWithValue("@loginUsuario", CacheInicioUsuario.nombreUser);
+                                    comandRoles.Parameters.AddWithValue("@loginUsuario", CacheInicioUsuario.user);
                                     comandRoles.CommandType = CommandType.Text;
 
                                     using (SqlDataReader readerRoles = comandRoles.ExecuteReader())

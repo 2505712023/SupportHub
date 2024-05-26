@@ -137,11 +137,11 @@ namespace Presentacion
                             int idRol = Convert.ToInt32(row.Cells["idRol"].Value);
                             if (asociar && !moduser.ValidarRolActivoXUsuario(tboxLoginUsuario.Text, idRol))
                             {
-                                moduser.InsertarUsuarioxRol(Convert.ToInt32(row.Cells["idRol"].Value), tboxLoginUsuario.Text);
+                                moduser.InsertarUsuarioxRol(idRol, tboxLoginUsuario.Text);
                             }
                             else if (!asociar)
                             {
-                                moduser.EliminarUsuarioxRol(Convert.ToInt32(row.Cells["idRol"].Value), tboxLoginUsuario.Text);
+                                moduser.EliminarUsuarioxRol(idRol, tboxLoginUsuario.Text);
                             }
                         }
                         rolesModificados = true;
