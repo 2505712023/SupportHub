@@ -87,7 +87,7 @@
             btnCerrar.Location = new Point(721, 12);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(28, 24);
-            btnCerrar.TabIndex = 18;
+            btnCerrar.TabIndex = 51;
             btnCerrar.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCerrar.UseVisualStyleBackColor = true;
@@ -169,7 +169,8 @@
             dgvRoles.Location = new Point(344, 58);
             dgvRoles.Name = "dgvRoles";
             dgvRoles.Size = new Size(357, 141);
-            dgvRoles.TabIndex = 50;
+            dgvRoles.TabIndex = 47;
+            dgvRoles.KeyPress += frmAgregarUsuario_KeyPress;
             // 
             // chbActivoUsuario
             // 
@@ -179,7 +180,7 @@
             chbActivoUsuario.Margin = new Padding(3, 2, 3, 2);
             chbActivoUsuario.Name = "chbActivoUsuario";
             chbActivoUsuario.Size = new Size(82, 25);
-            chbActivoUsuario.TabIndex = 49;
+            chbActivoUsuario.TabIndex = 46;
             chbActivoUsuario.Text = "Activo:";
             chbActivoUsuario.UseVisualStyleBackColor = true;
             chbActivoUsuario.CheckedChanged += chbActivoUsuario_CheckedChanged;
@@ -194,6 +195,7 @@
             cbxEmpAddUsuario.Size = new Size(357, 29);
             cbxEmpAddUsuario.TabIndex = 48;
             cbxEmpAddUsuario.SelectedIndexChanged += cbxEmpAddUsuario_SelectedIndexChanged;
+            cbxEmpAddUsuario.KeyPress += frmAgregarUsuario_KeyPress;
             // 
             // lblEmpAddUsuario
             // 
@@ -220,7 +222,8 @@
             mtboxContrasenia.Name = "mtboxContrasenia";
             mtboxContrasenia.PasswordChar = '●';
             mtboxContrasenia.Size = new Size(268, 29);
-            mtboxContrasenia.TabIndex = 43;
+            mtboxContrasenia.TabIndex = 45;
+            mtboxContrasenia.KeyPress += frmAgregarUsuario_KeyPress;
             // 
             // tboxLoginUsuario
             // 
@@ -230,6 +233,7 @@
             tboxLoginUsuario.Name = "tboxLoginUsuario";
             tboxLoginUsuario.Size = new Size(268, 29);
             tboxLoginUsuario.TabIndex = 42;
+            tboxLoginUsuario.KeyPress += frmAgregarUsuario_KeyPress;
             // 
             // lblContraseña
             // 
@@ -248,7 +252,7 @@
             tboxApellidosUsuario.Location = new Point(25, 170);
             tboxApellidosUsuario.Name = "tboxApellidosUsuario";
             tboxApellidosUsuario.Size = new Size(268, 29);
-            tboxApellidosUsuario.TabIndex = 38;
+            tboxApellidosUsuario.TabIndex = 44;
             // 
             // lblApellidos
             // 
@@ -267,7 +271,7 @@
             tboxNombresUsuario.Location = new Point(25, 114);
             tboxNombresUsuario.Name = "tboxNombresUsuario";
             tboxNombresUsuario.Size = new Size(268, 29);
-            tboxNombresUsuario.TabIndex = 36;
+            tboxNombresUsuario.TabIndex = 43;
             // 
             // lblNombre
             // 
@@ -294,7 +298,7 @@
             btnCancelar.Location = new Point(601, 305);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(100, 40);
-            btnCancelar.TabIndex = 34;
+            btnCancelar.TabIndex = 50;
             btnCancelar.Text = "CANCELAR";
             btnCancelar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCancelar.UseVisualStyleBackColor = false;
@@ -315,7 +319,7 @@
             btnGuardar.Location = new Point(495, 305);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(100, 41);
-            btnGuardar.TabIndex = 33;
+            btnGuardar.TabIndex = 49;
             btnGuardar.Text = "GUARDAR";
             btnGuardar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardar.UseVisualStyleBackColor = false;
@@ -438,6 +442,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAgregarUsuario";
             Load += frmAgregarUsuario_Load;
+            KeyPress += frmAgregarUsuario_KeyPress;
             pSuperiorAddUsuario.ResumeLayout(false);
             pSuperiorAddUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();

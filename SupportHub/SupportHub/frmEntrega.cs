@@ -189,7 +189,7 @@ namespace Presentacion
                 return true;
             }
 
-            if (keyData == (Keys.Control | Keys.Shift | Keys.G))
+            if (keyData == (Keys.Control | Keys.Shift | Keys.D))
             {
                 if (btnGenerarDevolucion.Enabled == true)
                 {

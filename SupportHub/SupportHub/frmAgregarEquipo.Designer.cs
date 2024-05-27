@@ -100,6 +100,7 @@
             comboBproveedor.Name = "comboBproveedor";
             comboBproveedor.Size = new Size(209, 29);
             comboBproveedor.TabIndex = 40;
+            comboBproveedor.KeyPress += frmAgregarEquipo_KeyPress;
             // 
             // maskprecioEquipo
             // 
@@ -110,6 +111,7 @@
             maskprecioEquipo.Size = new Size(104, 29);
             maskprecioEquipo.TabIndex = 39;
             maskprecioEquipo.TextAlign = HorizontalAlignment.Right;
+            maskprecioEquipo.KeyPress += frmAgregarEquipo_KeyPress;
             // 
             // tboxcantidadEquipo
             // 
@@ -119,6 +121,7 @@
             tboxcantidadEquipo.Name = "tboxcantidadEquipo";
             tboxcantidadEquipo.Size = new Size(209, 29);
             tboxcantidadEquipo.TabIndex = 38;
+            tboxcantidadEquipo.KeyPress += frmAgregarEquipo_KeyPress;
             // 
             // tboxmodeloEquipo
             // 
@@ -128,6 +131,7 @@
             tboxmodeloEquipo.Name = "tboxmodeloEquipo";
             tboxmodeloEquipo.Size = new Size(209, 29);
             tboxmodeloEquipo.TabIndex = 37;
+            tboxmodeloEquipo.KeyPress += frmAgregarEquipo_KeyPress;
             // 
             // tboxTipoEquipo
             // 
@@ -137,6 +141,7 @@
             tboxTipoEquipo.Name = "tboxTipoEquipo";
             tboxTipoEquipo.Size = new Size(209, 29);
             tboxTipoEquipo.TabIndex = 35;
+            tboxTipoEquipo.KeyPress += frmAgregarEquipo_KeyPress;
             // 
             // BtnCancelar
             // 
@@ -189,6 +194,7 @@
             tboxmarcaEquipo.Name = "tboxmarcaEquipo";
             tboxmarcaEquipo.Size = new Size(209, 29);
             tboxmarcaEquipo.TabIndex = 36;
+            tboxmarcaEquipo.KeyPress += frmAgregarEquipo_KeyPress;
             // 
             // lblmodeloEquipo
             // 
@@ -432,6 +438,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAgregarEquipo";
             Load += frmAgregarEquipo_Load;
+            KeyPress += frmAgregarEquipo_KeyPress;
             gbAddEequipo.ResumeLayout(false);
             gbAddEequipo.PerformLayout();
             pSuperiorAddEntrega.ResumeLayout(false);

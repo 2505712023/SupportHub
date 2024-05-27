@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -30,13 +31,15 @@ namespace Presentacion
 
         public frmAgregarUsuario(
             string loginUsuario,
-            int idEmpleado
+            int idEmpleado,
+            int activoUsuario
             )
         {
             InitializeComponent();
             this.loginUsuario = loginUsuario;
             this.esModificacion = true;
             this.idEmpleado = idEmpleado;
+            this.Activo = activoUsuario;
             gbAddUsuario.Text = $"MODIFICAR USUARIO: {loginUsuario}";
         }
 
@@ -111,48 +114,50 @@ namespace Presentacion
                         CustomMessageBox.Error("Error de registro", "Ocurrió un error al registrar el usuario.");
                     }
                 }
-                //else if (esModificacion)
-                //{
-                //    bool usuarioModificado = false;
-                //    moduser.(
-                //        : tboxLoginUsuario.Text,
-                //        NombreUsuario: tboxNombresUsuario.Text,
-                //        ApellidoUsuario: tboxApellidosUsuario.Text,
-                //        Contrasenia: mtboxContrasenia.Text,
-                //        ActivoUsuario: Activo,
-                //        idEmpleado: Convert.ToInt32(cbxEmpAddUsuario.SelectedValue)
-                //        );
-                //    usuarioModificado = true;
+                else if (esModificacion)
+                {
+                    bool usuarioModificado = false;
+                    string contrasenia = string.IsNullOrEmpty(mtboxContrasenia.Text) ? null : mtboxContrasenia.Text;
+                    moduser.ActualizarUsuario(
+                        loginUsuario: tboxLoginUsuario.Text,
+                        nombresUsuario: tboxNombresUsuario.Text,
+                        apellidosUsuario: tboxApellidosUsuario.Text,
+                        contraseniaUsuario: contrasenia,
+                        activoUsuario: Activo,
+                        idEmpleado: Convert.ToInt32(cbxEmpAddUsuario.SelectedValue)
+                        );
+                    usuarioModificado = true;
 
-                //    bool rolesModificados = false;
-                //    if (usuarioModificado)
-                //    {
-                //        foreach (DataGridViewRow row in dgvRoles.Rows)
-                //        {
-                //            if (Convert.ToBoolean(row.Cells["Asociar"].Value))
-                //            {
-                //                moduser.InsertarUsuarioxRol(Convert.ToInt32(row.Cells["idRol"].Value), tboxLoginUsuario.Text);
-                //            }
-                //        }
-                //        rolesModificados = true;
-                //    }
+                    bool rolesModificados = false;
+                    if (usuarioModificado)
+                    {
+                        foreach (DataGridViewRow row in dgvRoles.Rows)
+                        {
+                            bool asociar = Convert.ToBoolean(row.Cells["Asociar"].Value);
+                            int idRol = Convert.ToInt32(row.Cells["idRol"].Value);
+                            if (asociar && !moduser.ValidarRolActivoXUsuario(tboxLoginUsuario.Text, idRol))
+                            {
+                                moduser.InsertarUsuarioxRol(idRol, tboxLoginUsuario.Text);
+                            }
+                            else if (!asociar)
+                            {
+                                moduser.EliminarUsuarioxRol(idRol, tboxLoginUsuario.Text);
+                            }
+                        }
+                        rolesModificados = true;
+                    }
 
-                //    if (usuarioModificado && rolesModificados)
-                //    {
-                //        CustomMessageBox.Exito("Registro exitoso", "El usuario se registró correctamente.");
-                //        Agregar();
-
-                //        tboxLoginUsuario.Text = "";
-                //        mtboxContrasenia.Text = "";
-                //        cbxEmpAddUsuario.SelectedIndex = -1;
-                //        chbActivoUsuario.Checked = true;
-                //        llenarDgvRoles();
-                //    }
-                //    else
-                //    {
-                //        CustomMessageBox.Error("Error de registro", "Ocurrió un error al registrar el usuario.");
-                //    }
-                //}
+                    if (usuarioModificado && rolesModificados)
+                    {
+                        CustomMessageBox.Exito("Modificación exitosa", "El usuario se modificó correctamente.");
+                        Agregar();
+                        this.Close();
+                    }
+                    else
+                    {
+                        CustomMessageBox.Error("Error de modificación", "Ocurrió un error al modificar el usuario.");
+                    }
+                }
             }
         }
 
@@ -167,10 +172,10 @@ namespace Presentacion
         {
             LlenarComboBoxEmpleados();
             llenarDgvRoles();
-            chbActivoUsuario.Checked = true;
             formCargado = true;
             if (!esModificacion)
             {
+                chbActivoUsuario.Checked = true;
                 tboxNombresUsuario.Enabled = false;
                 tboxApellidosUsuario.Enabled = false;
                 tboxLoginUsuario.Text = "";
@@ -178,6 +183,14 @@ namespace Presentacion
             }
             else if (esModificacion)
             {
+                if (Activo == 1)
+                {
+                    chbActivoUsuario.Checked = true;
+                }
+                else if (Activo == 0)
+                {
+                    chbActivoUsuario.Checked = false;
+                }
                 tboxNombresUsuario.Enabled = false;
                 tboxApellidosUsuario.Enabled = false;
                 tboxLoginUsuario.Text = loginUsuario;
@@ -247,15 +260,20 @@ namespace Presentacion
                 CustomMessageBox.Error("Dato inválido", "Ingrese un nombre válido.");
                 return false;
             }
-            int longitud = mtboxContrasenia.TextLength;
 
-            if (string.IsNullOrEmpty(mtboxContrasenia.Text) || longitud < 5)
+            int longitud = mtboxContrasenia.TextLength;
+            if ((string.IsNullOrEmpty(mtboxContrasenia.Text) || longitud < 5) && !esModificacion)
+            {
+                CustomMessageBox.Error("Dato inválido", "Ingrese una contreña valida, de al menos 5 caracteres");
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(mtboxContrasenia.Text) && longitud < 5 && esModificacion)
             {
                 CustomMessageBox.Error("Dato inválido", "Ingrese una contreña valida, de al menos 5 caracteres");
                 return false;
             }
 
-            if (!moduser.ValidarLogin(tboxLoginUsuario.Text))
+            if (!moduser.ValidarLogin(tboxLoginUsuario.Text) && !esModificacion)
             {
                 CustomMessageBox.Error("Dato inválido", "El login ingresado ya existe");
                 return false;
@@ -264,6 +282,25 @@ namespace Presentacion
             if (cbxEmpAddUsuario.SelectedIndex == -1)
             {
                 CustomMessageBox.Error("Dato faltante", "Seleccione un empleado.");
+                return false;
+            }
+
+            bool asociarRol = false;
+            foreach (DataGridViewRow row in dgvRoles.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells["Asociar"].Value))
+                {
+                    asociarRol = true;
+                }
+                if (asociarRol)
+                {
+                    return true;
+                }
+            }
+
+            if (!asociarRol)
+            {
+                CustomMessageBox.Error("Dato faltante", "Seleccione al menos un rol para asociar al usuario.");
                 return false;
             }
 
@@ -294,6 +331,15 @@ namespace Presentacion
         {
             int id = moduser.ObtenerIdUsuario(tboxLoginUsuario.Text);
             return id;
+        }
+
+        private void frmAgregarUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+
+                btnGuardar_Click(sender, e);
+            }
         }
     }
 }

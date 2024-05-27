@@ -21,9 +21,31 @@ namespace Presentacion
 
             cbxTipoBusquedaProveedor.DataSource = tipoProveedor;
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
 
+            if (keyData == (Keys.Control | Keys.Shift | Keys.A))
+            {
+                btnAgregarProveedor_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.M))
+            {
+                btnModificaProveedor_Click(this, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.E))
+            {
+                btnEliminarProveedor_Click(this, EventArgs.Empty);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void frmProveedor_Load(object sender, EventArgs e)
         {
+
+            txtBuscarProveedor.Focus();
             cbxTipoBusquedaProveedor.DropDownStyle = ComboBoxStyle.DropDownList;
             MostrarProveedor();
             AjustarGridView();

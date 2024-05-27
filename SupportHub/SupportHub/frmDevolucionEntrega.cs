@@ -44,6 +44,7 @@ namespace Presentacion
 
         private void frmDevolucionEntrega_Load(object sender, EventArgs e)
         {
+            ibtnGuardarEntrega.Focus();
             dtpickerFechaDevolucion.Format = DateTimePickerFormat.Custom;
             dtpickerFechaDevolucion.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             dtpickerFechaDevolucion.ShowUpDown = false;
@@ -76,6 +77,26 @@ namespace Presentacion
         {
             habilitardgvEntregas();
             this.Close();
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.G))
+            {
+                btnGuardarDevolucion_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+           
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+        private void frmDevolucionEntrega_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+
+                btnGuardarDevolucion_Click(sender, e);
+            }
         }
     }
 }

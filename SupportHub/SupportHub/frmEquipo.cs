@@ -33,20 +33,55 @@ namespace Presentacion
 
         private void frmEquipo_Load(object sender, EventArgs e)
         {
+            txtBuscarEquipo.Focus();
             cbxTipoBusquedaEquipo.DropDownStyle = ComboBoxStyle.DropDownList;
             dgvEquipo.DataSource = EquipoDato.obtenerTablaEquipos();
             prepararDgvEquipos();
             dgvEquipo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            if (!CacheInicioUsuario.permisosUser.Contains("Agregar"))
+            if (CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
+            {
+                btnAgregarEquipo.Visible = true;
+                btnModificarEquipo.Visible = true;
+                btnEliminarEquipo.Visible = true;
+            }
+            else if (CacheInicioUsuario.permisosUser.Contains("Agregar") &&
+                     CacheInicioUsuario.permisosUser.Contains("Modificar") &&
+                     CacheInicioUsuario.permisosUser.Contains("Consultar Datos"))
+            {
+                btnEliminarEquipo.Visible = false;
+            }
+            else if (CacheInicioUsuario.permisosUser.Contains("Consultar Datos"))
             {
                 btnAgregarEquipo.Visible = false;
+                btnEliminarEquipo.Visible = false;
+                btnModificarEquipo.Visible = false;
             }
             dgvEquipo.Columns["Precio de Equipo"].DefaultCellStyle.Format = "C2";
      
             frmCargado = true;
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
 
+            if (keyData == (Keys.Control | Keys.Shift | Keys.A))
+            {
+                btnAgregarEquipo_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.M))
+            {
+                btnModificarEquipo_Click(this, EventArgs.Empty);
+                return true;
+            }
+            if (keyData == (Keys.Control | Keys.Shift | Keys.E))
+            {
+                btnEliminarEquipo_Click(this, EventArgs.Empty);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void btnEliminarEquipo_Click(object sender, EventArgs e)
         {
             if (CustomMessageBox.Advertencia("Eliminar equipo", "¿Quiere eliminar un equipo?") == DialogResult.Yes)
