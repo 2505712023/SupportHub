@@ -35,7 +35,6 @@ namespace Presentacion
                 {
                     modeloProveedor.ActualizarProveedor(int.Parse(txtId.Text), txtCodProveedor.Text, txtNombre.Text, txtDireccion.Text, txtTelefono.Text);
                 }
-
                 LimpiarTxt();
 
                 Close();
@@ -80,7 +79,6 @@ namespace Presentacion
                 CustomMessageBox.Error("Dato inválido", "Ingrese un número de teléfono válido (formato: 2222-0000).");
                 return false;
             }
-
             return true;
         }
 

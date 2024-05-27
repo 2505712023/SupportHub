@@ -139,18 +139,18 @@
             // ibtnImprimir
             // 
             ibtnImprimir.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ibtnImprimir.BackColor = Color.FromArgb(63, 175, 75);
+            ibtnImprimir.BackColor = Color.FromArgb(5, 23, 59);
             ibtnImprimir.Cursor = Cursors.Hand;
             ibtnImprimir.FlatAppearance.BorderSize = 0;
             ibtnImprimir.FlatStyle = FlatStyle.Flat;
             ibtnImprimir.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ibtnImprimir.ForeColor = Color.FromArgb(5, 23, 59);
+            ibtnImprimir.ForeColor = SystemColors.Window;
             ibtnImprimir.IconChar = FontAwesome.Sharp.IconChar.Print;
-            ibtnImprimir.IconColor = Color.FromArgb(5, 23, 59);
+            ibtnImprimir.IconColor = SystemColors.Window;
             ibtnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnImprimir.IconSize = 20;
             ibtnImprimir.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnImprimir.Location = new Point(585, 151);
+            ibtnImprimir.Location = new Point(581, 135);
             ibtnImprimir.Name = "ibtnImprimir";
             ibtnImprimir.Size = new Size(100, 40);
             ibtnImprimir.TabIndex = 22;
@@ -169,6 +169,7 @@
             tboxEmpleadoEntrega.ReadOnly = true;
             tboxEmpleadoEntrega.Size = new Size(325, 29);
             tboxEmpleadoEntrega.TabIndex = 16;
+            tboxEmpleadoEntrega.KeyPress += frmAgregarEntrega_KeyPress;
             // 
             // lblEmpleadoRecibe
             // 
@@ -201,6 +202,7 @@
             tboxCantidadEntrega.TabIndex = 20;
             tboxCantidadEntrega.TextAlign = HorizontalAlignment.Center;
             tboxCantidadEntrega.ValidatingType = typeof(int);
+            tboxCantidadEntrega.KeyPress += frmAgregarEntrega_KeyPress;
             tboxCantidadEntrega.Leave += tboxCantidadEntrega_Leave;
             // 
             // lblCantidadAEntregar
@@ -222,6 +224,7 @@
             tboxCantidadDisponible.Size = new Size(98, 29);
             tboxCantidadDisponible.TabIndex = 19;
             tboxCantidadDisponible.TextAlign = HorizontalAlignment.Center;
+            tboxCantidadDisponible.KeyPress += frmAgregarEntrega_KeyPress;
             // 
             // lblCantidadDisponible
             // 
@@ -241,6 +244,7 @@
             cboxEquipo.Name = "cboxEquipo";
             cboxEquipo.Size = new Size(325, 29);
             cboxEquipo.TabIndex = 18;
+            cboxEquipo.KeyPress += frmAgregarEntrega_KeyPress;
             cboxEquipo.Leave += cboxEquipo_Leave;
             // 
             // lblEquipo
@@ -261,6 +265,7 @@
             cboxEmpleadoRecibe.Name = "cboxEmpleadoRecibe";
             cboxEmpleadoRecibe.Size = new Size(325, 29);
             cboxEmpleadoRecibe.TabIndex = 17;
+            cboxEmpleadoRecibe.KeyPress += frmAgregarEntrega_KeyPress;
             // 
             // labEmpleadoEntrega
             // 
@@ -305,7 +310,7 @@
             ibtnCancelarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnCancelarEntrega.IconSize = 20;
             ibtnCancelarEntrega.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnCancelarEntrega.Location = new Point(585, 102);
+            ibtnCancelarEntrega.Location = new Point(581, 89);
             ibtnCancelarEntrega.Name = "ibtnCancelarEntrega";
             ibtnCancelarEntrega.Size = new Size(100, 40);
             ibtnCancelarEntrega.TabIndex = 23;
@@ -327,7 +332,7 @@
             ibtnGuardarEntrega.IconColor = Color.White;
             ibtnGuardarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnGuardarEntrega.IconSize = 20;
-            ibtnGuardarEntrega.Location = new Point(585, 56);
+            ibtnGuardarEntrega.Location = new Point(581, 43);
             ibtnGuardarEntrega.Name = "ibtnGuardarEntrega";
             ibtnGuardarEntrega.Size = new Size(100, 40);
             ibtnGuardarEntrega.TabIndex = 22;
@@ -364,6 +369,7 @@
             cboxTipoEntrega.Name = "cboxTipoEntrega";
             cboxTipoEntrega.Size = new Size(188, 29);
             cboxTipoEntrega.TabIndex = 14;
+            cboxTipoEntrega.KeyPress += frmAgregarEntrega_KeyPress;
             // 
             // btnCancelaEmpleado
             // 
@@ -432,6 +438,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAgregarEntrega";
             Load += frmAgregarEntrega_Load;
+            KeyPress += frmAgregarEntrega_KeyPress_1;
             pSuperiorAddEntrega.ResumeLayout(false);
             pSuperiorAddEntrega.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();

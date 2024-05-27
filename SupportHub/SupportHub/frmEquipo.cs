@@ -33,18 +33,54 @@ namespace Presentacion
 
         private void frmEquipo_Load(object sender, EventArgs e)
         {
+            txtBuscarEquipo.Focus();
             cbxTipoBusquedaEquipo.DropDownStyle = ComboBoxStyle.DropDownList;
             dgvEquipo.DataSource = EquipoDato.obtenerTablaEquipos();
             prepararDgvEquipos();
             dgvEquipo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            if (!CacheInicioUsuario.permisosUser.Contains("Agregar"))
+            if (CacheInicioUsuario.permisosUser.Contains("Realizar todas las acciones"))
+            {
+                btnAgregarEquipo.Visible = true;
+                btnModificarEquipo.Visible = true;
+                btnEliminarEquipo.Visible = true;
+            }
+            else if (CacheInicioUsuario.permisosUser.Contains("Agregar") &&
+                     CacheInicioUsuario.permisosUser.Contains("Modificar") &&
+                     CacheInicioUsuario.permisosUser.Contains("Consultar Datos"))
+            {
+                btnEliminarEquipo.Visible = false;
+            }
+            else if (CacheInicioUsuario.permisosUser.Contains("Consultar Datos"))
             {
                 btnAgregarEquipo.Visible = false;
+                btnEliminarEquipo.Visible = false;
+                btnModificarEquipo.Visible = false;
             }
             dgvEquipo.Columns["Precio de Equipo"].DefaultCellStyle.Format = "C2";
-     
             frmCargado = true;
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.Shift | Keys.A))
+            {
+                btnAgregarEquipo_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.M))
+            {
+                btnModificarEquipo_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.E))
+            {
+                btnEliminarEquipo_Click(this, EventArgs.Empty);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void btnEliminarEquipo_Click(object sender, EventArgs e)
@@ -54,7 +90,6 @@ namespace Presentacion
                 if (dgvEquipo.SelectedRows.Count == 1)
                 {
                     int totalRegistrosEliminados = ModeloEquipo.EliminarEquipo(dgvEquipo.SelectedRows[0].Cells["Código de Equipo"].Value.ToString());
-
                     if (totalRegistrosEliminados == 1)
                     {
                         CustomMessageBox.Exito("Eliminación exitosa", "Se eliminó " + totalRegistrosEliminados.ToString() + " equipo.");
@@ -63,7 +98,6 @@ namespace Presentacion
                     {
                         CustomMessageBox.Error("Error en eliminación", "No se pudo eliminar, verifique si el equipo tiene una entrega registrada");
                     }
-
                     actualizarTablaEquipos();
                 }
                 else if (dgvEquipo.SelectedRows.Count == 0)
@@ -169,10 +203,12 @@ namespace Presentacion
 
         private void dgvEquipo_SelectionChanged(object sender, EventArgs e)
         {
-            if (frmCargado && dgvEquipo.SelectedRows.Count == 1){
+            if (frmCargado && dgvEquipo.SelectedRows.Count == 1)
+            {
                 btnModificarEquipo.Enabled = true;
             }
-            else if (frmCargado){
+            else if (frmCargado)
+            {
                 btnModificarEquipo.Enabled=false;
             }
         }

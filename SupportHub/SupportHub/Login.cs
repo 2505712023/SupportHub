@@ -14,10 +14,8 @@ namespace SupportHub
 
         private void txtContraseña_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
             if (e.KeyChar == (char)Keys.Enter)
             {
-        
                 btnAcceder_Click(sender, e);
             }
         }
@@ -75,7 +73,6 @@ namespace SupportHub
         {
             if (txtUsuario.Text != "USUARIO" && txtContraseña.Text != "CONTRASEÑA" && txtUsuario.Text != "" && txtContraseña.Text != "")
             {
-                
                 DataAccess.UsuarioDato usuarioDato = new DataAccess.UsuarioDato();
                 string user = txtUsuario.Text;
                 string pass = txtContraseña.Text;
@@ -110,7 +107,6 @@ namespace SupportHub
                         txtUsuario.Focus();
                     }
                 }
-            
             }
         }
 

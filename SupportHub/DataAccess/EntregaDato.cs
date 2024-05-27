@@ -150,30 +150,6 @@ namespace DataAccess
                 return tablaEmpleados;
             }
         }
-        public static string obtenerCodigoEntrega(string codEntrega)
-        {
-            using (SqlConnection conect = conexion.GetConnection()) {
-                comando.CommandText = "sp_obtener_entregas_id";
-                comando.CommandType = CommandType.StoredProcedure;
-                comando.Parameters.Clear();
-                comando.Parameters.AddWithValue("@CodEntrega", codEntrega);
-                comando.Connection = conect;
-
-                conect.Open();
-
-                using (SqlDataReader reader = comando.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        return reader[0].ToString();
-                    }
-                    else
-                    {
-                        return null; 
-                    }
-                }
-            }
-        }
 
         public static DataTable obtenerEquipos()
         {
@@ -251,23 +227,6 @@ namespace DataAccess
             }
 
             return "Fecha de devolución asignada exitosamente.";
-        }
-        public static DataTable SeleccionarEntregaID(string codEntrega)
-        {
-            string queryEntregaId = string.Empty;
-            
-            using (SqlConnection conect = conexion.GetConnection())
-            {
-                queryEntregaId = "Select * from Entregas where codEntrega ='" + codEntrega + "'";
-                conect.Open();
-                SqlCommand comando = new SqlCommand(queryEntregaId, conect);
-                SqlDataReader lector = comando.ExecuteReader();
-
-                DataTable tablaEntregaId = new DataTable();
-                tablaEntregaId.Load(lector);
-
-                return tablaEntregaId;
-            }
         }
     }
 }

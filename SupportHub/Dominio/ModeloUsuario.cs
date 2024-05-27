@@ -40,9 +40,9 @@ namespace Dominio
         }
 
         public string LoginUsuario(string user, string pass)
-            {
-                return userData.Login(user, pass);
-            }
+        {
+            return userData.Login(user, pass);
+        }
 
         //Hecho por KEVIN
         public DataTable mostrarUsuario()

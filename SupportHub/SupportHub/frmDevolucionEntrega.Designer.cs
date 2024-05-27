@@ -85,7 +85,7 @@
             btnCerrarAddEmpleado.Location = new Point(402, 12);
             btnCerrarAddEmpleado.Name = "btnCerrarAddEmpleado";
             btnCerrarAddEmpleado.Size = new Size(28, 24);
-            btnCerrarAddEmpleado.TabIndex = 17;
+            btnCerrarAddEmpleado.TabIndex = 37;
             btnCerrarAddEmpleado.TextAlign = ContentAlignment.MiddleLeft;
             btnCerrarAddEmpleado.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnCerrarAddEmpleado.UseVisualStyleBackColor = true;
@@ -151,7 +151,7 @@
             btnGuardarDevolucion.Location = new Point(184, 121);
             btnGuardarDevolucion.Name = "btnGuardarDevolucion";
             btnGuardarDevolucion.Size = new Size(100, 40);
-            btnGuardarDevolucion.TabIndex = 33;
+            btnGuardarDevolucion.TabIndex = 0;
             btnGuardarDevolucion.Text = "GUARDAR";
             btnGuardarDevolucion.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnGuardarDevolucion.UseVisualStyleBackColor = false;
@@ -167,6 +167,7 @@
             tboxCodigoEntrega.ReadOnly = true;
             tboxCodigoEntrega.Size = new Size(188, 29);
             tboxCodigoEntrega.TabIndex = 32;
+            tboxCodigoEntrega.KeyPress += frmDevolucionEntrega_KeyPress;
             // 
             // ibtnCancelarEntrega
             // 
@@ -226,7 +227,8 @@
             dtpickerFechaDevolucion.Location = new Point(202, 69);
             dtpickerFechaDevolucion.Name = "dtpickerFechaDevolucion";
             dtpickerFechaDevolucion.Size = new Size(188, 29);
-            dtpickerFechaDevolucion.TabIndex = 15;
+            dtpickerFechaDevolucion.TabIndex = 36;
+            dtpickerFechaDevolucion.KeyPress += frmDevolucionEntrega_KeyPress;
             // 
             // btnCancelaEmpleado
             // 
@@ -295,6 +297,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmDevolucionEntrega";
             Load += frmDevolucionEntrega_Load;
+            KeyPress += frmDevolucionEntrega_KeyPress;
             pSuperiorAddEntrega.ResumeLayout(false);
             pSuperiorAddEntrega.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pboxLogo).EndInit();

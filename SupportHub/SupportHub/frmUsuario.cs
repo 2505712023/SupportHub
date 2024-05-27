@@ -32,12 +32,36 @@ namespace Presentacion
             cbxTipoBusquedaUsuario.DataSource = tipoBusquedaUsuario;
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.A))
+            {
+                btnAgregarUsuario_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.M))
+            {
+                btnModificaUsuario_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.Shift | Keys.E))
+            {
+                btnEliminarUsuario_Click_1(this, EventArgs.Empty);
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void mostrarUsuario()
         {
             ModeloUsuario Usuario = new ModeloUsuario();
             dgvUsuario.DataSource = Usuario.mostrarUsuario();
             dgvUsuario.ClearSelection();
         }
+
         private void actualizarTablaUsuario()
         {
             if (string.IsNullOrEmpty(txtBuscarUsuario.Text))

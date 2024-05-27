@@ -27,18 +27,22 @@ namespace Dominio
         {
             return empDato.ObtenerCargos();
         }
+
         public void EliminarEmp(string codEmp)
         {
             empDato.EliminarEmpleado(codEmp); 
         }
+
         public void InsertarEmpleado(string nombreEmpleado, string apellidoEmpleado, string telefono, string email, int idCargo, int idArea)
         {
             empDato.InsertarEmpleado(nombreEmpleado, apellidoEmpleado, telefono, email, idCargo, idArea);
         }
+
         public void ActualizarEmpleado(string codEmpleado, string nombreEmpleado, string apellidoEmpleado, string telefono, string email, int idCargo, int idArea)
         {
             empDato.ActualizarEmpleado(codEmpleado, nombreEmpleado, apellidoEmpleado, telefono, email, idCargo, idArea);
         }
+
         public  DataTable filtrarTablaEmpleado(string codEmpleado = "-1", string nombreEmpleado = "-1", string apellidoEmpleado = "-1")
         {
             return empDato.filtrarTablaEmpleado(codEmpleado, nombreEmpleado, apellidoEmpleado);

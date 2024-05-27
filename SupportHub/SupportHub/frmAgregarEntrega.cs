@@ -195,7 +195,7 @@ namespace Presentacion
                 int cantidadDisponible = ModeloEntrega.cantidadDisponibleEquipo(Convert.ToInt32(cboxEquipo.SelectedValue));
                 tboxCantidadDisponible.Text = (cantidadDisponible + cantidadEntregaAnterior).ToString();
             }
-            else if(cboxEquipo.SelectedValue != null)
+            else if (cboxEquipo.SelectedValue != null)
             {
                 int cantidadDisponible = ModeloEntrega.cantidadDisponibleEquipo(Convert.ToInt32(cboxEquipo.SelectedValue));
                 tboxCantidadDisponible.Text = (cantidadDisponible).ToString();
@@ -310,6 +310,18 @@ namespace Presentacion
             }
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+
+            if (keyData == (Keys.Control | Keys.P))
+            {
+                ibtnImprimir_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void ibtnImprimir_Click(object sender, EventArgs e)
         {
             ReporteDetalleEntrega.GenerarReporte
@@ -331,6 +343,14 @@ namespace Presentacion
         {
             habilitardgvEntregas();
             this.Close();
+        }
+
+        private void frmAgregarEntrega_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                ibtnGuardarEntrega_Click(sender, e);
+            }
         }
     }
 }
