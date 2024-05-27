@@ -42,7 +42,6 @@ namespace Presentacion
 
         private void inicializarControlPass()
         {
-
             lblEditar.Text = "Editar";
             txtNuevaContra.Enabled = false;
             txtNuevaContra.UseSystemPasswordChar = true;
@@ -55,7 +54,6 @@ namespace Presentacion
         {
             cargarDatoUsuario();
             inicializarControlPass();
-
         }
 
         private void linkEditar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

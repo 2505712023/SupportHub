@@ -9,7 +9,7 @@ namespace Presentacion
         private bool formCargado = false;
         ModeloProveedor proveedor = new();
 
-        private List<string> tipoProveedor = new()
+        private List<string> tipoBusquedaProveedor = new()
         {   
             "Código Proveedor",
             "Nombre Proveedor"
@@ -18,12 +18,11 @@ namespace Presentacion
         public frmProveedor()
         {
             InitializeComponent();
-
-            cbxTipoBusquedaProveedor.DataSource = tipoProveedor;
+            cbxTipoBusquedaProveedor.DataSource = tipoBusquedaProveedor;
         }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-
             if (keyData == (Keys.Control | Keys.Shift | Keys.A))
             {
                 btnAgregarProveedor_Click(this, EventArgs.Empty);
@@ -35,6 +34,7 @@ namespace Presentacion
                 btnModificaProveedor_Click(this, EventArgs.Empty);
                 return true;
             }
+
             if (keyData == (Keys.Control | Keys.Shift | Keys.E))
             {
                 btnEliminarProveedor_Click(this, EventArgs.Empty);
@@ -42,9 +42,9 @@ namespace Presentacion
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
         private void frmProveedor_Load(object sender, EventArgs e)
         {
-
             txtBuscarProveedor.Focus();
             cbxTipoBusquedaProveedor.DropDownStyle = ComboBoxStyle.DropDownList;
             MostrarProveedor();

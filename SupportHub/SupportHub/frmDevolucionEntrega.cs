@@ -86,15 +86,12 @@ namespace Presentacion
                 btnGuardarDevolucion_Click(this, EventArgs.Empty);
                 return true;
             }
-
-           
             return base.ProcessCmdKey(ref msg, keyData);
         }
         private void frmDevolucionEntrega_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-
                 btnGuardarDevolucion_Click(sender, e);
             }
         }

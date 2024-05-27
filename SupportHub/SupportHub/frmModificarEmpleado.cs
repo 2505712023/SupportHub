@@ -21,25 +21,28 @@ namespace Presentacion
         {
             InitializeComponent();
         }
+
         ModeloEmpleado modeloEmpleado = new ModeloEmpleado();
         public string Operacion = "Insertar";
         public string codEmpleado;
 
         public delegate void ModificarDelegate(object sender, ModificarEventArgs arg);
         public event ModificarDelegate UpdateEventHandler;
+
         public class ModificarEventArgs : EventArgs
         {
             public string Data { get; set; }
         }
+
         protected void Actualizar()
         {
             ModificarEventArgs args = new ModificarEventArgs();
             UpdateEventHandler.Invoke(this, args);
         }
+
         public void LlenarComboBoxAreas()
         {
             DataTable areas = agregarEmpleados.ObtenerArea();
-
             cbxAreaEmpleadoUpdate.DataSource = areas;
             cbxAreaEmpleadoUpdate.DisplayMember = "nombreArea";
             cbxAreaEmpleadoUpdate.ValueMember = "idArea";
@@ -48,7 +51,6 @@ namespace Presentacion
         public void LlenarComboBoxCargos()
         {
             DataTable cargos = agregarEmpleados.ObtenerCargo();
-
             cbxCargoEmpleadoUpdate.DataSource = cargos;
             cbxCargoEmpleadoUpdate.DisplayMember = "nombreCargo";
             cbxCargoEmpleadoUpdate.ValueMember = "idCargo";
@@ -86,7 +88,6 @@ namespace Presentacion
 
         private bool ValidarCampos()
         {
-
             if (string.IsNullOrEmpty(txtNombreEmpleadoUpdate.Text) || !EsLetras(txtNombreEmpleadoUpdate.Text))
             {
                 CustomMessageBox.Error("Dato inválido", "Ingrese un nombre válido.");
@@ -123,13 +124,11 @@ namespace Presentacion
                 CustomMessageBox.Error("Dato faltante", "Seleccione un área.");
                 return false;
             }
-
             return true;
         }
 
         private bool EsLetras(string texto)
         {
-
             string[] palabras = texto.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (string palabra in palabras)
             {
@@ -170,7 +169,6 @@ namespace Presentacion
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-
                 btnGuaardarUpdate_Click(sender, e);
             }
         }

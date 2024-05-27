@@ -64,6 +64,7 @@ namespace DataAccess
                 return tablaAreas;
             }
         }
+
         public void EliminarEmpleado(string codEmp)
         {
             string nombreProcedimiento = "sp_eliminar_empleado";
@@ -99,9 +100,8 @@ namespace DataAccess
                     comando.ExecuteNonQuery();
                 }
             }
-
-
         }
+
         public void ActualizarEmpleado(string codEmpleado, string nombreEmpleado, string apellidoEmpleado, string telefono, string email, int idCargo, int idArea)
         {
             string nombreProcedimiento = "sp_modificar_empleado";
@@ -128,8 +128,7 @@ namespace DataAccess
         }
 
         public  DataTable filtrarTablaEmpleado(string codEmpleado = "-1", string nombreEmpleado = "-1", string apellidoEmpleado = "-1")
-        {
-          
+        { 
             using (SqlConnection conn = conexion.GetConnection())
             {
                 cmd.CommandText = "sp_obtener_empleado";

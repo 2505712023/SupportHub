@@ -65,7 +65,6 @@
             cbxTipoBusquedaEmpleado.Name = "cbxTipoBusquedaEmpleado";
             cbxTipoBusquedaEmpleado.Size = new Size(139, 23);
             cbxTipoBusquedaEmpleado.TabIndex = 6;
-            cbxTipoBusquedaEmpleado.SelectedIndexChanged += cbxTipoBusquedaEmpleado_SelectedIndexChanged;
             cbxTipoBusquedaEmpleado.TextChanged += cbxTipoBusquedaEmpleado_TextChanged;
             // 
             // txtBuscarEmpleado
@@ -117,7 +116,6 @@
             dgvEmpleado.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvEmpleado.Size = new Size(693, 417);
             dgvEmpleado.TabIndex = 1;
-            dgvEmpleado.CellContentClick += dgvEmpleado_CellContentClick;
             // 
             // btnAgregarEmpleado
             // 

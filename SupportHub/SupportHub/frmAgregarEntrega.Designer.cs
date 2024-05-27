@@ -150,7 +150,7 @@
             ibtnImprimir.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnImprimir.IconSize = 20;
             ibtnImprimir.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnImprimir.Location = new Point(585, 167);
+            ibtnImprimir.Location = new Point(581, 135);
             ibtnImprimir.Name = "ibtnImprimir";
             ibtnImprimir.Size = new Size(100, 40);
             ibtnImprimir.TabIndex = 22;
@@ -202,8 +202,8 @@
             tboxCantidadEntrega.TabIndex = 20;
             tboxCantidadEntrega.TextAlign = HorizontalAlignment.Center;
             tboxCantidadEntrega.ValidatingType = typeof(int);
-            tboxCantidadEntrega.Leave += tboxCantidadEntrega_Leave;
             tboxCantidadEntrega.KeyPress += frmAgregarEntrega_KeyPress;
+            tboxCantidadEntrega.Leave += tboxCantidadEntrega_Leave;
             // 
             // lblCantidadAEntregar
             // 
@@ -244,8 +244,8 @@
             cboxEquipo.Name = "cboxEquipo";
             cboxEquipo.Size = new Size(325, 29);
             cboxEquipo.TabIndex = 18;
-            cboxEquipo.Leave += cboxEquipo_Leave;
             cboxEquipo.KeyPress += frmAgregarEntrega_KeyPress;
+            cboxEquipo.Leave += cboxEquipo_Leave;
             // 
             // lblEquipo
             // 
@@ -310,7 +310,7 @@
             ibtnCancelarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnCancelarEntrega.IconSize = 20;
             ibtnCancelarEntrega.ImageAlign = ContentAlignment.MiddleLeft;
-            ibtnCancelarEntrega.Location = new Point(585, 108);
+            ibtnCancelarEntrega.Location = new Point(581, 89);
             ibtnCancelarEntrega.Name = "ibtnCancelarEntrega";
             ibtnCancelarEntrega.Size = new Size(100, 40);
             ibtnCancelarEntrega.TabIndex = 23;
@@ -332,7 +332,7 @@
             ibtnGuardarEntrega.IconColor = Color.White;
             ibtnGuardarEntrega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             ibtnGuardarEntrega.IconSize = 20;
-            ibtnGuardarEntrega.Location = new Point(585, 56);
+            ibtnGuardarEntrega.Location = new Point(581, 43);
             ibtnGuardarEntrega.Name = "ibtnGuardarEntrega";
             ibtnGuardarEntrega.Size = new Size(100, 40);
             ibtnGuardarEntrega.TabIndex = 22;

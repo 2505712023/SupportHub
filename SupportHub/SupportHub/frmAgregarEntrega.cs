@@ -310,7 +310,6 @@ namespace Presentacion
             }
         }
 
-
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
 
@@ -319,7 +318,6 @@ namespace Presentacion
                 ibtnImprimir_Click(this, EventArgs.Empty);
                 return true;
             }
-
 
             return base.ProcessCmdKey(ref msg, keyData);
         }
@@ -351,9 +349,7 @@ namespace Presentacion
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-
                 ibtnGuardarEntrega_Click(sender, e);
-
             }
         }
     }

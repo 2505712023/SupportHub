@@ -165,6 +165,7 @@ namespace Presentacion
                 actualizarTablaEntregas();
             }
         }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
 
@@ -206,7 +207,6 @@ namespace Presentacion
                 }
                 return true;
             }
-
             return base.ProcessCmdKey(ref msg, keyData);
         }
 

@@ -31,7 +31,6 @@ namespace Presentacion
         }
         protected void Agregar()
         {
-
             UpdateEventArgs args = new UpdateEventArgs();
             UpdateEventHandler.Invoke(this, args);
         }
@@ -43,7 +42,6 @@ namespace Presentacion
 
         private void frmAgregarEmpleado_Load(object sender, EventArgs e)
         {
-           
             LlenarComboBoxAreas();
             LlenarComboBoxCargos();
             cbxAreaEmpleado.Text = null;
@@ -74,7 +72,6 @@ namespace Presentacion
 
             if (ValidarCampos())
             {
-
                 agregarEmpleados.InsertarEmpleado(
                     txtNombreEmpleado.Text,
                     txtApellidoEmpleado.Text,
@@ -132,7 +129,6 @@ namespace Presentacion
                 CustomMessageBox.Error("Dato faltante", "Seleccione un área.");
                 return false;
             }
-
             return true;
         }
 

@@ -117,7 +117,7 @@ namespace Presentacion
                 else if (esModificacion)
                 {
                     bool usuarioModificado = false;
-                    string contrasenia = string.IsNullOrEmpty(mtboxContrasenia.Text) ? null : mtboxContrasenia.Text;
+                    string contrasenia = string.IsNullOrEmpty(mtboxContrasenia.Text)? null : mtboxContrasenia.Text;
                     moduser.ActualizarUsuario(
                         loginUsuario: tboxLoginUsuario.Text,
                         nombresUsuario: tboxNombresUsuario.Text,
@@ -303,7 +303,6 @@ namespace Presentacion
                 CustomMessageBox.Error("Dato faltante", "Seleccione al menos un rol para asociar al usuario.");
                 return false;
             }
-
             return true;
         }
 
@@ -331,15 +330,6 @@ namespace Presentacion
         {
             int id = moduser.ObtenerIdUsuario(tboxLoginUsuario.Text);
             return id;
-        }
-
-        private void frmAgregarUsuario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-
-                btnGuardar_Click(sender, e);
-            }
         }
     }
 }

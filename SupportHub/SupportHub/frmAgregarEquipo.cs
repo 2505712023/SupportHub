@@ -23,14 +23,12 @@ namespace Presentacion
 
         public frmAgregarEquipo(frmEquipo equipo)
         {
-
             InitializeComponent();
             llenarProveedor();
-
         }
 
         public frmAgregarEquipo(
-            string codEquipo,
+           string codEquipo,
            string tipoEquipo,
            string marcaEquipo,
            string modeloEquipo,
@@ -53,7 +51,6 @@ namespace Presentacion
             maskprecioEquipo.Text = temporal.Substring(temporal.Length - 10);
             comboBproveedor.SelectedValue = idProveedor;
             rtxtDescripcion.Text = descripcion;
-
         }
 
         public delegate void updateDelegate(object sender, UpdateEventArgs args);

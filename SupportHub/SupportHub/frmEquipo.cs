@@ -58,12 +58,11 @@ namespace Presentacion
                 btnModificarEquipo.Visible = false;
             }
             dgvEquipo.Columns["Precio de Equipo"].DefaultCellStyle.Format = "C2";
-     
             frmCargado = true;
         }
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-
             if (keyData == (Keys.Control | Keys.Shift | Keys.A))
             {
                 btnAgregarEquipo_Click(this, EventArgs.Empty);
@@ -75,6 +74,7 @@ namespace Presentacion
                 btnModificarEquipo_Click(this, EventArgs.Empty);
                 return true;
             }
+
             if (keyData == (Keys.Control | Keys.Shift | Keys.E))
             {
                 btnEliminarEquipo_Click(this, EventArgs.Empty);
@@ -82,6 +82,7 @@ namespace Presentacion
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
         private void btnEliminarEquipo_Click(object sender, EventArgs e)
         {
             if (CustomMessageBox.Advertencia("Eliminar equipo", "¿Quiere eliminar un equipo?") == DialogResult.Yes)
@@ -89,7 +90,6 @@ namespace Presentacion
                 if (dgvEquipo.SelectedRows.Count == 1)
                 {
                     int totalRegistrosEliminados = ModeloEquipo.EliminarEquipo(dgvEquipo.SelectedRows[0].Cells["Código de Equipo"].Value.ToString());
-
                     if (totalRegistrosEliminados == 1)
                     {
                         CustomMessageBox.Exito("Eliminación exitosa", "Se eliminó " + totalRegistrosEliminados.ToString() + " equipo.");
@@ -98,7 +98,6 @@ namespace Presentacion
                     {
                         CustomMessageBox.Error("Error en eliminación", "No se pudo eliminar, verifique si el equipo tiene una entrega registrada");
                     }
-
                     actualizarTablaEquipos();
                 }
                 else if (dgvEquipo.SelectedRows.Count == 0)
@@ -204,10 +203,12 @@ namespace Presentacion
 
         private void dgvEquipo_SelectionChanged(object sender, EventArgs e)
         {
-            if (frmCargado && dgvEquipo.SelectedRows.Count == 1){
+            if (frmCargado && dgvEquipo.SelectedRows.Count == 1)
+            {
                 btnModificarEquipo.Enabled = true;
             }
-            else if (frmCargado){
+            else if (frmCargado)
+            {
                 btnModificarEquipo.Enabled=false;
             }
         }

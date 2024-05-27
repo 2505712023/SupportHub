@@ -26,7 +26,6 @@ namespace DataAccess
                     comando.CommandType = CommandType.StoredProcedure;
                     comando.Parameters.AddWithValue("@idUsuario", idUsuario);
                     comando.Parameters.AddWithValue("@claveUsuario", nuevaContraseña);
-
                     comando.ExecuteNonQuery();
                 }
             }
@@ -140,6 +139,7 @@ namespace DataAccess
                 return "Error durante el inicio de sesión: " + ex.Message;
             }
         }
+
         //Hecho por KEVIN 
         private DataTable tabla = new DataTable();
         public DataTable obtenerUsuario()
@@ -188,12 +188,9 @@ namespace DataAccess
             
                     throw new Exception("Error checking login existence", ex);
                 }
-                
             }
-
             return existe;
         }
-
 
         public DataTable filtrarTablaUsuario(string loginUsuario = "-1", string nombresUsuario = "-1", string apellidosUsuario = "-1")
         {
@@ -304,7 +301,6 @@ namespace DataAccess
                     comando.Parameters.AddWithValue("@apellidosUsuario", apellidosUsuario);
                     comando.Parameters.AddWithValue("@activoUsuario", activoUsuario);
                     comando.Parameters.AddWithValue("@idEmpleado", idEmpleado);
-
                     comando.ExecuteNonQuery();
                 }
             }

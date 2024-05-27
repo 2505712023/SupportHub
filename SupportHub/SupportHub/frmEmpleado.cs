@@ -45,7 +45,6 @@ namespace Presentacion
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            
             if (keyData == (Keys.Control | Keys.Shift | Keys.A))
             {
                 btnAgregarEmpleado_Click(this, EventArgs.Empty);
@@ -57,6 +56,7 @@ namespace Presentacion
                 btnModificaEmpleado_Click(this, EventArgs.Empty);
                 return true;
             }
+
             if (keyData == (Keys.Control | Keys.Shift | Keys.E))
             {
                 btnEliminarEmpleado_Click(this, EventArgs.Empty);
@@ -254,16 +254,6 @@ namespace Presentacion
             {
                 CustomMessageBox.Error("Error en selección", "Seleccione solo una fila por favor.");
             }
-        }
-
-        private void dgvEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void cbxTipoBusquedaEmpleado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

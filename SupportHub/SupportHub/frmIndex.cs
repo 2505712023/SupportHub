@@ -25,46 +25,41 @@ namespace Presentacion
         private Form? currentChildForm;
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-
             if (keyData == (Keys.Control | Keys.Shift | Keys.H))
             {
-
                 btnHome_Click(this, EventArgs.Empty);
                 return true;
             }
 
-
             if (keyData == (Keys.Control | Keys.Shift | Keys.Y))
             {
-
                 btnCerrarSeccion_Click(this, EventArgs.Empty);
                 return true;
             }
+
             if (keyData == (Keys.Control | Keys.Shift | Keys.Z))
             {
-
                 btnCerrar_Click(this, EventArgs.Empty);
                 return true;
             }
+
             if (keyData == (Keys.Control | Keys.Shift | Keys.G))
             {
-
                 btnAcerca_Click(this, EventArgs.Empty);
                 return true;
             }
+
             if (keyData == (Keys.Control | Keys.Shift | Keys.I))
             {
-
                 btnInfo_Click(this, EventArgs.Empty);
                 return true;
             }
-
             return base.ProcessCmdKey(ref msg, keyData);
         }
+
         public frmIndex()
         {
             InitializeComponent();
-
 
             this.WindowState = FormWindowState.Maximized;
             leftBorderBtn = new Panel();
@@ -129,6 +124,7 @@ namespace Presentacion
                 btnIconoFrmActual.IconColor = color;
             }
         }
+
         private void DisableButton()
         {
             if (currentBtn != null)
@@ -141,6 +137,7 @@ namespace Presentacion
                 currentBtn.ImageAlign = ContentAlignment.MiddleLeft;
             }
         }
+
         private void Reset()
         {
             DisableButton();
@@ -168,8 +165,6 @@ namespace Presentacion
             childForm.Show();
             lblIconoFrmActual.Text = childForm.Text;
         }
-
-
 
         private void btnEmpleado_Click(object sender, EventArgs e)
         {
@@ -212,13 +207,16 @@ namespace Presentacion
             {
                 currentChildForm.Close();
             }
-
             Reset();
         }
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
+
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
         private void pBarraTitulo_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -250,7 +248,6 @@ namespace Presentacion
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-
             Application.Exit();
         }
 
@@ -303,7 +300,6 @@ namespace Presentacion
             {
                 this.Close();
             }
-
         }
 
         private void btnMiximizar_MouseHover(object sender, EventArgs e)
