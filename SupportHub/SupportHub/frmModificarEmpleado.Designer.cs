@@ -90,8 +90,8 @@
             btnCerrarModificarEmpleado.IconFont = FontAwesome.Sharp.IconFont.Solid;
             btnCerrarModificarEmpleado.IconSize = 20;
             btnCerrarModificarEmpleado.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarModificarEmpleado.Location = new Point(382, 7);
-            btnCerrarModificarEmpleado.Margin = new Padding(2, 2, 2, 2);
+            btnCerrarModificarEmpleado.Location = new Point(546, 11);
+            btnCerrarModificarEmpleado.Margin = new Padding(2);
             btnCerrarModificarEmpleado.Name = "btnCerrarModificarEmpleado";
             btnCerrarModificarEmpleado.Size = new Size(28, 24);
             btnCerrarModificarEmpleado.TabIndex = 16;

@@ -40,6 +40,11 @@ namespace Presentacion
                 btnEliminarProveedor_Click(this, EventArgs.Empty);
                 return true;
             }
+            if (keyData == (Keys.Delete))
+            {
+                btnEliminarProveedor_Click(this, EventArgs.Empty);
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 

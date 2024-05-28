@@ -207,6 +207,11 @@ namespace Presentacion
                 }
                 return true;
             }
+            if (keyData == (Keys.Delete))
+            {
+                btnEliminarEntrega_Click(this, EventArgs.Empty);
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 

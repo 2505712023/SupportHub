@@ -64,6 +64,12 @@ namespace Presentacion
                 btnEliminarEmpleado_Click(this, EventArgs.Empty);
                 return true;
             }
+            if (keyData == (Keys.Delete))
+            {
+                btnEliminarEmpleado_Click(this, EventArgs.Empty);
+                return true;
+            }
+
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -100,6 +106,7 @@ namespace Presentacion
                 btnModificaEmpleado.Visible = false;
             }
             txtBuscarEmpleado.Focus();
+            formCargado = true;
         }
 
         private void cbxTipoBusquedaEmpleado_TextChanged(object sender, EventArgs e)
@@ -262,18 +269,13 @@ namespace Presentacion
 
         private void dgvEmpleado_SelectionChanged(object sender, EventArgs e)
         {
-            if (formCargado)
+            if (formCargado && dgvEmpleado.SelectedRows.Count == 1)
             {
-                if (dgvEmpleado.SelectedRows.Count == 1)
-                {
-                    btnModificaEmpleado.Enabled = true;
-                    
-                }
-                else if (dgvEmpleado.SelectedRows.Count != 1)
-                {
-                    btnModificaEmpleado.Enabled = false;
-                  
-                }
+                btnModificaEmpleado.Enabled = true;
+            }
+            else if (formCargado)
+            {
+                btnModificaEmpleado.Enabled = false;
             }
 
         }

@@ -80,6 +80,11 @@ namespace Presentacion
                 btnEliminarEquipo_Click(this, EventArgs.Empty);
                 return true;
             }
+            if (keyData == (Keys.Delete))
+            {
+                btnEliminarEquipo_Click(this, EventArgs.Empty);
+                return true;
+            }
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
