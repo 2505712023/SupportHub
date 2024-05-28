@@ -17,8 +17,10 @@ namespace Presentacion
 {
     public partial class frmEmpleado : Form
     {
+        private bool formCargado = false;
         ModeloEmpleado EmpObjeto = new ModeloEmpleado();
         private List<string> tipoEmpleado;
+       
         private bool frmAgregarEmpleadoAbierto = false;
         public frmEmpleado()
         {
@@ -48,7 +50,7 @@ namespace Presentacion
             if (keyData == (Keys.Control | Keys.Shift | Keys.A))
             {
                 btnAgregarEmpleado_Click(this, EventArgs.Empty);
-                return true; 
+                return true;
             }
 
             if (keyData == (Keys.Control | Keys.Shift | Keys.M))
@@ -147,10 +149,12 @@ namespace Presentacion
 
         private void btnEliminarEmpleado_Click(object sender, EventArgs e)
         {
+
             if (CustomMessageBox.Advertencia("Eliminar empleado", "¿Seguro que desea eliminar empleado?") == DialogResult.Yes)
             {
                 if (dgvEmpleado.SelectedRows.Count == 1)
                 {
+
                     string codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
                     bool hasError = false;
                     try
@@ -254,6 +258,24 @@ namespace Presentacion
             {
                 CustomMessageBox.Error("Error en selección", "Seleccione solo una fila por favor.");
             }
+        }
+
+        private void dgvEmpleado_SelectionChanged(object sender, EventArgs e)
+        {
+            if (formCargado)
+            {
+                if (dgvEmpleado.SelectedRows.Count == 1)
+                {
+                    btnModificaEmpleado.Enabled = true;
+                    
+                }
+                else if (dgvEmpleado.SelectedRows.Count != 1)
+                {
+                    btnModificaEmpleado.Enabled = false;
+                  
+                }
+            }
+
         }
     }
 }

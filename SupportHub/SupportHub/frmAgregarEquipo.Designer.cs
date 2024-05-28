@@ -118,6 +118,7 @@
             tboxcantidadEquipo.Font = new Font("Segoe UI", 12F);
             tboxcantidadEquipo.ForeColor = Color.Black;
             tboxcantidadEquipo.Location = new Point(226, 148);
+            tboxcantidadEquipo.MaxLength = 10;
             tboxcantidadEquipo.Name = "tboxcantidadEquipo";
             tboxcantidadEquipo.Size = new Size(209, 29);
             tboxcantidadEquipo.TabIndex = 38;
@@ -128,6 +129,7 @@
             tboxmodeloEquipo.Font = new Font("Segoe UI", 12F);
             tboxmodeloEquipo.ForeColor = Color.Black;
             tboxmodeloEquipo.Location = new Point(226, 113);
+            tboxmodeloEquipo.MaxLength = 50;
             tboxmodeloEquipo.Name = "tboxmodeloEquipo";
             tboxmodeloEquipo.Size = new Size(209, 29);
             tboxmodeloEquipo.TabIndex = 37;
@@ -138,6 +140,7 @@
             tboxTipoEquipo.Font = new Font("Segoe UI", 12F);
             tboxTipoEquipo.ForeColor = Color.Black;
             tboxTipoEquipo.Location = new Point(226, 43);
+            tboxTipoEquipo.MaxLength = 50;
             tboxTipoEquipo.Name = "tboxTipoEquipo";
             tboxTipoEquipo.Size = new Size(209, 29);
             tboxTipoEquipo.TabIndex = 35;
@@ -191,6 +194,7 @@
             tboxmarcaEquipo.Font = new Font("Segoe UI", 12F);
             tboxmarcaEquipo.ForeColor = Color.Black;
             tboxmarcaEquipo.Location = new Point(226, 78);
+            tboxmarcaEquipo.MaxLength = 50;
             tboxmarcaEquipo.Name = "tboxmarcaEquipo";
             tboxmarcaEquipo.Size = new Size(209, 29);
             tboxmarcaEquipo.TabIndex = 36;
@@ -255,6 +259,7 @@
             // 
             rtxtDescripcion.Font = new Font("Segoe UI", 12F);
             rtxtDescripcion.Location = new Point(226, 253);
+            rtxtDescripcion.MaxLength = 1000;
             rtxtDescripcion.Name = "rtxtDescripcion";
             rtxtDescripcion.Size = new Size(325, 77);
             rtxtDescripcion.TabIndex = 41;

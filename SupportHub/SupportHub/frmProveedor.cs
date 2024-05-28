@@ -181,10 +181,12 @@ namespace Presentacion
                 if(dgvProveedor.SelectedRows.Count == 1)
                 {
                     btnModificaProveedor.Enabled = true;
+               
                 }
                 else if (dgvProveedor.SelectedRows.Count != 1)
                 {
                     btnModificaProveedor.Enabled = false;
+               
                 }
             }
         }
