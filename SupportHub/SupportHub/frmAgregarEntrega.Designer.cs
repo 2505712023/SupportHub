@@ -281,6 +281,7 @@
             rtxtObservacionEntrega.Cursor = Cursors.IBeam;
             rtxtObservacionEntrega.Font = new Font("Segoe UI", 12F);
             rtxtObservacionEntrega.Location = new Point(226, 288);
+            rtxtObservacionEntrega.MaxLength = 2000;
             rtxtObservacionEntrega.Name = "rtxtObservacionEntrega";
             rtxtObservacionEntrega.Size = new Size(325, 75);
             rtxtObservacionEntrega.TabIndex = 21;

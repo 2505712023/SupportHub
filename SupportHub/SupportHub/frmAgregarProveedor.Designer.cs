@@ -104,6 +104,7 @@
             txtDireccion.Cursor = Cursors.IBeam;
             txtDireccion.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtDireccion.Location = new Point(26, 172);
+            txtDireccion.MaxLength = 100;
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(266, 29);
             txtDireccion.TabIndex = 8;
@@ -171,6 +172,7 @@
             txtCodProveedor.Cursor = Cursors.IBeam;
             txtCodProveedor.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtCodProveedor.Location = new Point(26, 53);
+            txtCodProveedor.MaxLength = 8;
             txtCodProveedor.Name = "txtCodProveedor";
             txtCodProveedor.Size = new Size(266, 29);
             txtCodProveedor.TabIndex = 6;
@@ -181,6 +183,7 @@
             txtNombre.Cursor = Cursors.IBeam;
             txtNombre.Font = new Font("Segoe UI", 12F);
             txtNombre.Location = new Point(26, 112);
+            txtNombre.MaxLength = 50;
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(266, 29);
             txtNombre.TabIndex = 7;
@@ -291,8 +294,6 @@
         }
 
         #endregion
-
-        private GroupBox gbAddProveedor;
         public MaskedTextBox txtTelefono;
         private FontAwesome.Sharp.IconButton btnCancela;
         private FontAwesome.Sharp.IconButton btnGuardarProveedor;
@@ -308,5 +309,6 @@
         private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
         private Label label2;
         private FontAwesome.Sharp.IconButton iconButton1;
+        public GroupBox gbAddProveedor;
     }
 }

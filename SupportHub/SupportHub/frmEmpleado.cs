@@ -17,9 +17,11 @@ namespace Presentacion
 {
     public partial class frmEmpleado : Form
     {
+        private bool formCargado = false;
         ModeloEmpleado EmpObjeto = new ModeloEmpleado();
         private List<string> tipoEmpleado;
         private bool frmAgregarEmpleadoAbierto = false;
+
         public frmEmpleado()
         {
             InitializeComponent();
@@ -48,7 +50,7 @@ namespace Presentacion
             if (keyData == (Keys.Control | Keys.Shift | Keys.A))
             {
                 btnAgregarEmpleado_Click(this, EventArgs.Empty);
-                return true; 
+                return true;
             }
 
             if (keyData == (Keys.Control | Keys.Shift | Keys.M))
@@ -62,6 +64,12 @@ namespace Presentacion
                 btnEliminarEmpleado_Click(this, EventArgs.Empty);
                 return true;
             }
+            if (keyData == (Keys.Delete))
+            {
+                btnEliminarEmpleado_Click(this, EventArgs.Empty);
+                return true;
+            }
+
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -98,6 +106,7 @@ namespace Presentacion
                 btnModificaEmpleado.Visible = false;
             }
             txtBuscarEmpleado.Focus();
+            formCargado = true;
         }
 
         private void cbxTipoBusquedaEmpleado_TextChanged(object sender, EventArgs e)
@@ -147,6 +156,7 @@ namespace Presentacion
 
         private void btnEliminarEmpleado_Click(object sender, EventArgs e)
         {
+
             if (CustomMessageBox.Advertencia("Eliminar empleado", "¿Seguro que desea eliminar empleado?") == DialogResult.Yes)
             {
                 if (dgvEmpleado.SelectedRows.Count == 1)
@@ -236,7 +246,9 @@ namespace Presentacion
                     frm.UpdateEventHandler += ModificarUpdateEvenHandler;
                     frm.LlenarComboBoxCargos();
                     frm.LlenarComboBoxAreas();
-                    frm.codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
+                    string codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
+                    frm.codEmpleado = codEmpleado;
+                    frm.gbUpdEmpleado.Text = "MODIFICAR EMPLEADO: " + codEmpleado;
                     frm.txtNombreEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreEmpleado"].Value.ToString();
                     frm.txtApellidoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["apellidoEmpleado"].Value.ToString();
                     frm.txtTelefonoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["telefonoEmpleado"].Value.ToString();
@@ -253,6 +265,18 @@ namespace Presentacion
             else
             {
                 CustomMessageBox.Error("Error en selección", "Seleccione solo una fila por favor.");
+            }
+        }
+
+        private void dgvEmpleado_SelectionChanged(object sender, EventArgs e)
+        {
+            if (formCargado && dgvEmpleado.SelectedRows.Count == 1)
+            {
+                btnModificaEmpleado.Enabled = true;
+            }
+            else if (formCargado)
+            {
+                btnModificaEmpleado.Enabled = false;
             }
         }
     }

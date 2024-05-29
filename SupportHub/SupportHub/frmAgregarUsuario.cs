@@ -303,7 +303,6 @@ namespace Presentacion
                 CustomMessageBox.Error("Dato faltante", "Seleccione al menos un rol para asociar al usuario.");
                 return false;
             }
-
             return true;
         }
 

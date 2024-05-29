@@ -160,6 +160,7 @@
             txtEmailEmpleado.Cursor = Cursors.IBeam;
             txtEmailEmpleado.Font = new Font("Segoe UI", 12F);
             txtEmailEmpleado.Location = new Point(26, 222);
+            txtEmailEmpleado.MaxLength = 100;
             txtEmailEmpleado.Name = "txtEmailEmpleado";
             txtEmailEmpleado.Size = new Size(266, 29);
             txtEmailEmpleado.TabIndex = 9;
@@ -170,6 +171,7 @@
             txtApellidoEmpleado.Cursor = Cursors.IBeam;
             txtApellidoEmpleado.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtApellidoEmpleado.Location = new Point(26, 112);
+            txtApellidoEmpleado.MaxLength = 50;
             txtApellidoEmpleado.Name = "txtApellidoEmpleado";
             txtApellidoEmpleado.Size = new Size(266, 29);
             txtApellidoEmpleado.TabIndex = 7;
@@ -180,6 +182,7 @@
             txtNombreEmpleado.Cursor = Cursors.IBeam;
             txtNombreEmpleado.Font = new Font("Segoe UI", 12F);
             txtNombreEmpleado.Location = new Point(26, 53);
+            txtNombreEmpleado.MaxLength = 50;
             txtNombreEmpleado.Name = "txtNombreEmpleado";
             txtNombreEmpleado.Size = new Size(266, 29);
             txtNombreEmpleado.TabIndex = 6;
@@ -258,7 +261,7 @@
             pboxLogo.Location = new Point(18, 0);
             pboxLogo.Margin = new Padding(3, 2, 3, 2);
             pboxLogo.Name = "pboxLogo";
-            pboxLogo.Size = new Size(184, 75);
+            pboxLogo.Size = new Size(184, 60);
             pboxLogo.SizeMode = PictureBoxSizeMode.AutoSize;
             pboxLogo.TabIndex = 16;
             pboxLogo.TabStop = false;
