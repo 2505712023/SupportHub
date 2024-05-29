@@ -20,8 +20,8 @@ namespace Presentacion
         private bool formCargado = false;
         ModeloEmpleado EmpObjeto = new ModeloEmpleado();
         private List<string> tipoEmpleado;
-       
         private bool frmAgregarEmpleadoAbierto = false;
+
         public frmEmpleado()
         {
             InitializeComponent();
@@ -161,7 +161,6 @@ namespace Presentacion
             {
                 if (dgvEmpleado.SelectedRows.Count == 1)
                 {
-
                     string codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
                     bool hasError = false;
                     try
@@ -247,7 +246,9 @@ namespace Presentacion
                     frm.UpdateEventHandler += ModificarUpdateEvenHandler;
                     frm.LlenarComboBoxCargos();
                     frm.LlenarComboBoxAreas();
-                    frm.codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
+                    string codEmpleado = dgvEmpleado.CurrentRow.Cells["codEmpleado"].Value.ToString();
+                    frm.codEmpleado = codEmpleado;
+                    frm.gbUpdEmpleado.Text = "MODIFICAR EMPLEADO: " + codEmpleado;
                     frm.txtNombreEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["nombreEmpleado"].Value.ToString();
                     frm.txtApellidoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["apellidoEmpleado"].Value.ToString();
                     frm.txtTelefonoEmpleadoUpdate.Text = dgvEmpleado.CurrentRow.Cells["telefonoEmpleado"].Value.ToString();
@@ -277,7 +278,6 @@ namespace Presentacion
             {
                 btnModificaEmpleado.Enabled = false;
             }
-
         }
     }
 }

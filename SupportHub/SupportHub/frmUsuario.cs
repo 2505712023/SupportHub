@@ -52,6 +52,7 @@ namespace Presentacion
                 btnEliminarUsuario_Click_1(this, EventArgs.Empty);
                 return true;
             }
+
             if (keyData == (Keys.Delete))
             {
                 btnEliminarUsuario_Click_1(this, EventArgs.Empty);

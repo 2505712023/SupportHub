@@ -207,6 +207,7 @@ namespace Presentacion
                 }
                 return true;
             }
+
             if (keyData == (Keys.Delete))
             {
                 btnEliminarEntrega_Click(this, EventArgs.Empty);

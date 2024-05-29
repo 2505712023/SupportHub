@@ -294,8 +294,6 @@
         }
 
         #endregion
-
-        private GroupBox gbAddProveedor;
         public MaskedTextBox txtTelefono;
         private FontAwesome.Sharp.IconButton btnCancela;
         private FontAwesome.Sharp.IconButton btnGuardarProveedor;
@@ -311,5 +309,6 @@
         private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
         private Label label2;
         private FontAwesome.Sharp.IconButton iconButton1;
+        public GroupBox gbAddProveedor;
     }
 }

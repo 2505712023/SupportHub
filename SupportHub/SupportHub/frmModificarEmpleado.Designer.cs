@@ -382,7 +382,6 @@
 
         private Panel pSuperiorUpdEmpleado;
         private FontAwesome.Sharp.IconButton btnCerrarAddEmpleado;
-        private GroupBox gbUpdEmpleado;
         private FontAwesome.Sharp.IconButton btnCancelaEmpleado;
         private FontAwesome.Sharp.IconButton btnGuardarEmpleado;
         private FontAwesome.Sharp.IconButton btnGuardarUpdate;
@@ -401,5 +400,6 @@
         public Label lblNombreEmpleadoUpdate;
         private FontAwesome.Sharp.IconButton btnCerrarModificarEmpleado;
         private PictureBox pboxLogo;
+        public GroupBox gbUpdEmpleado;
     }
 }

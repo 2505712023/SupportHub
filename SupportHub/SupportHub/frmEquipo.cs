@@ -80,6 +80,7 @@ namespace Presentacion
                 btnEliminarEquipo_Click(this, EventArgs.Empty);
                 return true;
             }
+
             if (keyData == (Keys.Delete))
             {
                 btnEliminarEquipo_Click(this, EventArgs.Empty);
@@ -171,7 +172,6 @@ namespace Presentacion
 
         private void btnAgregarEquipo_Click(object sender, EventArgs e)
         {
-
             frmAgregarEquipo formEquipo = new frmAgregarEquipo(this);
             formEquipo.UpdateEventHandler += AgreUpdateEventHandler;
             formEquipo.ShowDialog();
@@ -182,7 +182,7 @@ namespace Presentacion
             DataGridViewRow selectedRow = dgvEquipo.SelectedRows[0];
            
             frmAgregarEquipo formEquipo = new frmAgregarEquipo(
-                codEquipo:selectedRow.Cells["Código de Equipo"].Value.ToString(),
+                codEquipo: selectedRow.Cells["Código de Equipo"].Value.ToString(),
                 tipoEquipo: selectedRow.Cells["Tipo de Equipo"].Value.ToString(),
                 marcaEquipo: selectedRow.Cells["Marca de Equipo"].Value.ToString(),
                 modeloEquipo: selectedRow.Cells["Modelo de Equipo"].Value.ToString(),

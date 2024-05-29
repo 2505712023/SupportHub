@@ -40,6 +40,7 @@ namespace Presentacion
                 btnEliminarProveedor_Click(this, EventArgs.Empty);
                 return true;
             }
+
             if (keyData == (Keys.Delete))
             {
                 btnEliminarProveedor_Click(this, EventArgs.Empty);
@@ -91,8 +92,9 @@ namespace Presentacion
                 if (dgvProveedor.SelectedRows.Count == 1)
                 {
                     frmAgregarProveedor editar = new frmAgregarProveedor(int.Parse(dgvProveedor.CurrentRow.Cells["idProveedor"].Value.ToString()!));
-
-                    editar.txtCodProveedor.Text = dgvProveedor.CurrentRow.Cells["codProveedor"].Value.ToString();
+                    string codProveedor = dgvProveedor.CurrentRow.Cells["codProveedor"].Value.ToString();
+                    editar.gbAddProveedor.Text = "MODIFICAR PROVEEDOR: " + codProveedor;
+                    editar.txtCodProveedor.Text = codProveedor;
                     editar.txtNombre.Text = dgvProveedor.CurrentRow.Cells["nombreProveedor"].Value.ToString();
                     editar.txtDireccion.Text = dgvProveedor.CurrentRow.Cells["direccionProveedor"].Value.ToString();
                     editar.txtTelefono.Text = dgvProveedor.CurrentRow.Cells["telefonoProveedor"].Value.ToString();
@@ -186,12 +188,10 @@ namespace Presentacion
                 if(dgvProveedor.SelectedRows.Count == 1)
                 {
                     btnModificaProveedor.Enabled = true;
-               
                 }
                 else if (dgvProveedor.SelectedRows.Count != 1)
                 {
                     btnModificaProveedor.Enabled = false;
-               
                 }
             }
         }

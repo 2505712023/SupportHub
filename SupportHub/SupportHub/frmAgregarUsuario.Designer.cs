@@ -227,6 +227,7 @@
             tboxLoginUsuario.Font = new Font("Segoe UI", 12F);
             tboxLoginUsuario.ForeColor = Color.Black;
             tboxLoginUsuario.Location = new Point(25, 58);
+            tboxLoginUsuario.MaxLength = 25;
             tboxLoginUsuario.Name = "tboxLoginUsuario";
             tboxLoginUsuario.Size = new Size(268, 29);
             tboxLoginUsuario.TabIndex = 42;
@@ -246,6 +247,7 @@
             tboxApellidosUsuario.Font = new Font("Segoe UI", 12F);
             tboxApellidosUsuario.ForeColor = Color.Black;
             tboxApellidosUsuario.Location = new Point(25, 170);
+            tboxApellidosUsuario.MaxLength = 50;
             tboxApellidosUsuario.Name = "tboxApellidosUsuario";
             tboxApellidosUsuario.Size = new Size(268, 29);
             tboxApellidosUsuario.TabIndex = 38;
@@ -265,6 +267,7 @@
             tboxNombresUsuario.Font = new Font("Segoe UI", 12F);
             tboxNombresUsuario.ForeColor = Color.Black;
             tboxNombresUsuario.Location = new Point(25, 114);
+            tboxNombresUsuario.MaxLength = 50;
             tboxNombresUsuario.Name = "tboxNombresUsuario";
             tboxNombresUsuario.Size = new Size(268, 29);
             tboxNombresUsuario.TabIndex = 36;
